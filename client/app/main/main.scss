@@ -1,0 +1,89 @@
+.color-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(122, 122, 122, .5);
+    z-index: 99;
+}
+
+#welcome-main {
+    padding: 96px 32px 0px;
+    text-align: center;
+    h1 {
+        margin-bottom: 30px;
+    }
+    p {
+        font-size: 17px;
+        max-width: 1020px;
+        margin: auto;
+        line-height: 1.4em;
+        margin-bottom: 30px;
+    }
+}
+/* TRAVELERS FAQS */
+
+.faqs {
+    ul {
+        margin-bottom: 30px;
+        margin-top: 20px;
+        padding: 0px;
+        list-style: none;
+        li {
+            font-size: 16px;
+            margin-bottom: 50px;
+            strong {
+                margin-bottom: 15px;
+                font-size: 18px;
+                display: block;
+            }
+        }
+    }
+}
+
+.secondaryTemplate {
+    margin-top: 70px;
+    text-align: left;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    h2 {
+        font-family: 'Julius Sans One', sans-serif;
+    }
+}
+
+#home-quote {
+    padding: 50px;
+    h2 {
+        font-family: wanderlust;
+        font-size: 60px;
+        margin-bottom: 30px;
+        color: #fff;
+    }
+    i {
+        color: #f9f9f9;
+    }
+}
+
+#homeDestinationHelp {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    float: left;
+    padding: 5px 0px 0px 10px;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+#pre-footer h2 {
+    font-size: 28px;
+    padding-bottom: 10px;
+}
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+    color: #000;
+    background-color: #f9f9f9 !important;
+}

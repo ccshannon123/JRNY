@@ -1,0 +1,22 @@
+<div class="navbar navbar-inverse bs-docs-nav navbar-fixed-top sticky-navigation white" role="navigation">
+    <div ng-include="'/components/navbar/navbar.html'"></div>
+</div>
+
+<section class="faqs secondaryTemplate">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Traveler FAQs</h2>
+
+                <ul>
+                    <li ng-repeat="questions in travelerFaqs"><strong>{{questions.question}}</strong>{{questions.answer}}
+                    </li>
+                </ul>
+                <h2>still have questions we didn't answer? &nbsp; &nbsp; <a href="#" class="btn btn-primary standard-button-medium">Contact us</a></h2>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<div ng-include="'/components/footer/footer.html'"></div>
