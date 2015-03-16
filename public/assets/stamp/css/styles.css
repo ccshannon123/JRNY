@@ -156,7 +156,6 @@ a:hover {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-
 /*ul,
 ol {
     padding-left: 0 !important;
@@ -175,10 +174,9 @@ li {
 .navbar-inverse .navbar-nav > li > a {
     color: inherit;
 }
-
-.nav > li > a {
+/*.nav > li > a {
     padding: inherit;
-}
+}*/
 
 .navbar-nav.navbar-right:last-child {
     margin-right: 0;
@@ -255,7 +253,7 @@ h5 {
 
 strong,
 .strong {
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .dark-text {
@@ -1642,4 +1640,12 @@ strong,
     border-radius: 4px;
     color: #fff;
     background: #06B6A1;
+}
+
+.btn-primary {
+    background: #06B6A1;
+}
+
+.btn-primary:hover {
+    background: #05A996;
 }
