@@ -390,15 +390,9 @@ module.exports = function (grunt) {
                 connectCommits: false,
                 message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
             },
-            heroku: {
+            development: {
                 options: {
-                    remote: 'heroku',
-                    branch: 'master'
-                }
-            },
-            openshift: {
-                options: {
-                    remote: 'openshift',
+                    remote: 'https://github.com/ccshannon123/JRNY_production.git',
                     branch: 'master'
                 }
             }
@@ -661,4 +655,6 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+    grunt.registerTask('deploy', ['buildcontrol']);
 };

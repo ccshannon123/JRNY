@@ -16,7 +16,7 @@
     <div ng-include="'/components/account/leftNav/leftNav.html'"></div>
 
 
-    <div id="main-container">
+    <div id="main-container" ng-cloak>
         <div id="breadcrumb">
             <ul class="breadcrumb">
                 <li><i class="fa fa-home"></i><a href="index.html"> Home</a>
@@ -28,7 +28,7 @@
         <div class="main-header clearfix">
             <div class="page-title">
                 <h3 class="no-margin">Dashboard</h3>
-                <span>Welcome back Mr.John Doe</span>
+                <span>Welcome back {{ getCurrentUser().name }} | Home Town {{ getCurrentUser().homeTown }}</span>
             </div>
             <!-- /page-title -->
 
