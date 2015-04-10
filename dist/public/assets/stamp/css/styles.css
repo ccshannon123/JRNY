@@ -91,6 +91,17 @@ body {
    1.2 PRE-LOADER              
 -----------------------------------------*/
 
+#mainWrapper {}
+
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+    display: none !important;
+}
+
 .preloader {
     position: fixed;
     top: 0;
@@ -102,15 +113,16 @@ body {
     height: 100%;
     width: 100%;
     overflow: hidden !important;
+    display: block;
 }
 
 .status {
-    width: 40px;
-    height: 40px;
+    width: 100px;
+    height: 100px;
     position: absolute;
     left: 50%;
     top: 50%;
-    margin: -20px 0 0 -20px;
+    margin: -50px 0 0 -50px;
 }
 /*---------------------------------------
    2.3 ANCHOR AND BOLD TEXT           
@@ -303,13 +315,14 @@ strong,
     border-radius: 3px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-size: 13px;
+    font-size: 17px;
     line-height: 1.6;
     border: none;
-    padding: 22px 40px 22px 40px;
+    padding: 19px 20px;
     color: #ffffff;
     -webkit-transition: none;
     transition: none;
+    font-weight: normal;
 }
 
 .standard-button-medium {
@@ -466,8 +479,8 @@ strong,
 -----------------------------------------*/
 
 .section-header {
-    margin-top: 90px;
-    margin-bottom: 60px;
+    margin-top: 40px;
+    margin-bottom: 30px;
 }
 
 .section-header h2 {
@@ -522,17 +535,22 @@ strong,
    3.1 SECTION: HOME / HEADER         
 -----------------------------------------*/
 
+.headerWrapper {
+    background: #000;
+}
+
 .header {
-    background: url(../../images/Colorful-Small.jpg) no-repeat center top fixed;
     -webkit-background-size: cover;
     background-size: cover;
+    background-color: #000;
+    position: relative !important;
 }
 
 .header .overlay-layer {
-    padding-top: 84px;
-    padding-bottom: 175px;
+    padding-top: 40px;
+    padding-bottom: 120px;
     height: auto;
-    min-height: 600px;
+    min-height: 500px;
 }
 /* STICKY NAVIGATION AND LOGO */
 
@@ -687,8 +705,8 @@ strong,
 -----------------------------------------*/
 
 .single-service {
-    padding: 40px 35px 40px 35px;
-    margin: 0 0 100px 0;
+    padding: 20px;
+    margin: 0 0 60px 0;
     background: #ffffff;
     border-top: 1px solid #eaeaea;
     border-left: 1px solid #eaeaea;
@@ -697,23 +715,28 @@ strong,
     border-radius: 3px;
     -webkit-transition: all ease 0.55s;
     transition: all ease 0.55s;
+    min-height: 370px;
+}
+
+.single-service p {
+    font-size: 15px;
 }
 
 .single-service .service-icon {
     font-size: 60px;
-    margin-bottom: 10px;
 }
 
 .single-service h3 {
     margin-bottom: 10px;
+    margin-top: 0px;
 }
 /*---------------------------------------
    3.4 SECTION: APP BRIEF    
 -----------------------------------------*/
 
 .brief {
-    padding-top: 80px;
-    padding-bottom: 115px;
+    padding-top: 40px;
+    padding-bottom: 60px;
 }
 
 .brief .content-section {
@@ -811,7 +834,7 @@ strong,
 -----------------------------------------*/
 
 .stats {
-    background: url(../images/background-images/2.jpg) no-repeat center top fixed;
+    background: url(../images/background-images/EiffelTowerCouple.jpg) no-repeat center top fixed;
     -webkit-background-size: cover;
     background-size: cover;
 }
@@ -842,7 +865,7 @@ strong,
 -----------------------------------------*/
 
 .unique-features {
-    padding-bottom: 100px;
+    padding-bottom: 40px;
 }
 
 .ipad-image {
@@ -875,6 +898,7 @@ strong,
 .feature .description {
     width: 85%;
     float: right;
+    min-height: 120px;
 }
 
 .feature .description p {
@@ -903,6 +927,7 @@ strong,
     padding: 20px;
     -webkit-transition: all ease 0.55s;
     transition: all ease 0.55s;
+    cursor: pointer;
 }
 
 .package-title h3 {
@@ -914,11 +939,17 @@ strong,
 
 .price {
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 10px;
     padding-top: 5px;
     border-bottom: 1px solid #ececec;
     padding-bottom: 25px;
     padding-top: 15px;
+}
+
+.price sup {
+    padding: 2px;
+    top: -16px;
+    font-size: 15px;
 }
 
 .price .superscript {
@@ -968,13 +999,13 @@ strong,
 -----------------------------------------*/
 
 .features {
-    background: url(../images/background-images/1.jpg) no-repeat top center fixed;
+    background: url(../images/background-images/GirlwithSuitcase.jpg) no-repeat top center fixed;
     -webkit-background-size: cover;
     background-size: cover;
 }
 
 .features .overlay-layer-2 {
-    padding-bottom: 84px;
+    padding-bottom: 40px;
 }
 
 .single-feature {
@@ -1013,7 +1044,7 @@ strong,
 
 .timeline-section {
     padding: 0;
-    padding-left: 135px;
+    padding-left: 60px;
     padding-top: 20px;
 }
 
@@ -1040,18 +1071,28 @@ strong,
     float: left;
     width: 42px;
     height: 42px;
-    line-height: 42px;
+    line-height: 40px;
     border-radius: 50%;
     margin-left: -38px;
     padding-top: 2px;
+    text-align: center;
 }
 
 .timeline-section li .info {
     text-align: left;
     background: #F7F8FA;
     margin-left: 15px;
-    padding: 10px;
+    padding: 0px 10px 0px;
     font-size: 14px;
+}
+
+.timeline-section li .title {
+    text-align: left;
+    background: #F7F8FA;
+    margin-left: 15px;
+    padding: 10px 0px 0px 10px;
+    font-size: 16px;
+    font-weight: bold;
 }
 /*---------------------------------------
    3.10 SECTION: TEAM
@@ -1256,6 +1297,10 @@ strong,
     padding-bottom: 40px;
     background: #222;
     color: #fff;
+}
+
+.footer ul {
+    padding: 0px;
 }
 
 .footer-links li {

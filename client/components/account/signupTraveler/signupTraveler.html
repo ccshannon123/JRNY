@@ -34,7 +34,7 @@
 
     <div class="form-group" ng-class="{ 'has-success': form.homeTown.$valid && submitted, 'has-error': form.homeTown.$invalid && submitted }">
 
-        <input type="text" name="homeTown" class="form-control input-box" ng-model="user.homeTown" ng-minlength="3" placeholder="Home Town" required mongoose-error/>
+        <input type="text" name="homeTown" class="form-control input-box" ng-model="user.homeTown" ng-minlength="3" placeholder="Home Town" id="autocomplete" required mongoose-error/>
         <p class="help-block" ng-show="form.homeTown.$error.required && submitted">
             What's your home town?
         </p>
@@ -53,7 +53,7 @@
     </div>
 
     <hr>
-    <div>
+    <div style="text-align:center;">
         <a class="btn btn-facebook" href="" ng-click="loginOauth('facebook')">
             <i class="fa fa-facebook"></i> Facebook
         </a>

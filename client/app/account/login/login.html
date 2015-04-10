@@ -5,7 +5,7 @@
     <div class="container secondaryTemplate">
         <div class="row">
             <div class="col-md-12">
-                <h2>Login</h2>
+                <h2>Log In</h2>
             </div>
             <div class="col-sm-12 col-md-5">
                 <form class="form vertical-registration-form-signup" name="form" ng-submit="login(form)" novalidate>
@@ -39,7 +39,8 @@
                     </div>
 
                     <hr>
-                    <div>
+                    <div style="text-align:center;">
+                        <p>Or log in using…</p>
                         <a class="btn btn-facebook" href="" ng-click="loginOauth('facebook')">
                             <i class="fa fa-facebook"></i> Facebook
                         </a>
@@ -53,24 +54,14 @@
                 </form>
             </div>
 
-            <div class="col-sm-12 col-md-7 overlay-layer-2" id="home-quote" style="margin-top: 20px; min-height: 314px;
-">
+            <div class="col-sm-12 col-md-7 overlay-layer-2" id="login-quote" style="margin-top: 20px; min-height: 314px;">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <h2 style="line-height:60px" data-wow-offset="40" data-wow-duration="2s" class="wow fadeInLeft animated" style="visibility: visible; animation-duration: 2s; animation-name: fadeInLeft;">"Life is a journey, not a destination."</h2>
-                        <i>-Ralph Waldo Emerson</i>
+                    <div class="col-lg-12" ng-controller="QuotesCtrl">
+                        <h2 class="wow fadeInLeft" data-wow-duration="2s" data-wow-offset="40">"{{randomQuote.quote}}"</h2>
+                        <i>–{{randomQuote.author}}</i>
                     </div>
                 </div>
             </div>
-
-            <!--<div class="col-sm-12 col-md-7">
-
-                <p>Accounts are reset on server restart from <code>server/config/seed.js</code>. Default account is <code>test@test.com</code> / <code>test</code>
-                </p>
-                <p>Admin account is <code>admin@admin.com</code> / <code>admin</code>
-                </p>
-            </div>-->
-
         </div>
     </div>
 </section>

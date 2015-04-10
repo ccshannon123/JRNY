@@ -5,22 +5,17 @@
 
     <div class="container secondaryTemplate">
         <div class="row">
-            <div class="col-sm-12 col-md-5">
+            <div class="col-md-12">
                 <h2>Sign up</h2>
+            </div>
+            <div class="col-sm-12 col-md-5">
                 <div ng-include="'/components/account/signupTraveler/signupTraveler.html'"></div>
             </div>
-            <div class="col-sm-12 col-md-7" style="margin-top:70px;">
+            <div class="col-sm-12 col-md-7 overlay-layer-2" id="login-quote" style="margin-top: 20px; min-height: 314px;">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <h2>Why Signup?</h2>
-                        <ul>
-                            <!--<li>No more wasting time reading hours of travelers reviews - be as involved or uninvolved as you want.</li>
-<li>Only locals know the upcoming events, best neighborhoods for YOU to stay in, and the newest, hottest things going on in town.</li>
-<li>Knowing about the best happy hours, what bus to take or how to plan your day will help you spend your money wisely (budget your money wisely)</li>
-<li>Make the most of your time and energy on your travels</li>
-<li>With a travel log and itinerary of what you did on your trip, you can always look back to relive your experiences.</li>
-<li>Connect to people like you all around the world and learn about their culture. Community- build the Jrny travel community while supporting the locals community in your destination</li>-->
-                        </ul>
+                    <div class="col-lg-12" ng-controller="QuotesCtrl">
+                        <h2 class="wow fadeInLeft" data-wow-duration="2s" data-wow-offset="40">"{{randomQuote.quote}}"</h2>
+                        <i>–{{randomQuote.author}}</i>
                     </div>
                 </div>
             </div>
