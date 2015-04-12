@@ -18,6 +18,7 @@
     <!-- build:css({.tmp,client}) app/app.css -->
     <link rel="stylesheet" href="app/app.css">
     <!-- injector:css -->
+    <link rel="stylesheet" href="components/googlePlacesAutoComplete/autocomplete.css">
     <!-- endinjector -->
     <!-- endbuild -->
 
@@ -26,6 +27,10 @@
     <link rel="stylesheet" href="assets/stamp/css/animate.min.css">
     <link rel="stylesheet" href="assets/stamp/css/colors/seafoam.css">
     <link href='http://fonts.googleapis.com/css?family=Julius+Sans+One|Amatic+SC:400,700' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+
+    <!-- GOOGLE AUTO COMPLETE -->
+    <link rel="stylesheet" href="components/googlePlacesAutoComplete/autocomplete.css">
 
     <!-- FONT ICONS -->
     <link rel="stylesheet" href="assets/stamp/icons/icons.css">
@@ -106,6 +111,8 @@
     <script src="app/account/signup/signup.controller.js"></script>
     <script src="app/admin/admin.controller.js"></script>
     <script src="app/admin/admin.js"></script>
+    <script src="app/main/destination-search/destination-search.controller.js"></script>
+    <script src="app/main/destination-search/destination-search.service.js"></script>
     <script src="app/main/help-center/help-nav/help-nav.controller.js"></script>
     <script src="app/main/home/home.controller.js"></script>
     <script src="app/main/local-home/local-home.controller.js"></script>
@@ -113,6 +120,7 @@
     <script src="app/main/main.js"></script>
     <script src="components/auth/auth.service.js"></script>
     <script src="components/auth/user.service.js"></script>
+    <script src="components/googlePlacesAutoComplete/autocomplete.js"></script>
     <script src="components/modal/modal.service.js"></script>
     <script src="components/mongoose-error/mongoose-error.directive.js"></script>
     <script src="components/navbar/navbar.controller.js"></script>

@@ -6,7 +6,8 @@ angular.module('jrnyApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'uiRouterStyles'
+  'uiRouterStyles',
+  'google.places'
 ])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
         $urlRouterProvider

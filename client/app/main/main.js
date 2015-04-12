@@ -75,6 +75,13 @@ angular.module('jrnyApp').config(function ($stateProvider) {
             data: {
                 css: 'assets/stamp/css/styles.css'
             }
+        })
+        .state('destination-search', {
+            url: '/destination-search',
+            templateUrl: 'app/main/destination-search/destination-search.html',
+            data: {
+                css: 'assets/stamp/css/styles.css'
+            }
         });
 
 

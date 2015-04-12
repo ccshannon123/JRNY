@@ -33,14 +33,16 @@ Thing.find({}).remove(function () {
 User.find({}).remove(function () {
     User.create({
         provider: 'local',
-        name: 'Test User',
+        firstName: 'Test',
+        lastName: 'UserLast',
         email: 'test@test.com',
         password: 'test',
         homeTown: 'Denver'
     }, {
         provider: 'local',
         role: 'admin',
-        name: 'Admin',
+        firstName: 'Admin',
+        lastName: 'UserLast',
         email: 'admin@admin.com',
         password: 'admin'
     }, function () {

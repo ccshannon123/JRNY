@@ -1,20 +1,22 @@
 <form class="form vertical-registration-form-signup" name="form" ng-submit="register(form)" novalidate>
-    <div class="col-xs-6" style="padding-left:0px;">
-        <div class="form-group" ng-class="{ 'has-success': form.firstName.$valid && submitted, 'has-error': form.firstName.$invalid && submitted }">
+    <div class="row" style="margin-bottom:0px">
+        <div class="col-xs-6">
+            <div class="form-group" ng-class="{ 'has-success': form.firstName.$valid && submitted, 'has-error': form.firstName.$invalid && submitted }">
 
-            <input type="text" name="firstName" class="form-control input-box" ng-model="user.firstName" placeholder="First Name" required/>
-            <p class="help-block" ng-show="form.firstName.$error.required && submitted">
-                A first name is required
-            </p>
+                <input type="text" name="firstName" class="form-control input-box" ng-model="user.firstName" placeholder="First Name" required/>
+                <p class="help-block" ng-show="form.firstName.$error.required && submitted">
+                    A first name is required
+                </p>
+            </div>
         </div>
-    </div>
-    <div class="col-xs-6" style="padding-right:0px;">
-        <div class="form-group" ng-class="{ 'has-success': form.lastName.$valid && submitted, 'has-error': form.lastName.$invalid && submitted }">
+        <div class="col-xs-6">
+            <div class="form-group" ng-class="{ 'has-success': form.lastName.$valid && submitted, 'has-error': form.lastName.$invalid && submitted }">
 
-            <input type="text" name="lastName" class="form-control input-box" ng-model="user.lastName" placeholder="Last Name" required/>
-            <p class="help-block" ng-show="form.lastName.$error.required && submitted">
-                A last name is required
-            </p>
+                <input type="text" name="lastName" class="form-control input-box" ng-model="user.lastName" placeholder="Last Name" required/>
+                <p class="help-block" ng-show="form.lastName.$error.required && submitted">
+                    A last name is required
+                </p>
+            </div>
         </div>
     </div>
     <div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted, 'has-error': form.email.$invalid && submitted }">
@@ -42,10 +44,9 @@
     </div>
 
     <div class="form-group" ng-class="{ 'has-success': form.homeTown.$valid && submitted, 'has-error': form.homeTown.$invalid && submitted }">
-
-        <input type="text" name="homeTown" class="form-control input-box" ng-model="user.homeTown" ng-minlength="3" placeholder="The Place You Call Home" id="autocomplete" required mongoose-error/>
+        <input type="text" g-places-autocomplete name="homeTown" class="form-control input-box" ng-model="user.homeTown" ng-minlength="3" placeholder="The Place You Call Home" required mongoose-error/>
         <p class="help-block" ng-show="form.homeTown.$error.required && submitted">
-            What's your home town?
+            Where do you call home?
         </p>
         <p class="help-block" ng-show="form.homeTown.$error.mongoose">
             {{ errors.homeTown }}
