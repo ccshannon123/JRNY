@@ -40,6 +40,15 @@ User.find({}).remove(function () {
         homeTown: 'Denver'
     }, {
         provider: 'local',
+        firstName: 'Local',
+        lastName: 'UserLast',
+        email: 'local@local.com',
+        password: 'local',
+        local: {
+            active: true,
+        }
+    }, {
+        provider: 'local',
         role: 'admin',
         firstName: 'Admin',
         lastName: 'UserLast',

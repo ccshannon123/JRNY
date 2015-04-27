@@ -1,23 +1,16 @@
 <div class="navbar navbar-inverse bs-docs-nav navbar-fixed-top sticky-navigation white" role="navigation">
     <div ng-include="'/components/navbar/navbar.html'"></div>
 </div>
-<section class="grey-bg">
+<section class="bg-signup">
 
     <div class="container secondaryTemplate">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 col-md-push-3">
+
+            </div>
+            <div class="col-sm-12 col-md-6 col-md-push-3">
                 <h2>Sign up</h2>
-            </div>
-            <div class="col-sm-12 col-md-5">
                 <div ng-include="'/components/account/signupTraveler/signupTraveler.html'"></div>
-            </div>
-            <div class="col-sm-12 col-md-7 overlay-layer-2" id="login-quote" style="margin-top: 20px; min-height: 314px;">
-                <div class="row">
-                    <div class="col-lg-12" ng-controller="QuotesCtrl">
-                        <h2 class="wow fadeInLeft" data-wow-duration="2s" data-wow-offset="40">"{{randomQuote.quote}}"</h2>
-                        <i>–{{randomQuote.author}}</i>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

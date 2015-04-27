@@ -42,6 +42,9 @@ $(window).load(function () {
         responsive: true
     });
 
+
+
+
     /* PRE LOADER */
     //jQuery(".status").show();
     //jQuery(".status").delay(1900).fadeOut();
@@ -141,6 +144,26 @@ $(window).resize(function () {
     }
 
 
+    /*---------------------------------------*/
+    /*	SCREENSHOT CAROUSEL
+	/*---------------------------------------*/
+
+    $("#screenshots").owlCarousel({
+        navigation: false,
+        slideSpeed: 300,
+        paginationSpeed: 400,
+        singleItem: true
+    });
+
+
+    /*---------------------------------------*/
+    /*	SCREENSHOT LIGHTBOX
+	/*---------------------------------------*/
+
+    $('#screenshots a').nivoLightbox({
+        effect: 'fadeScale',
+    });
+
 
 })(jQuery);
 
@@ -154,20 +177,15 @@ jQuery(document).ready(function ($) {
 
     "use strict";
 
-
-
-
-    setTimeout(function () {
+    /*setTimeout(function () {
 
         var x = 0,
             init,
             container = $('.timeline-section'),
-            /* TIMELINE SELECTOR */
             items = container.find('li'),
             containerHeight = 0,
             numberVisible = 4,
-            /* NUMBER OF <li> TO SHOW IN SCROLLER */
-            intervalSec = 4000; /* INTERVAL TIME */
+            intervalSec = 4000;
 
         if (!container.find('li:first').hasClass("first")) {
             container.find('li:first').addClass("first");
@@ -214,7 +232,8 @@ jQuery(document).ready(function ($) {
                 vertCycle();
             }, intervalSec);
         });
-    }, 1000);
+    }, 1000);*/
+
 });
 
 

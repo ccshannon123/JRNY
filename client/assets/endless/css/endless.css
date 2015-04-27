@@ -210,10 +210,11 @@
     -moz-transform: scale(1.05);
     -ms-transform: scale(1.05);
     -o-transform: scale(1.05);*/
+    
     background: transparent;
     color: #000;
     transition: all 0.2s ease-in-out;
-   /* -webkit-transition: all 0.2s ease-in-out;
+    /* -webkit-transition: all 0.2s ease-in-out;
  -moz-transition: all 0.2s ease-in-out;
  -ms-transition: all 0.2s ease-in-out;
  -o-transition: all 0.2s ease-in-out;*/
@@ -361,10 +362,10 @@ aside {
     float: left;
     width: 194px;
     z-index: 100;
-    padding-top: 45px;
+    padding-top: 65px;
     bottom: 0;
     left: 0;
-    background-color: #323447;
+    background-color: #495B6C;
     height: 100%;
 }
 
@@ -552,8 +553,6 @@ aside .main-menu > ul {
 
 aside .main-menu > ul > li {
     position: relative;
-    border-top: 1px solid #34364a;
-    border-bottom: 1px solid #2c2d3e;
     transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -3896,7 +3895,6 @@ input[type="text"].dial {
 
 input[type="radio"],
 input[type="checkbox"] {
-    opacity: 0;
     position: absolute;
     width: 15px;
     height: 15px;
@@ -8408,4 +8406,29 @@ input[type="radio"]:active + .custom-radio {
     50% {
         color: #fff;
     }
+}
+/* DASHBOARD */
+
+.localSignUpTopNav {
+    float: right;
+    padding: 6px 12px !important;
+    margin-top: 8px;
+    color: #fff !important;
+}
+
+.form-LocalApplication {}
+
+.form-LocalApplication label,
+.form-LocalApplication span {
+    width: 100%;
+    text-align: left;
+    display: block;
+}
+
+.form-LocalApplication .controls {
+    padding-left: 25px;
+}
+
+.form-LocalApplication button {
+    float: left;
 }

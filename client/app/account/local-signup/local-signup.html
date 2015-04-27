@@ -1,0 +1,63 @@
+<!-- Overlay Div -->
+<!--<div id="overlay" class="transparent">
+</div>-->
+
+<div id="wrapper" class="preload sidebar-hide" ng-controller="AccountCtrl">
+
+    <!-- =========================
+     SECTION: TOP NAVIGATION
+    ============================== -->
+    <div ng-include="'/components/account/topNav/topNav.html'"></div>
+
+
+    <!-- =========================
+     SECTION: LEFT NAVIGATION
+    ============================== -->
+    <div ng-include="'/components/account/leftNav/leftNav.html'"></div>
+
+
+    <div id="main-container" ng-cloak>
+        <!-- /breadcrumb-->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-title">
+                        <br/>
+                        <h2>Welcome</h2>
+                        <span>Fusce id molestie nisl, ut mollis sapien. Vivamus feugiat id nisi id tristique. Nullam lectus purus, mollis vitae quam eget, elementum cursus mi. Morbi laoreet orci a accumsan laoreet. Mauris in magna volutpat, aliquet tortor et, mattis erat. Quisque maximus sapien ac lorem tristique rhoncus. Suspendisse pulvinar finibus nibh, vitae imperdiet felis finibus sed. In vel pharetra magna, in consequat nisl. Nam laoreet posuere mollis.  Please fill out the form below</span>
+                        <br/>
+                        <br/>
+                    </div>
+                    <!-- /page-title -->
+                </div>
+            </div>
+            <!-- /page-stats -->
+        </div>
+        <!-- /main-header -->
+
+        <div class="grey-container shortcut-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div ng-include="'/app/account/local-signup/local-signup-application-form.html'"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /grey-container -->
+
+        <!-- /.padding-md -->
+    </div>
+    <!-- /main-container -->
+    <!-- Footer ================================================== -->
+    <div ng-include="'/components/account/footer/footer.html'"></div>
+</div>
+<!-- /wrapper -->
+
+<a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
+
+<!-- Pace -->
+<script src='../../../assets/endless/js/endless/pace.min.js'></script>
+
+<!-- Endless -->
+<script src="../../../assets/endless/js/endless/endless.js"></script>

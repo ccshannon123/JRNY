@@ -16,6 +16,9 @@ var UserSchema = new Schema({
         type: String,
         default: 'user'
     },
+    local: {
+        active: Boolean,
+    },
     homeTown: String,
     hashedPassword: String,
     provider: String,

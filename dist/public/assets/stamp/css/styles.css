@@ -834,7 +834,7 @@ strong,
 -----------------------------------------*/
 
 .stats {
-    background: url(../images/background-images/EiffelTowerCouple.jpg) no-repeat center top fixed;
+    background: url(../../images/background-images/EiffelTowerCouple.jpg) no-repeat center top fixed;
     -webkit-background-size: cover;
     background-size: cover;
 }
@@ -999,7 +999,7 @@ strong,
 -----------------------------------------*/
 
 .features {
-    background: url(../images/background-images/GirlwithSuitcase.jpg) no-repeat top center fixed;
+    background: url(../../images/background-images/GirlwithSuitcase.jpg) no-repeat top center fixed;
     -webkit-background-size: cover;
     background-size: cover;
 }

@@ -1,0 +1,93 @@
+<form class="form form-LocalApplication" ng-controller="localSignupCtrl" name="form" ng-submit="localApplication(form)" novalidate>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label for="gender">I Am</label>
+                <select name="gender" class="form-control" ng-model="user.Gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <!--<div class="form-group" ng-class="{ 'has-success': form.phoneNumber.$valid && submitted, 'has-error': form.phoneNumber.$invalid && submitted }">
+                <label for="gender">Phone Number</label>
+                <input type="phone" name="phoneNumber" class="form-control input-box" ng-model="user.phoneNumber" placeholder="Phone Number" required mongoose-error/>
+                <p class="help-block" ng-show="form.phoneNumber.$error.email && submitted">
+                    Doesn't look like a valid email.
+                </p>
+            </div>
+
+            <div class="form-group">
+                <div class="control-group">
+                    <label class="control-label" for="checkboxes">Languages</label>
+                    <span>Which languages do you feel comfortable communicating in (both reading and writing)? [basic, working proficiency, fluent, native/bilingual]</span>
+                    <div class="controls">
+                        <label class="checkbox" for="checkboxes-0">
+                            <input type="checkbox" name="checkboxes" id="checkboxes-0" value="english"> English
+                        </label>
+                        <label class="checkbox" for="checkboxes-1">
+                            <input type="checkbox" name="checkboxes" id="checkboxes-1" value="Spanish"> Spanish
+                        </label>
+                        <label class="checkbox" for="checkboxes-2">
+                            <input type="checkbox" name="checkboxes" id="checkboxes-2" value="Portuguese"> Portuguese
+                        </label>
+                        <label class="checkbox" for="checkboxes-3">
+                            <input type="checkbox" name="checkboxes" id="checkboxes-3" value="French"> French
+                        </label>
+                        <label class="checkbox" for="checkboxes-4">
+                            <input type="checkbox" name="checkboxes" id="checkboxes-4" value="German"> German
+                        </label>
+                        <label class="checkbox" for="checkboxes-5">
+                            <input type="checkbox" name="checkboxes" id="checkboxes-5" value="Arabic"> Arabic
+                        </label>
+                        <label class="checkbox" for="checkboxes-6">
+                            <input type="checkbox" name="checkboxes" id="checkboxes-6" value="Madarin"> Madarin
+                        </label>
+                        <label class="checkbox" for="checkboxes-7">
+                            <input type="checkbox" name="checkboxes" id="checkboxes-7" value="Hindi"> Hindi
+                        </label>
+                        <label class="checkbox" for="checkboxes-8">
+                            <input type="checkbox" name="checkboxes" id="checkboxes-8" value="Urdu"> Urdu
+                        </label>
+                        <label class="checkbox" for="checkboxes-9">
+                            <input type="checkbox" name="checkboxes" id="checkboxes-9" value="Russian"> Russian
+                        </label>
+
+                    </div>
+                    <input type="text" name="languageOther" class="form-control input-box" ng-model="user.languageOther" placeholder="Other Languages" required mongoose-error/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">How would your friends describe you?</label>
+                <span>Are you a planner, an adventurer, a shopper, a foodie, or a mix of a few? Tell us about what you like to do, where you like to do it, and how you get it done!</span>
+                <br/>
+                <textarea type="phone" name="phoneNumber" class="form-control input-box" ng-model="user.phoneNumber" placeholder="How would your friends describe you?" required mongoose-error/>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Why do you love the place you call home?</label>
+                <span>Is it the fresh air, hip restaurants, local vibe, or something else you just can't live without</span>
+                <br/>
+                <textarea type="phone" name="phoneNumber" class="form-control input-box" ng-model="user.phoneNumber" placeholder="Why do you love the place you call home?" required mongoose-error/>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Imagine someone who has similar interests to yourself is coming into town for one day. Write a one day itinerary for them.</label>
+                <span>Jrny will use this to provide ideas and advice for future itineraries</span>
+                <br/>
+                <textarea type="phone" name="phoneNumber" class="form-control input-box" ng-model="user.phoneNumber" placeholder="Itinerary" required mongoose-error/>
+            </div>-->
+
+        </div>
+    </div>
+
+    <div>
+        <button class="btn btn-lg btn-login btn-success" type="submit">
+            Submit
+        </button>
+    </div>
+
+    <hr>
+</form>

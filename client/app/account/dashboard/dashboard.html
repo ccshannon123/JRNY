@@ -2,7 +2,7 @@
 <!--<div id="overlay" class="transparent">
 </div>-->
 
-<div id="wrapper" class="preload" ng-controller="DashboardCtrl">
+<div id="wrapper" class="preload" ng-controller="AccountCtrl">
 
     <!-- =========================
      SECTION: TOP NAVIGATION
@@ -17,18 +17,11 @@
 
 
     <div id="main-container" ng-cloak>
-        <div id="breadcrumb">
-            <ul class="breadcrumb">
-                <li><i class="fa fa-home"></i><a href="index.html"> Home</a>
-                </li>
-                <li class="active">Dashboard</li>
-            </ul>
-        </div>
         <!-- /breadcrumb-->
         <div class="main-header clearfix">
             <div class="page-title">
                 <h3 class="no-margin">Dashboard</h3>
-                <span>Welcome back {{ getCurrentUser().firstName + ' ' + getCurrentUser().lastName }} | Home Town {{ getCurrentUser().homeTown }}</span>
+                <span>Welcome back {{ getCurrentUser().firstName + ' ' + getCurrentUser().lastName }}</span>
             </div>
             <!-- /page-title -->
 
@@ -173,19 +166,9 @@
         <!-- /.padding-md -->
     </div>
     <!-- /main-container -->
-    <!-- Footer
-		================================================== -->
-    <footer>
-        <div class="row">
-            <div class="col-sm-6">
-                <p class="no-margin">
-                    &copy; 2015 <strong>JRNY</strong>. ALL Rights Reserved.
-                </p>
-            </div>
-            <!-- /.col -->
-        </div>
-        <!-- /.row-->
-    </footer>
+    <!-- Footer ================================================== -->
+    <div ng-include="'/components/account/footer/footer.html'"></div>
+
 </div>
 <!-- /wrapper -->
 

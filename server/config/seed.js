@@ -5,9 +5,10 @@
 
 'use strict';
 
-var Thing = require('../api/thing/thing.model');
+//var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 
+/*
 Thing.find({}).remove(function () {
     Thing.create({
         name: 'Development Tools',
@@ -29,15 +30,26 @@ Thing.find({}).remove(function () {
         info: 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
     });
 });
+*/
 
 User.find({}).remove(function () {
     User.create({
         provider: 'local',
-        firstName: 'Test',
-        lastName: 'UserLast',
+        firstName: 'John',
+        lastName: 'Traveler',
         email: 'test@test.com',
         password: 'test',
         homeTown: 'Denver'
+    }, {
+        provider: 'local',
+        firstName: 'James',
+        lastName: 'Local',
+        email: 'local@local.com',
+        password: 'local',
+        local: {
+            active: true,
+            applied: true,
+        }
     }, {
         provider: 'local',
         role: 'admin',

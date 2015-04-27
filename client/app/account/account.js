@@ -36,5 +36,23 @@ angular.module('jrnyApp')
                 data: {
                     css: 'assets/endless/css/endless.css'
                 }
+            })
+            .state('my-jrnys', {
+                url: '/my-jrnys',
+                templateUrl: 'app/account/my-jrnys/my-jrnys.html',
+                controller: 'myJrnysCtrl',
+                authenticate: true,
+                data: {
+                    css: 'assets/endless/css/endless.css'
+                }
+            })
+            .state('local-signup', {
+                url: '/local-signup',
+                templateUrl: 'app/account/local-signup/local-signup.html',
+                controller: 'localSignupCtrl',
+                authenticate: true,
+                data: {
+                    css: 'assets/endless/css/endless.css'
+                }
             });
     });
