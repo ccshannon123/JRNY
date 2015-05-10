@@ -54,5 +54,23 @@ angular.module('jrnyApp')
                 data: {
                     css: 'assets/endless/css/endless.css'
                 }
+            })
+            .state('profile', {
+                url: '/profile',
+                templateUrl: 'app/account/profile/profile/profile.html',
+                controller: 'profileCtrl',
+                authenticate: true,
+                data: {
+                    css: 'assets/endless/css/endless.css'
+                }
+            })
+            .state('edit-profile', {
+                url: '/edit-profile',
+                templateUrl: 'app/account/profile/edit-profile/edit-profile.html',
+                controller: 'editProfileCtrl',
+                authenticate: true,
+                data: {
+                    css: 'assets/endless/css/endless.css'
+                }
             });
     });

@@ -1,0 +1,161 @@
+<!-- Overlay Div -->
+<!--<div id="overlay" class="transparent">
+</div>-->
+
+<div id="wrapper" class="preload" ng-controller="AccountCtrl">
+
+    <!-- =========================
+     SECTION: TOP NAVIGATION
+    ============================== -->
+    <div ng-include="'/components/account/topNav/topNav.html'"></div>
+
+
+    <!-- =========================
+     SECTION: LEFT NAVIGATION
+    ============================== -->
+    <div ng-include="'/components/account/leftNav/leftNav.html'"></div>
+
+
+    <div id="main-container">
+        <div id="breadcrumb">
+            <ul class="breadcrumb">
+                <li><i class="fa fa-home"></i><a href="/dashboard"> Home</a>
+                </li>
+                <li><a href="/profile"> Profile</a>
+                </li>
+                <li class="active">Edit Profile</li>
+            </ul>
+        </div>
+        <!-- /breadcrumb-->
+        <!-- /main-header -->
+
+        <ul class="tab-bar grey-tab">
+            <li class="">
+                <a href="/profile" data-toggle="tab">
+                    <span class="block text-center">
+							<i class="fa fa-home fa-2x"></i> 
+						</span> Profile
+                </a>
+            </li>
+            <li class="active">
+                <a href="/edit-profile" data-toggle="tab">
+                    <span class="block text-center">
+							<i class="fa fa-edit fa-2x"></i> 
+						</span> Edit Profile
+                </a>
+            </li>
+            <li>
+                <a href="/settings" data-toggle="tab">
+                    <span class="block text-center">
+							<i class="fa fa fa-lock fa-2x"></i> 
+						</span> Change Password
+                </a>
+            </li>
+        </ul>
+
+        <div class="padding-md">
+            <div class="row">
+                <div class="col-sm-3 col-md-3">
+
+                    <a ng-hide="" href="/profile" class="btn btn-success">View Profile</a>
+
+                </div>
+                <div class="col-sm-9 col-md-9">
+                    <!-- EDIT PROFILE FORM -->
+                    <div class="panel panel-default">
+                        <form class="form-horizontal form-border">
+                            <div class="panel-heading">
+                                Basic Information {{ getCurrentUser().firstName +' '+ getCurrentUser().lastName }}
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">First Name</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control input-sm" placeholder="First Name" ng-model="getCurrentUser().firstName">
+                                    </div>
+
+                                    <label class="control-label col-md-2">Last Name</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control input-sm" placeholder="First Name" ng-model="getCurrentUser().lastName">
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+
+                                <!-- /form-group -->
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Email</label>
+                                    <div class="col-md-4">
+                                        <input type="email" class="form-control input-sm" ng-model="getCurrentUser().email">
+                                    </div>
+                                    <!-- /.col -->
+                                    <label class="control-label col-md-2">Phone</label>
+                                    <div class="col-md-4">
+                                        <input type="phone" class="form-control input-sm" ng-model="getCurrentUser().PhoneNumber">
+                                    </div>
+                                </div>
+
+                                <!-- /form-group -->
+
+                                <!-- /form-group -->
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Gender</label>
+                                    <div class="col-md-10">
+                                        <label class="label-radio inline">
+                                            <input type="radio" name="inline-radio" checked="">
+                                            <span class="custom-radio"></span> Male
+                                        </label>
+                                        <label class="label-radio inline">
+                                            <input type="radio" name="inline-radio">
+                                            <span class="custom-radio"></span> Female
+                                        </label>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <!-- /form-group -->
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Home Town</label>
+                                    <div class="col-md-10">
+                                        <input type="text" g-places-autocomplete ng-model="getCurrentUser().homeTown" name="homeTown" class="form-control input-box" placeholder="Home Town">
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+
+                            </div>
+                            <div class="panel-footer">
+                                <div class="text-right">
+                                    <button class="btn btn-sm btn-success">Update</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.padding-md -->
+    </div>
+    <!-- /main-container -->
+    <!-- Footer
+		================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-sm-6">
+                <p class="no-margin">
+                    &copy; 2015 <strong>JRNY</strong>. ALL Rights Reserved.
+                </p>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row-->
+    </footer>
+</div>
+<!-- /wrapper -->
+
+<a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
+
+<!-- Pace -->
+<script src='../../../assets/endless/js/endless/pace.min.js'></script>
+
+<!-- Endless -->
+<script src="../../../assets/endless/js/endless/endless.js"></script>

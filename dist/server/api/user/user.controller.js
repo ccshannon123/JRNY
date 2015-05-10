@@ -59,13 +59,13 @@ exports.create = function (req, res, next) {
         };
 
         // send mail with defined transport object
-        transporter.sendMail(mailOptions, function (error, info) {
+        /*transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
                 console.log(error);
             } else {
                 console.log('Message sent: ' + info.response);
             }
-        });
+        });*/
 
     });
 };
@@ -105,6 +105,27 @@ exports.changePassword = function (req, res, next) {
     User.findById(userId, function (err, user) {
         if (user.authenticate(oldPass)) {
             user.password = newPass;
+            user.save(function (err) {
+                if (err) return validationError(res, err);
+                res.send(200);
+            });
+        } else {
+            res.send(403);
+        }
+    });
+};
+
+
+/**
+ * Local Application
+ */
+exports.localApplication = function (req, res, next) {
+    var userId = req.user._id;
+    var Gender = String(req.body.Gender);
+
+    User.findById(userId, function (err, user) {
+        if (err) {
+            user.Gender = Gender;
             user.save(function (err) {
                 if (err) return validationError(res, err);
                 res.send(200);

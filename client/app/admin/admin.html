@@ -71,7 +71,12 @@
                                 <br/>
                                 <span class="text-muted">{{user.role}}</span>
                                 <br/>
-                                <span class="text-muted">Local: {{user.local.active}}</span>
+                                <span class="text-muted" ng-if="user.local.active">
+                                    Local active: {{ user.local.active}}</span>
+                                <br/>
+                                <span class="text-muted" ng-if="user.local.applied">
+                                    Local applied: {{ user.local.applied}}</span>
+
                                 <a ng-click="delete(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
                             </li>
                         </ul>

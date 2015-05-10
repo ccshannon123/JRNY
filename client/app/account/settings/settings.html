@@ -2,7 +2,7 @@
 <!--<div id="overlay" class="transparent">
 </div>-->
 
-<div id="wrapper" class="preload" ng-controller="DashboardCtrl">
+<div id="wrapper" class="preload" ng-controller="AccountCtrl">
 
     <!-- =========================
      SECTION: TOP NAVIGATION
@@ -21,17 +21,34 @@
             <ul class="breadcrumb">
                 <li><i class="fa fa-home"></i><a href="index.html"> Home</a>
                 </li>
-                <li class="active">Settings</li>
+                <li class="active">Change Password</li>
             </ul>
         </div>
-        <!-- /breadcrumb-->
-        <div class="main-header clearfix">
-            <div class="page-title">
-                <h3 class="no-margin">Settings</h3>
-            </div>
-            <!-- /page-title -->
-        </div>
         <!-- /main-header -->
+
+        <ul class="tab-bar grey-tab">
+            <li class="">
+                <a href="/profile" data-toggle="tab">
+                    <span class="block text-center">
+							<i class="fa fa-home fa-2x"></i> 
+						</span> Profile
+                </a>
+            </li>
+            <li>
+                <a href="/edit-profile" data-toggle="tab">
+                    <span class="block text-center">
+							<i class="fa fa-edit fa-2x"></i> 
+						</span> Edit Profile
+                </a>
+            </li>
+            <li class="active">
+                <a href="/settings" data-toggle="tab">
+                    <span class="block text-center">
+							<i class="fa fa fa-lock fa-2x"></i> 
+						</span> Change Password
+                </a>
+            </li>
+        </ul>
 
         <div class="padding-md">
             <div class="row">

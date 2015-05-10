@@ -4,20 +4,29 @@ angular.module('jrnyApp').controller('localSignupCtrl', function ($scope, User, 
 
     $scope.errors = {};
 
-    $scope.localApplication = function (form) {
+    $scope.localApplicationForm = function (form) {
+
         $scope.submitted = true;
+        //var user = Auth.getCurrentUser;
+        var active = true;
+        var PhoneNumber = $scope.user.PhoneNumber;
+        var Gender = $scope.user.Gender
+
         if (form.$valid) {
-            Auth.localApplication($scope.user.Gender)
+            Auth.updateUser(Gender, PhoneNumber)
                 .then(function () {
-                    $scope.message = 'Password successfully changed.';
-                    console.log('Saved');
+                    $scope.message = 'Acive true';
+                    console.log('active true');
                 })
                 .catch(function () {
                     //form.password.$setValidity('mongoose', false);
-                    $scope.errors.other = 'Incorrect password';
+                    $scope.errors.other = 'Incorrect';
                     $scope.message = '';
                 });
         }
+
     };
+
+
 
 });

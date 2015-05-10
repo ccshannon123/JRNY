@@ -7,13 +7,15 @@ var jwt = require('jsonwebtoken');
 var nodemailer = require('nodemailer');
 
 
+/*
 var transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
         user: 'craig@itsthejrny.com',
-        pass: 'cr@ig123'
+        pass: ''
     }
 });
+*/
 
 
 var validationError = function (res, err) {
@@ -70,6 +72,30 @@ exports.create = function (req, res, next) {
     });
 };
 
+
+// Updates an existing user in the DB.
+exports.update = function (req, res) {
+    var userId = req.user._id;
+    var _ = require('lodash');
+    if (req.body._id) {
+        delete req.body._id;
+    }
+    User.findById(userId, function (err, user) {
+        if (err) {
+            return handleError(res, err);
+        }
+        if (!user) {
+            return res.send(404);
+        }
+        var updated = _.merge(user, req.body);
+        updated.save(function (err) {
+            if (err) return validationError(res, err);
+            return res.json(200);
+        });
+    });
+};
+
+
 /**
  * Get a single user
  */
@@ -115,26 +141,6 @@ exports.changePassword = function (req, res, next) {
     });
 };
 
-
-/**
- * Local Application
- */
-exports.localApplication = function (req, res, next) {
-    var userId = req.user._id;
-    var Gender = String(req.body.Gender);
-
-    User.findById(userId, function (err, user) {
-        if (err) {
-            user.Gender = Gender;
-            user.save(function (err) {
-                if (err) return validationError(res, err);
-                res.send(200);
-            });
-        } else {
-            res.send(403);
-        }
-    });
-};
 
 /**
  * Get my info

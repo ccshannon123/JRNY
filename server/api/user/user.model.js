@@ -35,7 +35,7 @@ var UserSchema = new Schema({
             Urdu: Boolean,
             Russian: Boolean,
             Other: String,
-        }
+        },
     },
     homeTown: String,
     DateOfBirth: String,
