@@ -39,3 +39,55 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
         margin-bottom: 30px;
     }
 }
+
+.custom-sub-navbar {
+  background-color: #aaa;
+  line-height: 35px;
+  text-align: center;
+  font-size: 16px;
+}
+
+
+.custom-sub-navbar .subnav > li {
+  display: inline-block;
+}
+
+.custom-sub-navbar .subnav > li > a {
+  color: #ffffff;
+}
+
+.custom-sub-navbar .subnav > li.active,
+.custom-sub-navbar .subnav > li > a:hover,
+.custom-sub-navbar .subnav > li > a:focus {
+  background-color: #ddd;
+}
+
+.drop-box {
+  background: none repeat scroll 0 0 #eeeeee;
+  border: 1px solid #999999;
+  border-radius: 50%;
+  height: 150px;
+  margin: 0 auto;
+  position: relative;
+  width: 150px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.drop-box .glyphicon {
+  font-size: 80px;
+  left: 34px;
+  position: absolute;
+  top: 30px;
+}
+
+.user-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.form-horizontal.textarea-form .form-group {
+  margin-left: 0px;
+  margin-right: 0px;
+}

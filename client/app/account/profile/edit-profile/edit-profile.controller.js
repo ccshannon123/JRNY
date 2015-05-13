@@ -1,5 +1,5 @@
 'use strict';
 
-angular.module('jrnyApp').controller('editProfileCtrl', function () {
+angular.module('jrnyApp').controller('editProfileCtrl', function ($scope, User) {
 
 });

@@ -7,7 +7,8 @@ angular.module('jrnyApp', [
   'ui.router',
   'ui.bootstrap',
   'uiRouterStyles',
-  'google.places'
+  'google.places',
+  'ngFileUpload'
 ])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
         $urlRouterProvider

@@ -8,6 +8,8 @@ var authTypes = ['github', 'twitter', 'facebook', 'google'];
 var UserSchema = new Schema({
     firstName: String,
     lastName: String,
+    gender: String,
+    isWhatsapp: Boolean,
     email: {
         type: String,
         lowercase: true
@@ -21,6 +23,8 @@ var UserSchema = new Schema({
         applied: Boolean,
         FriendDescription: String,
         WhyLoveHome: String,
+        travelExperience: String,
+        whatTravelQuote: String,
         ApplicationItinerary: String,
         ApplicationSurvivalGuide: String,
         languages: {
@@ -37,11 +41,12 @@ var UserSchema = new Schema({
             Other: String,
         },
     },
-    homeTown: String,
-    DateOfBirth: String,
+    homeTown: Object,
+    DateOfBirth: Date,
     Gender: String,
     PhoneNumber: String,
     hashedPassword: String,
+    photoUrl: String,
     provider: String,
     salt: String,
     facebook: {},

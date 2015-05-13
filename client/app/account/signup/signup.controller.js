@@ -13,7 +13,8 @@ angular.module('jrnyApp').controller('SignupCtrl', function ($scope, Auth, $loca
                     lastName: $scope.user.lastName,
                     email: $scope.user.email,
                     password: $scope.user.password,
-                    homeTown: $scope.user.homeTown['formatted_address'],
+                    /*homeTown: $scope.user.homeTown['formatted_address'],*/
+                    homeTown: $scope.user.homeTown,
                     local: {
                         active: 'true',
                     }
@@ -44,7 +45,8 @@ angular.module('jrnyApp').controller('SignupCtrl', function ($scope, Auth, $loca
                     lastName: $scope.user.lastName,
                     email: $scope.user.email,
                     password: $scope.user.password,
-                    homeTown: $scope.user.homeTown['formatted_address'],
+                    homeTown: $scope.user.homeTown,
+                    /*homeTown: $scope.user.homeTown['formatted_address'],*/
                     local: {
                         active: 'false',
                     }
