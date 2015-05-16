@@ -39,7 +39,7 @@ User.find({}).remove(function () {
         lastName: 'Traveler',
         email: 'test@test.com',
         password: 'test',
-        homeTown: 'Denver'
+        homeTown: 'Denver, CO, USA'
     }, {
         provider: 'local',
         firstName: 'James',
@@ -50,7 +50,7 @@ User.find({}).remove(function () {
             active: true,
             applied: true,
         },
-        homeTown: 'Denver'
+        homeTown: 'Denver, CO, USA'
     }, {
         provider: 'local',
         role: 'admin',

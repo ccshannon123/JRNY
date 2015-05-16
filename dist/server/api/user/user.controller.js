@@ -5,15 +5,17 @@ var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
 var nodemailer = require('nodemailer');
+var fs = require('fs');
 
-
+/*
 var transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
         user: 'craig@itsthejrny.com',
-        pass: 'cr@ig123'
+        pass: ''
     }
 });
+*/
 
 
 var validationError = function (res, err) {
@@ -70,6 +72,31 @@ exports.create = function (req, res, next) {
     });
 };
 
+
+// Updates an existing user in the DB.
+exports.update = function (req, res) {
+    var userId = req.user._id;
+    var _ = require('lodash');
+    if (req.body._id) {
+        delete req.body._id;
+    }
+    User.findById(userId, function (err, user) {
+        if (err) {
+            return handleError(res, err);
+        }
+        if (!user) {
+            return res.send(404);
+        }
+        var updated = _.merge(user, req.body);
+        updated.markModified('homeTown');
+        updated.save(function (err) {
+            if (err) return validationError(res, err);
+            return res.json(updated);
+        });
+    });
+};
+
+
 /**
  * Get a single user
  */
@@ -117,26 +144,6 @@ exports.changePassword = function (req, res, next) {
 
 
 /**
- * Local Application
- */
-exports.localApplication = function (req, res, next) {
-    var userId = req.user._id;
-    var Gender = String(req.body.Gender);
-
-    User.findById(userId, function (err, user) {
-        if (err) {
-            user.Gender = Gender;
-            user.save(function (err) {
-                if (err) return validationError(res, err);
-                res.send(200);
-            });
-        } else {
-            res.send(403);
-        }
-    });
-};
-
-/**
  * Get my info
  */
 exports.me = function (req, res, next) {
@@ -148,6 +155,29 @@ exports.me = function (req, res, next) {
         if (!user) return res.json(401);
         res.json(user);
     });
+};
+
+
+/**
+ * Upload
+ */
+exports.upload = function(req, res, next) {
+    var file = req.files.file;
+    var tmpPath = file.path;
+    var extIndex = tmpPath.lastIndexOf('.');
+    var extension = (extIndex < 0) ? '' : tmpPath.substr(extIndex);
+    var fileName = file.name;
+    var destPath = config.env=='production'?'./public/uploads/':'./client/uploads/' + fileName;
+
+    var is = fs.createReadStream(tmpPath);
+    var os = fs.createWriteStream(destPath);
+
+    if(is.pipe(os)) {
+      fs.unlink(tmpPath, function (err) { //To unlink the file from temp path after copy
+        if (err) return next(err);
+        res.json({img: 'uploads/'+fileName});
+      });
+    }
 };
 
 /**

@@ -7,7 +7,7 @@
 #top-nav {
     height: 55px;
     padding-right: 10px;
-    background-color: #ffffff;
+    background-color: #fff;
     white-space: nowrap;
     min-width: 310px;
     border-bottom: 1px solid #f2f2f2;
@@ -32,7 +32,7 @@
     font-size: 17px;
     line-height: 45px;
     width: 194px;
-    background: #fff;
+    background: transparent;
     float: left;
     transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
@@ -48,7 +48,7 @@
 
 #top-nav .brand:hover,
 #top-nav .brand:focus {
-    color: #222;
+    color: #ccc;
     transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -365,7 +365,7 @@ aside {
     padding-top: 65px;
     bottom: 0;
     left: 0;
-    background-color: #495B6C;
+    background-color: #1d212a;
     height: 100%;
 }
 
@@ -575,6 +575,9 @@ aside .main-menu > ul > li.active > a {
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.15) inset;
     -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15) inset;
     -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15) inset;
+    background: #27b6af;
+    margin: 10px 10px 10px 0px;
+    border-radius: 2px;
 }
 
 aside .main-menu > ul > li.active .menu-hover {
@@ -3283,7 +3286,7 @@ footer hr {
 
 .panel-overview .overview-icon {
     display: inline-block;
-    width: 50%;
+    width: 30%;
     float: left;
     text-align: center;
     padding: 10px;

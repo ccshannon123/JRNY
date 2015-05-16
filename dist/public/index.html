@@ -15,7 +15,12 @@
     <meta name="viewport" content="width=device-width">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="stylesheet" href="app/d4266fab.app.css"/>
+    <!-- build:css({.tmp,client}) app/app.css -->
+    <link rel="stylesheet" href="app/c0e7c2de.app.css">
+    <!-- injector:css -->
+    <link rel="stylesheet" href="components/googlePlacesAutoComplete/autocomplete.css">
+    <!-- endinjector -->
+    <!-- endbuild -->
 
     <!-- STAMP------------------------------------------------------------------->
     <!--<link rel="stylesheet" href="assets/stamp/css/styles.css">-->
@@ -46,7 +51,7 @@
     <![endif]-->
 
     <!-- =========================
-     PRE LOADER       
+     PRE LOADER
     ============================== -->
     <!--<div ng-if="false" class="preloader">
     <div class="status" style="display:none;">
@@ -82,13 +87,46 @@
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
-    <script src="app/295a25f3.vendor.js"></script>
+    <script src="app/320f3017.vendor.js"></script>
 
-    <script src="app/ad2a1629.app.js"></script>
+    <!-- build:js({.tmp,client}) app/app.js -->
+    <script src="app/727e1061.app.js"></script>
+    <!-- injector:js -->
+    <script src="app/account/account.controller.js"></script>
+    <script src="app/account/account.js"></script>
+    <script src="app/account/dashboard/dashboard.controller.js"></script>
+    <script src="app/account/local-signup/local-signup.controller.js"></script>
+    <script src="app/account/login/login.controller.js"></script>
+    <script src="app/account/my-jrnys/my-jrnys.controller.js"></script>
+    <script src="app/account/profile/about-you/about-you.controller.js"></script>
+    <script src="app/account/profile/edit-profile/edit-profile.controller.js"></script>
+    <script src="app/account/profile/profile/profile.controller.js"></script>
+    <script src="app/account/settings/settings.controller.js"></script>
+    <script src="app/account/signup/signup.controller.js"></script>
+    <script src="app/admin/admin.controller.js"></script>
+    <script src="app/admin/admin.js"></script>
+    <script src="app/main/contact/contact.controller.js"></script>
+    <script src="app/main/destination-search/destination-search.controller.js"></script>
+    <script src="app/main/destination-search/destination-search.service.js"></script>
+    <script src="app/main/help-center/help-nav/help-nav.controller.js"></script>
+    <script src="app/main/home/home.controller.js"></script>
+    <script src="app/main/local-home/local-home.controller.js"></script>
+    <script src="app/main/main.controller.js"></script>
+    <script src="app/main/main.js"></script>
+    <script src="components/auth/auth.service.js"></script>
+    <script src="components/auth/user.service.js"></script>
+    <script src="components/googlePlacesAutoComplete/autocomplete.js"></script>
+    <script src="components/modal/modal.service.js"></script>
+    <script src="components/mongoose-error/mongoose-error.directive.js"></script>
+    <script src="components/navbar/navbar.controller.js"></script>
+    <script src="components/quotes/quotes.js"></script>
+    <script src="components/timelineSample/timelineSample.js"></script>
+    <!-- endinjector -->
+    <!-- endbuild -->
 
 
     <!-- =========================
-     SCRIPTS   
+     SCRIPTS
     ============================== -->
 
     <script src="assets/stamp/js/jquery.min.js"></script>

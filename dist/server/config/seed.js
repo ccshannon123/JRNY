@@ -49,7 +49,8 @@ User.find({}).remove(function () {
         local: {
             active: true,
             applied: true,
-        }
+        },
+        homeTown: 'Denver'
     }, {
         provider: 'local',
         role: 'admin',
