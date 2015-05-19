@@ -89,6 +89,8 @@ exports.update = function (req, res) {
         }
         var updated = _.merge(user, req.body);
         updated.markModified('homeTown');
+        updated.languages = req.body.languages;
+
         updated.save(function (err) {
             if (err) return validationError(res, err);
             return res.json(updated);

@@ -1,0 +1,113 @@
+<!-- Overlay Div -->
+<!--<div id="overlay" class="transparent">
+</div>-->
+
+<div id="wrapper" class="preload" ng-controller="AccountCtrl">
+
+  <!-- =========================
+   SECTION: TOP NAVIGATION
+  ============================== -->
+  <div ng-include="'/components/account/topNav/topNav.html'"></div>
+
+
+  <!-- =========================
+   SECTION: LEFT NAVIGATION
+  ============================== -->
+  <div ng-include="'/components/account/leftNav/leftNav.html'"></div>
+
+
+  <div id="main-container">
+    <div id="breadcrumb">
+      <ul class="breadcrumb">
+        <li><i class="fa fa-home"></i><a href="/dashboard"> Home</a>
+        </li>
+        <li><a href="/profile"> Profile</a>
+        </li>
+        <li class="active">Edit Profile</li>
+      </ul>
+    </div>
+    <!-- /breadcrumb-->
+    <!-- /main-header -->
+    <div class="custom-sub-navbar">
+      <ul class="nav subnav">
+        <li ui-sref-active="active">
+          <a ui-sref="survival-guide.summary">
+            Summary
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="survival-guide.before_arriving">
+            Before Arriving
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="survival-guide.getting_here">
+            Getting Here
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="survival-guide.accommodation">
+            Accommodation
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="survival-guide.transportation">
+            Transportation
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="survival-guide.money">
+            Money
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="survival-guide.weather_seasons">
+            Weather/Seasons
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="survival-guide.more_info">
+            More Information
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="padding-md">
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <!-- EDIT PROFILE FORM -->
+          <div class="panel panel-default" ui-view>
+
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.padding-md -->
+  </div>
+  <!-- /main-container -->
+  <!-- Footer
+      ================================================== -->
+  <footer>
+    <div class="row">
+      <div class="col-sm-6">
+        <p class="no-margin">
+          &copy; 2015 <strong>JRNY</strong>. ALL Rights Reserved.
+        </p>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row-->
+  </footer>
+</div>
+<!-- /wrapper -->
+
+<a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
+
+<!-- Pace -->
+<script src='../../../assets/endless/js/endless/pace.min.js'></script>
+
+<!-- Endless -->
+<script src="../../../assets/endless/js/endless/endless.js"></script>

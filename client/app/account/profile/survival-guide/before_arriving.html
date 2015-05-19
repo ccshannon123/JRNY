@@ -1,0 +1,48 @@
+<form class="form-horizontal form-border textarea-form">
+  <div class="panel-heading">
+    Before Arriving
+  </div>
+  <div class="panel-body">
+    <div class="form-group">
+      <h4>
+        Language
+      </h4>
+
+      <p>
+        (What language is spoken? Is English widely spoken/understood? What are helpful words or phrases to make a
+        travelers experience more comfortable?)
+      </p>
+      <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.language"
+                rows="2"></textarea>
+    </div>
+    <div class="form-group">
+      <h4>
+        Visas
+      </h4>
+
+      <p>
+        (Do visitors from other countries need a visa to travel to your country? A link to a website where a traveler
+        can learn more is best!)
+      </p>
+      <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.visas"
+                rows="2"></textarea>
+    </div>
+    <div class="form-group">
+      <h4>
+        Vaccinations
+      </h4>
+
+      <p>
+        (Do visitors from other countries need vaccinations to travel to your country? Are there other health concerns
+        to be aware of? A link to a website where a traveler can learn more is best!)
+      </p>
+      <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.vaccinations"
+                rows="2"></textarea>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <div class="text-right">
+      <button class="btn btn-sm btn-success" ng-click="update()">Update</button>
+    </div>
+  </div>
+</form>

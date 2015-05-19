@@ -1,0 +1,39 @@
+<form class="form-horizontal form-border textarea-form">
+  <div class="panel-heading">
+    More Information
+  </div>
+  <div class="panel-body">
+    <div class="form-group">
+      <h4>
+        Safety
+      </h4>
+      <p>
+        (Are there any safety concerns a Traveler should take into consideration? What about at night? In taxis/subways?)
+      </p>
+      <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.safety" rows="2"></textarea>
+    </div>
+    <div class="form-group">
+      <h4>
+        Technology
+      </h4>
+      <p>
+        (Can a Traveler use their cell phone or easily buy service from a local carrier? Are there any helpful apps to download? Is wifi common in restaurants, hotels, parks, etc.?)
+      </p>
+      <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.technoloty" rows="2"></textarea>
+    </div>
+    <div class="form-group">
+      <h4>
+        Other Things to Think About
+      </h4>
+      <p>
+        (Is there anything else you can think of that would improve the overall quality of a Traveler's Jrny?)
+      </p>
+      <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.other_think" rows="2"></textarea>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <div class="text-right">
+      <button class="btn btn-sm btn-success" ng-click="update()">Update</button>
+    </div>
+  </div>
+</form>

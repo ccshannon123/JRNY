@@ -1,0 +1,39 @@
+<form class="form-horizontal form-border textarea-form">
+  <div class="panel-heading">
+    Getting Here
+  </div>
+  <div class="panel-body">
+    <div class="form-group">
+      <h4>
+        Airport
+      </h4>
+      <p>
+        (Describe the arrival options, airport layout, transportation options from the airport and anything else that will be helpful to know. Remember airports are the worst!)
+      </p>
+      <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.airport" rows="2"></textarea>
+    </div>
+    <div class="form-group">
+      <h4>
+        Driving
+      </h4>
+      <p>
+        (Describe the arrival options, specific driving laws, rules of the road, tolls, and general driving etiquette. Is an international drivers license valid?)
+      </p>
+      <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.driving" rows="2"></textarea>
+    </div>
+    <div class="form-group">
+      <h4>
+        Train/Bus
+      </h4>
+      <p>
+        (Describe the arrival options, transportation options from the station, and any other helpful information.)
+      </p>
+      <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.train_bus" rows="2"></textarea>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <div class="text-right">
+      <button class="btn btn-sm btn-success" ng-click="update()">Update</button>
+    </div>
+  </div>
+</form>

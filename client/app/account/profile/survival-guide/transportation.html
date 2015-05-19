@@ -1,0 +1,39 @@
+<form class="form-horizontal form-border textarea-form">
+  <div class="panel-heading">
+    Transportation
+  </div>
+  <div class="panel-body">
+    <div class="form-group">
+      <h4>
+        Public Transportation
+      </h4>
+      <p>
+        (Describe public transportation in the area? Do you recommend it? How do you pay for it? Where can you find the timetable? Are there apps that make it easier?)
+      </p>
+      <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.public_trans" rows="2"></textarea>
+    </div>
+    <div class="form-group">
+      <h4>
+        Rental Car
+      </h4>
+      <p>
+        (Describe driving and parking in your area? Are there more difficult places to find parking? Can you pay parking meters with a card? What about daily/hourly rentals like ZipCar? Do you recommend renting a car?)
+      </p>
+      <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.rental_car" rows="2"></textarea>
+    </div>
+    <div class="form-group">
+      <h4>
+        Taxi/Ride Share
+      </h4>
+      <p>
+        (Describe taxis vs. ride sharing apps. Is there a safe/recommended taxi service that you use? Is it safe to hail a taxi on the street? Any other general transportation options.)
+      </p>
+      <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.taxi_ride_share" rows="2"></textarea>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <div class="text-right">
+      <button class="btn btn-sm btn-success" ng-click="update()">Update</button>
+    </div>
+  </div>
+</form>

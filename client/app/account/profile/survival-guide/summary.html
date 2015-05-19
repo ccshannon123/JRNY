@@ -1,0 +1,46 @@
+<form class="form-horizontal form-border textarea-form">
+  <div class="panel-heading">
+    Summary
+  </div>
+  <div class="panel-body">
+    <div class="form-group">
+      <h4>
+        About You
+      </h4>
+
+      <p>
+        (Describe yourself, what you like to do, and anything else people may find interesting about you.)
+      </p>
+      <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.aboutYou"
+                rows="2"></textarea>
+    </div>
+    <div class="form-group">
+      <h4>
+        About Local Place
+      </h4>
+
+      <p>
+        (Why do you love the the place you call home and why others will love it too?)
+      </p>
+      <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.aboutPlace"
+                rows="2"></textarea>
+    </div>
+    <div class="form-group">
+      <h4>
+        Things to Reserve Now
+      </h4>
+
+      <p>
+        (Sometimes there are events that need to be reserved a long time in advance. What "must do" activities must be
+        booked as soon as possible?)
+      </p>
+      <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.reserveThing"
+                rows="2"></textarea>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <div class="text-right">
+      <button class="btn btn-sm btn-success" ng-click="update()">Update</button>
+    </div>
+  </div>
+</form>

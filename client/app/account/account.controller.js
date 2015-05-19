@@ -13,6 +13,9 @@ angular.module('jrnyApp')
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
+    $scope.levels = ['Beginner', 'Native'];
+    $scope.languageList = ['English', 'French'];
+    $scope.sel_lang = '';
 
     $scope.open = function ($event) {
       $event.preventDefault();
@@ -77,4 +80,25 @@ angular.module('jrnyApp')
         }
       }
     };
+    $scope.addLanguage = function() {
+      if($scope.sel_lang && $scope.getCurrentUser().languages.indexObjectOf('lang', $scope.sel_lang) < 0) {
+        $scope.getCurrentUser().languages.push({
+          lang:$scope.sel_lang,
+          reading: 'Beginner',
+          writing: 'Beginner'
+        });
+      }
+    };
+    $scope.removeLanguage = function(language) {
+      if($scope.getCurrentUser().languages.indexOf(language) > -1) {
+        $scope.getCurrentUser().languages.splice($scope.getCurrentUser().languages.indexOf(language), 1);
+      }
+    }
   });
+
+Array.prototype.indexObjectOf = function arrayObjectIndexOf(property, value) {
+  for (var i = 0, len = this.length; i < len; i++) {
+    if (this[i][property] === value) return i;
+  }
+  return -1;
+}
