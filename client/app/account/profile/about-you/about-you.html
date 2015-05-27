@@ -2,148 +2,146 @@
 <!--<div id="overlay" class="transparent">
 </div>-->
 
-<div id="wrapper" class="preload" ng-controller="AccountCtrl">
+<div id="wrapper" class="preload sidebar-hide" ng-controller="AccountCtrl">
 
-  <!-- =========================
+    <!-- =========================
    SECTION: TOP NAVIGATION
   ============================== -->
-  <div ng-include="'/components/account/topNav/topNav.html'"></div>
+    <div ng-include="'/components/account/topNav/topNav.html'"></div>
 
 
-  <!-- =========================
+    <!-- =========================
    SECTION: LEFT NAVIGATION
   ============================== -->
-  <div ng-include="'/components/account/leftNav/leftNav.html'"></div>
+    <div ng-include="'/components/account/leftNav/leftNav.html'"></div>
 
 
-  <div id="main-container">
-    <div id="breadcrumb">
-      <ul class="breadcrumb">
-        <li><i class="fa fa-home"></i><a href="/dashboard"> Home</a>
-        </li>
-        <li><a href="/profile"> Profile</a>
-        </li>
-        <li class="active">Edit Profile</li>
-      </ul>
-    </div>
-    <!-- /breadcrumb-->
-    <!-- /main-header -->
-    <div class="custom-sub-navbar">
-      <ul class="nav subnav">
-        <li>
-          <a href="/edit-profile">
+    <div id="main-container">
+        <div id="breadcrumb">
+            <ul class="breadcrumb">
+                <li><i class="fa fa-home"></i><a href="/dashboard"> Home</a>
+                </li>
+                <li><a href="/profile"> Profile</a>
+                </li>
+                <li class="active">Edit Profile</li>
+            </ul>
+        </div>
+        <!-- /breadcrumb-->
+        <!-- /main-header -->
+        <div class="custom-sub-navbar">
+            <ul class="nav subnav">
+                <li>
+                    <a href="/edit-profile">
             Basic Information
           </a>
-        </li>
-        <li class="active">
-          <a href="/about-you">
+                </li>
+                <li class="active">
+                    <a href="/about-you">
             About you
           </a>
-        </li>
-        <li>
-          <a href="/survival-guide/summary">
+                </li>
+                <li>
+                    <a href="/survival-guide/summary">
             Survival Guide
           </a>
-        </li>
-        <li>
-          <a href="/reviews-profile">
+                </li>
+                <li>
+                    <a href="/reviews-profile">
             Reviews
           </a>
-        </li>
-        <li>
-          <a href="/verifications">
+                </li>
+                <li>
+                    <a href="/verifications">
             Verifications
           </a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="padding-md">
-      <div class="row">
-        <div class="col-sm-2 col-md-2 text-center">
-          <div ngf-drop ngf-select ng-model="files" class="drop-box"
-               ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
-               accept="image/*" title="Drop images here or click to upload">
-            <span class="glyphicon glyphicon-user" aria-hidden="true" ng-hide="getCurrentUser().photoUrl"></span>
-            <img ng-show="getCurrentUser().photoUrl" src="{{getCurrentUser().photoUrl}}" class="user-photo">
-          </div>
-          <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
-          <a ng-hide="" href="/profile" class="btn btn-success">View Profile</a>
-
+                </li>
+            </ul>
         </div>
-        <div class="col-sm-10 col-md-10">
-          <!-- EDIT PROFILE FORM -->
-          <div class="panel panel-default">
-            <form class="form-horizontal form-border textarea-form">
-              <div class="panel-heading">
-                Travel Information
-              </div>
-              <div class="panel-body">
-                <div class="form-group">
-                  <h4>
+
+        <div class="padding-md">
+            <div class="row">
+                <div class="col-sm-2 col-md-2 text-center">
+                    <div ngf-drop ngf-select ng-model="files" class="drop-box" ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true" accept="image/*" title="Drop images here or click to upload">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true" ng-hide="getCurrentUser().photoUrl"></span>
+                        <img ng-show="getCurrentUser().photoUrl" src="{{getCurrentUser().photoUrl}}" class="user-photo">
+                    </div>
+                    <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+                    <a ng-hide="" href="/profile" class="btn btn-success">View Profile</a>
+
+                </div>
+                <div class="col-sm-10 col-md-10">
+                    <!-- EDIT PROFILE FORM -->
+                    <div class="panel panel-default">
+                        <form class="form-horizontal form-border textarea-form">
+                            <div class="panel-heading">
+                                Travel Information
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <h4>
                     How would your friends describe you?
                   </h4>
-                  <p>
-                    Are you a planner, an adventurer, a shopper, a foodie or a mix of a few? Tell us about what you like to do, where you like to do it, and how you get it done!
-                  </p>
-                  <textarea class="form-control" ng-model="getCurrentUser().local.FriendDescription" rows="2"></textarea>
-                </div>
-                <div class="form-group">
-                  <h4>
+                                    <p>
+                                        Are you a planner, an adventurer, a shopper, a foodie or a mix of a few? Tell us about what you like to do, where you like to do it, and how you get it done!
+                                    </p>
+                                    <textarea class="form-control" ng-model="getCurrentUser().local.FriendDescription" rows="2"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <h4>
                     Why do you love the place you call home?
                   </h4>
-                  <p>
-                    Is it the fresh air, hip restaurants, local vibe, or something else you just can't live without?
-                  </p>
-                  <textarea class="form-control" ng-model="getCurrentUser().local.WhyLoveHome" rows="2"></textarea>
-                </div>
-                <div class="form-group">
-                  <h4>
+                                    <p>
+                                        Is it the fresh air, hip restaurants, local vibe, or something else you just can't live without?
+                                    </p>
+                                    <textarea class="form-control" ng-model="getCurrentUser().local.WhyLoveHome" rows="2"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <h4>
                     Describe your travel experience.
                   </h4>
-                  <p>
-                    When did you fall in love with traveling? Where have you been? For how long?
-                  </p>
-                  <textarea class="form-control" ng-model="getCurrentUser().local.travelExperience" rows="2"></textarea>
-                </div>
-                <div class="form-group">
-                  <h4>
+                                    <p>
+                                        When did you fall in love with traveling? Where have you been? For how long?
+                                    </p>
+                                    <textarea class="form-control" ng-model="getCurrentUser().local.travelExperience" rows="2"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <h4>
                     What's your travel quote?
                   </h4>
-                  <p>
-                    These are the words you live by when you travel.
-                  </p>
-                  <textarea class="form-control" ng-model="getCurrentUser().local.whatTravelQuote" rows="2"></textarea>
+                                    <p>
+                                        These are the words you live by when you travel.
+                                    </p>
+                                    <textarea class="form-control" ng-model="getCurrentUser().local.whatTravelQuote" rows="2"></textarea>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <div class="text-right">
+                                    <button class="btn btn-sm btn-success" ng-click="update()">Update</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-              </div>
-              <div class="panel-footer">
-                <div class="text-right">
-                  <button class="btn btn-sm btn-success" ng-click="update()">Update</button>
-                </div>
-              </div>
-            </form>
-          </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
         </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
+        <!-- /.padding-md -->
     </div>
-    <!-- /.padding-md -->
-  </div>
-  <!-- /main-container -->
-  <!-- Footer
+    <!-- /main-container -->
+    <!-- Footer
       ================================================== -->
-  <footer>
-    <div class="row">
-      <div class="col-sm-6">
-        <p class="no-margin">
-          &copy; 2015 <strong>JRNY</strong>. ALL Rights Reserved.
-        </p>
-      </div>
-      <!-- /.col -->
-    </div>
-    <!-- /.row-->
-  </footer>
+    <footer>
+        <div class="row">
+            <div class="col-sm-6">
+                <p class="no-margin">
+                    &copy; 2015 <strong>JRNY</strong>. ALL Rights Reserved.
+                </p>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row-->
+    </footer>
 </div>
 <!-- /wrapper -->
 
