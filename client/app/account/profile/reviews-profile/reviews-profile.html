@@ -60,14 +60,118 @@
 
         <div class="padding-md">
             <div class="row">
-                <div class="col-sm-6 col-md-6">
-                    <h3>Reviews About You</h3>
-                    <div class="col-sm-12 col-md-12">
+                <div class="col-sm-12 col-md-1">
+                </div>
+                <div class="col-sm-12 col-md-5" style="margin-right:10px">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4"><h3>Reviews About You</he></div>
+                        <div class="col-sm-12 col-md-8">
+                            <div style="margin-left:20px;margin-top:20px">
+                                <img src="assets/images/icons/star2.jpg" style="width:20px;height:20px;" ng-repeat="i in getNumber(avg_review_int) track by $index" /><img src="assets/images/icons/star1.png" style="width:17px;height:17px;" ng-repeat="i in getNumber(5 - avg_review_int) track by $index" />
+                                <span class="badge" style="background-color:#DAE1EF">{{avg_review_org}}</span>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="row" style="padding: 25px 15px;height:500px;overflow:auto">
+
+                        <div class="col-sm-12 col-md-12 review_list_row" ng-repeat="review in received_reviews track by $index"><div class="row">
+                            <div class="" style="text-align:center; width: 130px; float:left"><!--ng-if="!($index=$last)">-->
+                                {{review.firstName}} {{review.lastName.substr(0, 1)}}
+                                <div class="drop-box" style="width:80px;height:80px">
+                                    <img class="user-photo review-photo" ng-hide="review.photoUrl" src="assets/images/icons/no-photo.jpg" />
+                                    <img class="user-photo review-photo" ng-show="review.photoUrl" src="{{review.photoUrl}}" />
+                                </div>
+                                {{review.provider}}
+                            </div>
+
+                            <div style="text-align:center; float:right; width:100px; margin-top:45px">
+                                <div style="font-size:18px;font-weight:bold">{{review.rdate}}</div>
+                                <img src="assets/images/icons/star2.jpg" class="star-img1" ng-repeat="i in getNumber(review.review) track by $index" /><img src="assets/images/icons/star1.png" class="star-img2" ng-repeat="i in getNumber(5 - review.review) track by $index" />
+                            </div>  
+                            <div style="margin-left:130px; margin-right:100px;margin-top:25px">
+                                <div ng-bind-html = "review.description.substr(0, 250)"></div><span ng-if="review.description.length>250">...</span>
+                            </div>
+                        </div></div>
+                        
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-12 col-md-5" style='margin-left:10px;'> 
                     <h3>Reviews By You</h3>
+                    <div class="row" style="padding: 25px 15px;height:500px;overflow:auto">
+                        <!--<div class="col-sm-12 col-md-12 review_list_row" ng-repeat="user in users track by $index">
+                            <div class="col-sm-12 col-md-2" style="text-align:center">
+                                <div>{{user.firstName}} {{user.lastName.substr(0, 1)}}</div>
+                                <div class="drop-box" style="width:80px;height:80px">
+                                    <img class="user-photo review-photo" ng-hide="review.photoUrl" src="assets/images/icons/no-photo.jpg" />
+                                    <img class="user-photo review-photo" ng-show="review.photoUrl" src="{{review.photoUrl}}" />
+                                </div>
+                                {{user.provider}}
+                            </div>
+                            <div class="col-sm-12 col-md-8">
+                                <textarea ng-model="m_desc" cols="55" rows="7" placeholder="Your Review Here"></textarea>
+                            </div>
+                            <div style="text-align:center;margin-top:45px" class="col-sm-12 col-md-2">
+                                <input type="hidden" class="rating-tooltip" ng-model="m_rate1" /> 
+
+                                <select class="form-control" ng-model="m_rate" ng-init="m_rate='0'">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select><br />
+                                <button class="btn btn-danger" ng-click="add_review(m_rate,m_desc,user.email)">Add Review</button>
+                            </div>
+                        </div>-->
+                        <div class="col-sm-12 col-md-12 review_list_row">
+                            <div class="row">
+                            <div class="" style="text-align:center; width: 130px; float:left">
+                                <div>{{users[0].firstName}} {{users[0].lastName.substr(0, 1)}}</div>
+                                <div class="drop-box" style="width:80px;height:80px">
+                                    <img class="user-photo review-photo" ng-hide="users[0].photoUrl" src="assets/images/icons/no-photo.jpg" />
+                                    <img class="user-photo review-photo" ng-show="users[0].photoUrl" src="{{users[0].photoUrl}}" />
+                                </div>
+                                {{users[0].provider}}
+                            </div>
+                            <div style="text-align:center; float:right; width:110px; margin-top:75px">
+                                <div class="row"><input type="hidden" class="rating-tooltip" ng-model="$parent.m_rate" /></div>
+                                <button class="btn btn-danger" ng-click="add_review(0, m_desc,users[0].email)">Add Review</button>
+                            </div>
+                            <div style="margin-left:130px; margin-right:110px;margin-top:25px">
+                                <textarea class="form-control" ng-model="m_desc" cols="55" rows="7" placeholder="Your Review Here"></textarea>
+                            </div>
+                            
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-sm-12 col-md-12 review_list_row" ng-repeat="review in sent_reviews track by $index">
+                            <div class="row">
+                            <div class="" style="text-align:center; width: 130px; float:left">
+                                {{review.firstName}} {{review.lastName.substr(0, 1)}}
+                                <div class="drop-box" style="width:80px;height:80px">
+                                    <img class="user-photo review-photo" ng-hide="review.photoUrl" src="assets/images/icons/no-photo.jpg" />
+                                    <img class="user-photo review-photo" ng-show="review.photoUrl" src="{{review.photoUrl}}" />
+                                </div>
+                                {{review.provider}}
+                            </div>
+                            <div style="text-align:center; float:right; width:100px; margin-top:45px">
+                                <div style="font-size:18px;font-weight:bold">{{review.rdate}}</div>
+                                <img src="assets/images/icons/star2.jpg" class="star-img1" ng-repeat="i in getNumber(review.review) track by $index" /><img src="assets/images/icons/star1.png" class="star-img2" ng-repeat="i in getNumber(5 - review.review) track by $index" />
+                            </div>
+                            <div style="margin-left:130px; margin-right:100px;margin-top:25px">
+                                <div ng-bind-html = "review.description.substr(0, 250)"></div><span ng-if="review.description.length>250">...</span>
+                            </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
                 </div>
                 <!-- /.col -->
             </div>
@@ -75,6 +179,7 @@
         </div>
         <!-- /.padding-md -->
     </div>
+    
     <!-- /main-container -->
     <!-- Footer
       ================================================== -->
@@ -92,6 +197,20 @@
 </div>
 <!-- /wrapper -->
 
+<script>
+  $(function () {
+    $('.rating-tooltip').rating({
+      extendSymbol: function (rate) {
+        $(this).tooltip({
+          container: 'body',
+          placement: 'bottom',
+          title: 'Rate ' + rate
+        });
+      }
+    });
+  });
+</script>
+
 <a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
 
 <!-- Pace -->
@@ -99,3 +218,4 @@
 
 <!-- Endless -->
 <script src="../../../assets/endless/js/endless/endless.js"></script>
+

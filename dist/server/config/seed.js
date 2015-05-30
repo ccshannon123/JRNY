@@ -39,7 +39,8 @@ User.find({}).remove(function () {
         lastName: 'Traveler',
         email: 'test@test.com',
         password: 'test',
-        homeTown: 'Denver, CO, USA'
+        homeTown: 'Denver, CO, USA',
+        photoUrl:''
     }, {
         provider: 'local',
         firstName: 'James',
@@ -50,14 +51,16 @@ User.find({}).remove(function () {
             active: true,
             applied: true,
         },
-        homeTown: 'Denver, CO, USA'
+        homeTown: 'Denver, CO, USA',
+        photoUrl:''
     }, {
         provider: 'local',
         role: 'admin',
         firstName: 'Admin',
         lastName: 'UserLast',
         email: 'admin@admin.com',
-        password: 'admin'
+        password: 'admin',
+        photoUrl:''
     }, function () {
         console.log('finished populating users');
     });

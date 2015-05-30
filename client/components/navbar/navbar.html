@@ -31,13 +31,37 @@
             <!-- logged in -->
 
             <!-- Show Dashboard -->
-            <li ng-show="isLoggedIn()" ng-class="{active: isActive('/signup')}" class="register-button js-register inpage-scroll" style="margin-right:10px">
+            <li ng-show="isLoggedIn()">
+            <!--<a href="/profile"></a>-->
+                <div class="dropdown" style="margin-top:8px;margin-right:10px">
+                    <button class="btn dropdown-toggle" id="menu1" type="button" data-toggle="dropdown" style="background-color:transparent;color:inherit"><strong>{{ getCurrentUser().firstName}}</strong>
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="font-size:14px">
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="/dashboard">Dashboard</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Your Favorites</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Messages</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="/edit-profile">Edit Profile</a></li>    
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="/notifications">Account</a></li>
+                    </ul>
+                  </div>
+
+                
+            
+            </li> 
+            <li ng-show="isLoggedIn()"><a class="" href="#logoutConfirm" class="navbar-register-button" ng-click="logout()">Logout</a>
+            </li>
+            <li ng-show="isLoggedIn()">
+                <a class="localSignUpTopNav btn-success" href="/local-signup" style="margin-top:10px;padding-top:5px;padding-bottom:5px;border-radius:4px" ng-hide="{{getCurrentUser().local.applied}}">Become a Local</a>
+            </li>
+
+
+            <!--<li ng-show="isLoggedIn()" ng-class="{active: isActive('/signup')}" class="register-button js-register inpage-scroll" style="margin-right:10px">
                 <a href="/dashboard" class="navbar-register-button">Dashboard</a>
-            </li>
+            </li>-->
             <!-- log out -->
-            <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}" class="register-button js-register inpage-scroll">
+            <!--<li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}" class="register-button js-register inpage-scroll">
                 <a href="" ng-click="logout()" class="navbar-register-button">Logout</a>
-            </li>
+            </li>-->
         </ul>
 
 

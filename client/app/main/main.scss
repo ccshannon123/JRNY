@@ -181,3 +181,54 @@
 .bg-signup {
     background: url(../../assets/images/background-images/1.jpg) 100% 100%;
 }
+
+
+
+.position-initial {
+    position: initial !important;
+}
+
+.mt-5 {margin-top: 5px !important;}
+.mr-5 {margin-right: 5px !important;}
+.mb-5 {margin-bottom: 5px !important;}
+.ml-5 {margin-left: 5px !important;}
+
+.b {
+    border:1px solid #000;
+}
+
+.phone_list {margin-top:3px}
+.phone_text {line-height:28px}
+
+.review_list_row {
+    border-bottom:1px solid #cccccc;
+    padding-bottom:15px !important;
+    margin-bottom:20px !important;
+}
+
+.review_list_row:last-child {
+    border-bottom:none;
+}
+
+textarea{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    width: 100%;
+}
+
+.review-photo {
+    width:79px !important;
+    height:79px !important;
+}
+
+.star-img1 {
+    width:16px;
+    height:16px;
+}
+
+.star-img2 {
+    width:14px;
+    height:14px;
+}

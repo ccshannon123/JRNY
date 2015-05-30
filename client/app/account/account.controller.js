@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jrnyApp')
-    .controller('AccountCtrl', function ($scope, $location, Auth, User, Upload) {
+    .controller('AccountCtrl', function ($scope, $http, $location, Auth, User, Upload) {
         $scope.menu = [
       /*{
        'title': 'Home',
@@ -48,6 +48,11 @@ angular.module('jrnyApp')
             }, function (err) {
                 toastr.error('Something went wrong, please refresh and try again', 'Oops!')
             });
+        };
+
+        $scope.getMonthName = function(mon) {
+            var month_name = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+            return month_name[mon - 1];
         };
 
         $scope.$watch('files', function () {

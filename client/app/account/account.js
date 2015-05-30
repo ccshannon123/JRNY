@@ -180,5 +180,23 @@ angular.module('jrnyApp')
         data: {
           css: 'assets/endless/css/endless.css'
         }
+      })
+      .state('notification', {
+        url: '/notifications',
+        templateUrl: 'app/account/account/notification/notification.html',
+        controller: 'notificationCtrl',
+        authenticate: true,
+        data: {
+          css: 'assets/endless/css/endless.css'
+        }
+      })
+      .state('account-settings', {
+        url: '/account-settings',
+        templateUrl: 'app/account/account/user-setting/user-setting.html',
+        controller: 'usersettingCtrl',
+        authenticate: true,
+        data: {
+          css: 'assets/endless/css/endless.css'
+        }
       });
   });

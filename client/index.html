@@ -41,6 +41,14 @@
     <link rel="stylesheet" href="assets/stamp/css/nivo-lightbox.css">
     <link rel="stylesheet" href="assets/stamp/css/nivo_themes/default/default.css">
     <link rel="stylesheet" href="bower_components/toastr/toastr.min.css">
+    <link rel="stylesheet" href="assets/bootstrap-rating.css">
+
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="bower_components/fontawesome/css/font-awesome.css" rel="stylesheet">
+
+    
+
+
     <!-- CUSTOM STYLESHEETS -->
     <link rel="stylesheet" ng-href="{{ template }}">
     <!-- STAMP------------------------------------------------------------------->
@@ -102,7 +110,11 @@
     <script src="bower_components/ng-file-upload-shim/ng-file-upload-shim.js"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="bower_components/toastr/toastr.js"></script>
-    <!-- endbower -->
+
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="bower_components/bootstrap/js/tooltip.js"></script>
+
+    
     <!-- endbuild -->
 
     <!-- build:js({.tmp,client}) app/app.js -->
@@ -110,6 +122,8 @@
     <!-- injector:js -->
     <script src="app/account/account.controller.js"></script>
     <script src="app/account/account.js"></script>
+    <script src="app/account/account/notification/notification.js"></script>
+    <script src="app/account/account/user-setting/user-setting.js"></script>
     <script src="app/account/dashboard/dashboard.controller.js"></script>
     <script src="app/account/local-signup/local-signup.controller.js"></script>
     <script src="app/account/login/login.controller.js"></script>
@@ -161,8 +175,10 @@
     <script src="assets/stamp/js/nivo-lightbox.min.js"></script>
     <!-- CUSTOM JS  -->
     <script src="assets/stamp/js/custom.js"></script>
+    <script src="assets/bootstrap-rating.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
-
+    
 </body>
 
 </html>

@@ -34,524 +34,105 @@
             </p>
         </div>
         <div class="padding-md">
-            <div class="row">
-                <div class="col-sm-3 col-md-3">
-                    <div class="col-sm-12 col-md-12">
+            <div class="row" style="font-size:13px">
+                <div class="col-md-1 col-sm-12"></div>
+                <div class="col-md-2 col-sm-12 text-center">
+                    <div class="drop-box">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true" ng-hide="getCurrentUser().photoUrl"></span>
                         <img ng-show="getCurrentUser().photoUrl" src="{{getCurrentUser().photoUrl}}" class="user-photo">
                     </div>
-                    <a ng-hide="" href="/edit-profile" class="btn btn-success">Edit Profile</a>
-                </div>
-                <div class="col-sm-6 col-md-9">
-                    <!-- EDIT PROFILE FORM -->
-                    <div class="tab-content">
-                        <div class="tab-pane fade active in" id="overview">
+                    <a ng-hide="" href="/edit-profile" class="btn btn-danger">Update Profile</a>
+                    <div style="margin-top:15px">Local since March 2015</div>
+                    <div style="margin-top:5px">Traveler since November 2015</div>
+                    <div style="margin-top:10px">
+                        <div class="row" style="margin-top:20px">
+                            <img src="assets/images/icons/star2.jpg" style="width:20px;height:20px;" ng-repeat="i in getNumber(avg_review_int) track by $index" /><img src="assets/images/icons/star1.png" style="width:17px;height:17px;" ng-repeat="i in getNumber(5 - avg_review_int) track by $index" />
+                                <span class="badge" style="background-color:#DAE1EF">{{avg_review_org}}</span>
+                        </div>
+                        <div class="row" style="margin-top:45px">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="panel panel-default fadeInDown animation-delay2">
-                                        <div class="panel-heading">
-                                            About Me
-                                        </div>
-                                        <div class="panel-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eros nibh, viverra a dui a, gravida varius velit. Nunc vel tempor nisi. Aenean id pellentesque mi, non placerat mi. Integer luctus accumsan tellus. Vivamus quis elit sit amet nibh lacinia suscipit eu quis purus. Vivamus tristique est non ipsum dapibus lacinia sed nec metus.</p>
-                                        </div>
-                                    </div>
-                                    <!-- /panel -->
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-md-6">
-
-                                    <!-- /panel -->
-                                    <div class="panel panel-overview fadeInUp animation-delay5">
-                                        <div class="overview-icon bg-success">
-                                            <i class="fa fa-globe"></i>
-                                        </div>
-                                        <div class="overview-value">
-                                            <div class="h2">Denver, Co</div>
-                                            <div class="text-muted">USA</div>
-                                        </div>
-                                    </div>
-                                    <!--/ panel -->
-                                </div>
-                                <!-- /.col -->
+                                <div class="col-md-3"></div>
+                                <div class="col-md-2">Name:</div>
+                                <div class="col-md-5">{{getCurrentUser().firstName}} {{getCurrentUser().lastName}}</div>
                             </div>
-                            <!-- /.row -->
-
-                            <!-- /panel -->
+                            <!--<div class="row" style="margin-top:5px">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-2">Gender:</div>
+                                <div class="col-md-5">{{getCurrentUser().gender}} </div>
+                            </div>
+                            <div class="row" style="margin-top:5px">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-2">Birthday:</div>
+                                <div class="col-md-5">{{getCurrentUser().DateOfBirth.substr(0, 10)}}</div
+                            </div>-->
                         </div>
-                        <!-- /tab1 -->
-                        <div class="tab-pane fade" id="edit">
-
-                            <div class="row">
-                                <div class="panel panel-info pull-right">
-                                    <div class="panel-body">
-                                        Last Update on 12 Oct,2013
-                                    </div>
-                                </div>
-                                <!-- /panel -->
-                            </div>
-                            <!-- /.row -->
-
-                            <div class="panel panel-default">
-                                <form class="form-horizontal form-border">
-                                    <div class="panel-heading">
-                                        Basic Information
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="form-group">
-                                            <label class="control-label col-md-2">Username</label>
-
-                                            <div class="col-md-10">
-                                                <input type="text" class="form-control input-sm" placeholder="Username" value="John Doe">
-                                            </div>
-                                            <!-- /.col -->
-                                        </div>
-                                        <!-- /form-group -->
-                                        <div class="form-group">
-                                            <label class="control-label col-md-2">Password</label>
-
-                                            <div class="col-md-10">
-                                                <input type="password" class="form-control input-sm" value="Password">
-                                            </div>
-                                            <!-- /.col -->
-                                        </div>
-                                        <!-- /form-group -->
-                                        <div class="form-group">
-                                            <label class="control-label col-md-2">Email</label>
-
-                                            <div class="col-md-10">
-                                                <input type="text" class="form-control input-sm" value="john_doe@email.com">
-                                            </div>
-                                            <!-- /.col -->
-                                        </div>
-                                        <!-- /form-group -->
-                                        <div class="form-group">
-                                            <label class="control-label col-md-2">Gender</label>
-
-                                            <div class="col-md-10">
-                                                <label class="label-radio inline">
-                                                    <input type="radio" name="inline-radio" checked="">
-                                                    <span class="custom-radio"></span> Male
-                                                </label>
-                                                <label class="label-radio inline">
-                                                    <input type="radio" name="inline-radio">
-                                                    <span class="custom-radio"></span> Female
-                                                </label>
-                                            </div>
-                                            <!-- /.col -->
-                                        </div>
-                                        <!-- /form-group -->
-                                        <div class="form-group">
-                                            <label class="control-label col-md-2">Address</label>
-
-                                            <div class="col-md-10">
-                                                <textarea class="form-control" rows="3"></textarea>
-                                            </div>
-                                            <!-- /.col -->
-                                        </div>
-                                        <!-- /form-group -->
-                                        <div class="form-group">
-                                            <label class="control-label col-md-2">Phone</label>
-
-                                            <div class="col-md-10">
-                                                <input type="text" class="form-control input-sm">
-                                            </div>
-                                            <!-- /.col -->
-                                        </div>
-                                        <!-- /form-group -->
-                                    </div>
-                                    <div class="panel-footer">
-                                        <div class="text-right">
-                                            <button class="btn btn-sm btn-success">Update</button>
-                                            <button class="btn btn-sm btn-success" type="reset">Reset</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- /panel -->
-
-                            <div class="panel panel-default">
-                                <div class="panel-body padding-xs">
-                                    <textarea class="form-control no-border no-shadow" rows="2" placeholder="What's on your mind?"></textarea>
-                                </div>
-                                <div class="panel-footer clearfix">
-                                    <a class="btn btn-xs btn-success pull-right">Post</a>
-                                </div>
-                            </div>
-                            <!-- /panel -->
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    About Me
-                                </div>
-                                <div class="panel-body padding-xs">
-                                    <textarea class="form-control no-border no-shadow" rows="5" placeholder="Who are you?"></textarea>
-                                </div>
-                                <div class="panel-footer clearfix">
-                                    <a class="btn btn-xs btn-success pull-right">Save</a>
-                                </div>
-                            </div>
-                            <!-- /panel -->
-
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    Products
-                                </div>
-                                <table class="table table-bordered table-condensed table-hover table-striped table-vertical-center">
-                                    <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th class="text-center">Name</th>
-                                            <th class="text-center">Price</th>
-                                            <th class="text-center">Total Sales</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-center hidden-xs">
-                                                <img data-src="holder.js/60x60" alt="60x60" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAClklEQVRoQ+2V60tiURTFl4YmkZpiJYgPyjcRRf7//4Dh44OKion5IbVQjHyB4rAOGNiM05w7OXTv7PPFxznse9b6rb2vbTgcrvEfLZsItjhtIWxxwBDCQthiDkikLQb0JzlCWAhbzAGJtMWAytCSSEukLeaARNpiQGVKS6Ql0hZzwHCkX15eUK/XMZvNcHh4iGQyifPzc2VPp9PBw8MDVqsV3G43stms+vxs7aPmx2caEvz29oZisQiPx4PLy0uUSiU4nU7c3NwoA8rlMrxeL2KxmPpOsdyz2Ww7Ne+j5q8eZkjw4+MjWq0WMpkMgsHgVl3SbTabSCQSiEajyOfzmM/nuL29xfPzsyJ/enqKeDyujGIKrq+vMR6PDdU8Pj7+LDhb+4YEV6tV9Ho9FWUSdblcSKfTCAQCqFQqGAwG72aQ8Gg0wtXVFU5OTlAoFDCdTlU6+D9TwJQYrcln6ixDginq6elJ0eWFSerg4AC5XA6NRmNL8EcDaFStVlNkSefu7g4Oh0MZZbTmPxHc7/fVMKJo9jMjSYr8fxdh0lgul7i/vwd7NhKJqGHHRcFGa+5dMPuUPZxKpRAKhdRg2sR2Mpns7GESbbfbqo/X67VqCfYvB9zf1Ny74M1EPTo6Ur1LwXa7XcWTe/zt8/lwcXGh4k6hnNI0g2ngtD47O0O324Xf79/a0635u8n/ZVOahRg/9utisQAvyXhzKHFRCBPA+G7ewxS9iS2NCIfDyozX19f3pOjW/JN3+5e8h3Ui9N3OGprS302Ezn1EsI5bZjwrhM1ITefOQljHLTOeFcJmpKZzZyGs45YZzwphM1LTubMQ1nHLjGeFsBmp6dxZCOu4ZcazQtiM1HTuLIR13DLjWSFsRmo6d/4B81aQdzUOjyEAAAAASUVORK5CYII=" style="width: 60px; height: 60px;">
-                                            </td>
-                                            <td class="text-center">
-                                                Leather Bag
-                                            </td>
-                                            <td class="text-center">
-                                                $50
-                                            </td>
-                                            <td class="text-center">
-                                                102
-                                            </td>
-                                            <td class="text-center">
-                                                <a class="btn btn-sm btn-success">Edit</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center hidden-xs">
-                                                <img data-src="holder.js/60x60" alt="60x60" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAClklEQVRoQ+2V60tiURTFl4YmkZpiJYgPyjcRRf7//4Dh44OKion5IbVQjHyB4rAOGNiM05w7OXTv7PPFxznse9b6rb2vbTgcrvEfLZsItjhtIWxxwBDCQthiDkikLQb0JzlCWAhbzAGJtMWAytCSSEukLeaARNpiQGVKS6Ql0hZzwHCkX15eUK/XMZvNcHh4iGQyifPzc2VPp9PBw8MDVqsV3G43stms+vxs7aPmx2caEvz29oZisQiPx4PLy0uUSiU4nU7c3NwoA8rlMrxeL2KxmPpOsdyz2Ww7Ne+j5q8eZkjw4+MjWq0WMpkMgsHgVl3SbTabSCQSiEajyOfzmM/nuL29xfPzsyJ/enqKeDyujGIKrq+vMR6PDdU8Pj7+LDhb+4YEV6tV9Ho9FWUSdblcSKfTCAQCqFQqGAwG72aQ8Gg0wtXVFU5OTlAoFDCdTlU6+D9TwJQYrcln6ixDginq6elJ0eWFSerg4AC5XA6NRmNL8EcDaFStVlNkSefu7g4Oh0MZZbTmPxHc7/fVMKJo9jMjSYr8fxdh0lgul7i/vwd7NhKJqGHHRcFGa+5dMPuUPZxKpRAKhdRg2sR2Mpns7GESbbfbqo/X67VqCfYvB9zf1Ny74M1EPTo6Ur1LwXa7XcWTe/zt8/lwcXGh4k6hnNI0g2ngtD47O0O324Xf79/a0635u8n/ZVOahRg/9utisQAvyXhzKHFRCBPA+G7ewxS9iS2NCIfDyozX19f3pOjW/JN3+5e8h3Ui9N3OGprS302Ezn1EsI5bZjwrhM1ITefOQljHLTOeFcJmpKZzZyGs45YZzwphM1LTubMQ1nHLjGeFsBmp6dxZCOu4ZcazQtiM1HTuLIR13DLjWSFsRmo6d/4B81aQdzUOjyEAAAAASUVORK5CYII=" style="width: 60px; height: 60px;">
-                                            </td>
-                                            <td class="text-center">
-                                                Brown Sunglasses
-                                            </td>
-                                            <td class="text-center">
-                                                $80
-                                            </td>
-                                            <td class="text-center">
-                                                310
-                                            </td>
-                                            <td class="text-center">
-                                                <a class="btn btn-sm btn-success">Edit</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center hidden-xs">
-                                                <img data-src="holder.js/60x60" alt="60x60" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAClklEQVRoQ+2V60tiURTFl4YmkZpiJYgPyjcRRf7//4Dh44OKion5IbVQjHyB4rAOGNiM05w7OXTv7PPFxznse9b6rb2vbTgcrvEfLZsItjhtIWxxwBDCQthiDkikLQb0JzlCWAhbzAGJtMWAytCSSEukLeaARNpiQGVKS6Ql0hZzwHCkX15eUK/XMZvNcHh4iGQyifPzc2VPp9PBw8MDVqsV3G43stms+vxs7aPmx2caEvz29oZisQiPx4PLy0uUSiU4nU7c3NwoA8rlMrxeL2KxmPpOsdyz2Ww7Ne+j5q8eZkjw4+MjWq0WMpkMgsHgVl3SbTabSCQSiEajyOfzmM/nuL29xfPzsyJ/enqKeDyujGIKrq+vMR6PDdU8Pj7+LDhb+4YEV6tV9Ho9FWUSdblcSKfTCAQCqFQqGAwG72aQ8Gg0wtXVFU5OTlAoFDCdTlU6+D9TwJQYrcln6ixDginq6elJ0eWFSerg4AC5XA6NRmNL8EcDaFStVlNkSefu7g4Oh0MZZbTmPxHc7/fVMKJo9jMjSYr8fxdh0lgul7i/vwd7NhKJqGHHRcFGa+5dMPuUPZxKpRAKhdRg2sR2Mpns7GESbbfbqo/X67VqCfYvB9zf1Ny74M1EPTo6Ur1LwXa7XcWTe/zt8/lwcXGh4k6hnNI0g2ngtD47O0O324Xf79/a0635u8n/ZVOahRg/9utisQAvyXhzKHFRCBPA+G7ewxS9iS2NCIfDyozX19f3pOjW/JN3+5e8h3Ui9N3OGprS302Ezn1EsI5bZjwrhM1ITefOQljHLTOeFcJmpKZzZyGs45YZzwphM1LTubMQ1nHLjGeFsBmp6dxZCOu4ZcazQtiM1HTuLIR13DLjWSFsRmo6d/4B81aQdzUOjyEAAAAASUVORK5CYII=" style="width: 60px; height: 60px;">
-                                            </td>
-                                            <td class="text-center">
-                                                Summer Dress
-                                            </td>
-                                            <td class="text-center">
-                                                $35
-                                            </td>
-                                            <td class="text-center">
-                                                89
-                                            </td>
-                                            <td class="text-center">
-                                                <a class="btn btn-sm btn-success">Edit</a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="panel-footer text-right">
-                                    <a class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Add Product</a>
-                                    <a class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
-                                </div>
-                            </div>
-                            <!-- panel -->
-                        </div>
-                        <!-- /tab2 -->
-                        <div class="tab-pane fade" id="message">
-                            <div class="panel panel-default inbox-panel">
-                                <div class="panel-heading">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control input-sm" placeholder="Search here...">
-                                        <span class="input-group-btn">
-												<button class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
-											</span>
-                                    </div>
-                                    <!-- /input-group -->
-                                </div>
-                                <div class="panel-body">
-                                    <label class="label-checkbox inline">
-                                        <input type="checkbox" id="chk-all">
-                                        <span class="custom-checkbox"></span>
-                                    </label>
-                                    <a class="btn btn-sm btn-danger"><i class="fa fa-plus"></i> Write Mail</a>
-                                    <a class="btn btn-sm btn-default"><i class="fa fa-trash-o"></i> Delete</a>
-
-                                    <div class="pull-right">
-                                        <a class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><i
-                      class="fa fa-refresh"></i></a>
-
-                                        <div class="btn-group" id="inboxFilter">
-                                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
-                                                All
-                                                <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu pull-right">
-                                                <li><a href="#">Read</a>
-                                                </li>
-                                                <li><a href="#">Unread</a>
-                                                </li>
-                                                <li><a href="#">Starred</a>
-                                                </li>
-                                                <li><a href="#">Unstarred</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul class="list-group">
-                                    <li class="list-group-item clearfix inbox-item">
-                                        <label class="label-checkbox inline">
-                                            <input type="checkbox" class="chk-item">
-                                            <span class="custom-checkbox"></span>
-                                        </label>
-                                        <span class="starred"><i class="fa fa-star fa-lg"></i></span>
-                                        <span class="from">John Doe</span>
-
-                                        <span class="detail">
-												<span class="label label-danger">Important</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor suscipit lobortis.
-                                        </span>
-                                        <span class="inline-block pull-right">
-												<span class="attachment"><i class="fa fa-paperclip fa-lg"></i></span>
-                                        <span class="time">2:32 Am</span>
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item clearfix inbox-item">
-                                        <label class="label-checkbox inline">
-                                            <input type="checkbox" class="chk-item">
-                                            <span class="custom-checkbox"></span>
-                                        </label>
-                                        <span class="starred"><i class="fa fa-star fa-lg"></i></span>
-                                        <span class="from">Jane Doe</span>
-                                        <span class="detail">
-												<span class="label label-info">Work</span> Nunc vel lorem volutpat, placerat erat ut, pulvinar mi.
-                                        </span>
-                                        <span class="inline-block pull-right">
-												<span class="attachment"><i class="fa fa-paperclip fa-lg"></i></span>
-                                        <span class="time">1:17 Am</span>
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item clearfix inbox-item">
-                                        <label class="label-checkbox inline">
-                                            <input type="checkbox" class="chk-item">
-                                            <span class="custom-checkbox"></span>
-                                        </label>
-                                        <span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-                                        <span class="from">My business</span>
-                                        <span class="detail">Phasellus ac feugiat mauris. Interdum et malesuada fames ac ante ipsum primis in faucibus.</span>
-                                        <span class="inline-block pull-right">
-												<span class="time">Yesterday</span>
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item clearfix inbox-item">
-                                        <label class="label-checkbox inline">
-                                            <input type="checkbox" class="chk-item">
-                                            <span class="custom-checkbox"></span>
-                                        </label>
-                                        <span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-                                        <span class="from">John Doe</span>
-                                        <span class="detail">Suspendisse tristique ullamcorper sapien id pulvinar.</span>
-                                        <span class="inline-block pull-right">
-												<span class="time">Oct 10</span>
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item clearfix inbox-item">
-                                        <label class="label-checkbox inline">
-                                            <input type="checkbox" class="chk-item">
-                                            <span class="custom-checkbox"></span>
-                                        </label>
-                                        <span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-                                        <span class="from">Bill Doe</span>
-                                        <span class="detail">
-												<span class="label label-danger">Important</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor suscipit lobortis.
-                                        </span>
-                                        <span class="inline-block pull-right">
-												<span class="time">Oct 9</span>
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item clearfix inbox-item">
-                                        <label class="label-checkbox inline">
-                                            <input type="checkbox" class="chk-item">
-                                            <span class="custom-checkbox"></span>
-                                        </label>
-                                        <span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-                                        <span class="from">My friend</span>
-                                        <span class="detail">
-												<span class="label label-warning">Private</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor suscipit lobortis.
-                                        </span>
-                                        <span class="inline-block pull-right">
-												<span class="time">Oct 9</span>
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item clearfix inbox-item">
-                                        <label class="label-checkbox inline">
-                                            <input type="checkbox" class="chk-item">
-                                            <span class="custom-checkbox"></span>
-                                        </label>
-                                        <span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-                                        <span class="from">John Doe</span>
-                                        <span class="detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor suscipit lobortis.</span>
-                                        <span class="inline-block pull-right">
-												<span class="attachment"><i class="fa fa-paperclip fa-lg"></i></span>
-                                        <span class="time">Sep 27</span>
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item clearfix inbox-item">
-                                        <label class="label-checkbox inline">
-                                            <input type="checkbox" class="chk-item">
-                                            <span class="custom-checkbox"></span>
-                                        </label>
-                                        <span class="starred"><i class="fa fa-star fa-lg"></i></span>
-                                        <span class="from">Jane Doe</span>
-                                        <span class="detail">Nunc vel lorem volutpat, placerat erat ut, pulvinar mi.</span>
-                                        <span class="inline-block pull-right">
-												<span class="time">Sep 25</span>
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item clearfix inbox-item">
-                                        <label class="label-checkbox inline">
-                                            <input type="checkbox" class="chk-item">
-                                            <span class="custom-checkbox"></span>
-                                        </label>
-                                        <span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-                                        <span class="from">My business</span>
-                                        <span class="detail">
-												<span class="label label-info">Work</span> Phasellus ac feugiat mauris. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                                        </span>
-                                        <span class="inline-block pull-right">
-												<span class="time">Sep 1</span>
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item clearfix inbox-item">
-                                        <label class="label-checkbox inline">
-                                            <input type="checkbox" class="chk-item">
-                                            <span class="custom-checkbox"></span>
-                                        </label>
-                                        <span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-                                        <span class="from">John Doe</span>
-                                        <span class="detail">Suspendisse tristique ullamcorper sapien id pulvinar.</span>
-                                        <span class="inline-block pull-right">
-												<span class="time">Aug 30</span>
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item clearfix inbox-item">
-                                        <label class="label-checkbox inline">
-                                            <input type="checkbox" class="chk-item">
-                                            <span class="custom-checkbox"></span>
-                                        </label>
-                                        <span class="starred"><i class="fa fa-star fa-lg"></i></span>
-                                        <span class="from">Bill Doe</span>
-                                        <span class="detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor suscipit lobortis.</span>
-                                        <span class="inline-block pull-right">
-												<span class="time">Aug 18</span>
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item clearfix inbox-item">
-                                        <label class="label-checkbox inline">
-                                            <input type="checkbox" class="chk-item">
-                                            <span class="custom-checkbox"></span>
-                                        </label>
-                                        <span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-                                        <span class="from">My friend</span>
-                                        <span class="detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor suscipit lobortis.</span>
-                                        <span class="inline-block pull-right">
-												<span class="time">Aug 17</span>
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item clearfix inbox-item">
-                                        <label class="label-checkbox inline">
-                                            <input type="checkbox" class="chk-item">
-                                            <span class="custom-checkbox"></span>
-                                        </label>
-                                        <span class="starred"><i class="fa fa-star fa-lg"></i></span>
-                                        <span class="from">Jane Doe</span>
-                                        <span class="detail">Nunc vel lorem volutpat, placerat erat ut, pulvinar mi.</span>
-                                        <span class="inline-block pull-right">
-												<span class="time">July 13</span>
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item clearfix inbox-item">
-                                        <label class="label-checkbox inline">
-                                            <input type="checkbox" class="chk-item">
-                                            <span class="custom-checkbox"></span>
-                                        </label>
-                                        <span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-                                        <span class="from">My business</span>
-                                        <span class="detail">Phasellus ac feugiat mauris. Interdum et malesuada fames ac ante ipsum primis in faucibus.</span>
-                                        <span class="inline-block pull-right">
-												<span class="time">July 13</span>
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item clearfix inbox-item">
-                                        <label class="label-checkbox inline">
-                                            <input type="checkbox" class="chk-item">
-                                            <span class="custom-checkbox"></span>
-                                        </label>
-                                        <span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-                                        <span class="from">John Doe</span>
-                                        <span class="detail">Suspendisse tristique ullamcorper sapien id pulvinar.</span>
-                                        <span class="inline-block pull-right">
-												<span class="time">July 11</span>
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item clearfix inbox-item">
-                                        <label class="label-checkbox inline">
-                                            <input type="checkbox" class="chk-item">
-                                            <span class="custom-checkbox"></span>
-                                        </label>
-                                        <span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-                                        <span class="from">Bill Doe</span>
-                                        <span class="detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor suscipit lobortis.</span>
-                                        <span class="inline-block pull-right">
-												<span class="time">July 8</span>
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item clearfix inbox-item">
-                                        <label class="label-checkbox inline">
-                                            <input type="checkbox" class="chk-item">
-                                            <span class="custom-checkbox"></span>
-                                        </label>
-                                        <span class="not-starred"><i class="fa fa-star-o fa-lg"></i></span>
-                                        <span class="from">My friend</span>
-                                        <span class="detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor suscipit lobortis.</span>
-                                        <span class="inline-block pull-right">
-												<span class="time">July 4</span>
-                                        </span>
-                                    </li>
-                                </ul>
-                                <!-- /list-group -->
-                                <div class="panel-footer clearfix">
-                                    <div class="pull-left">112 messages</div>
-                                    <div class="pull-right">
-                                        <span class="middle">Page 1 of 8 </span>
-                                        <ul class="pagination middle">
-                                            <li class="disabled"><a href="#"><i class="fa fa-step-backward"></i></a>
-                                            </li>
-                                            <li class="disabled"><a href="#"><i class="fa fa-caret-left large"></i></a>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-caret-right large"></i></a>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-step-forward"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /panel -->
-                        </div>
-                        <!-- /tab3 -->
+                        <!--<div class="row" style="margin-top:15px">Response Rate</div>
+                        <div class="row" style="margin-top:15px">Avg. Response Time</div>
+                        <div class="row" style="margin-top:15px">Verifications</div>-->
                     </div>
                 </div>
-                <!-- /.col -->
+                <div class="col-md-8 col-sm-12" style="margin-left:15px">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-12" style="font-size:36px">{{getCurrentUser().homeTown}}</div>
+                        <div class="col-md-5 col-sm-12" style="line-height:65px">In Denver since {{getMonthName(getCurrentUser().since_month)}} {{getCurrentUser().since_year}} (From Basic Information)</div>
+                        <div class="col-md-1 col-sm-12" style="line-height:30px">Available:<span class=" glyphicon glyphicon-ok-circle" style="margin-left:2px"></span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12">
+
+                            <div class="row" style="margin-top:20px"><span style="font-size:16px;font-weight:bold">Lifestyle: </span>I'm single and I love adventures!</div>
+                            <div class="row" style="margin-top:30px"><span style="font-size:16px;font-weight:bold">Age: </span>25</div>
+                            <div class="row" style="margin-top:20px"><span style="font-size:16px;font-weight:bold">Planning Expertise: </span>Outdoors, Local Hideouts, Museums</div>
+                            <div class="row" style="margin-top:20px"><span style="font-size:16px;font-weight:bold">Languages: </span>
+                                <span ng-repeat="lang in getCurrentUser().languages track by $index">
+                                    {{lang.lang}}<span ng-if="!($index=$last)">,</span>
+                                </span>
+                            </div>
+                            <div class="row" style="margin-top:10px">
+                                <table style="text-align:center;width:90%" border = "1">
+                                    <tr>
+                                        <td>&nbsp;</td><td>Jrny</td><td>Itineraries Written</td><td>Days</td><td>Distance</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total</td><td>8</td><td>12</td><td>20</td><td>14,500mi</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-12">
+                            <div class="row" style="margin-top:20px;padding: 5px 5px;height:250px;overflow:auto">
+
+                                <div class="col-sm-12 col-md-12 review_list_row" ng-repeat="review in received_reviews track by $index"><div class="row">
+                                    <div class="" style="text-align:center; width: 130px; float:left">
+                                        {{review.firstName}} {{review.lastName.substr(0, 1)}}
+                                        <div class="drop-box" style="width:80px;height:80px">
+                                            <img class="user-photo review-photo" ng-hide="review.photoUrl" src="assets/images/icons/no-photo.jpg" />
+                                            <img class="user-photo review-photo" ng-show="review.photoUrl" src="{{review.photoUrl}}" />
+                                        </div>
+                                        {{review.provider}}
+                                    </div>
+
+                                    <div style="text-align:center; float:right; width:100px; margin-top:45px">
+                                        <div style="font-size:18px;font-weight:bold">{{review.rdate}}</div>
+                                        <img src="assets/images/icons/star2.jpg" class="star-img1" ng-repeat="i in getNumber(review.review) track by $index" /><img src="assets/images/icons/star1.png" class="star-img2" ng-repeat="i in getNumber(5 - review.review) track by $index" />
+                                    </div>  
+                                    <div style="margin-left:130px; margin-right:100px;margin-top:25px">
+                                        <div ng-bind-html = "review.description.substr(0, 250)"></div><span ng-if="review.description.length>250">...</span>
+                                    </div>
+                                </div></div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:40px">
+                        <div><b>How would your friends describe you?</b></div>
+                        <div>{{getCurrentUser().local.FriendDescription}}</div>
+                        <div style="margin-top:30px"><b>Why do you love the place you call home?</b></div>
+                        <div>{{getCurrentUser().local.WhyLoveHome}}</div>
+                        <div style="margin-top:30px"><b>Describe your travel experience.</b></div>
+                        <div>{{getCurrentUser().local.travelExperience}}</div>
+                    </div>
+                </div>
             </div>
             <!-- /.row -->
         </div>

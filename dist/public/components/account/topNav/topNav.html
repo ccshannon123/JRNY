@@ -15,14 +15,26 @@
     </button>
     <ul class="nav-notification clearfix">
         <li>
-            <a href="/profile">
-                <strong>{{ getCurrentUser().firstName +' '+ getCurrentUser().lastName }}</strong>
-            </a>
+            <!--<a href="/profile"></a>-->
+                <div class="dropdown" style="margin-top:10px;margin-right:10px">
+                    <button class="btn dropdown-toggle" id="menu1" type="button" data-toggle="dropdown" style="background-color:#fff;color:#999"><strong>{{ getCurrentUser().firstName}}</strong>
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="font-size:14px">
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="/dashboard">Dashboard</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Your Favorites</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Messages</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="/edit-profile">Edit Profile</a></li>    
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="/notifications">Account</a></li>
+                    </ul>
+                  </div>
+
+                
+            
+        </li>        
+        <li><a class="" href="#logoutConfirm" class="navbar-register-button" ng-click="logout()">Logout</a>
         </li>
         <li>
             <a class="localSignUpTopNav btn btn-success" href="/local-signup" class="navbar-register-button" ng-hide="{{getCurrentUser().local.applied}}">Become a Local</a>
-        </li>
-        <li><a class="" href="#logoutConfirm" class="navbar-register-button" ng-click="logout()">Logout</a>
         </li>
     </ul>
 
@@ -39,7 +51,9 @@
             $('.main-menu').find('.openable').removeClass('open');
 
         });
-
+$(document).ready(function(){
+    
+});
 
     });
 </script>
