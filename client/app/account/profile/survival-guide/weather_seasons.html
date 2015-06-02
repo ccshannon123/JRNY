@@ -1,6 +1,6 @@
 <form class="form-horizontal form-border textarea-form">
   <div class="panel-heading">
-    Weather/Seasons
+    <h3>Weather/Seasons<a href="/edit-profile" style="float:right" class="btn btn-danger">Return to Profile</a></h3>
   </div>
   <div class="panel-body">
     <div class="form-group">
@@ -8,7 +8,7 @@
         Average Temperatures
       </h4>
       <p>
-        (We will show monthly average temperatures, but if you have specific suggestions or notes about the wheather, write them here.)
+        We will show monthly average temperatures, but if you have specific suggestions or notes about the wheather, write them here.
       </p>
       <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.avg_temp" rows="2"></textarea>
     </div>
@@ -17,7 +17,7 @@
         Seasons
       </h4>
       <p>
-        (Does your area have tourist seasons (low, high, holiday)? Describe them and what to expect.)
+        Does your area have tourist seasons (low, high, holiday)? Describe them and what to expect.
       </p>
       <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.seasons" rows="2"></textarea>
     </div>
@@ -26,7 +26,7 @@
         Things to Bring
       </h4>
       <p>
-        (What should a Traveler definitely bring to make sure they make the most out of their Jrny? Clothes, electronics, medications, etc.)
+        What should a Traveler definitely bring to make sure they make the most out of their Jrny? Clothes, electronics, medications, etc.
       </p>
       <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.things_bring" rows="2"></textarea>
     </div>

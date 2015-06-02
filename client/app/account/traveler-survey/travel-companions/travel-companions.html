@@ -1,0 +1,157 @@
+<!-- Overlay Div -->
+<!--<div id="overlay" class="transparent">
+</div>-->
+
+<div id="wrapper" class="preload sidebar-hide" ng-controller="AccountCtrl">
+
+    <!-- =========================
+     SECTION: TOP NAVIGATION
+    ============================== -->
+    <div ng-include="'/components/account/topNav/topNav.html'"></div>
+
+
+    <!-- =========================
+     SECTION: LEFT NAVIGATION
+    ============================== -->
+    <div ng-include="'/components/account/leftNav/leftNav.html'"></div>
+
+
+    <div id="main-container" ng-cloak>
+        <!-- /breadcrumb-->
+        <div class="main-header clearfix">
+            <div class="page-title">
+            </div>
+            <!-- /page-title -->
+        </div>
+        <!-- /main-header -->
+
+        <div class="custom-sub-navbar">
+            <ul class="nav subnav">
+                <li>
+                    <a href="/jrny-basics">Jrny Basics</a>
+                </li>
+                <li class="active">
+                    <a href="/travel-companions">Travel Companions</a>
+                </li>
+                <li>
+                    <a href="/interest-preference">Interests & Preferences</a>
+                </li>
+                <li>
+                    <a href="#">Checkout</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /grey-container -->
+
+        <div class="padding-md">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="row"><h2>Travel Companions<a href="#" ng-click="save_survey()" style="float:right" class="btn btn-danger">SAVE FOR LATER</a></h2></div>
+                    <div class="form-group row">
+                        <div class="col-md-5 col-sm-12"><h4>How many people are in your group?</h4></div>
+                        <div class="col-md-7 col-sm-12">
+                            <select class="form-control" ng-model="m_traveler_survey.companion.how_many_group">
+                                <option value="1">1</option><option value="2">2</option>
+                                <option value="3">3</option><option value="4">4</option>
+                                <option value="5">5</option><option value="6">6</option>
+                                <option value="7">7</option><option value="8">8</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-5 col-sm-12"><h4>Who are you traveling with?</h4></div>
+                        <div class="col-md-7 col-sm-12">
+                            <select class="form-control" ng-model="m_traveler_survey.companion.who_travel_with">
+                                <option value="Solo">Solo</option><option value="Friends">Friends</option>
+                                <option value="Family">Family</option><option value="Colleagues">Colleagues</option>
+                                <option value="Significant Other">Significant Other</option><option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-5 col-sm-12"><h4>What is your main purpose for traveling?</h4></div>
+                        <div class="col-md-7 col-sm-12">
+                            <select class="form-control" ng-model="m_traveler_survey.companion.main_purpose">
+                                <option value="Exploring a New Place">Exploring a New Place</option>
+                                <option value="Visiting a Friend">Visiting a Friend</option>
+                                <option value="Reunion">Reunion</option>
+                                <option value="Bachelor/Bachelorette Party">Bachelor/Bachelorette Party</option>
+                                <option value="Business Trip">Business Trip</option>
+                                <option value="Family Vacation">Family Vacation</option>
+                                <option value="Volunteer Opportunity">Volunteer Opportunity</option>
+                                <option value="Backpacking">Backpacking</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12 col-sm-12"><h4>Describe yourself and/or your group dynamic.</h4></div>
+                        <div class="col-md-12 col-sm-12">
+                            <textarea class="form-control" ng-model="m_traveler_survey.companion.group_dynamic"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6 col-sm-12" style="margin-leftleft:0px;padding-left:0px">
+                            <div class="col-md-12 col-sm-12"><h4>What is the desired energy level of your Jrny?</h4></div>
+                            <div class="col-md-12 col-sm-12"><textarea ng-model="m_traveler_survey.companion.desired_energy_level" class="form-control"></textarea></div>
+                        </div>
+                        <div class="col-md-6 col-sm-12" style="margin-right:0px;padding-right:0px">
+                            <div class="col-md-12 col-sm-12"><h4>Does your group have any limitations?</h4></div>
+                            <div class="col-md-12 col-sm-12"><textarea ng-model="m_traveler_survey.companion.group_limitation" class="form-control"></textarea></div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6 col-sm-12" style="margin-leftleft:0px;padding-left:0px">
+                            <div class="col-md-12 col-sm-12"><h4>Add Travelers to Jrny</h4></div>
+                            <div class="col-md-12 col-sm-12">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12"><h5>If someone is not a member, they will be sent an invitation to join.</h5></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-10 col-sm-12"><input type="text" placeholder="Search username(s) or email address(es)" class="form-control" /></div>
+                                    <div class="col-md-2 col-sm-12"><a class="btn btn-info" style="width:100%">ADD</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12" style="margin-right:0px;padding-right:0px">
+                            <div class="col-md-12 col-sm-12"><h4>Travel Companions Invited</h4></div>
+                            <div class="col-md-12 col-sm-12" style="border:1px solid #CCCCCC">
+                                <div class="row" style="border-bottom:1px solid #CCCCCC">
+                                    <div class="col-md-3 col-sm-12 text-center">Group Members</div>
+                                    <div class="col-md-3 col-sm-12 text-center">Username</div>
+                                    <div class="col-md-3 col-sm-12 text-center">Email Address</div>
+                                    <div class="col-md-3 col-sm-12 text-center">Member</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-12 text-center">Daniel Scinto</div>
+                                    <div class="col-md-3 col-sm-12 text-center">dan.scinto</div>
+                                    <div class="col-md-3 col-sm-12 text-center">dpscinto@gmail.com</div>
+                                    <div class="col-md-3 col-sm-12 text-center">X</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4"></div>
+                        <a href="/interest-preference" class="btn btn-success col-md-4 col-sm-12 col-xs-12 text-center">NEXT</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.padding-md -->
+    </div>
+    <!-- /main-container -->
+    <!-- Footer ================================================== -->
+    <div ng-include="'/components/account/footer/footer.html'"></div>
+
+</div>
+<!-- /wrapper -->
+
+<a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
+
+<!-- Pace -->
+<script src='../../../assets/endless/js/endless/pace.min.js'></script>
+
+<!-- Endless -->
+<script src="../../../assets/endless/js/endless/endless.js"></script>

@@ -1,6 +1,6 @@
 <form class="form-horizontal form-border textarea-form">
   <div class="panel-heading">
-    More Information
+    <h3>More Information<a href="/edit-profile" style="float:right" class="btn btn-danger">Return to Profile</a></h3>
   </div>
   <div class="panel-body">
     <div class="form-group">
@@ -8,7 +8,7 @@
         Safety
       </h4>
       <p>
-        (Are there any safety concerns a Traveler should take into consideration? What about at night? In taxis/subways?)
+        Are there any safety concerns a Traveler should take into consideration? What about at night? In taxis/subways? What are the most important emergency numbers?
       </p>
       <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.safety" rows="2"></textarea>
     </div>
@@ -17,7 +17,7 @@
         Technology
       </h4>
       <p>
-        (Can a Traveler use their cell phone or easily buy service from a local carrier? Are there any helpful apps to download? Is wifi common in restaurants, hotels, parks, etc.?)
+        Can a Traveler use their cell phone or easily buy service from a local carrier? Are there any helpful apps to download? Is wifi common in restaurants, hotels, parks, etc.?
       </p>
       <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.technoloty" rows="2"></textarea>
     </div>
@@ -26,7 +26,7 @@
         Other Things to Think About
       </h4>
       <p>
-        (Is there anything else you can think of that would improve the overall quality of a Traveler's Jrny?)
+        Is there anything else you can think of that would improve the overall quality of a Traveler's Jrny?
       </p>
       <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.other_think" rows="2"></textarea>
     </div>

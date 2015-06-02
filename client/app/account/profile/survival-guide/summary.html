@@ -1,6 +1,6 @@
 <form class="form-horizontal form-border textarea-form">
   <div class="panel-heading">
-    Summary
+    <h3>Summary<a href="/edit-profile" style="float:right" class="btn btn-danger">Return to Profile</a></h3>
   </div>
   <div class="panel-body">
     <div class="form-group">
@@ -9,7 +9,7 @@
       </h4>
 
       <p>
-        (Describe yourself, what you like to do, and anything else people may find interesting about you.)
+        Describe yourself, what you like to do, and anything else people may find interesting about you.
       </p>
       <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.aboutYou"
                 rows="2"></textarea>
@@ -20,7 +20,7 @@
       </h4>
 
       <p>
-        (Why do you love the the place you call home and why others will love it too?)
+        Why do you love the the place you call home and why others will love it too?
       </p>
       <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.aboutPlace"
                 rows="2"></textarea>
@@ -31,8 +31,8 @@
       </h4>
 
       <p>
-        (Sometimes there are events that need to be reserved a long time in advance. What "must do" activities must be
-        booked as soon as possible?)
+        Sometimes there are events that need to be reserved a long time in advance. What "must do" activities must be
+        booked as soon as possible?
       </p>
       <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.reserveThing"
                 rows="2"></textarea>

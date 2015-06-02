@@ -1,0 +1,129 @@
+<!-- Overlay Div -->
+<!--<div id="overlay" class="transparent">
+</div>-->
+
+<div id="wrapper" class="preload sidebar-hide" ng-controller="AccountCtrl">
+
+    <!-- =========================
+     SECTION: TOP NAVIGATION
+    ============================== -->
+    <div ng-include="'/components/account/topNav/topNav.html'"></div>
+
+
+    <!-- =========================
+     SECTION: LEFT NAVIGATION
+    ============================== -->
+    <div ng-include="'/components/account/leftNav/leftNav.html'"></div>
+
+
+    <div id="main-container" ng-cloak>
+        <!-- /breadcrumb-->
+        <div class="main-header clearfix">
+            <div class="page-title">
+            </div>
+            <!-- /page-title -->
+        </div>
+        <!-- /main-header -->
+
+        <div class="custom-sub-navbar">
+            <ul class="nav subnav">
+                <li>
+                    <a href="/jrny-basics">Jrny Basics</a>
+                </li>
+                <li>
+                    <a href="/travel-companions">Travel Companions</a>
+                </li>
+                <li class="active">
+                    <a href="/interest-preference">Interests & Preferences</a>
+                </li>
+                <li>
+                    <a href="#">Checkout</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /grey-container -->
+
+        <div class="padding-md">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+
+                    <div class="row"><h2>Interests and Preferences<a href="#" style="float:right" ng-click="save_survey()" class="btn btn-danger">SAVE FOR LATER</a></h2></div>
+
+                    <div class="row">
+
+                        <div class="col-md-3 col-sm-12"><h3>Food & Drink</h3></div>
+                        <div class="col-md-3 col-sm-12"><h3>Sightseeing</h3></div>
+                        <div class="col-md-3 col-sm-12"><h3>Budget</h3></div>
+                        <div class="col-md-3 col-sm-12"><h3>Must See/Do</h3></div>
+
+                    </div>
+
+                    <div class="row">
+
+                            <div class="col-md-3 col-sm-12"><h5>Are you looking for the faciest, the newest, the classics, the freshest, etc.? For breakfast/lunch?</h5></div>
+                            <div class="col-md-3 col-sm-12"><h5>Do you want to see the classic tourist spots? Cool neighborhoods?</h5></div>
+                            <div class="col-md-3 col-sm-12"><h5>What does your budget look like? How would you like to spend your money?</h5></div>
+                            <div class="col-md-3 col-sm-12"><h5>IS there anything you MUST see on your Jrny?</h5></div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-3 col-sm-12"><textarea ng-model="m_traveler_survey.interest.food_drink" class="form-control"></textarea></div>
+                        <div class="col-md-3 col-sm-12"><textarea ng-model="m_traveler_survey.interest.sightseeing" class="form-control"></textarea></div>
+                        <div class="col-md-3 col-sm-12"><textarea ng-model="m_traveler_survey.interest.budget" class="form-control"></textarea></div>
+                        <div class="col-md-3 col-sm-12"><textarea ng-model="m_traveler_survey.interest.must_see_do" class="form-control"></textarea></div>
+
+                    </div>
+                    
+                    <div class="row">
+
+                        <div class="col-md-3 col-sm-12"><h3>Nightlife</h3></div>
+                        <div class="col-md-3 col-sm-12"><h3>Outdoors</h3></div>
+                        <div class="col-md-3 col-sm-12"><h3>Live Events</h3></div>
+                        <div class="col-md-3 col-sm-12"><h3>Overall Vibe</h3></div>
+
+                    </div>
+
+                    <div class="row">
+
+                            <div class="col-md-3 col-sm-12"><h5>What kind of nightlife do you enjoy, if any? Bar hopping, late club nights, live shows?</h5></div>
+                            <div class="col-md-3 col-sm-12"><h5>Are you interested in outdoor activities, like hanging out at a park or climbing a mountain?</h5></div>
+                            <div class="col-md-3 col-sm-12"><h5>Are you interested in any live events, like a concert, theatre performance or a sporting event?</h5></div>
+                            <div class="col-md-3 col-sm-12"><h5>What do you generally enjoy doing when you travel? Are you an adventurous traveler?</h5></div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-3 col-sm-12"><textarea ng-model="m_traveler_survey.interest.nightlife" class="form-control"></textarea></div>
+                        <div class="col-md-3 col-sm-12"><textarea ng-model="m_traveler_survey.interest.outdoors" class="form-control"></textarea></div>
+                        <div class="col-md-3 col-sm-12"><textarea ng-model="m_traveler_survey.interest.live_events" class="form-control"></textarea></div>
+                        <div class="col-md-3 col-sm-12"><textarea ng-model="m_traveler_survey.interest.overall_vibe" class="form-control"></textarea></div>
+                        
+                    </div>
+                    
+                    <div class="form-group row" style="margin-top:20px">
+                        <div class="col-md-4"></div>
+                        <a href="#" class="btn btn-success col-md-4 col-sm-12 col-xs-12 text-center">NEXT</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.padding-md -->
+    </div>
+    <!-- /main-container -->
+    <!-- Footer ================================================== -->
+    <div ng-include="'/components/account/footer/footer.html'"></div>
+
+</div>
+<!-- /wrapper -->
+
+<a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
+
+<!-- Pace -->
+<script src='../../../assets/endless/js/endless/pace.min.js'></script>
+
+<!-- Endless -->
+<script src="../../../assets/endless/js/endless/endless.js"></script>

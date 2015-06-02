@@ -13,6 +13,8 @@ module.exports = function(app) {
   app.use('/api/users', require('./api/user'));
   app.use('/api/user_account', require('./api/user_account'));
   app.use('/api/user_review', require('./api/user_review'));
+  app.use('/api/message', require('./api/message'));
+  app.use('/api/sess_manage', require('./api/sess_manage'));
 
   app.use('/auth', require('./auth'));
   

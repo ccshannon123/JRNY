@@ -1,14 +1,14 @@
 <form class="form-horizontal form-border textarea-form">
   <div class="panel-heading">
-    Accomodations
+    <h3>Accomodations<a href="/edit-profile" style="float:right" class="btn btn-danger">Return to Profile</a></h3>
   </div>
   <div class="panel-body">
     <div class="form-group">
       <h4>
         Recommended Neighborhoods
       </h4>
-      <p>
-        (Describe neighborhoods that you would like to stay in if you were visiting.)
+            <p>
+        Describe neighborhoods that you would like to stay in if you were visiting.
       </p>
       <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.neighborhoods" rows="2"></textarea>
     </div>
@@ -17,7 +17,7 @@
         Hotels
       </h4>
       <p>
-        (Do you have any specific hotel recommendations?)
+        Do you have any specific hotel recommendations?
       </p>
       <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.hotels" rows="2"></textarea>
     </div>
@@ -26,7 +26,7 @@
         Rentals
       </h4>
       <p>
-        (Do you have any specific vacation rental recommendations?)
+        Do you have any specific vacation rental recommendations?
       </p>
       <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.rentals" rows="2"></textarea>
     </div>
@@ -35,7 +35,7 @@
         Hostels/Other
       </h4>
       <p>
-        (Do you have any specific hostel recommendations? What about other one-of-a-kind accomodation opportunities?)
+        Do you have any specific hostel recommendations? What about other one-of-a-kind accomodation opportunities?
       </p>
       <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.hostels" rows="2"></textarea>
     </div>

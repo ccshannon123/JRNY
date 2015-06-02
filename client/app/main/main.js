@@ -82,6 +82,13 @@ angular.module('jrnyApp').config(function ($stateProvider) {
             data: {
                 css: 'assets/stamp/css/styles.css'
             }
+        })
+        .state('local-search', {
+            url: '/local-search',
+            templateUrl: 'app/main/local-search/local-search.html',
+            data: {
+                css: 'assets/stamp/css/styles.css'
+            }
         });
 
 

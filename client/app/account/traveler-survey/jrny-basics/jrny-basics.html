@@ -1,0 +1,110 @@
+<!-- Overlay Div -->
+<!--<div id="overlay" class="transparent">
+</div>-->
+
+<div id="wrapper" class="preload sidebar-hide" ng-controller="AccountCtrl">
+
+    <!-- =========================
+     SECTION: TOP NAVIGATION
+    ============================== -->
+    <div ng-include="'/components/account/topNav/topNav.html'"></div>
+
+
+    <!-- =========================
+     SECTION: LEFT NAVIGATION
+    ============================== -->
+    <div ng-include="'/components/account/leftNav/leftNav.html'"></div>
+
+
+    <div id="main-container" ng-cloak>
+        <!-- /breadcrumb-->
+        <div class="main-header clearfix">
+            <div class="page-title">
+            </div>
+        </div>
+        <!-- /main-header -->
+
+        <div class="custom-sub-navbar">
+            <ul class="nav subnav">
+                <li class="active">
+                    <a href="/jrny-basics">Jrny Basics</a>
+                </li>
+                <li>
+                    <a href="/travel-companions">Travel Companions</a>
+                </li>
+                <li>
+                    <a href="/interest-preference">Interests & Preferences</a>
+                </li>
+                <li>
+                    <a href="#">Checkout</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /grey-container -->
+
+        <div class="padding-md">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="row"><h2>Jrny Basics<a href="#" style="float:right" class="btn btn-danger" ng-click="save_survey()">SAVE FOR LATER</a></h2></div>
+                    <div class="form-group row">
+                        <div class="col-md-2 col-sm-12"><h4>Arrival Date</h4></div>
+                        <div class="col-md-4 col-sm-12"><input ng-model="m_traveler_survey.basic.arrival_date" type="text" class="form-control" /></div>
+                        <div class="col-md-2 col-sm-12"><h4>Arrival Time</h4></div>
+                        <div class="col-md-4 col-sm-12"><input ng-model="m_traveler_survey.basic.arrival_time" type="text" class="form-control" /></div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2 col-sm-12"><h4>Departure Date</h4></div>
+                        <div class="col-md-4 col-sm-12"><input ng-model="m_traveler_survey.basic.departure_date" type="text" class="form-control" /></div>
+                        <div class="col-md-2 col-sm-12"><h4>Departure Time</h4></div>
+                        <div class="col-md-4 col-sm-12"><input ng-model="m_traveler_survey.basic.departure_time" type="text" class="form-control" /></div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3 col-sm-12"><h4>How are you getting here?</h4></div>
+                        <div class="col-md-9 col-sm-12">
+                            <select class="form-control" ng-model="m_traveler_survey.basic.how_get">
+                                <option value="Airplane">Airplane</option><option value="Car">Car</option><option value="Train">Train</option>
+                                <option value="Bus">Bus</option><option value="Other">Other</option><option value="Unsure">Unsure</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3" style="padding-left:40px"><h4>Have you already booked it?</h4></div>
+                        <div class="col-md-9"><input ng-model="m_traveler_survey.basic.how_already_booked" type="text" class="form-control" /></div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3 col-sm-12"><h4>Where are you staying</h4></div>
+                        <div class="col-md-9 col-sm-12">
+                            <select class="form-control" ng-model="m_traveler_survey.basic.where_stay">
+                                <option value="Hotel Room">Hotel Room</option><option value="Hostel">Hostel</option><option value="House">House</option>
+                                <option value="Apartment">Apartment</option><option value="Other">Other</option><option value="Unsure">Unsure</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3" style="padding-left:40px"><h4>Have you already booked it?</h4></div>
+                        <div class="col-md-9"><input ng-model="m_traveler_survey.basic.where_already_booked" type="text" class="form-control" /></div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4"></div>
+                        <a href="/travel-companions" class="btn btn-success col-md-4 col-sm-12 col-xs-12 text-center">NEXT</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.padding-md -->
+    </div>
+    <!-- /main-container -->
+    <!-- Footer ================================================== -->
+    <div ng-include="'/components/account/footer/footer.html'"></div>
+
+</div>
+<!-- /wrapper -->
+
+<a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
+
+<!-- Pace -->
+<script src='../../../assets/endless/js/endless/pace.min.js'></script>
+
+<!-- Endless -->
+<script src="../../../assets/endless/js/endless/endless.js"></script>

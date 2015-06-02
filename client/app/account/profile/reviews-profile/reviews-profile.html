@@ -17,7 +17,7 @@
 
 
     <div id="main-container">
-        <div id="breadcrumb">
+        <!--<div id="breadcrumb">
             <ul class="breadcrumb">
                 <li><i class="fa fa-home"></i><a href="/dashboard"> Home</a>
                 </li>
@@ -25,7 +25,7 @@
                 </li>
                 <li class="active">Edit Profile</li>
             </ul>
-        </div>
+        </div>-->
         <!-- /breadcrumb-->
         <!-- /main-header -->
         <div class="custom-sub-navbar">
@@ -37,7 +37,7 @@
                 </li>
                 <li>
                     <a href="/about-you">
-            About you
+            About You
           </a>
                 </li>
                 <li>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="col-sm-12 col-md-5" style="margin-right:10px">
                     <div class="row">
-                        <div class="col-sm-12 col-md-4"><h3>Reviews About You</he></div>
+                        <div class="col-sm-12 col-md-4"><h3>Reviews About You</h3></div>
                         <div class="col-sm-12 col-md-8">
                             <div style="margin-left:20px;margin-top:20px">
                                 <img src="assets/images/icons/star2.jpg" style="width:20px;height:20px;" ng-repeat="i in getNumber(avg_review_int) track by $index" /><img src="assets/images/icons/star1.png" style="width:17px;height:17px;" ng-repeat="i in getNumber(5 - avg_review_int) track by $index" />
@@ -78,9 +78,9 @@
                         <div class="col-sm-12 col-md-12 review_list_row" ng-repeat="review in received_reviews track by $index"><div class="row">
                             <div class="" style="text-align:center; width: 130px; float:left"><!--ng-if="!($index=$last)">-->
                                 {{review.firstName}} {{review.lastName.substr(0, 1)}}
-                                <div class="drop-box" style="width:80px;height:80px">
-                                    <img class="user-photo review-photo" ng-hide="review.photoUrl" src="assets/images/icons/no-photo.jpg" />
-                                    <img class="user-photo review-photo" ng-show="review.photoUrl" src="{{review.photoUrl}}" />
+                                <div class="drop-box" style="width:80px;height:80px" ng-click="showProfile(review.uid)">
+                                    <img class="user-photo review_photo" ng-hide="review.photoUrl" src="assets/images/icons/no-photo.jpg" />
+                                    <img class="user-photo review_photo" ng-show="review.photoUrl" src="{{review.photoUrl}}" />
                                 </div>
                                 {{review.provider}}
                             </div>
@@ -103,8 +103,8 @@
                             <div class="col-sm-12 col-md-2" style="text-align:center">
                                 <div>{{user.firstName}} {{user.lastName.substr(0, 1)}}</div>
                                 <div class="drop-box" style="width:80px;height:80px">
-                                    <img class="user-photo review-photo" ng-hide="review.photoUrl" src="assets/images/icons/no-photo.jpg" />
-                                    <img class="user-photo review-photo" ng-show="review.photoUrl" src="{{review.photoUrl}}" />
+                                    <img class="user-photo review_photo" ng-hide="review.photoUrl" src="assets/images/icons/no-photo.jpg" />
+                                    <img class="user-photo review_photo" ng-show="review.photoUrl" src="{{review.photoUrl}}" />
                                 </div>
                                 {{user.provider}}
                             </div>
@@ -125,13 +125,14 @@
                                 <button class="btn btn-danger" ng-click="add_review(m_rate,m_desc,user.email)">Add Review</button>
                             </div>
                         </div>-->
-                        <div class="col-sm-12 col-md-12 review_list_row">
-                            <div class="row">
+                        <div class="col-sm-12 col-md-12 review_list_row">                            
+                            <div class="row">            
+                            <div class="alert alert-success" role="alert" ng-show="m_alert_box">{{m_alert_text}}</div>                    
                             <div class="" style="text-align:center; width: 130px; float:left">
                                 <div>{{users[0].firstName}} {{users[0].lastName.substr(0, 1)}}</div>
                                 <div class="drop-box" style="width:80px;height:80px">
-                                    <img class="user-photo review-photo" ng-hide="users[0].photoUrl" src="assets/images/icons/no-photo.jpg" />
-                                    <img class="user-photo review-photo" ng-show="users[0].photoUrl" src="{{users[0].photoUrl}}" />
+                                    <img class="user-photo review_photo" ng-hide="users[0].photoUrl" src="assets/images/icons/no-photo.jpg" />
+                                    <img class="user-photo review_photo" ng-show="users[0].photoUrl" src="{{users[0].photoUrl}}" />
                                 </div>
                                 {{users[0].provider}}
                             </div>
@@ -141,9 +142,10 @@
                             </div>
                             <div style="margin-left:130px; margin-right:110px;margin-top:25px">
                                 <textarea class="form-control" ng-model="m_desc" cols="55" rows="7" placeholder="Your Review Here"></textarea>
+
                             </div>
                             
-                            </div>
+                            </div>                            
                         </div>
 
 
@@ -152,9 +154,9 @@
                             <div class="row">
                             <div class="" style="text-align:center; width: 130px; float:left">
                                 {{review.firstName}} {{review.lastName.substr(0, 1)}}
-                                <div class="drop-box" style="width:80px;height:80px">
-                                    <img class="user-photo review-photo" ng-hide="review.photoUrl" src="assets/images/icons/no-photo.jpg" />
-                                    <img class="user-photo review-photo" ng-show="review.photoUrl" src="{{review.photoUrl}}" />
+                                <div class="drop-box" style="width:80px;height:80px" ng-click="showProfile(review.uid)">
+                                    <img class="user-photo review_photo" ng-hide="review.photoUrl" src="assets/images/icons/no-photo.jpg" />
+                                    <img class="user-photo review_photo" ng-show="review.photoUrl" src="{{review.photoUrl}}" />
                                 </div>
                                 {{review.provider}}
                             </div>

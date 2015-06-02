@@ -1,0 +1,25 @@
+<div class="navbar navbar-inverse bs-docs-nav navbar-fixed-top sticky-navigation white" role="navigation">
+    <div ng-include="'/components/navbar/navbar.html'"></div>
+</div>
+
+<section class="faqs secondaryTemplate" ng-controller="localsearchCtrl">
+    <div class="container" style="height:600px">
+        <div class="row">
+            <div class="col-md-4 col-sm-12 text-center" ng-repeat="local in m_local_list">            	
+            	<div style="width:100%;height:300px;margin-bottom:20px;background-color:#AAB8BC;border-radius:5px;padding-top:10px">
+            		<div class="drop-box" style="width:150px;height:150px;" ng-click="showProfile(local._id)">
+	                    <img class="user-photo review_photo_lg" ng-hide="local.photoUrl" src="assets/images/icons/no-photo.jpg" />
+	                    <img class="user-photo review_photo_lg" ng-show="local.photoUrl" src="{{local.photoUrl}}" />
+	                </div>
+            		<h3>{{local.firstName}} {{local.lastName.substr(0, 1)}}</h3>
+            		<h5>Local Since {{month_name[local.since_month - 1]}} {{local.since_year}}</h5>
+            		<div class="row">
+                        <span class="glyphicon glyphicon-star" ng-repeat="i in getNumber(local.avg_review_int) track by $index"></span><span class="glyphicon glyphicon-star-empty" ng-repeat="i in getNumber(5 - local.avg_review_int) track by $index"></span><span class="badge" style="background-color:#345AA7">{{local.avg_review_org}}</span>
+                    </div>
+            	</div>
+            </div>
+        </div>
+
+</section>
+
+<div ng-include="'/components/footer/footer.html'"></div>

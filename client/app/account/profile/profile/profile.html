@@ -17,20 +17,20 @@
 
 
     <div id="main-container">
-        <div id="breadcrumb">
+        <!--<div id="breadcrumb">
             <ul class="breadcrumb">
                 <li><i class="fa fa-home"></i><a href="/dashboard"> Home</a>
                 </li>
                 <li class="active">Profile</li>
 
             </ul>
-        </div>
+        </div>-->
         <!-- /breadcrumb-->
         <!-- /main-header -->
         <!-- /main-header -->
         <div class="custom-sub-navbar">
             <p style="color: #000; line-height: 55px; font-family:Julius Sans One, sans-serif;">
-                {{getCurrentUser().local.whatTravelQuote}}
+                {{m_user_detail.local.whatTravelQuote}}
             </p>
         </div>
         <div class="padding-md">
@@ -38,10 +38,12 @@
                 <div class="col-md-1 col-sm-12"></div>
                 <div class="col-md-2 col-sm-12 text-center">
                     <div class="drop-box">
-                        <span class="glyphicon glyphicon-user" aria-hidden="true" ng-hide="getCurrentUser().photoUrl"></span>
-                        <img ng-show="getCurrentUser().photoUrl" src="{{getCurrentUser().photoUrl}}" class="user-photo">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true" ng-hide="m_user_detail.photoUrl"></span>
+                        <img ng-show="m_user_detail.photoUrl" src="{{m_user_detail.photoUrl}}" class="user-photo">
                     </div>
-                    <a ng-hide="" href="/edit-profile" class="btn btn-danger">Update Profile</a>
+                    <div ng-show="m_user_detail.local.applied==true && getCurrentUser().email!=m_user_email"><a href="/jrny-basics" class="btn btn-danger">Request Local</a></div>
+                    <div style="margin-top:10px" ng-show="m_user_detail.local.applied==true && getCurrentUser().email!=m_user_email"><a href="/message_write/{{m_user_detail._id}}" class="btn btn-danger">Send Message</a></div>
+                    <div style="margin-top:10px" ng-show="(getCurrentUser().email==m_user_email)"><a href="/edit-profile" class="btn btn-danger">Update Profile</a></div>
                     <div style="margin-top:15px">Local since March 2015</div>
                     <div style="margin-top:5px">Traveler since November 2015</div>
                     <div style="margin-top:10px">
@@ -53,17 +55,17 @@
                             <div class="row">
                                 <div class="col-md-3"></div>
                                 <div class="col-md-2">Name:</div>
-                                <div class="col-md-5">{{getCurrentUser().firstName}} {{getCurrentUser().lastName}}</div>
+                                <div class="col-md-5">{{m_user_detail.firstName}} {{m_user_detail.lastName.substr(0, 1)}}</div>
                             </div>
                             <!--<div class="row" style="margin-top:5px">
                                 <div class="col-md-3"></div>
                                 <div class="col-md-2">Gender:</div>
-                                <div class="col-md-5">{{getCurrentUser().gender}} </div>
+                                <div class="col-md-5">{{m_user_detail.gender}} </div>
                             </div>
                             <div class="row" style="margin-top:5px">
                                 <div class="col-md-3"></div>
                                 <div class="col-md-2">Birthday:</div>
-                                <div class="col-md-5">{{getCurrentUser().DateOfBirth.substr(0, 10)}}</div
+                                <div class="col-md-5">{{m_user_detail.DateOfBirth.substr(0, 10)}}</div
                             </div>-->
                         </div>
                         <!--<div class="row" style="margin-top:15px">Response Rate</div>
@@ -73,18 +75,18 @@
                 </div>
                 <div class="col-md-8 col-sm-12" style="margin-left:15px">
                     <div class="row">
-                        <div class="col-md-4 col-sm-12" style="font-size:36px">{{getCurrentUser().homeTown}}</div>
-                        <div class="col-md-5 col-sm-12" style="line-height:65px">In Denver since {{getMonthName(getCurrentUser().since_month)}} {{getCurrentUser().since_year}} (From Basic Information)</div>
+                        <div class="col-md-4 col-sm-12" style="font-size:30px">Denver, CO, USA</div>
+                        <div class="col-md-5 col-sm-12" style="line-height:50px">In Denver since {{getMonthName(m_user_detail.since_month)}} {{m_user_detail.since_year}}</div>
                         <div class="col-md-1 col-sm-12" style="line-height:30px">Available:<span class=" glyphicon glyphicon-ok-circle" style="margin-left:2px"></span></div>
                     </div>
                     <div class="row">
                         <div class="col-md-5 col-sm-12">
 
                             <div class="row" style="margin-top:20px"><span style="font-size:16px;font-weight:bold">Lifestyle: </span>I'm single and I love adventures!</div>
-                            <div class="row" style="margin-top:30px"><span style="font-size:16px;font-weight:bold">Age: </span>25</div>
-                            <div class="row" style="margin-top:20px"><span style="font-size:16px;font-weight:bold">Planning Expertise: </span>Outdoors, Local Hideouts, Museums</div>
-                            <div class="row" style="margin-top:20px"><span style="font-size:16px;font-weight:bold">Languages: </span>
-                                <span ng-repeat="lang in getCurrentUser().languages track by $index">
+                            <div class="row" style="margin-top:5px"><span style="font-size:16px;font-weight:bold">Age: </span>25</div>
+                            <div class="row" style="margin-top:5px"><span style="font-size:16px;font-weight:bold">Planning Expertise: </span>Outdoors, Local Hideouts, Museums</div>
+                            <div class="row" style="margin-top:5px"><span style="font-size:16px;font-weight:bold">Languages: </span>
+                                <span ng-repeat="lang in m_user_detail.languages track by $index">
                                     {{lang.lang}}<span ng-if="!($index=$last)">,</span>
                                 </span>
                             </div>
@@ -105,9 +107,9 @@
                                 <div class="col-sm-12 col-md-12 review_list_row" ng-repeat="review in received_reviews track by $index"><div class="row">
                                     <div class="" style="text-align:center; width: 130px; float:left">
                                         {{review.firstName}} {{review.lastName.substr(0, 1)}}
-                                        <div class="drop-box" style="width:80px;height:80px">
-                                            <img class="user-photo review-photo" ng-hide="review.photoUrl" src="assets/images/icons/no-photo.jpg" />
-                                            <img class="user-photo review-photo" ng-show="review.photoUrl" src="{{review.photoUrl}}" />
+                                        <div class="drop-box" style="width:80px;height:80px" ng-click="showProfile(review.uid)">
+                                            <img class="user-photo review_photo" ng-hide="review.photoUrl" src="assets/images/icons/no-photo.jpg" />
+                                            <img class="user-photo review_photo" ng-show="review.photoUrl" src="{{review.photoUrl}}" />
                                         </div>
                                         {{review.provider}}
                                     </div>
@@ -126,11 +128,11 @@
                     </div>
                     <div class="row" style="margin-top:40px">
                         <div><b>How would your friends describe you?</b></div>
-                        <div>{{getCurrentUser().local.FriendDescription}}</div>
+                        <div>{{m_user_detail.local.FriendDescription}}</div>
                         <div style="margin-top:30px"><b>Why do you love the place you call home?</b></div>
-                        <div>{{getCurrentUser().local.WhyLoveHome}}</div>
+                        <div>{{m_user_detail.local.WhyLoveHome}}</div>
                         <div style="margin-top:30px"><b>Describe your travel experience.</b></div>
-                        <div>{{getCurrentUser().local.travelExperience}}</div>
+                        <div>{{m_user_detail.local.travelExperience}}</div>
                     </div>
                 </div>
             </div>

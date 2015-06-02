@@ -1,6 +1,6 @@
 <form class="form-horizontal form-border textarea-form">
   <div class="panel-heading">
-    Money
+    <h3>Money<a href="/edit-profile" style="float:right" class="btn btn-danger">Return to Profile</a></h3>
   </div>
   <div class="panel-body">
     <div class="form-group">
@@ -8,7 +8,7 @@
         Currency/Exchange
       </h4>
       <p>
-        (What is the local currency? Where is the best place to exchange money? Should travelers bring Dollars, Euros, Pounds, etc or wait until they arrive? Is cash or credit card more widely used/accepted?)
+        What is the local currency? Where is the best place to exchange money? Should travelers bring Dollars, Euros, Pounds, etc or wait until they arrive? Is cash or credit card more widely used/accepted?
       </p>
       <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.currency_exchange" rows="2"></textarea>
     </div>
@@ -17,7 +17,7 @@
         Banks/ATMs
       </h4>
       <p>
-        (What are popular banks in the area? What are the most common types of ATMs? Is is safe to use ATMs at night? Is service offered in other languages?)
+        What are popular banks in the area? What are the most common types of ATMs? Is is safe to use ATMs at night? Is service offered in other languages?
       </p>
       <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.bank_atms" rows="2"></textarea>
     </div>
@@ -26,7 +26,7 @@
         Budget
       </h4>
       <p>
-        (What are average prices of common goods? This will help a Traveler budget their Jrny. Examples: lunch, a beer/cocktail out on the town, a taxi ride, cover at a club, gas, etc.)
+        What are average prices of common goods? This will help a Traveler budget their Jrny. Examples: lunch, a beer/cocktail out on the town, a taxi ride, cover at a club, gas, etc.
       </p>
       <textarea class="form-control" ng-model="getCurrentUser().local.ApplicationSurvivalGuide.budget" rows="2"></textarea>
     </div>

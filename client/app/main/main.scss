@@ -218,7 +218,7 @@ textarea{
     width: 100%;
 }
 
-.review-photo {
+.review_photo {
     width:79px !important;
     height:79px !important;
 }
@@ -231,4 +231,44 @@ textarea{
 .star-img2 {
     width:14px;
     height:14px;
+}
+
+.jrny_list_box {
+   background-color:#AAB8BC;
+   height:380px;
+   width:280px;
+   border-radius:5px;
+   color:#FFFFFF;
+   padding:10px 10px 10px 10px;
+}
+
+.jrny_person_box {
+    margin-top:15px;
+    margin-left:10px;
+    border-radius:5px;
+    background-color:#FFFFFF;
+    width:240px !important;
+    height:90px;
+}
+
+.review_photo_sm {
+    width:59px !important;
+    height:59px !important;
+}
+
+.review_photo_lg {
+    width:149px !important;
+    height:149px !important;
+}
+
+.row_border {
+    border-left:1px solid #EEEEEE;
+    border-bottom:1px solid #EEEEEE;
+    border-right:1px solid #EEEEEE;
+    width:100%;
+    padding:10px 10px 10px 10px;
+}
+
+textarea {
+    resize:none;
 }

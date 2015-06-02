@@ -17,12 +17,12 @@
         <li>
             <!--<a href="/profile"></a>-->
                 <div class="dropdown" style="margin-top:10px;margin-right:10px">
-                    <button class="btn dropdown-toggle" id="menu1" type="button" data-toggle="dropdown" style="background-color:#fff;color:#999"><strong>{{ getCurrentUser().firstName}}</strong>
+                    <button class="btn dropdown-toggle" id="menu1" type="button" data-toggle="dropdown" style="background-color:#fff;color:#999"><strong>{{ getCurrentUser().firstName}} {{ getCurrentUser().lastName.substr(0, 1)}}</strong>
                     <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="font-size:14px">
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="/dashboard">Dashboard</a></li>
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Your Favorites</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Messages</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="/message_inbox">Messages</a></li>
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="/edit-profile">Edit Profile</a></li>    
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="/notifications">Account</a></li>
                     </ul>
@@ -30,8 +30,10 @@
 
                 
             
+        </li>
+        <li><a class="" href="#" class="navbar-register-button">Help</a>
         </li>        
-        <li><a class="" href="#logoutConfirm" class="navbar-register-button" ng-click="logout()">Logout</a>
+        <li><a class="" href="#logoutConfirm" class="navbar-register-button" ng-click="logout()">Log Out</a>
         </li>
         <li>
             <a class="localSignUpTopNav btn btn-success" href="/local-signup" class="navbar-register-button" ng-hide="{{getCurrentUser().local.applied}}">Become a Local</a>

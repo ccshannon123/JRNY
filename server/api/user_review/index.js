@@ -11,6 +11,8 @@ var router = express.Router();
 
 router.get('/get_user/:email', controller.get_user);
 router.get('/get_user_detail/:email', controller.get_user_detail);
+router.get('/get_user_detail_by_id/:id', controller.get_user_detail_by_id);
+router.get('/get_local', controller.get_local);
 
 router.post('/get_review', controller.get_review);
 router.post('/add_review', controller.add_review);

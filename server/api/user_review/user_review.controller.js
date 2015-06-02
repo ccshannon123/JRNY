@@ -23,6 +23,21 @@ var validationError = function (res, err) {
     return res.json(422, err);
 };
 
+/*
+    Get local list
+*/
+exports.get_local = function (req, res, next) {
+
+    User.find({'local.applied': true}, function (err, users) {
+      if (err) {
+        console.log(err);
+      } else if (users.length) {
+        res.json(users);
+      } else {
+        res.json({result:'none'});
+      }
+    });
+};
 
 exports.get_user = function (req, res, next) {
     var em = req.params.email;
@@ -31,7 +46,9 @@ exports.get_user = function (req, res, next) {
       if (err) {
         console.log(err);
       } else if (users.length) {
+
         res.json(users);
+
       } else {
         res.json({result:'none'});
       }
@@ -52,6 +69,19 @@ exports.get_user_detail = function (req, res, next) {
     });
 };
 
+exports.get_user_detail_by_id = function (req, res, next) {
+    var id = req.params.id;
+
+    User.find({_id: id}, function (err, users) {
+      if (err) {
+        console.log(err);
+      } else if (users.length) {
+        res.json(users[0]);
+      } else {
+        res.json({result:'none'});
+      }
+    });
+};
 
 exports.get_review = function (req, res, next) {
     var tp = req.body.ptype;

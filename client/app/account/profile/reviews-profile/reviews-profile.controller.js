@@ -11,6 +11,9 @@ angular.module('jrnyApp').controller('reviewsProfileCtrl', function ($scope, $ht
 	$scope.avg_review_int = 0;
 	$scope.avg_review_org = 0.0;
 
+	$scope.m_alert_box = false;
+	$scope.m_alert_text = "";
+
 	$scope.m_rate = 0;
 
 	$scope.getNumber = function(num) {
@@ -29,16 +32,18 @@ angular.module('jrnyApp').controller('reviewsProfileCtrl', function ($scope, $ht
 	};
 
 	$scope.get_review = function(tp) {
-		var month_name = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+		var month_name = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
 
 		$http.post('/api/user_review/get_review', {email:$scope.getCurrentUser().email, ptype:tp}).
 	      success(function(data, status, headers, config) { 
 	        if(tp == 1) {
-	        	$scope.sent_reviews = data;	        
+	        	if(data.result != undefined)
+			      		return;
+
+	        	$scope.sent_reviews = data;        	
 
 	        	$scope.sent_reviews.forEach(function(review) {
-	      	if(data.result != undefined)
-	      		return;
+			      	
 
 		        	review.description = review.description.replace("\n", "<br />");
 		        	review.rdate = month_name[parseInt(review.rdate.substr(5,2)) - 1] + " " + review.rdate.substr(0,4);
@@ -49,6 +54,7 @@ angular.module('jrnyApp').controller('reviewsProfileCtrl', function ($scope, $ht
 				        review.lastName = data.lastName;
 				        review.provider = data.provider;
 				        review.photoUrl = data.photoUrl;
+				        review.uid = data._id;
 
 				      }).
 				      error(function(data, status, headers, config) {
@@ -57,6 +63,10 @@ angular.module('jrnyApp').controller('reviewsProfileCtrl', function ($scope, $ht
 		        });
 		    }
 		    if(tp == 2) {
+
+		    	if(data.result != undefined)
+			      		return;
+
 		    	$scope.received_reviews = data;
 
 		    	$scope.received_reviews.forEach(function(review) {
@@ -74,6 +84,7 @@ angular.module('jrnyApp').controller('reviewsProfileCtrl', function ($scope, $ht
 				        review.lastName = data.lastName;
 				        review.provider = data.provider;
 				        review.photoUrl = data.photoUrl;
+				        review.uid = data._id;
 
 				      }).
 				      error(function(data, status, headers, config) {
@@ -91,11 +102,17 @@ angular.module('jrnyApp').controller('reviewsProfileCtrl', function ($scope, $ht
 	};
 
 	$scope.add_review = function(rt, de, em) {
-
+		if(rt == $scope.m_rate) {
+			$scope.m_alert_box = true;
+			$scope.m_alert_text = "Please select star rating 1-5.";
+			return;
+		}
 		var dt = new Date();
 		var review_date = dt.getFullYear() + "/" + (dt.getMonth() + 1) + "/" + dt.getDate();
 		$http.post('/api/user_review/add_review', {sender:$scope.getCurrentUser().email, receiver:em, rate:$scope.m_rate, desc:de, rdate:review_date}).
           success(function(data, status, headers, config) {
+          	$scope.m_alert_box = true;
+			$scope.m_alert_text = "Successfully review added.";
           	$scope.get_review(1);
           }).
           error(function(data, status, headers, config) {

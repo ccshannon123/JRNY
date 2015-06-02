@@ -56,7 +56,7 @@ angular.module('jrnyApp')
         }
       })
       .state('profile', {
-        url: '/profile',
+        url: '/profile/:id',
         templateUrl: 'app/account/profile/profile/profile.html',
         controller: 'profileCtrl',
         authenticate: true,
@@ -190,10 +190,64 @@ angular.module('jrnyApp')
           css: 'assets/endless/css/endless.css'
         }
       })
+      .state('message_inbox', {
+        url: '/message_inbox',
+        templateUrl: 'app/account/message/inbox/inbox.html',
+        controller: 'inboxCtrl',
+        authenticate: true,
+        data: {
+          css: 'assets/endless/css/endless.css'
+        }
+      })
+      .state('message_write', {
+        url: '/message_write/:id',
+        templateUrl: 'app/account/message/compose/compose.html',
+        controller: 'composeCtrl',
+        authenticate: true,
+        data: {
+          css: 'assets/endless/css/endless.css'
+        }
+      })
+      .state('message_sent', {
+        url: '/message_sent',
+        templateUrl: 'app/account/message/sent/sent.html',
+        controller: 'sentCtrl',
+        authenticate: true,
+        data: {
+          css: 'assets/endless/css/endless.css'
+        }
+      })
       .state('account-settings', {
         url: '/account-settings',
         templateUrl: 'app/account/account/user-setting/user-setting.html',
         controller: 'usersettingCtrl',
+        authenticate: true,
+        data: {
+          css: 'assets/endless/css/endless.css'
+        }
+      })
+      .state('jrny-basics', {
+        url: '/jrny-basics',
+        templateUrl: 'app/account/traveler-survey/jrny-basics/jrny-basics.html',
+        controller: 'jrnybasicsCtrl',
+        authenticate: true,
+        data: {
+          css: 'assets/endless/css/endless.css'
+        }
+      })
+      .state('travel-companions', {
+        url: '/travel-companions',
+        templateUrl: 'app/account/traveler-survey/travel-companions/travel-companions.html',
+        controller: 'travelcompanionCtrl',
+        authenticate: true,
+        data: {
+          css: 'assets/endless/css/endless.css'
+        }
+      })
+      .state('interest-preference', {
+        url: '/interest-preference',
+        templateUrl: 'app/account/traveler-survey/interest-preference/interest-preference.html',
+        controller: 'interestpreferenceCtrl',
         authenticate: true,
         data: {
           css: 'assets/endless/css/endless.css'

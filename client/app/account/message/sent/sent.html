@@ -1,0 +1,127 @@
+<!-- Overlay Div -->
+<!--<div id="overlay" class="transparent">
+</div>-->
+<div id="wrapper" class="preload sidebar-hide" ng-controller="AccountCtrl">
+
+    <!-- =========================
+   SECTION: TOP NAVIGATION
+  ============================== -->
+    <div ng-include="'/components/account/topNav/topNav.html'"></div>
+
+
+    <!-- =========================
+   SECTION: LEFT NAVIGATION
+  ============================== -->
+    <div ng-include="'/components/account/leftNav/leftNav.html'"></div>
+
+
+    <div id="main-container">
+        <div id="breadcrumb">
+            <ul class="breadcrumb">
+                <li><i class="fa fa-home"></i><a href="/message_inbox"> Home</a>
+                </li>
+                <li class="active">Sent Mail</li>
+            </ul>
+        </div>
+        <!-- /breadcrumb-->
+        <!-- /main-header -->
+        <div class="custom-sub-navbar">
+            <ul class="nav subnav">
+                <li>
+                    <a href="/message_inbox">Inbox</a>
+                </li>
+                <li class="active">
+                    <a href="/message_sent">Sent Mail</a>
+                </li>
+                <li>
+                    <a href="#">Drafts</a>
+                </li>
+                <li>
+                    <a href="#">Traveler Messages</a>
+                </li>
+                <li>
+                    <a href="#">Local Messages</a>
+                </li>
+                <li>
+                    <a href="#">All Messages</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="container notification-container">
+            <div class="padding-md">
+                <div class="row">
+                    <div class="col-md-1 col-sm-12"></div>
+                    <div class="col-md-10 col-sm-12">
+
+                        <div class="row row_border" style="border-top:1px solid #EEEEEE">
+                            <div class="col-md-11 col-sm-12"><input type="text" class="form-control" ng-model="$parent.m_keyword" placeholder="Search here..." /></div>
+                            <div class="col-md-1 col-sm-12"><button ng-click="search()" class="btn btn-default glyphicon glyphicon-search" style="float:right"></button></div>
+                        </div>
+
+                        <div class="row row_border">
+                            <div class="col-md-1 col-sm-12" style="width:20px;margin-top:5px">
+                                <input ng-show="m_list_detail==0" type="checkbox" class="form-control" ng-model="$parent.m_chb_all" ng-click="chb_all()" />
+                            </div>
+                            <div class="col-md-9 col-sm-12">
+                                <button class="btn btn-danger" ng-click="write_mail()"><span class="glyphicon glyphicon-plus"></span>Write Message</button>
+                                <button class="btn btn-default" ng-click="delete_mail()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+                            </div>
+                            <div class="col-md-2 col-sm-12" style="float:right">
+                                <button class="btn btn-default" style="float:right" ng-click="get_sent()"><span class="glyphicon glyphicon-refresh"></span></button>
+                            </div>
+                        </div>
+
+                        <div ng-show="m_list_detail==0">
+                            <div class="row row_border" style="font-size:14px" ng-repeat="msg in m_messages track by $index">
+                                <div class="col-md-1 col-sm-12" style="width:20px;">
+                                    <input ng-model="$parent.m_chb[$index]" type="checkbox" class="form-control" style="margin-top:0px" />
+                                </div>
+                                <div class="col-md-2 col-sm-12">
+                                    {{msg.firstName}} {{msg.lastName}}
+                                </div>
+                                <div class="col-md-7 col-sm-12" ng-click="show_msg(msg._id, $index)" style="cursor:pointer">
+                                    {{msg.content}}
+                                </div>
+                                <div class="col-md-2 col-sm-12" style="text-align:right;float:right">{{msg.mdate}}</div>
+                            </div>
+                            <div class="row row_border text-center" style="font-size:14px;" ng-show="!(m_messages.length > 0)">No Sent Mails</div>
+                        </div>
+                        <div ng-show="m_list_detail==1" class="row row_border" style="padding:0px 40px 20px 40px;font-size:14px">
+                            <h3>From</h3>
+                            <div style="margin-left:10px">{{m_detail_msg.firstName}} {{m_detail_msg.lastName}}</div>
+                            <h3>Content</h3>
+                            <div style="margin-left:10px" ng-bind-html="m_detail_msg.content"></div>
+                            <h3>Date</h3>
+                            <div style="margin-left:10px">{{m_detail_msg.mdate}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.padding-md -->
+    </div>
+    <!-- /main-container -->
+    <!-- Footer
+      ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-sm-6">
+                <p class="no-margin">
+                    &copy; 2015 <strong>JRNY</strong>. ALL Rights Reserved.
+                </p>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row-->
+    </footer>
+</div>
+<!-- /wrapper -->
+
+<a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
+
+<!-- Pace -->
+<script src='../../../assets/endless/js/endless/pace.min.js'></script>
+
+<!-- Endless -->
+<script src="../../../assets/endless/js/endless/endless.js"></script>

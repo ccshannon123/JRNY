@@ -19,5 +19,4 @@ router.put('/:id/update', auth.isAuthenticated(), controller.update);
 router.patch('/:id/update', auth.isAuthenticated(), controller.update);
 router.post('/upload', multipartMiddleware, controller.upload);
 
-
 module.exports = router;

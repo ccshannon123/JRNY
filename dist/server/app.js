@@ -11,6 +11,8 @@ var express = require('express');
 var mongoose = require('mongoose');
 var config = require('./config/environment');
 
+
+
 // Connect to database
 mongoose.connect(config.mongo.uri, config.mongo.options);
 
@@ -19,6 +21,10 @@ if(config.seedDB) { require('./config/seed'); }
 
 // Setup server
 var app = express();
+
+var session = require('express-session');
+//app.use(session({	resave:true, saveUninitialized: true, secret: 'uwotm8'}));
+
 var server = require('http').createServer(app);
 require('./config/express')(app);
 require('./routes')(app);

@@ -58,6 +58,10 @@
         <div class="container notification-container">
             <div class="padding-md">
                 <h1>Notifications</h1>
+                <div class="row">
+                    <div class="alert alert-success" ng-show="$parent.m_alert_box" role="alert">{{$parent.m_noti_text}}</div>
+                    <div class="alert alert-danger" ng-show="$parent.m_alert_box1" role="alert">{{$parent.m_noti_text}}</div>
+                </div>
                 <div class="row" style="border:1px solid black; border-radius:5px; padding: 20px 0">
                     <div class="col-md-4 col-sm-12" style="">
                         <h4 style="color: #333">Notify Me When:</h4>
@@ -322,7 +326,7 @@
                                     <option value="Venezuela">Venezuela</option>
                                     <option value="Vietnam">Vietnam</option>
                                     <option value="Virgin Islands (Brit)">Virgin Islands (Brit)</option>
-                                    <option value="Virgin Islands (USA)">Virgin Islands (USA)</option>
+                                    <option value="U.S. Virgin Islands">Virgin Islands (USA)</option>
                                     <option value="Wake Island">Wake Island</option>
                                     <!--<option value="Wallis &amp; Futana Is">Wallis &amp; Futana Is</option>-->
                                     <option value="Yemen">Yemen</option>
@@ -342,13 +346,11 @@
                         </div>
                         <div class="rows" style="margin-top:10px;">
                             <div class="row phone_list col-md-12 col-sm-12">
-                                <div class="col-md-1 col-sm-12 phone_text">No</div>
-                                <div class="col-md-5 col-sm-12 phone_text">Phone Number</div>
+                                <div class="col-md-6 col-sm-12 phone_text">Phone Number</div>
                                 <div class="col-md-3 col-sm-12 phone_text" style="margin-left:-10px">Primary</div>
                             </div>
                             <div class="row phone_list col-md-12 col-sm-12" ng-repeat="phone in m_phones track by $index">
-                                <div class="col-md-1 col-sm-12 phone_text">{{$index + 1}}</div>
-                                <div class="col-md-5 col-sm-12"><input class="form-control input-sm" ng-model="m_sub_phone" style="width:120px" type="text" ng-init="m_sub_phone=phone" /></div>
+                                <div class="col-md-6 col-sm-12"><span style="line-height:27px" ng-init="m_sub_phone=phone">{{m_sub_phone}}</span></div>
                                 <div class="col-md-1 col-sm-12"><input ng-click="phone_modify(m_sub_phone, $index)" ng-model="$parent.m_prm_phones[$index]" type="checkbox" /></div>
                                 <div class="col-md-2 col-sm-12" style="margin-right:10px">
                                     <button class="btn btn-danger btn-sm" ng-click="phone_verify(m_sub_phone, $index)">Verify</button>
@@ -377,13 +379,11 @@
 
                         <div class="rows" style="margin-top:55px;">
                             <div class="row phone_list col-md-12 col-sm-12">
-                                <div class="col-md-1 col-sm-12 phone_text">No</div>
-                                <div class="col-md-5 col-sm-12 phone_text">Email Address</div>
+                                <div class="col-md-6 col-sm-12 phone_text">Email Address</div>
                                 <div class="col-md-3 col-sm-12 phone_text" style="margin-left:-10px">Primary</div>
                             </div>
                            <div class="row phone_list col-md-12 col-sm-12" ng-repeat="email in m_emails track by $index">
-                                <div class="col-md-1 col-sm-12 phone_text">{{$index + 1}}</div>
-                                <div class="col-md-5 col-sm-12"><input class="form-control input-sm" ng-model="m_sub_email" style="width:120px" type="text" ng-init="m_sub_email=email" /></div>
+                                <div class="col-md-6 col-sm-12"><span style="line-height:27px" ng-init="m_sub_email=email">{{m_sub_email}}</span></div>
                                 <div class="col-md-1 col-sm-12"><input ng-click="email_modify(m_sub_email, $index)" ng-model="$parent.m_prm_emails[$index]" type="checkbox" /></div>
                                 <div class="col-md-2 col-sm-12" style="margin-right:10px">
                                     <button class="btn btn-danger btn-sm" ng-click="email_verify(m_sub_email, $index)">Verify</button>
@@ -397,11 +397,12 @@
                     <!-- /.col -->
                 </div>
                 <!-- /.row -->
-                <div class="rows" style='margin-top:15px'>
+                <div class="row" style='margin-top:15px'>
                     <!--<div class="col-md-0 col-sm-12"></div>-->
                     <div class="col-md-12 col-sm-12"><button ng-click="noti_update()" class="btn btn-sm btn-success" style="width:100%">UPDATE</button></div>
                     <!--<div class="col-md-0 col-sm-12"></div>-->
                 </div>
+                
             </div>
         </div>
         <!-- /.padding-md -->
