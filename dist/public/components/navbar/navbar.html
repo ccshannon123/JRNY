@@ -48,7 +48,8 @@
                 
             
             </li> 
-            <li ng-show="isLoggedIn()"><a class="" href="#logoutConfirm" class="navbar-register-button" ng-click="logout()">Logout</a>
+            <li ng-show="isLoggedIn()"><a href="/help-center">Help</a>
+            <li ng-show="isLoggedIn()"><a class="" href="#logoutConfirm" ng-click="logout()">Logout</a>
             </li>
             <li ng-show="isLoggedIn()">
                 <a class="localSignUpTopNav btn-success" href="/local-signup" style="margin-top:10px;padding-top:5px;padding-bottom:5px;border-radius:4px" ng-hide="{{getCurrentUser().local.applied}}">Become a Local</a>

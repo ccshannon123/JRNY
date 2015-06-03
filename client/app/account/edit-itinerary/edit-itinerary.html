@@ -1,0 +1,95 @@
+<!-- Overlay Div -->
+<!--<div id="overlay" class="transparent">
+</div>-->
+
+<div id="wrapper" class="preload sidebar-hide" ng-controller="AccountCtrl">
+
+    <!-- =========================
+     SECTION: TOP NAVIGATION
+    ============================== -->
+    <div ng-include="'/components/account/topNav/topNav.html'"></div>
+
+
+    <!-- =========================
+     SECTION: LEFT NAVIGATION
+    ============================== -->
+    <div ng-include="'/components/account/leftNav/leftNav.html'"></div>
+
+
+    <div id="main-container" ng-cloak>
+        <!-- /breadcrumb-->
+        <div class="row">
+            <div class="col-md-1 col-sm-12"></div>
+            <div class="col-md-10">
+                <h3>{{m_builder.firstName}} {{m_builder.lastName.substr(0, 1)}}'s Daily Itinerary</h3>
+            </div>
+        </div>
+        <!-- /main-header -->
+
+        <div class="row text-center" style="background-color:#999999;color:#EEEEEE">
+            <h4>{{m_builder.str_period}}</h4> 
+        </div>
+        <!-- /grey-container -->
+
+        <div class="padding-md row">
+            <div class="row">
+                <div class="col-md-1 col-sm-12"></div>
+                <div class="col-md-10 col-sm-12 text-right">
+                    <a href="/itinerary-builder/{{m_builder._id}}" class="btn btn-danger">Back to Itinerary Dashboard</a>                    
+                </div>
+            </div>
+            <div class="row" style="margin-top:15px">
+                <div class="col-md-1 col-sm-12"></div>
+                <div class="col-md-10 col-sm-12">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-12">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12" style="background-color:#ccc;margin-bottom:10px;border-radius:5px" ng-repeat="dt in dt_str_list track by $index">
+                                    <div class="row" style="margin:5px 5px 5px 5px">{{week_name[dt.getDay()] + ", " + month_name[dt.getMonth()].substr(0, 3) + " " + dt.getDate()}}</div>
+                                    <div class="row text-center">
+                                        <a href='/edit-itinerary/{{m_builder._id}}/{{dt.toISOString().substr(0, 10)}}' style="width:80%;margin:10px 20px 10px 20px" class="btn btn-info">Show Acitivity</a>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                        <div class="col-md-8 col-sm-12">
+                            <div class="row" ng-repeat="act in m_activity" style="margin-bottom:15px">
+                                <div class="col-md-3 col-sm-12 text-right">
+                                    <h5>{{act.time}}:00 - {{act.ltime}}:00</h5>
+                                    <h3 style="color:#6CBFEE">{{act.duration}} Hours</h3>
+                                </div><!--#3994CB-->
+                                <div class="col-md-9 col-sm-12 edit_itinerary_box" style="padding:0px 15px 15px 15px;">
+                                    <h3>{{act.activity_name}}</h3>
+                                    <div style="border-top:1px solid #EEEEEE;padding-top:10px">{{act.suggestion}}</div>
+                                </div>
+                            </div>
+                            <div ng-show="m_activity==null" class="row">
+                                <div class="col-md-3 col-sm-12"></div>
+                                <div class="col-md-9 col-sm-12 text-center edit_itinerary_box">
+                                    <h3>No Activity</h3>
+                                </div>
+                            </div>
+                            <div class="row text-right">
+                                <a href="/add-activity/{{m_builder._id}}/{{cur_dt.toISOString().substr(0, 10)}}" style="width:75%;margin-top:15px" class="btn btn-success">Add Activity</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.padding-md -->
+    </div>
+    <!-- /main-container -->
+    <!-- Footer ================================================== -->
+    <div ng-include="'/components/account/footer/footer.html'"></div>
+
+</div>
+<!-- /wrapper -->
+
+<a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
+
+<!-- Pace -->
+<script src='../../../assets/endless/js/endless/pace.min.js'></script>
+
+<!-- Endless -->
+<script src="../../../assets/endless/js/endless/endless.js"></script>

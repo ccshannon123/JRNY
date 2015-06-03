@@ -19,7 +19,7 @@ angular.module('jrnyApp').controller('reviewsProfileCtrl', function ($scope, $ht
 	$scope.getNumber = function(num) {
 		num = eval(num);
 	    return new Array(num);   
-	}
+	};
 
 
 	$scope.get_user = function() {

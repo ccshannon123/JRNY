@@ -1,7 +1,9 @@
 'use strict';
 
-angular.module('jrnyApp').controller('localsearchCtrl', function ($scope, $http, $location) {
+angular.module('jrnyApp').controller('localsearchCtrl', function ($scope, $http, $location, Auth) {
 
+	$scope.getCurrentUser = Auth.getCurrentUser;
+	
 	$scope.month_name = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
 
 	$scope.m_local_list = {};
@@ -27,15 +29,22 @@ angular.module('jrnyApp').controller('localsearchCtrl', function ($scope, $http,
 		        $http.post('/api/user_review/get_review', {email:local.email, ptype:2}).
 			      success(function(data, status, headers, config) { 
 
-				      	var total_review = 0;      
-					    data.forEach(function(review) {
+				      	var total_review = 0;
 
-				        	total_review += eval(review.review);		        	
-				        	
-				        });
+				      	if(data.result == undefined) {
+						    data.forEach(function(review) {
 
-				        local.avg_review_org = parseInt((total_review / data.length) * 10) / 10;
-				        local.avg_review_int = parseInt(local.avg_review_org);
+					        	total_review += eval(review.review);		        	
+					        	
+					        });
+
+					        local.avg_review_org = parseInt((total_review / data.length) * 10) / 10;
+					        local.avg_review_int = parseInt(local.avg_review_org);
+						}
+						else {
+					    	local.avg_review_org = 0;
+					    	local.avg_review_int = 0;
+					    }
 
 
 				  }).
