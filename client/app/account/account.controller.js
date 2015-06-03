@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jrnyApp')
-    .controller('AccountCtrl', function ($scope, $http, $location, Auth, User, Upload) {
+    .controller('AccountCtrl', function ($scope, $http, $location, $stateParams, Auth, User, Upload) {
         $scope.menu = [
       /*{
        'title': 'Home',
@@ -19,17 +19,59 @@ angular.module('jrnyApp')
         $scope.dayList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
         $scope.yearList = [1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000];
         $scope.sel_lang = '';
+
         $scope.m_year=0;
-        $scope.m_month=3;
-        $scope.m_day=0;
+        $scope.m_month=0;
+        $scope.m_day=0;        
 
         $scope.m_traveler_survey = {traveler: '', local: '', 
                                     basic: {arrival_date:'', arrival_time: '', departure_date: '', departure_time: '', how_get: '', how_already_booked: '', where_stay: '', where_already_booked: ''},
-                                    companion: {how_many_group: 1, who_travel_with: '', main_purpose: '', group_dynamic: '', desired_energy_level: '', group_limitation: '', travel_companion: ''},
+                                    companion: {how_many_group: '1', who_travel_with: '', main_purpose: '', group_dynamic: '', desired_energy_level: '', group_limitation: '', travel_companion: ''},
                                     interest: {food_drink: '', sightseeing: '', budget: '', must_see_do: '', nightlife: '', outdoors: '', live_events: '', overall_vibe: ''}};
 
         $scope.save_survey = function() {
-            alert(JSON.stringify($scope.m_traveler_survey.basic));
+            $scope.m_traveler_survey.traveler = $scope.getCurrentUser()._id;
+            
+            $http.post('/api/traveler_survey/save_survey', $scope.m_traveler_survey).
+              success(function(data, status, headers, config) {
+              }).
+              error(function(data, status, headers, config) {
+              });
+        };
+
+        $scope.next_survey = function(step) {
+            $scope.save_survey();
+            if(step == 1)
+                location.href = "/travel-companions/" + $stateParams.em;
+            else if(step == 2)
+                location.href = "/interest-preference/" + $stateParams.em;
+        };
+
+        $scope.get_survey = function() {
+            $scope.m_traveler_survey.local = $stateParams.em;            
+            $scope.m_traveler_survey.traveler = $scope.getCurrentUser()._id;
+
+            $http.post('/api/traveler_survey/get_survey', {local: $scope.m_traveler_survey.local, traveler: $scope.m_traveler_survey.traveler}).
+              success(function(data, status, headers, config) {
+
+                $scope.m_traveler_survey.basic.arrival_date = data.basic.arrival_date.substr(0, 10);
+                $scope.m_traveler_survey.basic.arrival_time = data.basic.arrival_date.substr(11, 8);
+
+                $scope.m_traveler_survey.basic.departure_date = data.basic.departure_date.substr(0, 10);;
+                $scope.m_traveler_survey.basic.departure_time = data.basic.departure_date.substr(11, 8);;
+
+                $scope.m_traveler_survey.basic.how_get = data.basic.how_get;
+                $scope.m_traveler_survey.basic.how_already_booked = data.basic.how_already_booked;
+                $scope.m_traveler_survey.basic.where_stay = data.basic.where_stay;
+                $scope.m_traveler_survey.basic.where_already_booked = data.basic.where_already_booked;
+
+                $scope.m_traveler_survey.companion = data.companion;
+                $scope.m_traveler_survey.interest = data.interest;
+                $scope.m_traveler_survey.companion.how_many_group = '' + $scope.m_traveler_survey.companion.how_many_group + '';
+
+              }).
+              error(function(data, status, headers, config) {
+              });
         };
 
         $scope.open = function ($event) {
@@ -118,11 +160,12 @@ angular.module('jrnyApp')
             if ($scope.getCurrentUser().languages.indexOf(language) > -1) {
                 $scope.getCurrentUser().languages.splice($scope.getCurrentUser().languages.indexOf(language), 1);
             }
-        }
+        };
 
         $scope.showProfile = function (em) {
             location.href = "/profile/" + em;
-        }
+        };
+
     });
 
 Array.prototype.indexObjectOf = function arrayObjectIndexOf(property, value) {

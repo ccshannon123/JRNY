@@ -15,6 +15,8 @@ module.exports = function(app) {
   app.use('/api/user_review', require('./api/user_review'));
   app.use('/api/message', require('./api/message'));
   app.use('/api/sess_manage', require('./api/sess_manage'));
+  app.use('/api/traveler_survey', require('./api/traveler_survey'));
+  app.use('/api/activity', require('./api/activity'));
 
   app.use('/auth', require('./auth'));
   

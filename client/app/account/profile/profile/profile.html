@@ -41,7 +41,7 @@
                         <span class="glyphicon glyphicon-user" aria-hidden="true" ng-hide="m_user_detail.photoUrl"></span>
                         <img ng-show="m_user_detail.photoUrl" src="{{m_user_detail.photoUrl}}" class="user-photo">
                     </div>
-                    <div ng-show="m_user_detail.local.applied==true && getCurrentUser().email!=m_user_email"><a href="/jrny-basics" class="btn btn-danger">Request Local</a></div>
+                    <div ng-show="m_user_detail.local.applied==true && getCurrentUser().email!=m_user_email"><a href="/jrny-basics/{{m_user_detail._id}}" class="btn btn-danger">Request Local</a></div>
                     <div style="margin-top:10px" ng-show="m_user_detail.local.applied==true && getCurrentUser().email!=m_user_email"><a href="/message_write/{{m_user_detail._id}}" class="btn btn-danger">Send Message</a></div>
                     <div style="margin-top:10px" ng-show="(getCurrentUser().email==m_user_email)"><a href="/edit-profile" class="btn btn-danger">Update Profile</a></div>
                     <div style="margin-top:15px">Local since March 2015</div>

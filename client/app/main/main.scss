@@ -269,6 +269,21 @@ textarea{
     padding:10px 10px 10px 10px;
 }
 
+.itinerary_calendar {
+    width:14%;
+    float:left;
+    text-align:center;
+    border-left:1px solid #CCC;
+    border-right:1px solid #CCC;
+    border-bottom:1px solid #CCC;
+}
+
+.edit_itinerary_box {
+    background-color:#6CBFEE;
+    color:#FFFFFF;
+    border-radius:5px;
+}
+
 textarea {
     resize:none;
 }

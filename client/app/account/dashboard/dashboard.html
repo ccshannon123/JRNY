@@ -69,12 +69,12 @@
                         <div class="row" style="margin-top:30px">
                             <div class="row">Most Recently Planned Jrny</div>
                             <div class="row">
-                                <div class="col-md-5 col-sm-12">                                
+                                <div class="col-md-5 col-sm-12" ng-repeat="builder in m_builder track by $index">                                
                                     <div class="row" style="margin-top:15px">
                                         <div class="col-md-12 col-sm-12">
                                         <div class="jrny_list_box">
-                                            <div class="text-center"><h1>Sebastian S</h1></div>
-                                            <div class="text-center" style="margin-top:5px;font-size:14px;">Saturday, July 1st - Tuesday, July 4th</div>
+                                            <div class="text-center"><h1>{{builder.firstName}} {{builder.lastName.substr(0, 1)}}</h1></div>
+                                            <div class="text-center" style="margin-top:5px;font-size:14px;">{{builder.str_period}}</div>
                                             <div class="text-center jrny_person_box" style="height:170px">
                                                 <div class="row" style="padding-top:5px">
                                                     <h5 style="font-size:12px;color:#999999;text-align:left;margin-left:25px">Group Members</h5>
@@ -112,65 +112,17 @@
 
                                                 </div>
                                             </div>
-                                            <div class="text-center" style="margin-top:10px;"><button class="btn btn-danger" style="width:75%">Notifications</button></div>
-                                            <div class="text-center" style="margin-top:5px;"><button class="btn btn-success" style="width:75%">View Itinerary</button></div>
-                                        </div>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                                <div class="col-md-5 col-sm-12">                                
-                                    <div class="row" style="margin-top:15px">
-                                        <div class="col-md-12 col-sm-12">
-                                        <div class="jrny_list_box">
-                                            <div class="text-center"><h1>Sebastian S</h1></div>
-                                            <div class="text-center" style="margin-top:5px;font-size:14px;">Saturday, July 1st - Tuesday, July 4th</div>
-                                            <div class="text-center jrny_person_box" style="height:170px">
-                                                <div class="row" style="padding-top:5px">
-                                                    <h5 style="font-size:12px;color:#999999;text-align:left;margin-left:25px">Group Members</h5>
-
-                                                    <div style="margin-left:25px;width:60px;float:left">
-                                                        <div class="drop-box" style="width:60px;height:60px;margin-bottom:5px">
-                                                            <img class="user-photo review_photo_sm" ng-hide="photoUrl" src="assets/images/icons/no-photo.jpg" />
-                                                            <img class="user-photo review_photo_sm" ng-show="photoUrl" src="{{photoUrl}}" />
-                                                        </div>
-                                                    </div>
-                                                    <div style="margin-left:20px;width:60px;float:left">
-                                                        <div class="drop-box" style="width:60px;height:60px;margin-bottom:5px">
-                                                            <img class="user-photo review_photo_sm" ng-hide="photoUrl" src="assets/images/icons/no-photo.jpg" />
-                                                            <img class="user-photo review_photo_sm" ng-show="photoUrl" src="{{photoUrl}}" />
-                                                        </div>
-                                                    </div>
-                                                    <div style="margin-left:20px;width:60px;float:left">
-                                                        <div class="drop-box" style="width:60px;height:60px;margin-bottom:5px">
-                                                            <img class="user-photo review_photo_sm" ng-hide="photoUrl" src="assets/images/icons/no-photo.jpg" />
-                                                            <img class="user-photo review_photo_sm" ng-show="photoUrl" src="{{photoUrl}}" />
-                                                        </div>
-                                                    </div>
-                                                    <div style="margin-left:25px;width:60px;float:left">
-                                                        <div class="drop-box" style="width:60px;height:60px;margin-bottom:5px">
-                                                            <img class="user-photo review_photo_sm" ng-hide="photoUrl" src="assets/images/icons/no-photo.jpg" />
-                                                            <img class="user-photo review_photo_sm" ng-show="photoUrl" src="{{photoUrl}}" />
-                                                        </div>
-                                                    </div>
-                                                    <div style="margin-left:20px;width:60px;float:left">
-                                                        <div class="drop-box" style="width:60px;height:60px;margin-bottom:5px">
-                                                            <img class="user-photo review_photo_sm" ng-hide="photoUrl" src="assets/images/icons/no-photo.jpg" />
-                                                            <img class="user-photo review_photo_sm" ng-show="photoUrl" src="{{photoUrl}}" />
-                                                        </div>
-                                                    </div>
-
-                                                </div>
+                                            <div class="text-center" style="margin-top:10px;">
+                                                <button ng-show="!(builder.isaccept=='0')" class="btn btn-danger" style="width:75%">Notifications</button>
+                                                <button ng-show="(builder.isaccept=='0')" ng-click="accept_itinerary(builder._id, $index)" class="btn btn-danger" style="width:75%">Accept Itinerary</button>
                                             </div>
-                                            <div class="text-center" style="margin-top:10px;"><button class="btn btn-danger" style="width:75%">Notifications</button></div>
-                                            <div class="text-center" style="margin-top:5px;"><button class="btn btn-success" style="width:75%">View Itinerary</button></div>
+                                            <div class="text-center" style="margin-top:5px;"><a href="/itinerary-builder/{{builder._id}}" class="btn btn-success" style="width:75%">View Itinerary</a></div>
                                         </div>
                                         </div>
 
                                     </div>
 
-                                </div>
+                                </div>                                
                             </div>
                             <div class="row" style="margin-top:30px">
                                 <div class="col-md-9 col-sm-12"><input type="text" class="form-control" placeholder="Search your Jrnys Here" /></div>
@@ -193,54 +145,32 @@
                         <div class="row" style="margin-top:30px;">
                             <div class="row">Recently Updated</div>
                             <div class="row">
-                                <div class="col-md-5 col-sm-12">                                
+                                <div class="col-md-5 col-sm-12" ng-repeat="jrny in m_jrny track by $index">                                
                                     <div class="row" style="margin-top:15px">
                                         <div class="col-md-12 col-sm-12">
                                             <div class="jrny_list_box">
-                                                <div class="text-center"><h1>Denver, Colorado</h1></div>
-                                                <div class="text-center" style="margin-top:20px;font-size:14px;">Saturday, July 1st - Tuesday, July 4th</div>
+                                                <div class="text-center"><h1>{{jrny.homeTown}}</h1></div>
+                                                <div class="text-center" style="margin-top:20px;font-size:14px;">{{jrny.str_period}}</div>
                                                 <div class="text-center jrny_person_box">
                                                     <div class="row" style="padding-top:5px">
                                                         <div style="margin-left:25px;width:80px;float:left">
                                                             <div class="drop-box" style="width:80px;height:80px">
-                                                                <img class="user-photo review_photo" ng-hide="photoUrl" src="assets/images/icons/no-photo.jpg" />
-                                                                <img class="user-photo review_photo" ng-show="photoUrl" src="{{photoUrl}}" />
+                                                                <img class="user-photo review_photo" ng-hide="jrny.photoUrl" src="assets/images/icons/no-photo.jpg" />
+                                                                <img class="user-photo review_photo" ng-show="jrny.photoUrl" src="{{jrny.photoUrl}}" />
                                                             </div>
                                                         </div>
-                                                        <div style="color:#000000;margin-top:30px"><h4>Sebastian S</h4></div>
+                                                        <div style="color:#000000;margin-top:30px"><h4>{{jrny.firstName}} {{jrny.lastName.substr(0, 1)}}</h4></div>
                                                     </div>
                                                 </div>
-                                                <div class="text-center" style="margin-top:20px;"><button class="btn btn-info" style="width:75%">Message Local</button></div>
-                                                <div class="text-center" style="margin-top:10px;"><button class="btn btn-success" style="width:75%">View Itinerary</button></div>
+                                                <div class="text-center" style="margin-top:20px;"><a href="/message_write/{{jrny.uid}}" class="btn btn-info" style="width:75%">Message Local</a></div>
+                                                <div class="text-center" style="margin-top:10px;">
+                                                    <button ng-show="(jrny.isaccept=='0')" class="btn btn-success" style="width:75%">Pending</button>
+                                                    <button ng-show="!(jrny.isaccept=='0')" class="btn btn-success" style="width:75%">View Itinerary</button>
+                                                </div>
                                             </div>
                                         </div>
 
                                     </div>
-                                </div>
-                                <div class="col-md-5 col-sm-12">
-                                    <div class="row" style="margin-top:15px">
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="jrny_list_box">
-                                                <div class="text-center"><h1>Denver, Colorado</h1></div>
-                                                <div class="text-center" style="margin-top:20px;font-size:14px;">Saturday, July 1st - Tuesday, July 4th</div>
-                                                <div class="text-center jrny_person_box">
-                                                    <div class="row" style="padding-top:5px">
-                                                        <div style="margin-left:25px;width:80px;float:left">
-                                                            <div class="drop-box" style="width:80px;height:80px">
-                                                                <img class="user-photo review_photo" ng-hide="photoUrl" src="assets/images/icons/no-photo.jpg" />
-                                                                <img class="user-photo review_photo" ng-show="photoUrl" src="{{photoUrl}}" />
-                                                            </div>
-                                                        </div>
-                                                        <div style="color:#000000;margin-top:30px"><h4>Sebastian S</h4></div>
-                                                    </div>
-                                                </div>
-                                                <div class="text-center" style="margin-top:20px;"><button class="btn btn-info" style="width:75%">Message Local</button></div>
-                                                <div class="text-center" style="margin-top:10px;"><button class="btn btn-success" style="width:75%">View Itinerary</button></div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
                                 </div>
                             </div>
                         </div>

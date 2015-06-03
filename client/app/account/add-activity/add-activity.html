@@ -1,0 +1,100 @@
+<!-- Overlay Div -->
+<!--<div id="overlay" class="transparent">
+</div>-->
+
+<div id="wrapper" class="preload sidebar-hide" ng-controller="AccountCtrl">
+
+    <!-- =========================
+     SECTION: TOP NAVIGATION
+    ============================== -->
+    <div ng-include="'/components/account/topNav/topNav.html'"></div>
+
+
+    <!-- =========================
+     SECTION: LEFT NAVIGATION
+    ============================== -->
+    <div ng-include="'/components/account/leftNav/leftNav.html'"></div>
+
+
+    <div id="main-container" ng-cloak>
+        <!-- /breadcrumb-->
+        <div class="row">
+            <div class="col-md-1 col-sm-12"></div>
+            <div class="col-md-10">
+                <h3>Itinerary Builder</h3>
+            </div>
+        </div>
+        <!-- /main-header -->
+
+        <div class="row text-center" style="background-color:#999999;color:#EEEEEE">
+            <h4>{{m_builder.str_period}}</h4> 
+            <!--<a href="/add-activity/{{m_builder._id}}/{{dt.toISOString().substr(0, 10)}}" class="btn" ng-repeat="dt in dt_str_list track by $index"><h4>{{week_name[dt.getDay()] + ", " + month_name[dt.getMonth()].substr(0, 3) + " " + dt.getDate()}}</h4></a>-->
+        </div>
+        <!-- /grey-container -->
+
+        <div class="padding-md row">
+            <div class="row">
+                <div class="col-md-1 col-sm-12"></div>
+                <div class="col-md-10 col-sm-12 text-right">
+                    <a href="/edit-itinerary/{{m_builder._id}}/{{cur_dt.toISOString().substr(0, 10)}}" class="btn btn-danger">Back to Daily Itinerary</a>                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1 col-sm-12"></div>
+                <div class="col-md-3 col-sm-12">
+                    <div class="row">
+                        <div class="row"><div class="col-md-12 col-sm-12"><h4>Name of Activity</h4></div></div>
+                        <div class="row"><div class="col-md-12 col-sm-12"><input ng-model="$parent.m_activity_name" type="text" class="form-control" /></div></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12">
+                            <div class="row"><h4>Time</h4></div>
+                            <div class="row">
+                                <select class="form-control" ng-model="$parent.m_time">
+                                    <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                                    <option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option>
+                                    <option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option>
+                                    <option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option>
+                                    <option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option>
+                                    <option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-sm-12"></div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="row"><h4>Duration</h4></div>
+                            <div class="row">
+                                <select class="form-control" ng-model="$parent.m_duration">
+                                    <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                                    <option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option>
+                                    <option value="8">8</option><option value="9">9</option><option value="10">10</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="row"><div class="col-md-12 col-sm-12"><h4>Suggestions to Traveler</h4></div></div>
+                        <div class="row"><div class="col-md-12 col-sm-12"><textarea ng-model="$parent.m_suggestion" class="form-control"></textarea></div></div>
+                    </div>
+                    <div class="row" style="margin-top:15px">
+                        <a ng-click="add_activity()" class="btn btn-success" style="width:100%">Add to Itinerary</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.padding-md -->
+    </div>
+    <!-- /main-container -->
+    <!-- Footer ================================================== -->
+    <div ng-include="'/components/account/footer/footer.html'"></div>
+
+</div>
+<!-- /wrapper -->
+
+<a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
+
+<!-- Pace -->
+<script src='../../../assets/endless/js/endless/pace.min.js'></script>
+
+<!-- Endless -->
+<script src="../../../assets/endless/js/endless/endless.js"></script>

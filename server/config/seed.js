@@ -32,7 +32,7 @@ Thing.find({}).remove(function () {
 });
 */
 
-User.find({}).remove(function () {
+/*User.find({}).remove(function () {
     User.create({
         provider: 'local',
         firstName: 'John',
@@ -55,6 +55,18 @@ User.find({}).remove(function () {
         photoUrl:''
     }, {
         provider: 'local',
+        firstName: 'Erik',
+        lastName: 'Clasie',
+        email: 'erik@local.com',
+        password: 'local',
+        local: {
+            active: true,
+            applied: true,
+        },
+        homeTown: 'Denver, CO, USA',
+        photoUrl:''
+    }, {
+        provider: 'local',
         role: 'admin',
         firstName: 'Admin',
         lastName: 'UserLast',
@@ -64,4 +76,4 @@ User.find({}).remove(function () {
     }, function () {
         console.log('finished populating users');
     });
-});
+});*/

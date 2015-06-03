@@ -31,7 +31,7 @@ angular.module('jrnyApp')
       .state('dashboard', {
         url: '/dashboard',
         templateUrl: 'app/account/dashboard/dashboard.html',
-        controller: 'DashboardCtrl',
+        controller: 'dashboardCtrl',
         authenticate: true,
         data: {
           css: 'assets/endless/css/endless.css'
@@ -227,7 +227,7 @@ angular.module('jrnyApp')
         }
       })
       .state('jrny-basics', {
-        url: '/jrny-basics',
+        url: '/jrny-basics/:em',
         templateUrl: 'app/account/traveler-survey/jrny-basics/jrny-basics.html',
         controller: 'jrnybasicsCtrl',
         authenticate: true,
@@ -236,7 +236,7 @@ angular.module('jrnyApp')
         }
       })
       .state('travel-companions', {
-        url: '/travel-companions',
+        url: '/travel-companions/:em',
         templateUrl: 'app/account/traveler-survey/travel-companions/travel-companions.html',
         controller: 'travelcompanionCtrl',
         authenticate: true,
@@ -245,9 +245,36 @@ angular.module('jrnyApp')
         }
       })
       .state('interest-preference', {
-        url: '/interest-preference',
+        url: '/interest-preference/:em',
         templateUrl: 'app/account/traveler-survey/interest-preference/interest-preference.html',
         controller: 'interestpreferenceCtrl',
+        authenticate: true,
+        data: {
+          css: 'assets/endless/css/endless.css'
+        }
+      })
+      .state('itinerary-builder', {
+        url: '/itinerary-builder/:id',
+        templateUrl: 'app/account/itinerary-builder/itinerary-builder.html',
+        controller: 'itinerarybuilderCtrl',
+        authenticate: true,
+        data: {
+          css: 'assets/endless/css/endless.css'
+        }
+      })
+      .state('edit-itinerary', {
+        url: '/edit-itinerary/:id/:date',
+        templateUrl: 'app/account/edit-itinerary/edit-itinerary.html',
+        controller: 'edititineraryCtrl',
+        authenticate: true,
+        data: {
+          css: 'assets/endless/css/endless.css'
+        }
+      })
+      .state('add-activity', {
+        url: '/add-activity/:id/:date',
+        templateUrl: 'app/account/add-activity/add-activity.html',
+        controller: 'addactivityCtrl',
         authenticate: true,
         data: {
           css: 'assets/endless/css/endless.css'

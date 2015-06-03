@@ -1,0 +1,110 @@
+<!-- Overlay Div -->
+<!--<div id="overlay" class="transparent">
+</div>-->
+
+<div id="wrapper" class="preload sidebar-hide" ng-controller="AccountCtrl">
+
+    <!-- =========================
+     SECTION: TOP NAVIGATION
+    ============================== -->
+    <div ng-include="'/components/account/topNav/topNav.html'"></div>
+
+
+    <!-- =========================
+     SECTION: LEFT NAVIGATION
+    ============================== -->
+    <div ng-include="'/components/account/leftNav/leftNav.html'"></div>
+
+
+    <div id="main-container" ng-cloak>
+        <!-- /breadcrumb-->
+        <div class="row">
+            <div class="col-md-1 col-sm-12"></div>
+            <div class="col-md-10">
+                <h3>{{m_builder.firstName}} {{m_builder.lastName.substr(0, 1)}}'s Jrny to {{getCurrentUser().homeTown}}</h3>
+            </div>
+        </div>
+        <!-- /main-header -->
+
+        <div class="row text-center" style="background-color:#999999;color:#EEEEEE">
+            <h4>{{m_builder.str_period}}</h4> 
+        </div>
+        <!-- /grey-container -->
+
+        <div class="padding-md row">
+            <div class="row">
+                <div class="col-md-1 col-sm-12"></div>
+                <div class="col-md-10 col-sm-12">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">                                    
+                                    <div style="background-color:#EEEEEE;width:100%;height:200px;padding:5px 5px 5px 5px;border-radius:5px">
+                                        <div class="col-md-12"><span style="font-size:26px;font-weight:bold">The Group</span></div>
+                                        <div style="margin-left:25px;width:80px;float:left">
+                                            <div class="drop-box" style="width:80px;height:80px;margin-bottom:5px">
+                                                <img class="user-photo review_photo" ng-hide="photoUrl" src="assets/images/icons/no-photo.jpg" />
+                                                <img class="user-photo review_photo" ng-show="photoUrl" src="{{photoUrl}}" />
+                                            </div>
+                                            <div style="width:80px;text-align:center"><h4>Nicole C.</h4></div>
+                                        </div>
+                                        <div style="margin-left:25px;width:80px;float:left">
+                                            <div class="drop-box" style="width:80px;height:80px;margin-bottom:5px">
+                                                <img class="user-photo review_photo" ng-hide="photoUrl" src="assets/images/icons/no-photo.jpg" />
+                                                <img class="user-photo review_photo" ng-show="photoUrl" src="{{photoUrl}}" />
+                                            </div>
+                                            <div style="width:80px;text-align:center"><h4>Jessie R.</h4></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:15px">
+                                <div class="col-md-12 col-sm-12">
+                                    <div style="background-color:#EEEEEE;width:100%;height:285px;padding:1px 5px 5px 5px;border-radius:5px">
+                                        <h5>Group Chat</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="row" style="background-color:#EEEEEE;width:100%;height:500px;padding:5px 5px 5px 5px;border-radius:5px">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-12"><span style="font-size:26px;font-weight:bold">Current Itinerary</span></div>
+                                    <div class="col-md-8 col-sm-12 text-right"><a href="/edit-itinerary/{{m_builder._id}}/{{m_builder.basic.arrival_date.substr(0, 10)}}" class="btn btn-success" style="margin-right:5px">Edit Itinerary</a><a class="btn btn-danger">Send Itinerary to Traveler</a></div>
+                                </div>
+                                <div class="row" style="margin-top:15px">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12">
+                                                <div style="width:98%;text-align:center;border:1px solid #ccc"><h4>{{month_name[arr_dt.getMonth()]}} {{arr_dt.getFullYear()}}</h4></div>
+                                                <div class="itinerary_calendar" ng-repeat="str in week_name track by $index">{{str}}</div>
+                                                <div class="itinerary_calendar" ng-repeat="i in getNumber(arr_dt.getDay()) track by $index"><h3>&nbsp;</h3></div>
+                                                <div class="itinerary_calendar" ng-repeat="i in getNumber(jrny_days) track by $index"><h3>Day {{$index+1}}</h3></div>
+                                                <div class="itinerary_calendar" ng-repeat="i in getNumber(7 - ((jrny_days + arr_dt.getDay()) % 7)) track by $index"><h3>&nbsp;</h3></div>
+                                            </div>
+                                        </div>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.padding-md -->
+    </div>
+    <!-- /main-container -->
+    <!-- Footer ================================================== -->
+    <div ng-include="'/components/account/footer/footer.html'"></div>
+
+</div>
+<!-- /wrapper -->
+
+<a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
+
+<!-- Pace -->
+<script src='../../../assets/endless/js/endless/pace.min.js'></script>
+
+<!-- Endless -->
+<script src="../../../assets/endless/js/endless/endless.js"></script>

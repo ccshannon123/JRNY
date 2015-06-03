@@ -2,7 +2,7 @@
 <!--<div id="overlay" class="transparent">
 </div>-->
 
-<div id="wrapper" class="preload sidebar-hide" ng-controller="AccountCtrl">
+<div id="wrapper" class="preload sidebar-hide" ng-controller="AccountCtrl" data-ng-init="get_survey()">
 
     <!-- =========================
      SECTION: TOP NAVIGATION
@@ -28,13 +28,13 @@
         <div class="custom-sub-navbar">
             <ul class="nav subnav">
                 <li>
-                    <a href="/jrny-basics">Jrny Basics</a>
+                    <a href="/jrny-basics/{{m_traveler_survey.local}}">Jrny Basics</a>
                 </li>
                 <li>
-                    <a href="/travel-companions">Travel Companions</a>
+                    <a href="/travel-companions/{{m_traveler_survey.local}}">Travel Companions</a>
                 </li>
                 <li class="active">
-                    <a href="/interest-preference">Interests & Preferences</a>
+                    <a href="/interest-preference/{{m_traveler_survey.local}}">Interests & Preferences</a>
                 </li>
                 <li>
                     <a href="#">Checkout</a>
@@ -42,7 +42,6 @@
             </ul>
         </div>
         <!-- /grey-container -->
-
         <div class="padding-md">
             <div class="row">
                 <div class="col-md-1"></div>
