@@ -33,6 +33,13 @@ angular.module('jrnyApp').config(function ($stateProvider) {
                 css: 'assets/stamp/css/styles.css'
             }
         })
+        .state('feedback', {
+            url: '/help-center/feedback',
+            templateUrl: 'app/main/help-center/feedback/feedback.html',
+            data: {
+                css: 'assets/stamp/css/styles.css'
+            }
+        })
         .state('privacy-policy', {
             url: '/privacy-policy',
             templateUrl: 'app/main/privacy-policy/privacy-policy.html',

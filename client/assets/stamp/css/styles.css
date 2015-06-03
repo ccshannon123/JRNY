@@ -999,7 +999,7 @@ strong,
 -----------------------------------------*/
 
 .features {
-    background: url(../../images/background-images/GirlwithSuitcase.jpg) no-repeat top center fixed;
+    background: url(../../images/background-images/GirlwithSuitcase.jpg) no-repeat top center;
     -webkit-background-size: cover;
     background-size: cover;
 }
