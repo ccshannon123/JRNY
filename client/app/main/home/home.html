@@ -37,7 +37,7 @@
                                             <button type="submit" class="btn btn-primary standard-button" ng-click="destinationSearch()">Start your Jrny</button>
 
                                         </form>
-                                        <span id="homeDestinationHelp">Don't know where to go? <a hred="#">Let us help!</a></span>
+                                        <!--<span id="homeDestinationHelp">Don't know where to go? <a hred="#">Let us help!</a></span>-->
                                     </div>
                                 </div>
                             </div>
@@ -67,41 +67,35 @@
 
             <!-- SINGLE SERVICE -->
             <div class="col-md-4 wow fadeInLeft" data-wow-offset="10" data-wow-duration="1.75s">
-                <div class="single-service border-bottom-hover">
-                    <div class="service-icon colored-text">
-                        <img src="../../../assets/images/icons/map_icon.png" />
-                    </div>
-                    <h3 class="colored-text">ENVISION</h3>
-                    <p>
-                        Tell us where you’re going or <a href="#">let us help</a>
-                    </p>
+                <div class="service-icon colored-text">
+                    <img src="../../../assets/images/icons/map_icon.png" />
                 </div>
+                <h3 class="colored-text">ENVISION</h3>
+                <p>
+                    Tell us where you’re going or <a href="#">let us help</a>
+                </p>
             </div>
 
             <!-- SINGLE SERVICE -->
             <div class="col-md-4 wow flipInY" data-wow-offset="10" data-wow-duration="1s">
-                <div class="single-service border-bottom-hover">
-                    <div class="service-icon colored-text">
-                        <img src="../../../assets/images/icons/personalize_icon.png" />
-                    </div>
-                    <h3 class="colored-text">PERSONALIZE</h3>
-                    <p>
-                        Choose your favorite Local and let them know how you want to travel
-                    </p>
+                <div class="service-icon colored-text">
+                    <img src="../../../assets/images/icons/personalize_icon.png" />
                 </div>
+                <h3 class="colored-text">PERSONALIZE</h3>
+                <p>
+                    Choose your favorite Local and let them know how you want to travel
+                </p>
             </div>
 
             <!-- SINGLE SERVICE -->
             <div class="col-md-4 wow fadeInRight" data-wow-offset="10" data-wow-duration="1.75s">
-                <div class="single-service border-bottom-hover">
-                    <div class="service-icon colored-text">
-                        <img src="../../../assets/images/icons/explore_icon.png" />
-                    </div>
-                    <h3 class="colored-text">EXPLORE</h3>
-                    <p>
-                        Experience your destination as if you live there
-                    </p>
+                <div class="service-icon colored-text">
+                    <img src="../../../assets/images/icons/explore_icon.png" />
                 </div>
+                <h3 class="colored-text">EXPLORE</h3>
+                <p>
+                    Experience your destination as if you live there
+                </p>
             </div>
 
         </div>
@@ -111,7 +105,7 @@
 <!-- =========================
      SECTION: QUOTE   
     ============================== -->
-<section id="home-quote" class="stats">
+<section id="home-quote">
     <div class="container overlay-layer-2">
         <div class="row">
             <div class="col-lg-12" ng-controller="QuotesCtrl">
@@ -140,41 +134,36 @@
                     <br/>
                     <br/> You can be as involved in planning your trip as you like. With each Jrny destination, you'll always receive:
                     <br/>
-                    <!-- SINGLE SERVICE -->
-                    <div class="col-md-4 wow fadeInLeft" data-wow-offset="10" data-wow-duration="1.75s" style="padding:5px;">
-                        <div class="single-service border-bottom-hover">
-                            <div class="service-icon colored-text">
-                                <i class="fa fa-question"></i>
-                            </div>
-                            <h3 class="colored-text">Pre-Trip Support</h3>
-                        </div>
-                    </div>
 
-                    <!-- SINGLE SERVICE -->
-                    <div class="col-md-4 wow flipInY" data-wow-offset="10" data-wow-duration="1s" style="padding:5px;">
-                        <div class="single-service border-bottom-hover">
-                            <div class="service-icon colored-text">
-                                <i class="fa fa-male"></i>
-                            </div>
-                            <h3 class="colored-text">Personalized Itinerary</h3>
-                        </div>
-                    </div>
-
-                    <!-- SINGLE SERVICE -->
-                    <div class="col-md-4 wow fadeInRight" data-wow-offset="10" data-wow-duration="1.75s" style="padding:5px;">
-                        <div class="single-service border-bottom-hover">
-                            <div class="service-icon colored-text">
-                                <i class="fa fa-map-marker"></i>
-                            </div>
-                            <h3 class="colored-text">Local Survival Guide</h3>
-                        </div>
-                    </div>
                 </p>
             </div>
 
             <!-- TIMLEINE SCROLLER -->
-            <div class="col-md-6 timeline-section wow fadeInRight" data-wow-offset="20" data-wow-duration="1.75s">
-                <div ng-include="'/components/timelineSample/timelineSample.html'"></div>
+            <div class="col-md-6 wow fadeInRight" data-wow-offset="20" data-wow-duration="1.75s">
+
+                <!-- SINGLE SERVICE -->
+                <div class="col-md-12 wow fadeInLeft" data-wow-offset="10" data-wow-duration="1.75s" style="padding:5px;">
+                    <div class="single-service border-bottom-hover">
+                        <h3 class="colored-text"><i class="fa fa-question"></i>  Pre-Trip Support</h3>
+                        <p>Get all your questions answered before you travel with pre-trip support</p>
+                    </div>
+                </div>
+
+                <!-- SINGLE SERVICE -->
+                <div class="col-md-12 wow flipInY" data-wow-offset="10" data-wow-duration="1s" style="padding:5px;">
+                    <div class="single-service border-bottom-hover">
+                        <h3 class="colored-text"><i class="fa fa-male"></i>  Personalized Itinerary</h3>
+                        <p>Make the most of your time and money with a personalized itinerary</p>
+                    </div>
+                </div>
+
+                <!-- SINGLE SERVICE -->
+                <div class="col-md-12 wow fadeInRight" data-wow-offset="10" data-wow-duration="1.75s" style="padding:5px;">
+                    <div class="single-service border-bottom-hover">
+                        <h3 class="colored-text"><i class="fa fa-map-marker"></i>  Local Survival Guide</h3>
+                        <p>Learn the ins and outs of your destination with a local survival guide</p>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -193,7 +182,7 @@
 
             <!-- SECTION HEADER -->
             <div class="section-header">
-                <h2 class="white-text">Why Travel with <strong class="white-text">Jrny?</strong></h2>
+                <h2 class="white-text">The Most Convenient Way to Travel</strong></h2>
                 <div class="colored-line">
                 </div>
                 <div class="sub-heading white-text">
@@ -312,6 +301,10 @@
             <h2 class="dark-text"><strong>A Price That Saves You Money</h2>
             <div class="colored-line">
             </div>
+            <div class="sub-heading">
+                With insight on the cheapest transportation, the best happy hours, free local events and daily entrance deals, Jrny Locals help you
+                <br/> save money in order to stay within your budget. </div>
+
         </div>
 
         <!-- PRICING TABLE -->

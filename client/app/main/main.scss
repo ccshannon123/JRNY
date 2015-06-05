@@ -1,3 +1,34 @@
+.intro-section {
+    h2 {
+        font-size: 36px;
+    }
+}
+
+.loginTitle,
+.signupTitle {
+    color: #fff;
+    font-size: 40px;
+    background: rgba(0, 5, 8, 0.40);
+    padding: 5px;
+}
+
+#localSignupBtn {
+    position: relative;
+    &:before {
+        content: "Be One of the First Locals in Your Area!";
+        color: #fff;
+        position: absolute;
+        left: -520px;
+        top: 0px;
+        font-family: 'Amatic SC', cursive;
+        font-size: 40px;
+    }
+}
+
+.services {
+    padding-bottom: 50px;
+}
+
 .color-overlay {
     position: absolute;
     top: 0;
@@ -59,16 +90,21 @@
 
 #home-quote {
     padding: 30px;
+    background: #000;
     h2 {
-        font-family: wanderlust;
-        font-size: 50px;
-        line-height: 70px;
+        font-family: 'Julius Sans One', sans-serif;
+        font-size: 40px;
+        line-height: 50px;
         margin-bottom: 30px;
         color: #fff;
         padding: 0px 90px;
     }
     i {
         color: #f9f9f9;
+        font-family: wanderlust;
+        font-size: 40px;
+        margin-bottom: 30px;
+        display: block;
     }
 }
 
@@ -127,19 +163,22 @@
         border-radius: 3px;
         border-style: solid;
         border-width: 1px 1px 4px;
-        margin: 0 0 60px;
+        margin: 0px;
         min-height: 110px;
-        padding: 10px;
+        padding: 15px;
         transition: all 0.55s ease 0s;
+        text-align: left;
         h3 {
-            font-size: 15px;
+            font-size: 25px;
             line-height: 30px;
-            text-align: center;
+            margin: 0px;
         }
-        .service-icon {
-            text-align: center;
-            font-size: 30px;
-            margin-top: 10px;
+        i {
+            width: 16px;
+            color: #0FD6C0;
+        }
+        p {
+            margin: 5px 0px 5px 25px;
         }
     }
 }
@@ -182,104 +221,119 @@
     background: url(../../assets/images/background-images/1.jpg) 100% 100%;
 }
 
-
-
 .position-initial {
     position: initial !important;
 }
 
-.mt-5 {margin-top: 5px !important;}
-.mr-5 {margin-right: 5px !important;}
-.mb-5 {margin-bottom: 5px !important;}
-.ml-5 {margin-left: 5px !important;}
-
-.b {
-    border:1px solid #000;
+.mt-5 {
+    margin-top: 5px !important;
 }
 
-.phone_list {margin-top:3px}
-.phone_text {line-height:28px}
+.mr-5 {
+    margin-right: 5px !important;
+}
+
+.mb-5 {
+    margin-bottom: 5px !important;
+}
+
+.ml-5 {
+    margin-left: 5px !important;
+}
+
+.b {
+    border: 1px solid #000;
+}
+
+.phone_list {
+    margin-top: 3px
+}
+
+.phone_text {
+    line-height: 28px
+}
 
 .review_list_row {
-    border-bottom:1px solid #cccccc;
-    padding-bottom:15px !important;
-    margin-bottom:20px !important;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 15px !important;
+    margin-bottom: 20px !important;
 }
 
 .review_list_row:last-child {
-    border-bottom:none;
+    border-bottom: none;
 }
 
-textarea{
+textarea {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-
     width: 100%;
 }
 
 .review_photo {
-    width:79px !important;
-    height:79px !important;
+    width: 79px !important;
+    height: 79px !important;
 }
 
 .star-img1 {
-    width:16px;
-    height:16px;
+    width: 16px;
+    height: 16px;
 }
 
 .star-img2 {
-    width:14px;
-    height:14px;
+    width: 14px;
+    height: 14px;
 }
 
 .jrny_list_box {
-   background-color:#AAB8BC;
-   height:380px;
-   width:280px;
-   border-radius:5px;
-   color:#FFFFFF;
-   padding:10px 10px 10px 10px;
+    background-color: #AAB8BC;
+    height: 380px;
+    width: 280px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    padding: 10px 10px 10px 10px;
 }
 
 .jrny_person_box {
-    margin-top:15px;
-    margin-left:10px;
-    border-radius:5px;
-    background-color:#FFFFFF;
-    width:240px !important;
-    height:90px;
+    margin-top: 15px;
+    margin-left: 10px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    width: 240px !important;
+    height: 90px;
 }
 
 .review_photo_sm {
-    width:59px !important;
-    height:59px !important;
+    width: 59px !important;
+    height: 59px !important;
 }
 
 .review_photo_lg {
-    width:149px !important;
-    height:149px !important;
+    width: 149px !important;
+    height: 149px !important;
 }
 
 .row_border {
-    border-left:1px solid #EEEEEE;
-    border-bottom:1px solid #EEEEEE;
-    border-right:1px solid #EEEEEE;
-    width:100%;
-    padding:10px 10px 10px 10px;
+    border-left: 1px solid #EEEEEE;
+    border-bottom: 1px solid #EEEEEE;
+    border-right: 1px solid #EEEEEE;
+    width: 100%;
+    padding: 10px 10px 10px 10px;
 }
 
 .itinerary_calendar {
-    width:14%;
-    float:left;
-    text-align:center;
-    
+    width: 14%;
+    float: left;
+    text-align: center;
+    border-left: 1px solid #CCC;
+    border-right: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
 }
 
 .edit_itinerary_box {
-    background-color:#6CBFEE;
-    color:#FFFFFF;
-    border-radius:5px;
+    background-color: #6CBFEE;
+    color: #FFFFFF;
+    border-radius: 5px;
 }
 
 .location_table div div{
@@ -289,5 +343,5 @@ textarea{
 }
 
 textarea {
-    resize:none;
+    resize: none;
 }
