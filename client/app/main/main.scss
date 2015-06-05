@@ -325,9 +325,9 @@ textarea {
     width: 14%;
     float: left;
     text-align: center;
-    border-left: 1px solid #CCC;
-    border-right: 1px solid #CCC;
-    border-bottom: 1px solid #CCC;
+    border-left: 0px solid #CCC;
+    border-right: 0px solid #CCC;
+    border-bottom: 0px solid #CCC;
 }
 
 .edit_itinerary_box {
@@ -340,6 +340,22 @@ textarea {
     border-left:1px solid #CCCCCC;
     border-right:1px solid #CCCCCC;
     border-bottom:1px solid #CCCCCC;
+}
+
+.cover_photo {
+    border:1px solid #CCCCCC;
+    height:280px;
+    background-size:100% 280px;    
+}
+
+.search_cover_photo {
+    width:100%;
+    height:300px;
+    margin-bottom:20px;
+    background-color:#AAB8BC;
+    border-radius:5px;
+    padding-top:10px;
+    background-size:100% 300px;    
 }
 
 textarea {

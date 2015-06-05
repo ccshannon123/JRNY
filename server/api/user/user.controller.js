@@ -181,6 +181,25 @@ exports.upload = function(req, res, next) {
     }
 };
 
+exports.upload_cover = function(req, res, next) {
+    var file = req.files.file;
+    var tmpPath = file.path;
+    var extIndex = tmpPath.lastIndexOf('.');
+    var extension = (extIndex < 0) ? '' : tmpPath.substr(extIndex);
+    var fileName = file.name;
+    var destPath = config.env=='production'?'./public/uploads/':'./client/uploads/' + fileName;
+
+    var is = fs.createReadStream(tmpPath);
+    var os = fs.createWriteStream(destPath);
+
+    if(is.pipe(os)) {
+      fs.unlink(tmpPath, function (err) { //To unlink the file from temp path after copy
+        if (err) return next(err);
+        res.json({img: 'uploads/'+fileName});
+      });
+    }
+};
+
 /**
  * Authentication callback
  */

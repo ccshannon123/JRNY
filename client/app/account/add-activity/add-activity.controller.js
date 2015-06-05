@@ -30,6 +30,7 @@ angular.module('jrnyApp')
 	$scope.add_activity = function() {
 		$http.post('/api/activity/add_activity', {iid: $scope.m_builder._id, an: $scope.m_activity_name, adt: $scope.cur_dt, tm: $scope.m_time, dur: $scope.m_duration, sugg: $scope.m_suggestion}).
 			success(function(data, status, headers, config) {
+				location.href = "/edit-itinerary/" + $stateParams.id + "/" + $stateParams.date;
 	      }).
 	      error(function(data, status, headers, config) {
 	      });

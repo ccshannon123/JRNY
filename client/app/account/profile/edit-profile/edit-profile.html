@@ -55,13 +55,14 @@
                 <div class="col-sm-2 col-md-2 text-center">
                     <div class="row">
                         <div class="col-md-1 col-sm-12"></div>
-                        <div class="col-md-10 col-sm-12 text-right" style="border:1px solid #CCCCCC;height:300px">
+                        <div class="col-md-10 col-sm-12 text-center cover_photo" style="background-image:url('{{getCurrentUser().coverUrl}}')">
                             <div ngf-drop ngf-select ng-model="files" class="drop-box" ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true" accept="image/*" title="Drop images here or click to upload" style="margin-top:15px">
                                 <span class="glyphicon glyphicon-user" aria-hidden="true" ng-hide="getCurrentUser().photoUrl"></span>
                                 <img ng-show="getCurrentUser().photoUrl" src="{{getCurrentUser().photoUrl}}" class="user-photo">
                             </div>
-                            <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
-                        </div>  
+                            <a ngf-select ng-model="files_cover" ngf-multiple="true" ngf-allow-dir="true" accept="image/*" class="btn btn-danger text-center" style="margin-top:20px">Update Cover Photo</a>
+                        </div>
+
                     </div>
                     <a style="margin-top:10px" ng-click="showProfile(getCurrentUser()._id)" class="btn btn-success">View Profile</a>
 

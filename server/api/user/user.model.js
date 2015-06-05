@@ -80,6 +80,7 @@ var UserSchema = new Schema({
     PhoneNumber: String,
     hashedPassword: String,
     photoUrl: String,
+    coverUrl: String,
     provider: String,
     salt: String,
     facebook: {},

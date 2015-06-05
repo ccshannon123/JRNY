@@ -136,6 +136,36 @@ angular.module('jrnyApp')
             $scope.upload($scope.files);
         });
 
+        $scope.$watch('files_cover', function () {
+            $scope.upload_cover($scope.files_cover);
+        });
+
+        $scope.upload_cover = function (files) {
+            if (files && files.length) {
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+
+                    Upload.upload({
+                        url: '/api/users/upload_cover',
+                        file: file
+                    }).progress(function (evt) {
+                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                        console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+                    }).success(function (data, status, headers, config) {
+                        var user = $scope.getCurrentUser();
+                        user.coverUrl = data.img;
+                        user.$updateUser(function (user) {
+
+                        }, function (err) {
+
+                        });
+                    }).error(function (err) {
+                        console.log(err);
+                    });
+                }
+            }
+        };
+
         $scope.upload = function (files) {
             if (files && files.length) {
                 for (var i = 0; i < files.length; i++) {
