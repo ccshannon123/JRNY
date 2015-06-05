@@ -17,15 +17,7 @@
 
 
     <div id="main-container">
-        <!--<div id="breadcrumb">
-            <ul class="breadcrumb">
-                <li><i class="fa fa-home"></i><a href="/dashboard"> Home</a>
-                </li>
-                <li><a href="/profile"> Profile</a>
-                </li>
-                <li class="active">Edit Profile</li>
-            </ul>
-        </div>-->
+        <div ng-include="'/components/account/topNav/header-msg.html'"></div>
         <!-- /breadcrumb-->
         <!-- /main-header -->
         <div class="custom-sub-navbar">
@@ -61,12 +53,17 @@
         <div class="padding-md">
             <div class="row">
                 <div class="col-sm-2 col-md-2 text-center">
-                    <div ngf-drop ngf-select ng-model="files" class="drop-box" ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true" accept="image/*" title="Drop images here or click to upload">
-                        <span class="glyphicon glyphicon-user" aria-hidden="true" ng-hide="getCurrentUser().photoUrl"></span>
-                        <img ng-show="getCurrentUser().photoUrl" src="{{getCurrentUser().photoUrl}}" class="user-photo">
+                    <div class="row">
+                        <div class="col-md-1 col-sm-12"></div>
+                        <div class="col-md-10 col-sm-12 text-right" style="border:1px solid #CCCCCC;height:300px">
+                            <div ngf-drop ngf-select ng-model="files" class="drop-box" ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true" accept="image/*" title="Drop images here or click to upload" style="margin-top:15px">
+                                <span class="glyphicon glyphicon-user" aria-hidden="true" ng-hide="getCurrentUser().photoUrl"></span>
+                                <img ng-show="getCurrentUser().photoUrl" src="{{getCurrentUser().photoUrl}}" class="user-photo">
+                            </div>
+                            <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+                        </div>  
                     </div>
-                    <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
-                    <a ng-hide="" ng-click="showProfile(getCurrentUser()._id)" class="btn btn-success">View Profile</a>
+                    <a style="margin-top:10px" ng-click="showProfile(getCurrentUser()._id)" class="btn btn-success">View Profile</a>
 
                 </div>
                 <div class="col-sm-10 col-md-10">
@@ -103,7 +100,10 @@
                                     <label class="control-label col-md-2">Phone</label>
 
                                     <div class="col-md-4 text-right">
-                                        <input type="phone" class="form-control input-sm" ng-model="getCurrentUser().PhoneNumber">
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-12"><input type="text" class="form-control input-sm" ng-model="m_phone1"></div>
+                                            <div class="col-md-8 col-sm-12"><input type="text" class="form-control input-sm" ng-model="m_phone2"></div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -125,13 +125,13 @@
                                                     <input type="radio" name="inline-radio" ng-model="getCurrentUser().gender" value="female"><span style="margin-left:20px"> Female</span>
                                                 </label>
                                             </div>
-                                            <div class="col-md-6 col-sm-12">
-                                                <label class="label-radio inline">
-                                                    <div class="row">
-                                                        <div class="col-md-3"><span style="margin-right:5px;line-height:32px"> Other</span></div>
-                                                        <div class="col-md-9"><input type="text" class="form-control" ng-model="getCurrentUser().gender" /></div>
-                                                    </div>
+                                            <div class="col-md-2 col-sm-12" style="margin-top:6px">
+                                                <label class="label-radio inline" >
+                                                    <input type="radio" name="inline-radio" value="other"><span style="margin-left:20px;"> Other</span>
                                                 </label>
+                                            </div>
+                                            <div class="col-md-5 col-sm-12">
+                                                <input type="text" class="form-control" />
                                             </div>
                                         </div>
                                     </div>
@@ -141,8 +141,9 @@
                                         <div class="input-group">
                                             <div class="row">
                                                 <div class="col-md-4 col-sm-12" style='padding-right:0px'>
-                                                    <select class="form-control input-sm" ng-model="m_month" ng-init="m_month=getInt(getCurrentUser().DateOfBirth.substr(5,2))" style="width:100%"  ng-options="mon for mon in monthList">
+                                                    <select class="form-control input-sm" ng-options="obj.value as obj.text for obj in month_name_list" ng-model="m_month" ng-init="m_month=getInt(getCurrentUser().DateOfBirth.substr(5,2))" style="width:100%">
                                                         <option value="">Select month</option>
+                                                        <!--<option ng-repeat="mon in month_name_list track by $index" value="{{mon}}">{{mon}}</option>-->
                                                     </select>
                                                 </div>
                                                 <div class="col-md-4 col-sm-12">
@@ -155,6 +156,7 @@
                                                         <option value="">Select year</option>
                                                     </select>
                                                 </div>
+
                                             </div>
                                             <!--<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="getCurrentUser().DateOfBirth" is-open="opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-focus="open($event)" readonly style="cursor:auto; background-color:#fff;" />
                                             <span class="input-group-btn">
@@ -175,16 +177,19 @@
                                     <label class="control-label col-md-2">Since when?</label>
 
                                     <div class="col-md-2">
-                                        <select class="form-control input-sm" ng-model="getCurrentUser().since_month" ng-options="mon for mon in monthList" >
+                                        <select class="form-control input-sm" ng-model="getCurrentUser().since_month" ng-options="obj.value as obj.text for obj in month_name_list">
                                             <option value="">Select month</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-2">
-                                        <select class="form-control input-sm" ng-model="getCurrentUser().since_year">
+                                    <div class="col-md-1">
+                                        <select class="form-control input-sm" ng-model="getCurrentUser().since_year" ng-options="year for year in yearList">
                                             <option value="">Select year</option>
-                                            <option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option><option value="2013">2013</option>
-                                            <option value="2014">2014</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017">2017</option>
                                         </select>
+                                    </div>
+                                    <div class="col-md-1 col-sm-12">
+                                        <label class="label-radio inline">
+                                            <input type="checkbox" /><span style="margin-left:20px;line-height:26px">I'm a Native!</span>
+                                        </label>
                                     </div>
                                     <!-- /.col -->
                                 </div>
@@ -199,24 +204,26 @@
                                     <label class="control-label col-md-1" style="text-align: left">Language</label>
                                     <label class="control-label col-md-2" style="text-align: left">Reading</label>
                                     <label class="control-label col-md-2" style="text-align: left">Writing</label>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-6"></div>
-                                    <div class="col-md-6">
-                                        <div ng-repeat="language in getCurrentUser().languages" class="col-md-12" style="padding: 5px 0 0 0;">
-                                            <label class="control-label col-md-2" style="text-align: left">{{language.lang}}</label>
-                                            <div class="col-md-4" style="padding-left: 0;">
-                                                <select class="form-control" ng-model="language.reading" ng-options="level for level in levels"></select>
-                                            </div>
-                                            <div class="col-md-4" style="padding-left: 0;">
-                                                <select class="form-control" ng-model="language.writing" ng-options="level for level in levels"></select>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <button class="btn btn-default" ng-click="removeLanguage(language)"><span class="glyphicon glyphicon-remove"></span>
-                                                </button>
+
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-12"></div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="row" ng-repeat="language in getCurrentUser().languages" style="padding: 5px 0 0 0;">
+                                                <label class="control-label col-md-2" style="text-align: left">{{language.lang}}</label>
+                                                <div class="col-md-4" style="padding-left: 0;">
+                                                    <select class="form-control" ng-model="language.reading" ng-options="level for level in levels"></select>
+                                                </div>
+                                                <div class="col-md-4" style="padding-left: 0;">
+                                                    <select class="form-control" ng-model="language.writing" ng-options="level for level in levels"></select>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <button class="btn btn-default" ng-click="removeLanguage(language)"><span class="glyphicon glyphicon-remove"></span>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class="panel-footer">
                                     <div class="col-md-2 col-sm-12"></div>

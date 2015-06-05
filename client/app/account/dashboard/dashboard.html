@@ -16,16 +16,8 @@
     <div ng-include="'/components/account/leftNav/leftNav.html'"></div>
 
 
-    <div id="main-container" ng-cloak>
-        <!-- /breadcrumb-->
-        <div class="main-header clearfix">
-            <div class="page-title">
-                <!--<h3 class="no-margin">Dashboard</h3>
-                <span>Welcome back {{ getCurrentUser().firstName + ' ' + getCurrentUser().lastName }}</span>-->
-                <h2>Welcome {{getCurrentUser().firstName}}!</h2>
-            </div>
-            <!-- /page-title -->
-        </div>
+    <div id="main-container" ng-cloak>        
+        <div ng-include="'/components/account/topNav/header-msg.html'"></div>
         <!-- /main-header -->
 
         <div class="custom-sub-navbar">
@@ -37,7 +29,7 @@
                     <a href="#">Itinerary Builder</a>
                 </li>
                 <li>
-                    <a href="#">Favorites</a>
+                    <a href="/favorite/Restaurant">Favorites</a>
                 </li>
                 <li>
                     <a href="/edit-profile">Profile</a>
@@ -165,7 +157,7 @@
                                                 <div class="text-center" style="margin-top:20px;"><a href="/message_write/{{jrny.uid}}" class="btn btn-info" style="width:75%">Message Local</a></div>
                                                 <div class="text-center" style="margin-top:10px;">
                                                     <button ng-show="(jrny.isaccept=='0')" class="btn btn-success" style="width:75%">Pending</button>
-                                                    <button ng-show="!(jrny.isaccept=='0')" class="btn btn-success" style="width:75%">View Itinerary</button>
+                                                    <a href="/traveler-itinerary/{{jrny._id}}" ng-show="!(jrny.isaccept=='0')" class="btn btn-success" style="width:75%">View Itinerary</a>
                                                 </div>
                                             </div>
                                         </div>

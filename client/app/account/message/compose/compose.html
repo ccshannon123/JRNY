@@ -16,14 +16,9 @@
 
 
     <div id="main-container">
-        <div id="breadcrumb">
-            <ul class="breadcrumb">
-                <li><i class="fa fa-home"></i><a href="/message_inbox"> Home</a>
-                </li>
-                <li class="active">Write Mail</li>
-            </ul>
-        </div>
+        
         <!-- /breadcrumb-->
+        <div ng-include="'/components/account/topNav/header-msg.html'"></div>
         <!-- /main-header -->
         <div class="custom-sub-navbar">
             <ul class="nav subnav">
@@ -67,10 +62,10 @@
                         <div class="row row_border" style="border-top:1px solid #EEEEEE">
                             <div class="col-md-1 col-sm-12"><h5>To:</h5></div>
                             <div class="col-md-10 col-sm-12">
-                                <select class="form-control" ng-model="remail" ng-show="($stateParams.id=='')">
+                                <select class="form-control" ng-model="remail" ng-show="(m_state_id=='')">
                                     <option value="{{user.email}}" ng-repeat="user in users track by $index">{{user.firstName}} {{user.lastName}}</option>
                                 </select>
-                                <h5>{{users[m_idx].firstName}} {{users[m_idx].lastName}}</h5>
+                                <h5 ng-show="!(m_state_id=='')">{{users[m_idx].firstName}} {{users[m_idx].lastName}}</h5>
                             </div>
                             <div class="col-md-1 col-sm-12"><button class="btn btn-danger" style="float:right" ng-click="send()">Send</button></div>
                         </div>

@@ -1,0 +1,451 @@
+<!-- Overlay Div -->
+<!--<div id="overlay" class="transparent">
+</div>-->
+
+<div id="wrapper" class="preload sidebar-hide" ng-controller="AccountCtrl">
+
+    <!-- =========================
+   SECTION: TOP NAVIGATION
+  ============================== -->
+    <div ng-include="'/components/account/topNav/topNav.html'"></div>
+
+
+    <!-- =========================
+   SECTION: LEFT NAVIGATION
+  ============================== -->
+    <div ng-include="'/components/account/leftNav/leftNav.html'"></div>
+
+
+    <div id="main-container">
+        <div class="row">
+            <div class="col-md-1 col-sm-12">
+            </div>
+            <div class="col-md-10 col-sm-12">
+                <h4>Survival Guide</h4>
+            </div>
+        </div>
+        <!-- /breadcrumb-->
+        <!-- /main-header -->
+        <div class="custom-sub-navbar">
+            <ul class="nav subnav">
+                <li ui-sref-active="active">
+                    <a href="#" ng-click="show(1)">
+            Summary
+          </a>
+                </li>
+                <li ui-sref-active="active">
+                    <a href="#" ng-click="show(2)">
+            Before Arriving
+          </a>
+                </li>
+                <li ui-sref-active="active">
+                    <a href="#" ng-click="show(3)">
+            Getting Here
+          </a>
+                </li>
+                <li ui-sref-active="active">
+                    <a href="#" ng-click="show(4)">
+            Accommodation
+          </a>
+                </li>
+                <li ui-sref-active="active">
+                    <a href="#" ng-click="show(5)">
+            Transportation
+          </a>
+                </li>
+                <li ui-sref-active="active">
+                    <a href="#" ng-click="show(6)">
+            Money
+          </a>
+                </li>
+                <li ui-sref-active="active">
+                    <a href="#" ng-click="show(7)">
+            Weather/Seasons
+          </a>
+                </li>
+                <li ui-sref-active="active">
+                    <a href="#" ng-click="show(8)">
+            More Information
+          </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="padding-md">
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <!-- EDIT PROFILE FORM -->
+                    <div class="panel panel-default">
+                        <!--Summary -->
+                        <div class="row">
+                            <div class="col-md-1 col-sm-12"></div>
+                            <div class="col-md-10 col-sm-12">
+                                <div ng-show="m_show==1">
+                                    <form class="form-horizontal form-border textarea-form">
+                                      <div class="panel-heading">
+                                        <h3>Summary<a href="/traveler-itinerary/{{tid}}" style="float:right" class="btn btn-danger">Return to Itinerary</a></h3>
+                                      </div>
+                                      <div class="panel-body">
+                                        <div class="form-group">
+                                          <h4>
+                                            About You
+                                          </h4>
+
+                                          <p>
+                                            Describe yourself, what you like to do, and anything else people may find interesting about you.
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.aboutYou"
+                                                    rows="2"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                          <h4>
+                                            About Local Place
+                                          </h4>
+
+                                          <p>
+                                            Why do you love the the place you call home and why others will love it too?
+                                          </p>
+                                          <textarea class="form-control"  ng-disabled="true" ng-model="m_guide.aboutPlace"
+                                                    rows="2"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                          <h4>
+                                            Reserve Now
+                                          </h4>
+
+                                          <p>
+                                            Sometimes there are events that need to be reserved a long time in advance. What "must do" activities must be
+                                            booked as soon as possible?
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.reserveThing"
+                                                    rows="2"></textarea>
+                                        </div>
+                                      </div>
+                                    </form>
+                                </div>
+
+                                <!--Before Arriving-->
+                                <div ng-show="m_show==2">
+                                    <form class="form-horizontal form-border textarea-form">
+                                      <div class="panel-heading">
+                                        <h3>Before Arriving<a href="/traveler-itinerary/{{tid}}" style="float:right" class="btn btn-danger">Return to Itinerary</a></h3>
+                                      </div>
+                                      <div class="panel-body">
+                                        <div class="form-group">
+                                          <h4>
+                                            Language
+                                          </h4>
+
+                                          <p>
+                                            What language is spoken? Is English widely spoken/understood? What are helpful words or phrases to make a
+                                            travelers experience more comfortable?
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.language"
+                                                    rows="2"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                          <h4>
+                                            Visas
+                                          </h4>
+
+                                          <p>
+                                            Do visitors from other countries need a visa to travel to your country? A link to a website where a traveler
+                                            can learn more is best!
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.visas"
+                                                    rows="2"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                          <h4>
+                                            Vaccinations
+                                          </h4>
+
+                                          <p>
+                                            Do visitors from other countries need vaccinations to travel to your country? Are there other health concerns
+                                            to be aware of? A link to a website where a traveler can learn more is best!
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.vaccinations"
+                                                    rows="2"></textarea>
+                                        </div>
+                                      </div>
+                                    </form>
+
+                                </div>
+
+                                <!--Getting Here-->
+                                <div ng-show="m_show==3">
+                                    <form class="form-horizontal form-border textarea-form">
+                                      <div class="panel-heading">
+                                        <h3>Getting Here<a href="/traveler-itinerary/{{tid}}" style="float:right" class="btn btn-danger">Return to Itinerary</a></h3>
+                                      </div>
+                                      <div class="panel-body">
+                                        <div class="form-group">
+                                          <h4>
+                                            Airport
+                                          </h4>
+                                          <p>
+                                            Describe the arrival options, airport layout, transportation options from the airport and anything else that will be helpful to know. Remember airports are the worst!
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.airport" rows="2"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                          <h4>
+                                            Driving
+                                          </h4>
+                                          <p>
+                                            Describe the arrival options, specific driving laws, rules of the road, tolls, and general driving etiquette. Is an international drivers license valid?
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.driving" rows="2"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                          <h4>
+                                            Train/Bus
+                                          </h4>
+                                          <p>
+                                            Describe the arrival options, transportation options from the station, and any other helpful information.
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.train_bus" rows="2"></textarea>
+                                        </div>
+                                      </div>
+                                    </form>
+
+                                </div>
+
+                                <!--Accommodation-->
+                                <div ng-show="m_show==4">
+                                    <form class="form-horizontal form-border textarea-form">
+                                      <div class="panel-heading">
+                                        <h3>Accomodations<a href="/traveler-itinerary/{{tid}}" style="float:right" class="btn btn-danger">Return to Itinerary</a></h3>
+                                      </div>
+                                      <div class="panel-body">
+                                        <div class="form-group">
+                                          <h4>
+                                            Recommended Neighborhoods
+                                          </h4>
+                                                <p>
+                                            Describe neighborhoods that you would like to stay in if you were visiting.
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.neighborhoods" rows="2"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                          <h4>
+                                            Hotels
+                                          </h4>
+                                          <p>
+                                            Do you have any specific hotel recommendations?
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.hotels" rows="2"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                          <h4>
+                                            Rentals
+                                          </h4>
+                                          <p>
+                                            Do you have any specific vacation rental recommendations?
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.rentals" rows="2"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                          <h4>
+                                            Hostels/Other
+                                          </h4>
+                                          <p>
+                                            Do you have any specific hostel recommendations? What about other one-of-a-kind accomodation opportunities?
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.hostels" rows="2"></textarea>
+                                        </div>
+                                      </div>
+                                    </form>
+
+                                </div>
+
+                                <!--Transportation-->
+                                <div ng-show="m_show==5">
+                                    <form class="form-horizontal form-border textarea-form">
+                                      <div class="panel-heading">
+                                        <h3>Transportation<a href="/traveler-itinerary/{{tid}}" style="float:right" class="btn btn-danger">Return to Itinerary</a></h3>
+                                      </div>
+                                      <div class="panel-body">
+                                        <div class="form-group">
+                                          <h4>
+                                            Public Transportation
+                                          </h4>
+                                          <p>
+                                           Describe public transportation in the area? Do you recommend it? How do you pay for it? Where can you find the timetable? Are there apps that make it easier?
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.public_trans" rows="2"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                          <h4>
+                                            Rental Car
+                                          </h4>
+                                          <p>
+                                            Describe driving and parking in your area? Are there more difficult places to find parking? Can you pay parking meters with a card? What about daily/hourly rentals like ZipCar? Do you recommend renting a car?
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.rental_car" rows="2"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                          <h4>
+                                            Taxi/Ride Share
+                                          </h4>
+                                          <p>
+                                            Describe taxis vs. ride sharing apps. Is there a safe/recommended taxi service that you use? Is it safe to hail a taxi on the street? Any other general transportation options.
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.taxi_ride_share" rows="2"></textarea>
+                                        </div>
+                                      </div>
+                                    </form>
+
+                                </div>
+
+                                <!--Money-->
+                                <div ng-show="m_show==6">
+                                    <form class="form-horizontal form-border textarea-form">
+                                      <div class="panel-heading">
+                                        <h3>Money<a href="/traveler-itinerary/{{tid}}" style="float:right" class="btn btn-danger">Return to Itinerary</a></h3>
+                                      </div>
+                                      <div class="panel-body">
+                                        <div class="form-group">
+                                          <h4>
+                                            Currency/Exchange
+                                          </h4>
+                                          <p>
+                                            What is the local currency? Where is the best place to exchange money? Should travelers bring Dollars, Euros, Pounds, etc or wait until they arrive? Is cash or credit card more widely used/accepted?
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.currency_exchange" rows="2"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                          <h4>
+                                            Banks/ATMs
+                                          </h4>
+                                          <p>
+                                            What are popular banks in the area? What are the most common types of ATMs? Is is safe to use ATMs at night? Is service offered in other languages?
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.bank_atms" rows="2"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                          <h4>
+                                            Budget
+                                          </h4>
+                                          <p>
+                                            What are average prices of common goods? This will help a Traveler budget their Jrny. Examples: lunch, a beer/cocktail out on the town, a taxi ride, cover at a club, gas, etc.
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.budget" rows="2"></textarea>
+                                        </div>
+                                      </div>
+                                    </form>
+
+                                </div>
+
+                                <!--Weather/session-->
+                                <div ng-show="m_show==7">
+                                    <form class="form-horizontal form-border textarea-form">
+                                      <div class="panel-heading">
+                                        <h3>Weather/Seasons<a href="/traveler-itinerary/{{tid}}" style="float:right" class="btn btn-danger">Return to Itinerary</a></h3>
+                                      </div>
+                                      <div class="panel-body">
+                                        <div class="form-group">
+                                          <h4>
+                                            Average Temperatures
+                                          </h4>
+                                          <p>
+                                            We will show monthly average temperatures, but if you have specific suggestions or notes about the wheather, write them here.
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.avg_temp" rows="2"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                          <h4>
+                                            Seasons
+                                          </h4>
+                                          <p>
+                                            Does your area have tourist seasons (low, high, holiday)? Describe them and what to expect.
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.seasons" rows="2"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                          <h4>
+                                            Things to Bring
+                                          </h4>
+                                          <p>
+                                            What should a Traveler definitely bring to make sure they make the most out of their Jrny? Clothes, electronics, medications, etc.
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.things_bring" rows="2"></textarea>
+                                        </div>
+                                      </div>
+                                    </form>
+
+                                </div>
+
+                                <!--More information-->
+                                <div ng-show="m_show==8">
+                                    <form class="form-horizontal form-border textarea-form">
+                                      <div class="panel-heading">
+                                        <h3>More Information<a href="/traveler-itinerary/{{tid}}" style="float:right" class="btn btn-danger">Return to Itinerary</a></h3>
+                                      </div>
+                                      <div class="panel-body">
+                                        <div class="form-group">
+                                          <h4>
+                                            Safety
+                                          </h4>
+                                          <p>
+                                            Are there any safety concerns a Traveler should take into consideration? What about at night? In taxis/subways? What are the most important emergency numbers?
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.safety" rows="2"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                          <h4>
+                                            Technology
+                                          </h4>
+                                          <p>
+                                            Can a Traveler use their cell phone or easily buy service from a local carrier? Are there any helpful apps to download? Is wifi common in restaurants, hotels, parks, etc.?
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.technoloty" rows="2"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                          <h4>
+                                            Other Things to Think About
+                                          </h4>
+                                          <p>
+                                            Is there anything else you can think of that would improve the overall quality of a Traveler's Jrny?
+                                          </p>
+                                          <textarea class="form-control" ng-disabled="true" ng-model="m_guide.other_think" rows="2"></textarea>
+                                        </div>
+                                      </div>
+                                      
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.padding-md -->
+    </div>
+    <!-- /main-container -->
+    <!-- Footer
+      ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-sm-6">
+                <p class="no-margin">
+                    &copy; 2015 <strong>JRNY</strong>. ALL Rights Reserved.
+                </p>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row-->
+    </footer>
+</div>
+<!-- /wrapper -->
+
+<a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
+
+<!-- Pace -->
+<script src='../../../assets/endless/js/endless/pace.min.js'></script>
+
+<!-- Endless -->
+<script src="../../../assets/endless/js/endless/endless.js"></script>

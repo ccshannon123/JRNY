@@ -12,7 +12,7 @@ angular.module('jrnyApp')
     	$scope.m_keyword = "";
 
     	$scope.write_mail = function() {
-    		location.href = "/message_write";
+    		location.href = "/message_write/new";
     	};
 
     	$scope.delete_mail = function() {
@@ -137,10 +137,13 @@ angular.module('jrnyApp')
 		};
 
 		angular.element(document).ready(function () {
-	    	if($scope.getCurrentUser().email == undefined) {
-	    		location.href = '/message_inbox';
-	    	}
-	        $scope.get_inbox();
+
+		
+	    $scope.$watch(function(scope){return scope.getCurrentUser().email}, function(){
+	      if($scope.getCurrentUser().email!=undefined){
+	          $scope.get_inbox();
+	      }
+	    })
 	    });
 
     });

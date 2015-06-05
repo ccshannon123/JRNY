@@ -9,6 +9,8 @@ angular.module('jrnyApp')
     	$scope.msg_content = "";
     	$scope.m_idx = 0;
 
+    	$scope.m_state_id = "";
+
     	$scope.send = function() {
     		var dt = new Date();
 			if($scope.remail == "") {
@@ -39,10 +41,17 @@ angular.module('jrnyApp')
 		};
 
 		angular.element(document).ready(function () {
-	    	if($scope.getCurrentUser().email == undefined) {
-	    		location.href = '/message_write';
-	    	}
-	        $scope.get_user();
+
+		if($stateParams.id == "new")
+			$scope.m_state_id = "";
+		else
+			$scope.m_state_id = $stateParams.id;
+
+	    $scope.$watch(function(scope){return scope.getCurrentUser().email}, function(){
+	      if($scope.getCurrentUser().email!=undefined){
+	          $scope.get_user();
+	      }
+	    })
 	    });
 
     });

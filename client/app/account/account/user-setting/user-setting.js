@@ -53,9 +53,11 @@ angular.module('jrnyApp').controller('usersettingCtrl', function ($scope, $http,
         
 
     angular.element(document).ready(function () {
-    	if($scope.getCurrentUser().email == undefined) {
-    		location.href = '/account-settings';
-    	}
-        $scope.noti_get();
+
+    $scope.$watch(function(scope){return scope.getCurrentUser().email}, function(){
+      if($scope.getCurrentUser().email!=undefined){
+          $scope.noti_get();
+      }
+    })
     });
 });

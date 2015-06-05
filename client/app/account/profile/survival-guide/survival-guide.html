@@ -17,15 +17,7 @@
 
 
     <div id="main-container">
-        <!--<div id="breadcrumb">
-            <ul class="breadcrumb">
-                <li><i class="fa fa-home"></i><a href="/dashboard"> Home</a>
-                </li>
-                <li><a href="/profile"> Profile</a>
-                </li>
-                <li class="active">Edit Profile</li>
-            </ul>
-        </div>-->
+        <div ng-include="'/components/account/topNav/header-msg.html'"></div>
         <!-- /breadcrumb-->
         <!-- /main-header -->
         <div class="custom-sub-navbar">
@@ -75,7 +67,23 @@
 
         <div class="padding-md">
             <div class="row">
-                <div class="col-sm-12 col-md-12">
+                <div class="col-sm-12 col-md-2">           
+                    <div class="row" style="margin-top:20px">
+                        <div class="col-md-3 col-sm-12"></div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="row"><a style="font-weight:{{m_font_bold[0]}}" ng-click="go_page(0)" class="btn" ui-sref="survival-guide.summary">Summary</a></div>
+                            <div class="row"><a style="font-weight:{{m_font_bold[1]}}" ng-click="go_page(1)" class="btn" ui-sref="survival-guide.before_arriving">Before Arriving</a></div>
+                            <div class="row"><a style="font-weight:{{m_font_bold[2]}}" ng-click="go_page(2)" class="btn" ui-sref="survival-guide.getting_here">Getting Here</a></div>
+                            <div class="row"><a style="font-weight:{{m_font_bold[3]}}" ng-click="go_page(3)" class="btn" ui-sref="survival-guide.accommodation">Accommodation</a></div>
+                            <div class="row"><a style="font-weight:{{m_font_bold[4]}}" ng-click="go_page(4)" class="btn" ui-sref="survival-guide.transportation">Transportation</a></div>
+                            <div class="row"><a style="font-weight:{{m_font_bold[5]}}" ng-click="go_page(5)" class="btn" ui-sref="survival-guide.money">Money</a></div>
+                            <div class="row"><a style="font-weight:{{m_font_bold[6]}}" ng-click="go_page(6)" class="btn" ui-sref="survival-guide.weather_seasons">Weather/Seasons</a></div>
+                            <div class="row"><a style="font-weight:{{m_font_bold[7]}}" ng-click="go_page(7)" class="btn" ui-sref="survival-guide.more_info">More Information</a></div>
+                            <div class="row" style="margin-top:15px"><a href="/edit-profile" class="btn btn-danger" >Return to Profile</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-8">
                     <!-- EDIT PROFILE FORM -->
                     <div class="panel panel-default" ui-view>
 

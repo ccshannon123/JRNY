@@ -15,14 +15,24 @@ angular.module('jrnyApp')
         $scope.getCurrentUser = Auth.getCurrentUser;
         $scope.levels = ['Beginner', 'Limited Working', 'Professional', 'Native/Billingual'];
         $scope.languageList = ['English', 'Arabic', 'French', 'German', 'Hindi', 'Italian', 'Japanese', 'Korean', 'Mandarin', 'Portuguese', 'Russian', 'Spanish', 'Other'];
-        $scope.monthList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+        $scope.month_name_list = [{"value": 1, "text": "January"}, {"value": 2, "text": "February"}, {"value" : 3, "text": "March"}, {"value": 4, "text": "April"},
+                                {"value": 5, "text": "May"}, {"value": 6, "text": "June"}, {"value": 7, "text": "July"}, {"value": 8, "text": "August"},
+                                {"value": 9, "text": "September"}, {"value": 10, "text": "October"}, {"value": 11, "text": "November"}, {"value": 12, "text": "December"}];
         $scope.dayList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
-        $scope.yearList = [1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000];
+        $scope.yearList = [];
+
+        for(var i = 1920; i <= 2015; i++) {
+            $scope.yearList.push(i);
+        }
+
         $scope.sel_lang = '';
 
         $scope.m_year=0;
         $scope.m_month=0;
         $scope.m_day=0;        
+
+        $scope.m_phone1 = "";
+        $scope.m_phone2 = "";
 
         $scope.m_traveler_survey = {traveler: '', local: '', 
                                     basic: {arrival_date:'', arrival_time: '', departure_date: '', departure_time: '', how_get: '', how_already_booked: '', where_stay: '', where_already_booked: ''},
@@ -95,7 +105,10 @@ angular.module('jrnyApp')
         };
 
         $scope.getInt = function (str) {
-            return parseInt(str);
+            if(str == undefined)
+                return "";
+            else
+                return parseInt(str);
         };
 
         $scope.isActive = function (route) {
@@ -105,7 +118,8 @@ angular.module('jrnyApp')
         $scope.update = function () {
             var user = $scope.getCurrentUser();
             if($scope.m_year != 0 & $scope.m_month != 0 & $scope.m_day != 0)
-                user.DateOfBirth = $scope.m_year + "/" + $scope.m_month + "/" + $scope.m_day;
+                user.DateOfBirth = $scope.m_year + "/" + $scope.m_month + "/" + $scope.m_day + " 0:0:0";
+            user.PhoneNumber = $scope.m_phone1 + $scope.m_phone2;
             user.$updateUser(function (user) {
                 toastr.success('Your information has been updated', 'Saved!')
             }, function (err) {

@@ -26,6 +26,7 @@ var validationError = function (res, err) {
 /*
     Get local list
 */
+
 exports.get_local = function (req, res, next) {
 
     User.find({'local.applied': true}, function (err, users) {
@@ -33,6 +34,23 @@ exports.get_local = function (req, res, next) {
         console.log(err);
       } else if (users.length) {
         res.json(users);
+      } else {
+        res.json({result:'none'});
+      }
+    });
+};
+
+exports.set_local = function (req, res, next) {
+  console.log('s');
+  console.log(req.params.em);
+    User.find({email: req.params.em}, function (err, users) {
+      if (err) {
+        console.log(err);
+      } else if (users.length) {
+        users[0].local.applied = true;
+        users[0].save(function (err, user) {  
+          res.json(user);
+        });
       } else {
         res.json({result:'none'});
       }

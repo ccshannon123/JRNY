@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jrnyApp')
-    .controller('itinerarybuilderCtrl', function ($scope, $http, $stateParams, Auth, User) {
+    .controller('traveleritineraryCtrl', function ($scope, $http, $stateParams, Auth, User) {
 
 	$scope.getCurrentUser = Auth.getCurrentUser;
 

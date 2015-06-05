@@ -206,6 +206,7 @@ angular.module('jrnyApp').controller('notificationCtrl', function ($scope, $http
               $scope.m_alert_box = true;
               $scope.m_alert_box1 = false;
               $scope.m_noti_text = "Phone number is successfully added.";
+              $scope.m_phone = "";
               $scope.noti_get();
 
             }).
@@ -230,6 +231,7 @@ angular.module('jrnyApp').controller('notificationCtrl', function ($scope, $http
             $scope.m_alert_box1 = false;
             $scope.m_noti_text = "Email address is successfully added.";
             $scope.noti_get();
+            $scope.m_email = "";
           }).
           error(function(data, status, headers, config) {
           });
@@ -244,9 +246,11 @@ angular.module('jrnyApp').controller('notificationCtrl', function ($scope, $http
     }; 
 
     angular.element(document).ready(function () {
-    	if($scope.getCurrentUser().email == undefined) {
-    		location.href = '/notifications';
-    	}
-        $scope.noti_get();
+
+    $scope.$watch(function(scope){return scope.getCurrentUser().email}, function(){
+      if($scope.getCurrentUser().email!=undefined){
+          $scope.noti_get();
+      }
+    })
     });
 });

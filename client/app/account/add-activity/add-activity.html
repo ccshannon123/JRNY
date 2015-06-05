@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-md-1 col-sm-12"></div>
             <div class="col-md-10">
-                <h3>Itinerary Builder</h3>
+                <h4>Itinerary Builder</h4>
             </div>
         </div>
         <!-- /main-header -->
@@ -44,7 +44,17 @@
                 <div class="col-md-3 col-sm-12">
                     <div class="row">
                         <div class="row"><div class="col-md-12 col-sm-12"><h4>Name of Activity</h4></div></div>
-                        <div class="row"><div class="col-md-12 col-sm-12"><input ng-model="$parent.m_activity_name" type="text" class="form-control" /></div></div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12"><input ng-model="$parent.m_activity_name" type="text" class="form-control" /></div>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="row"><div class="col-md-12 col-sm-12"><h4>Favorite</h4></div></div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <input ng-model="$parent.m_favorite" type="text" class="form-control" />
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-5 col-sm-12">
@@ -74,10 +84,25 @@
                     </div>
                     <div class="row">
                         <div class="row"><div class="col-md-12 col-sm-12"><h4>Suggestions to Traveler</h4></div></div>
-                        <div class="row"><div class="col-md-12 col-sm-12"><textarea ng-model="$parent.m_suggestion" class="form-control"></textarea></div></div>
+                        <div class="row"><div class="col-md-12 col-sm-12"><textarea rows="5" ng-model="$parent.m_suggestion" class="form-control"></textarea></div></div>
                     </div>
                     <div class="row" style="margin-top:15px">
                         <a ng-click="add_activity()" class="btn btn-success" style="width:100%">Add to Itinerary</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-12 text-center">
+                    <h3>Add a Favorite</h3>
+                    <div class="row">
+                        <div class="row" style="padding:15px 15px 15px 15px"><a href="/favorite/Restaurant" style="width:80%" class="btn btn-default">Add a Restaurant</a></div>
+                        <div class="row" style="padding:15px 15px 15px 15px"><a href="/favorite/Bar-Club" style="width:80%" class="btn btn-default">Add a Bar/Club</a></div>
+                        <div class="row" style="padding:15px 15px 15px 15px"><a href="/favorite/Outdoor" style="width:80%" class="btn btn-default">Add an Outdoor Activity</a></div>
+                        <div class="row" style="padding:15px 15px 15px 15px"><a href="/favorite/Museum" style="width:80%" class="btn btn-default">Add a Museum</a></div>
+                        <div class="row" style="padding:15px 15px 15px 15px"><a href="/favorite/Another" style="width:80%" class="btn btn-default">Add a Another Favorite</a></div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div map-lazy-load="http://maps.google.com/maps/api/js" style="margin-top:15px">
+                      <map center="41,-87" zoom="3" style="height:450px"></map>
                     </div>
                 </div>
             </div>

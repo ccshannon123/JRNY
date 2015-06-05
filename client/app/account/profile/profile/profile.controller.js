@@ -12,11 +12,21 @@ angular.module('jrnyApp').controller('profileCtrl', function ($scope, $http, $st
 	$scope.m_user_detail = {};
 	$scope.m_user_email = "";
 
+	
 	$scope.getNumber = function(num) {
 		num = eval(num);
 	    return new Array(num);   
 	};
 	
+	$scope.abc = function() {
+
+		$http.get('/api/user_review/set_local/' + $scope.m_user_detail.email).
+		success(function(data, status, headers, config) { 
+		}).
+	      error(function(data, status, headers, config) {
+	      });
+	};
+
 	$scope.get_review = function(tp) {
 		var month_name = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
 		$http.get('/api/user_review/get_user_detail_by_id/' + $stateParams.id).
@@ -35,7 +45,7 @@ angular.module('jrnyApp').controller('profileCtrl', function ($scope, $http, $st
 				    	$scope.received_reviews.forEach(function(review) {
 
 				        	review.description = review.description.replace("\n", "<br />");
-				        	review.rdate = month_name[parseInt(review.rdate.substr(5,2)) - 1] + " " + review.rdate.substr(0,4);
+				        	review.rdate = review.rdate.substr(8,2) + "/" + review.rdate.substr(5,2) + "/" + review.rdate.substr(0,4);
 
 				        	$scope.total_review += eval(review.review);
 

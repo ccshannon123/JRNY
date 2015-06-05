@@ -1,0 +1,116 @@
+<!-- Overlay Div -->
+<!--<div id="overlay" class="transparent">
+</div>-->
+
+<div id="wrapper" class="preload sidebar-hide" ng-controller="AccountCtrl">
+
+    <!-- =========================
+     SECTION: TOP NAVIGATION
+    ============================== -->
+    <div ng-include="'/components/account/topNav/topNav.html'"></div>
+
+
+    <!-- =========================
+     SECTION: LEFT NAVIGATION
+    ============================== -->
+    <div ng-include="'/components/account/leftNav/leftNav.html'"></div>
+
+
+    <div id="main-container" ng-cloak>
+        <!-- /breadcrumb-->
+        <div class="row">
+            <div class="col-md-1 col-sm-12"></div>
+            <div class="col-md-10">
+                <h4>Your Favorites</h4>
+            </div>
+        </div>
+        <!-- /main-header -->
+
+        <div class="row text-center" style="background-color:#999999;color:#999999">
+            <h3>&nbsp;</h3>
+        </div>
+        <!-- /grey-container -->
+
+        <div class="padding-md row">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <h2>Add Location</h2>
+                    <div class="row">
+                        <div class="col-md-2 col-sm-12"><h4>Name</h4></div>
+                        <div class="col-md-4 col-sm-12"><input ng-model="$parent.m_name" type="text" class="form-control" /></div>
+                        <div class="col-md-2 col-sm-12"><h4>Location</h4></div>
+                        <div class="col-md-4 col-sm-12"><input ng-model="$parent.m_location" type="text" class="form-control" /></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 col-sm-12"><h4>Phone</h4></div>
+                        <div class="col-md-4 col-sm-12"><input ng-model="$parent.m_phone" type="text" class="form-control" /></div>
+                        <div class="col-md-2 col-sm-12"><h4>Website</h4></div>
+                        <div class="col-md-4 col-sm-12"><input ng-model="$parent.m_website" type="text" class="form-control" /></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 col-sm-12"><h4>Category</h4></div>
+                        <div class="col-md-4 col-sm-12">
+                            <select class="form-control" ng-model="$parent.m_category">
+                                <option value="Restaurant">Restaurant</option>
+                                <option value="Bar-Club">Bar/Club</option>
+                                <option value="Outdoor">Outdoor</option>
+                                <option value="Museum">Museum</option>
+                                <option value="Another">Another</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <a class="btn btn-success" ng-click="add_favorite()" style="width:100%">Add</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10 location_table">
+                    <h2>Saved Locations</h2>
+                    <div class="row" style="border-top:1px solid #CCCCCC">
+                        <div class="col-md-2 col-sm-12"><h4>Name</h4></div>
+                        <div class="col-md-2 col-sm-12"><h4>Location</h4></div>
+                        <div class="col-md-2 col-sm-12"><h4>Phone</h4></div>
+                        <div class="col-md-2 col-sm-12"><h4>Website</h4></div>
+                        <div class="col-md-2 col-sm-12"><h4>Category</h4></div>
+                        <div class="col-md-1 col-sm-12"><h4>Edit</h4></div>
+                        <div class="col-md-1 col-sm-12"><h4>Remove</h4></div>
+                    </div>
+                    <div class="row" ng-repeat="fav in m_favorites track by $index">
+                        <div class="col-md-2 col-sm-12"><input type="text" class="form-control" ng-model="sub_name" ng-init="sub_name=fav.name" /></div>
+                        <div class="col-md-2 col-sm-12"><input type="text" class="form-control" ng-model="sub_location" ng-init="sub_location=fav.location" /></div>
+                        <div class="col-md-2 col-sm-12"><input type="text" class="form-control" ng-model="sub_phone" ng-init="sub_phone=fav.phone" /></div>
+                        <div class="col-md-2 col-sm-12"><input type="text" class="form-control" ng-model="sub_website" ng-init="sub_website=fav.website" /></div>
+                        <div class="col-md-2 col-sm-12">
+                            <select class="form-control" ng-model="sub_category" ng-init="sub_category=fav.category">
+                                <option value="Restaurant">Restaurant</option>
+                                <option value="Bar-Club">Bar/Club</option>
+                                <option value="Outdoor">Outdoor</option>
+                                <option value="Museum">Museum</option>
+                                <option value="Another">Another</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1 col-sm-12"><a ng-click="edit_favorite(sub_name,sub_location,sub_phone,sub_website,sub_category,fav._id)" style="width:100%" class="btn btn-default">Edit</a></div>
+                        <div class="col-md-1 col-sm-12"><a ng-click="remove_favorite(fav._id)" style="width:100%" class="btn btn-default">Remove</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.padding-md -->
+    </div>
+    <!-- /main-container -->
+    <!-- Footer ================================================== -->
+    <div ng-include="'/components/account/footer/footer.html'"></div>
+
+</div>
+<!-- /wrapper -->
+
+<a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
+
+<!-- Pace -->
+<script src='../../../assets/endless/js/endless/pace.min.js'></script>
+
+<!-- Endless -->
+<script src="../../../assets/endless/js/endless/endless.js"></script>

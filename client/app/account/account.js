@@ -181,6 +181,16 @@ angular.module('jrnyApp')
           css: 'assets/endless/css/endless.css'
         }
       })
+
+      .state('traveler-guide', {
+        url: '/traveler-guide/:id/:lid',
+        templateUrl: 'app/account/traveler-guide/traveler-guide.html',
+        controller: 'travelersurvivalCtrl',
+        authenticate: true,
+        data: {
+          css: 'assets/endless/css/endless.css'
+        }
+      })
       .state('notification', {
         url: '/notifications',
         templateUrl: 'app/account/account/notification/notification.html',
@@ -262,6 +272,15 @@ angular.module('jrnyApp')
           css: 'assets/endless/css/endless.css'
         }
       })
+      .state('traveler-itinerary', {
+        url: '/traveler-itinerary/:id',
+        templateUrl: 'app/account/traveler-itinerary/traveler-itinerary.html',
+        controller: 'traveleritineraryCtrl',
+        authenticate: true,
+        data: {
+          css: 'assets/endless/css/endless.css'
+        }
+      })
       .state('edit-itinerary', {
         url: '/edit-itinerary/:id/:date',
         templateUrl: 'app/account/edit-itinerary/edit-itinerary.html',
@@ -271,10 +290,28 @@ angular.module('jrnyApp')
           css: 'assets/endless/css/endless.css'
         }
       })
+      .state('itinerary-view', {
+        url: '/itinerary-view/:id/:date',
+        templateUrl: 'app/account/itinerary-view/itinerary-view.html',
+        controller: 'itineraryviewCtrl',
+        authenticate: true,
+        data: {
+          css: 'assets/endless/css/endless.css'
+        }
+      })
       .state('add-activity', {
         url: '/add-activity/:id/:date',
         templateUrl: 'app/account/add-activity/add-activity.html',
         controller: 'addactivityCtrl',
+        authenticate: true,
+        data: {
+          css: 'assets/endless/css/endless.css'
+        }
+      })
+      .state('favorite', {
+        url: '/favorite/:category',
+        templateUrl: 'app/account/favorite/favorite.html',
+        controller: 'favoriteCtrl',
         authenticate: true,
         data: {
           css: 'assets/endless/css/endless.css'

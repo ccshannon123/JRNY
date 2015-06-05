@@ -21,13 +21,13 @@
         <div class="row">
             <div class="col-md-1 col-sm-12"></div>
             <div class="col-md-10">
-                <h4>{{m_builder.firstName}} {{m_builder.lastName.substr(0, 1)}}'s Daily Itinerary</h4>
+                <h4>Your Itinerary for {{getCurrentUser().homeTown.formatted_address}}</h4>
             </div>
         </div>
         <!-- /main-header -->
 
         <div class="row text-center" style="background-color:#999999;color:#EEEEEE">
-            <h4>{{m_builder.str_period}}</h4> 
+            <a href="/itinerary-view/{{m_builder._id}}/{{dt.toISOString().substr(0, 10)}}" class="btn" ng-repeat="dt in dt_str_list track by $index" class="row" style="margin:5px 5px 5px 5px">{{week_name[dt.getDay()] + ", " + month_name[dt.getMonth()].substr(0, 3) + " " + dt.getDate()}}</a>
         </div>
         <!-- /grey-container -->
 
@@ -35,24 +35,14 @@
             <div class="row">
                 <div class="col-md-1 col-sm-12"></div>
                 <div class="col-md-10 col-sm-12 text-right">
-                    <a href="/itinerary-builder/{{m_builder._id}}" class="btn btn-danger">Back to Itinerary Dashboard</a>                    
+                    <a href="/traveler-itinerary/{{m_builder._id}}" class="btn btn-danger">Return to Itinerary</a>                    
                 </div>
             </div>
             <div class="row" style="margin-top:15px">
                 <div class="col-md-1 col-sm-12"></div>
                 <div class="col-md-10 col-sm-12">
                     <div class="row">
-                        <div class="col-md-4 col-sm-12">
-                            <div class="row">
-                                <div class="col-md-12 col-sm-12" style="background-color:#ccc;margin-bottom:10px;border-radius:5px" ng-repeat="dt in dt_str_list track by $index">
-                                    <div class="row" style="margin:5px 5px 5px 5px">{{week_name[dt.getDay()] + ", " + month_name[dt.getMonth()].substr(0, 3) + " " + dt.getDate()}}</div>
-                                    <div class="row text-center">
-                                        <a href='/edit-itinerary/{{m_builder._id}}/{{dt.toISOString().substr(0, 10)}}' style="width:80%;margin:10px 20px 10px 20px" class="btn btn-info">Show Acitivity</a>
-                                    </div>
-                                </div>
-                            </div>                            
-                        </div>
-                        <div class="col-md-8 col-sm-12">
+                        <div class="col-md-6 col-sm-12">
                             <div class="row" ng-repeat="act in m_activity" style="margin-bottom:15px">
                                 <div class="col-md-3 col-sm-12 text-right">
                                     <h5>{{act.time}}:00 - {{act.ltime}}:00</h5>
@@ -69,8 +59,10 @@
                                     <h3>No Activity</h3>
                                 </div>
                             </div>
-                            <div class="row text-right">
-                                <a href="/add-activity/{{m_builder._id}}/{{cur_dt.toISOString().substr(0, 10)}}" style="width:75%;margin-top:15px" class="btn btn-success">Add Activity</a>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div map-lazy-load="http://maps.google.com/maps/api/js">
+                              <map center="41,-87" zoom="3" style="height:450px"></map>
                             </div>
                         </div>
                     </div>

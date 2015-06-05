@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jrnyApp')
-    .controller('addactivityCtrl', function ($scope, $http, $stateParams, Auth, User) {
+    .controller('itineraryviewCtrl', function ($scope, $http, $stateParams, Auth, User) {
 
 	$scope.getCurrentUser = Auth.getCurrentUser;
 
@@ -12,11 +12,7 @@ angular.module('jrnyApp')
 	$scope.dep_dt;
 	$scope.cur_dt;
 
-	$scope.m_activity_name;
-	$scope.m_time;
-	$scope.m_duration;
-	$scope.m_suggestion;
-
+	$scope.m_activity;
 	$scope.jrny_days = 0;
 
 	$scope.week_name = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
@@ -27,15 +23,22 @@ angular.module('jrnyApp')
 	    return new Array(num);   
 	};
 
-	$scope.add_activity = function() {
-		$http.post('/api/activity/add_activity', {iid: $scope.m_builder._id, an: $scope.m_activity_name, adt: $scope.cur_dt, tm: $scope.m_time, dur: $scope.m_duration, sugg: $scope.m_suggestion}).
-			success(function(data, status, headers, config) {
+	$scope.get_activity = function() {//{ $query: {receiver: em, rdelete:'0'}, $orderby: { mdate: -1 }}
+		$http.post('/api/activity/get_activity', {iid: $stateParams.id, adt: $stateParams.date}).
+	      success(function(data, status, headers, config) { 
+
+	      	if(data.result != undefined)
+	      		return;
+	      	$scope.m_activity = data;
+
+	      	$scope.m_activity.forEach(function(act) {
+	      		act.ltime = act.time + act.duration;
+	      	});
+
 	      }).
 	      error(function(data, status, headers, config) {
 	      });
 	};
-
-
 
 	$scope.get_builder = function() {
 
@@ -51,7 +54,7 @@ angular.module('jrnyApp')
        		$scope.arr_dt = new Date($scope.m_builder.basic.arrival_date);
        		$scope.dep_dt = new Date($scope.m_builder.basic.departure_date);
 
-       		/*$scope.jrny_days = 1;
+       		$scope.jrny_days = 1;
 
        		var tmp_dt = new Date();       		
        		tmp_dt.setFullYear($scope.arr_dt.getFullYear(), $scope.arr_dt.getMonth(), $scope.arr_dt.getDate());
@@ -67,10 +70,10 @@ angular.module('jrnyApp')
 
        			$scope.jrny_days++;
 
-       		}*/
-
+       		}
+       		
        		$scope.cur_dt = new Date($stateParams.date);
-
+       		
        		$scope.m_builder.str_period = $scope.week_name[$scope.cur_dt.getDay()] + ", " + $scope.month_name[$scope.cur_dt.getMonth()].substr(0, 3) + " " + $scope.cur_dt.getDate() + "," + $scope.cur_dt.getFullYear();
 
         	$http.get('/api/user_review/get_user_detail_by_id/' + $scope.m_builder.traveler).
@@ -90,6 +93,7 @@ angular.module('jrnyApp')
 
 	angular.element(document).ready(function () {
         $scope.get_builder();
+        $scope.get_activity();
     });
 
 	

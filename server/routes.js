@@ -17,6 +17,7 @@ module.exports = function(app) {
   app.use('/api/sess_manage', require('./api/sess_manage'));
   app.use('/api/traveler_survey', require('./api/traveler_survey'));
   app.use('/api/activity', require('./api/activity'));
+  app.use('/api/favorite', require('./api/favorite'));
 
   app.use('/auth', require('./auth'));
   

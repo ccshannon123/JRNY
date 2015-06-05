@@ -94,11 +94,13 @@ angular.module('jrnyApp')
 	};
 
 	angular.element(document).ready(function () {
-    	if($scope.getCurrentUser().email == undefined) {
-    		location.href = '/dashboard';
-    	}
-        $scope.get_builder();
-		$scope.get_jrny();
+
+		$scope.$watch(function(scope){return scope.getCurrentUser()._id}, function(){
+			if($scope.getCurrentUser()._id!=undefined){
+		        $scope.get_builder();
+				$scope.get_jrny();
+			}
+		})
     });
 
 	

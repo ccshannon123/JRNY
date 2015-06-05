@@ -125,11 +125,14 @@ angular.module('jrnyApp').controller('reviewsProfileCtrl', function ($scope, $ht
 	});
 
 	angular.element(document).ready(function () {
-    	if($scope.getCurrentUser().email == undefined) {
-    		location.href = '/reviews-profile';
-    	}
-        $scope.get_user();
-		$scope.get_review(1);
-		$scope.get_review(2);
-    });
+
+	    $scope.$watch(function(scope){return scope.getCurrentUser().email}, function(){
+	      if($scope.getCurrentUser().email!=undefined){
+	        $scope.get_user();
+			$scope.get_review(1);
+			$scope.get_review(2);
+	      }
+	    })
+	});
+
 });

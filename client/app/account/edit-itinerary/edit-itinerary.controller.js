@@ -56,19 +56,23 @@ angular.module('jrnyApp')
 
        		$scope.jrny_days = 1;
 
-       		var tmp_dt = new Date();
-       		tmp_dt = $scope.arr_dt;
+       		var tmp_dt = new Date();       		
+       		tmp_dt.setFullYear($scope.arr_dt.getFullYear(), $scope.arr_dt.getMonth(), $scope.arr_dt.getDate());
+
+       		$scope.dt_str_list[0] = new Date();
+       		$scope.dt_str_list[0].setFullYear($scope.arr_dt.getFullYear(), $scope.arr_dt.getMonth(), $scope.arr_dt.getDate());
 
        		while(!(tmp_dt.getFullYear() == $scope.dep_dt.getFullYear() && tmp_dt.getMonth() == $scope.dep_dt.getMonth() && tmp_dt.getDate() == $scope.dep_dt.getDate()))
        		{
-       			$scope.dt_str_list[$scope.jrny_days - 1] = tmp_dt;
+       			tmp_dt.setDate(tmp_dt.getDate() + 1);
+       			$scope.dt_str_list[$scope.jrny_days] = new Date();
+       			$scope.dt_str_list[$scope.jrny_days].setFullYear(tmp_dt.getFullYear(), tmp_dt.getMonth(), tmp_dt.getDate());
+
        			$scope.jrny_days++;
-       			tmp_dt = new Date();
-       			tmp_dt.setDate($scope.arr_dt.getDate() + $scope.jrny_days - 1);
+
        		}
-       		$scope.dt_str_list[$scope.jrny_days] = tmp_dt;
+
        		$scope.cur_dt = new Date($stateParams.date);
-       		
        		$scope.m_builder.str_period = $scope.week_name[$scope.cur_dt.getDay()] + ", " + $scope.month_name[$scope.cur_dt.getMonth()].substr(0, 3) + " " + $scope.cur_dt.getDate() + "," + $scope.cur_dt.getFullYear();
 
         	$http.get('/api/user_review/get_user_detail_by_id/' + $scope.m_builder.traveler).
