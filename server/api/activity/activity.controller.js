@@ -50,7 +50,8 @@ exports.add_activity = function (req, res, next) {
     var adt = req.body.adt;
     var tm = req.body.tm;
     var dur = req.body.dur;
-    var sugg = req.body.sugg;    
+    var sugg = req.body.sugg;
+    var place = req.body.place;
 
     var new_act = new Activity();
 
@@ -60,6 +61,7 @@ exports.add_activity = function (req, res, next) {
     new_act.time = tm;
     new_act.duration = dur;
     new_act.suggestion = sugg;
+    new_act.place = place;
     new_act.isaccept = "0";
 
 

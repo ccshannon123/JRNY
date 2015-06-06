@@ -20,6 +20,9 @@ angular.module('jrnyApp')
 	    return new Array(num);   
 	};
 
+	$scope.fgo_traveler_itinerary = function(a, b) {
+		location.href = "/itinerary-view/" + a + "/" + b;
+	}
 	$scope.get_builder = function() {
 
 		$http.get('/api/traveler_survey/get_itinerary/' + $stateParams.id).

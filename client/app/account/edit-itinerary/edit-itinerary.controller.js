@@ -23,6 +23,10 @@ angular.module('jrnyApp')
 	    return new Array(num);   
 	};
 
+	$scope.fgo_add_activity = function(a, b) {
+		location.href = "/add-activity/" + a + "/" + b;
+	}
+
 	$scope.get_activity = function() {//{ $query: {receiver: em, rdelete:'0'}, $orderby: { mdate: -1 }}
 		$http.post('/api/activity/get_activity', {iid: $stateParams.id, adt: $stateParams.date}).
 	      success(function(data, status, headers, config) { 

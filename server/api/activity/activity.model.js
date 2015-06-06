@@ -12,6 +12,7 @@ var ActivitySchema = new Schema({
 	duration: Number,
 	suggestion: String,
 	adate: Date,
+	place: Object,
 	isaccept: String
     
 });

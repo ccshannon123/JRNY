@@ -39,15 +39,17 @@
             <div class="row" style="font-size:13px">
                 <div class="col-md-1 col-sm-12"></div>
                 <div class="col-md-2 col-sm-12 text-center">
-                    <div class="drop-box">
-                        <span class="glyphicon glyphicon-user" aria-hidden="true" ng-hide="m_user_detail.photoUrl"></span>
-                        <img ng-show="m_user_detail.photoUrl" src="{{m_user_detail.photoUrl}}" class="user-photo">
+                    <div class="cover_photo row" style="background-image:url('{{m_user_detail.coverUrl}}')">
+                        <div class="drop-box text-center" style="margin-top:15px">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true" ng-hide="m_user_detail.photoUrl"></span>
+                            <img ng-show="m_user_detail.photoUrl" src="{{m_user_detail.photoUrl}}" class="user-photo">
+                        </div>
+                        <div ng-show="m_user_detail.local.applied==true && getCurrentUser().email!=m_user_email"><a href="/jrny-basics/{{m_user_detail._id}}" class="btn btn-danger">Request Local</a></div>
+                        <div style="margin-top:5px" ng-show="m_user_detail.local.applied==true && getCurrentUser().email!=m_user_email"><a href="/message_write/{{m_user_detail._id}}" class="btn btn-danger">Send Message</a></div>
+                        <div style="margin-top:5px" ng-show="(getCurrentUser().email==m_user_email)"><a href="/edit-profile" class="btn btn-danger">Update Profile</a></div>
+                        <div style="margin-top:3px">Local since March 2015</div>
+                        <div style="margin-top:2px">Traveler since November 2015</div>
                     </div>
-                    <div ng-show="m_user_detail.local.applied==true && getCurrentUser().email!=m_user_email"><a href="/jrny-basics/{{m_user_detail._id}}" class="btn btn-danger">Request Local</a></div>
-                    <div style="margin-top:10px" ng-show="m_user_detail.local.applied==true && getCurrentUser().email!=m_user_email"><a href="/message_write/{{m_user_detail._id}}" class="btn btn-danger">Send Message</a></div>
-                    <div style="margin-top:10px" ng-show="(getCurrentUser().email==m_user_email)"><a href="/edit-profile" class="btn btn-danger">Update Profile</a></div>
-                    <div style="margin-top:15px">Local since March 2015</div>
-                    <div style="margin-top:5px">Traveler since November 2015</div>
                     <div style="margin-top:10px">
                         <div class="row" style="margin-top:20px">
                             <img src="assets/images/icons/star2.jpg" style="width:20px;height:20px;" ng-repeat="i in getNumber(avg_review_int) track by $index" /><img src="assets/images/icons/star1.png" style="width:17px;height:17px;" ng-repeat="i in getNumber(5 - avg_review_int) track by $index" />

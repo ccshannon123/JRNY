@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                             <div class="row text-right">
-                                <a href="/add-activity/{{m_builder._id}}/{{cur_dt.toISOString().substr(0, 10)}}" style="width:75%;margin-top:15px" class="btn btn-success">Add Activity</a>
+                                <a ng-click="fgo_add_activity(m_builder._id, cur_dt.toISOString().substr(0, 10))" style="width:75%;margin-top:15px" class="btn btn-success">Add Activity</a>
                             </div>
                         </div>
                     </div>

@@ -33,6 +33,18 @@ angular.module('jrnyApp')
 
 	      	$scope.m_activity.forEach(function(act) {
 	      		act.ltime = act.time + act.duration;
+
+	      		/*if(act.place != null) {
+	      			alert(JSON.stringify(act.place));
+			        var marker = new google.maps.Marker({
+			          map: map,
+			          place: {
+			            placeId: act.place.place_id,
+			            location: act.place.geometry.location
+			          }
+			        });
+			        map.setCenter(new google.maps.LatLng(act.place.geometry.location.A, act.place.geometry.location.F));
+				}*/
 	      	});
 
 	      }).

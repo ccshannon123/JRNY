@@ -18,6 +18,7 @@ angular.module('jrnyApp')
 	$scope.m_suggestion;
 
 	$scope.jrny_days = 0;
+	$scope.m_place = [];
 
 	$scope.week_name = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
 	$scope.month_name = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
@@ -28,7 +29,7 @@ angular.module('jrnyApp')
 	};
 
 	$scope.add_activity = function() {
-		$http.post('/api/activity/add_activity', {iid: $scope.m_builder._id, an: $scope.m_activity_name, adt: $scope.cur_dt, tm: $scope.m_time, dur: $scope.m_duration, sugg: $scope.m_suggestion}).
+		$http.post('/api/activity/add_activity', {place: $scope.m_place, iid: $scope.m_builder._id, an: $scope.m_activity_name, adt: $scope.cur_dt, tm: $scope.m_time, dur: $scope.m_duration, sugg: $scope.m_suggestion}).
 			success(function(data, status, headers, config) {
 				location.href = "/edit-itinerary/" + $stateParams.id + "/" + $stateParams.date;
 	      }).
@@ -36,7 +37,30 @@ angular.module('jrnyApp')
 	      });
 	};
 
+	$scope.setPlace = function() {
+	 var request = {
+	    location: map.getCenter(),
+	    radius: '500',
+	    query: $scope.m_favorite
+	  };
 
+	  var service = new google.maps.places.PlacesService(map);
+	  service.textSearch(request, function(results, status) {
+	    if (status == google.maps.places.PlacesServiceStatus.OK) {
+	        var marker = new google.maps.Marker({
+	          map: map,
+	          place: {
+	            placeId: results[0].place_id,
+	            location: results[0].geometry.location
+	          }
+	        });
+	        $scope.m_place = results[0];
+	        map.setCenter(new google.maps.LatLng(results[0].geometry.location.A, results[0].geometry.location.F));
+	    }
+
+	  });
+
+	};
 
 	$scope.get_builder = function() {
 
@@ -46,8 +70,7 @@ angular.module('jrnyApp')
 	      	if(data.Result == undefined)
 	        	$scope.m_builder = data;
 	        else
-	        	return;	       	
-
+	        	return;
 
        		$scope.arr_dt = new Date($scope.m_builder.basic.arrival_date);
        		$scope.dep_dt = new Date($scope.m_builder.basic.departure_date);
@@ -88,6 +111,8 @@ angular.module('jrnyApp')
 	      error(function(data, status, headers, config) {
 	      });
 	};
+
+	
 
 	angular.element(document).ready(function () {
         $scope.get_builder();
