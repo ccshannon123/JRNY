@@ -20,6 +20,15 @@ angular.module('jrnyApp')
 	    return new Array(num);   
 	};
 
+	$scope.approve_itinerary = function() {
+		$http.get('/api/traveler_survey/approve_itinerary/' + $stateParams.id).
+			success(function(data, status, headers, config) { 
+				$scope.m_builder.isaccept = "2";
+			}).
+			error(function(data, status, headers, config) {
+	    });
+	};
+
 	$scope.fgo_traveler_itinerary = function(a, b) {
 		location.href = "/itinerary-view/" + a + "/" + b;
 	}
@@ -31,8 +40,7 @@ angular.module('jrnyApp')
 	      	if(data.Result == undefined)
 	        	$scope.m_builder = data;
 	        else
-	        	return;	       	
-
+	        	return;
 
        		$scope.arr_dt = new Date($scope.m_builder.basic.arrival_date);
        		$scope.dep_dt = new Date($scope.m_builder.basic.departure_date);

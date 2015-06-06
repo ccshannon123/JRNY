@@ -89,7 +89,8 @@
                                             </div>
                                         </div>
                                         <div class="row text-center" style="margin-top:15px">
-                                            <a class="btn btn-danger" style="width:70%">Approve Itinerary</a>
+                                            <a ng-click="approve_itinerary()" ng-hide="m_builder.isaccept=='2'" class="btn btn-danger" style="width:70%">Approve Itinerary</a>
+                                            <a ng-show="m_builder.isaccept=='2'" class="btn btn-danger" ng-disabled='true' style="width:70%">Approved</a>
                                         </div>
                                         </table>
                                     </div>

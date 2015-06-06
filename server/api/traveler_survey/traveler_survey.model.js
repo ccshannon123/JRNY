@@ -34,7 +34,8 @@ var TravelerSurveySchema = new Schema({
 		outdoors: String,
 		live_events: String,
 		overall_vibe: String
-	}
+	},
+	isaccept: String
 
     
 });

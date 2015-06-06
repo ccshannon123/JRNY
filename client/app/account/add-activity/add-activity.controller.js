@@ -7,18 +7,24 @@ angular.module('jrnyApp')
 
 	$scope.m_builder = {};
 
+	$scope.m_is_error = 0;
+	$scope.m_err_msg = "";
+
 	$scope.dt_str_list = {};
 	$scope.arr_dt;
 	$scope.dep_dt;
 	$scope.cur_dt;
 
-	$scope.m_activity_name;
-	$scope.m_time;
-	$scope.m_duration;
-	$scope.m_suggestion;
+	$scope.m_activity_name = "";
+	$scope.m_time = 0;
+	$scope.m_duration = 1;
+	$scope.m_suggestion = "";
+
+	$scope.timeList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
+	$scope.durationList = [1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 	$scope.jrny_days = 0;
-	$scope.m_place = [];
+	$scope.m_place = null;
 
 	$scope.week_name = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
 	$scope.month_name = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
@@ -29,6 +35,24 @@ angular.module('jrnyApp')
 	};
 
 	$scope.add_activity = function() {
+		$scope.setPlace();
+		if($scope.m_activity_name == "") {
+			$scope.m_is_error = 1;
+			$scope.m_err_msg = "Please input name of activity.";
+			return;
+		}
+
+		if($scope.m_place == null) {
+			$scope.m_is_error = 1;
+			$scope.m_err_msg = "Please input place.";
+			return;
+		}
+
+		if($scope.m_suggestion == null) {
+			$scope.m_is_error = 1;
+			$scope.m_err_msg = "Please input suggestion.";
+			return;
+		}
 		$http.post('/api/activity/add_activity', {place: $scope.m_place, iid: $scope.m_builder._id, an: $scope.m_activity_name, adt: $scope.cur_dt, tm: $scope.m_time, dur: $scope.m_duration, sugg: $scope.m_suggestion}).
 			success(function(data, status, headers, config) {
 				location.href = "/edit-itinerary/" + $stateParams.id + "/" + $stateParams.date;

@@ -12,46 +12,11 @@ angular.module('jrnyApp')
 	$scope.m_phone = "";
 	$scope.m_website = "";
 
-	$scope.m_search = "";
-
 	$scope.m_favorites = [];
 
 	$scope.getNumber = function(num) {
 		num = eval(num);
 	    return new Array(num);   
-	};
-
-	$scope.setPlace = function() {
-	//$scope.m_search = document.getElementById("txtsearch").value;
-
-	 var request = {
-	    location: {lat: 39.7392358, lng: -104.990251},
-	    radius: '500',
-	    query: $scope.m_search //ChIJY8CFChN6bIcRyOnj17695ow 
-	  };
-	  var service = new google.maps.places.PlacesService(map);
-	  service.textSearch(request, function(results, status) {
-	    if (status == google.maps.places.PlacesServiceStatus.OK) {
-	         var request1 = {
-			    placeId: results[0].place_id
-			    //
-			  };
-
-			  var service1 = new google.maps.places.PlacesService(map);
-
-			  service1.getDetails(request1, function(place, status) {
-			    if (status == google.maps.places.PlacesServiceStatus.OK) {
-			    	$scope.m_name = $scope.m_search;
-			    	$scope.m_phone = place.formatted_phone_number;
-			    	$scope.m_website = place.website;
-			    	$scope.m_location = place.formatted_address;
-			    	$scope.add_favorite();
-			    }
-			  });
-	    }
-
-	  });
-
 	};
 
 	$scope.get_favorite = function() {
@@ -97,12 +62,24 @@ angular.module('jrnyApp')
 	};
 
 	$scope.add_favorite = function() {
-		
+		if($scope.m_name == "") {
+			alert("Please input name.");
+			return;
+		}
+		if($scope.m_phone == "") {
+			alert("Please input phone.");
+			return;
+		}
+		if($scope.m_website == "") {
+			alert("Please input website.");
+			return;
+		}
+		if($scope.m_location == "") {
+			alert("Please input location.");
+			return;
+		}
 		$http.post('/api/favorite/add_favorite', {nm: $scope.m_name, ca: $scope.m_category, lo: $scope.m_location, ph: $scope.m_phone, we: $scope.m_website, uid: $scope.getCurrentUser()._id}).
 	      success(function(data, status, headers, config) { 
-	      	$scope.m_phone = "";
-	      	$scope.m_website = "";
-	      	$scope.m_location = "";
 	      	$scope.get_favorite();
 	      }).
 	      error(function(data, status, headers, config) {

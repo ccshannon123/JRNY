@@ -82,6 +82,51 @@ exports.save_survey = function (req, res, next) {
     
 };
 
+exports.count_builder = function (req, res, next) {
+
+    var id = req.params.id;
+
+    TravelerSurvey.find({local: id, isaccept: '1'}, function (err, reqs) {
+      if (err) {
+        console.log(err);
+      } else {
+
+        TravelerSurvey.find({local: id, isaccept: '2'}, function (err1, reqs1) {
+          if (err1) {
+            console.log(err1);
+          } else {
+            res.json({num1: reqs.length, num2: reqs1.length});
+
+          }
+        });
+
+      }
+    });
+    
+};
+
+exports.count_jrny = function (req, res, next) {
+
+    var id = req.params.id;
+
+    TravelerSurvey.find({traveler: id, isaccept: '1'}, function (err, reqs) {
+      if (err) {
+        console.log(err);
+      } else {
+
+        TravelerSurvey.find({traveler: id, isaccept: '2'}, function (err1, reqs1) {
+          if (err1) {
+            console.log(err1);
+          } else {
+            res.json({num1: reqs.length, num2: reqs1.length});
+
+          }
+        });
+
+      }
+    });
+    
+};
 
 exports.get_survey = function (req, res, next) {
 
@@ -109,37 +154,73 @@ exports.get_survey = function (req, res, next) {
 
 
 exports.get_builder = function (req, res, next) {
-  TravelerSurvey.find({local: req.params.id}, function (err, reqs) {
-      if (err) {
-        console.log(err);
-      } else if (reqs.length) {
+  var status = req.body.status;
+  if(status == "0") {
+    TravelerSurvey.find({local: req.body.id}, function (err, reqs) {
+        if (err) {
+          console.log(err);
+        } else if (reqs.length) {
 
-        res.json(reqs);
+          res.json(reqs);
 
-      } else {
+        } else {
 
-        res.json({Result: 'none'});
+          res.json({Result: 'none'});
 
 
-      }
-    });
+        }
+      });
+  } else {
+    TravelerSurvey.find({local: req.body.id, isaccept: status}, function (err, reqs) {
+        if (err) {
+          console.log(err);
+        } else if (reqs.length) {
+
+          res.json(reqs);
+
+        } else {
+
+          res.json({Result: 'none'});
+
+
+        }
+      });
+  }
 };
 
 exports.get_jrny = function (req, res, next) {
-  TravelerSurvey.find({traveler: req.params.id}, function (err, reqs) {
-      if (err) {
-        console.log(err);
-      } else if (reqs.length) {
+  var status = req.body.status;
+  if(status == "0") {
+    TravelerSurvey.find({traveler: req.body.id}, function (err, reqs) {
+        if (err) {
+          console.log(err);
+        } else if (reqs.length) {
 
-        res.json(reqs);
+          res.json(reqs);
 
-      } else {
+        } else {
 
-        res.json({Result: 'none'});
+          res.json({Result: 'none'});
 
 
-      }
-    });
+        }
+      });
+  } else {
+    TravelerSurvey.find({traveler: req.body.id, isaccept: status}, function (err, reqs) {
+        if (err) {
+          console.log(err);
+        } else if (reqs.length) {
+
+          res.json(reqs);
+
+        } else {
+
+          res.json({Result: 'none'});
+
+
+        }
+      });
+  }
 };
 
 exports.accept_itinerary = function (req, res, next) {
@@ -149,6 +230,26 @@ exports.accept_itinerary = function (req, res, next) {
       } else if (reqs.length) {
 
         reqs[0].isaccept = "1";
+        reqs[0].save(function (err, ts) {  
+          res.json(ts);
+        });
+
+      } else {
+
+        res.json({Result: 'none'});
+
+
+      }
+    });
+};
+
+exports.approve_itinerary = function (req, res, next) {
+  TravelerSurvey.find({_id: req.params.id}, function (err, reqs) {
+      if (err) {
+        console.log(err);
+      } else if (reqs.length) {
+
+        reqs[0].isaccept = "2";
         reqs[0].save(function (err, ts) {  
           res.json(ts);
         });

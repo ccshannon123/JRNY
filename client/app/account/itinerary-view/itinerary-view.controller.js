@@ -23,6 +23,10 @@ angular.module('jrnyApp')
 	    return new Array(num);   
 	};
 
+	$scope.fgo_traveler_itinerary = function(a, b) {
+		location.href = "/itinerary-view/" + a + "/" + b;
+	}
+	
 	$scope.get_activity = function() {//{ $query: {receiver: em, rdelete:'0'}, $orderby: { mdate: -1 }}
 		$http.post('/api/activity/get_activity', {iid: $stateParams.id, adt: $stateParams.date}).
 	      success(function(data, status, headers, config) { 

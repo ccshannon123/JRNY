@@ -8,18 +8,30 @@ angular.module('jrnyApp')
 	$scope.m_builder = {};
 	$scope.m_jrny = {};
 
+	$scope.m_count_builder = [];
+	$scope.m_count_jrny = [];
+
 	var week_name = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
 	var month_name = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 
 
-	$scope.get_builder = function() {
-
-		$http.get('/api/traveler_survey/get_builder/' + $scope.getCurrentUser()._id).
+	$scope.get_builder = function(status) {
+		$http.post('/api/traveler_survey/get_builder', {id: $scope.getCurrentUser()._id, status: status}).
 	      success(function(data, status, headers, config) { 
 	      	if(data.Result == undefined)
 	        	$scope.m_builder = data;
-	        else
+	        else {
+	        	$scope.m_builder = [];
 	        	return;
+	        }
+
+	        $http.get('/api/traveler_survey/count_builder/' + $scope.getCurrentUser()._id).
+		      success(function(data, status, headers, config) { 
+		      	$scope.m_count_builder = data;
+		      }).
+		      error(function(data, status, headers, config) {
+		      });
+
 
 	       	$scope.m_builder.forEach(function(builder) {
 
@@ -47,14 +59,24 @@ angular.module('jrnyApp')
 	      });
 	};
 
-	$scope.get_jrny = function() {
+	$scope.get_jrny = function(status) {
 
-		$http.get('/api/traveler_survey/get_jrny/' + $scope.getCurrentUser()._id).
+		$http.post('/api/traveler_survey/get_jrny', {id: $scope.getCurrentUser()._id, status: status}).
 	      success(function(data, status, headers, config) { 
 	      	if(data.Result == undefined)
 	        	$scope.m_jrny = data;
-	        else
+	        else {
+	        	$scope.m_jrny = [];
 	        	return;
+	        }
+
+
+	        $http.get('/api/traveler_survey/count_jrny/' + $scope.getCurrentUser()._id).
+		      success(function(data, status, headers, config) { 
+		      	$scope.m_count_jrny = data;
+		      }).
+		      error(function(data, status, headers, config) {
+		      });
 
 	        $scope.m_jrny.forEach(function(jrny) {
 
@@ -97,8 +119,8 @@ angular.module('jrnyApp')
 
 		$scope.$watch(function(scope){return scope.getCurrentUser()._id}, function(){
 			if($scope.getCurrentUser()._id!=undefined){
-		        $scope.get_builder();
-				$scope.get_jrny();
+		        $scope.get_builder('0');
+				$scope.get_jrny('0');
 			}
 		})
     });

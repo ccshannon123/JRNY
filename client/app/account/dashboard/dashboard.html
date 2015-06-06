@@ -53,7 +53,7 @@
                         <div class="row"><h3>Itinerary Builder</h3></div>
                         <div class="row" style="margin-top:10px">
                             <div class="col-md-12 col-sm-12">
-                                <a class="btn" href="#">All</a>|<a class="btn" href="#">In Progress(1)</a>|<a class="btn" href="#">Approved(1)</a>|<a class="btn" href="#">Completed</a>
+                                <a class="btn" ng-click="get_builder('0')" href="#">All</a>|<a class="btn" ng-click="get_builder('1')" href="#">In Progress({{m_count_builder.num1}})</a>|<a ng-click="get_builder('2')" class="btn" href="#">Approved({{m_count_builder.num2}})</a>|<a ng-click="get_builder('3')" class="btn" href="#">Completed</a>
                             </div>
                         </div>
 
@@ -131,7 +131,7 @@
                         <div class="row"><h3>Your Jrnys</h3></div>
                         <div class="row" style="margin-top:10px">
                             <div class="col-md-12 col-sm-12">
-                                <a class="btn" href="#">All</a>|<a class="btn" href="#">In Progress(1)</a>|<a class="btn" href="#">Approved(1)</a>|<a class="btn" href="#">Completed</a>
+                                <a class="btn" ng-click="get_jrny('0')" href="#">All</a>|<a ng-click="get_jrny('1')" class="btn" href="#">In Progress({{m_count_jrny.num1}})</a>|<a ng-click="get_jrny('2')" class="btn" href="#">Approved({{m_count_jrny.num2}})</a>|<a ng-click="get_jrny('3')" class="btn" href="#">Completed</a>
                             </div>
                         </div>
                         <div class="row" style="margin-top:30px;">

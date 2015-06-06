@@ -27,7 +27,7 @@
         <!-- /main-header -->
 
         <div class="row text-center" style="background-color:#999999;color:#EEEEEE">
-            <a href="/itinerary-view/{{m_builder._id}}/{{dt.toISOString().substr(0, 10)}}" class="btn" ng-repeat="dt in dt_str_list track by $index" class="row" style="margin:5px 5px 5px 5px">{{week_name[dt.getDay()] + ", " + month_name[dt.getMonth()].substr(0, 3) + " " + dt.getDate()}}</a>
+            <a href="#" ng-click="fgo_traveler_itinerary(m_builder._id, dt.toISOString().substr(0, 10))" class="btn" ng-repeat="dt in dt_str_list track by $index" class="row" style="margin:5px 5px 5px 5px">{{week_name[dt.getDay()] + ", " + month_name[dt.getMonth()].substr(0, 3) + " " + dt.getDate()}}</a>
         </div>
         <!-- /grey-container -->
 

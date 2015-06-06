@@ -9,10 +9,15 @@ var multipartMiddleware = multipart();
 
 var router = express.Router();
 
-router.get('/get_builder/:id', controller.get_builder);
-router.get('/get_jrny/:id', controller.get_jrny);
+router.post('/get_builder', controller.get_builder);
+router.post('/get_jrny', controller.get_jrny);
+
 router.get('/accept_itinerary/:id', controller.accept_itinerary);
+router.get('/approve_itinerary/:id', controller.approve_itinerary);
 router.get('/get_itinerary/:id', controller.get_itinerary);
+
+router.get('/count_builder/:id', controller.count_builder);
+router.get('/count_jrny/:id', controller.count_jrny);
 
 router.post('/get_survey', controller.get_survey);
 router.post('/save_survey', controller.save_survey);
