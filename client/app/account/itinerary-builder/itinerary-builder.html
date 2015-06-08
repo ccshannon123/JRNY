@@ -41,19 +41,12 @@
                                 <div class="col-md-12 col-sm-12">                                    
                                     <div style="background-color:#EEEEEE;width:100%;height:200px;padding:5px 5px 5px 5px;border-radius:5px">
                                         <div class="col-md-12"><span style="font-size:26px;font-weight:bold">The Group</span></div>
-                                        <div style="margin-left:25px;width:80px;float:left">
-                                            <div class="drop-box" style="width:80px;height:80px;margin-bottom:5px">
-                                                <img class="user-photo review_photo" ng-hide="photoUrl" src="assets/images/icons/no-photo.jpg" />
-                                                <img class="user-photo review_photo" ng-show="photoUrl" src="{{photoUrl}}" />
+                                        <div style="margin-left:25px;width:80px;float:left" ng-repeat="user in m_builder.m_invited_user track by $index">
+                                            <div class="drop-box" style="width:80px;height:80px;margin-bottom:5px" ng-click="showProfile(user._id)">
+                                                <img class="user-photo review_photo" ng-hide="user.photoUrl" src="assets/images/icons/no-photo.jpg" />
+                                                <img class="user-photo review_photo" ng-show="user.photoUrl" src="{{user.photoUrl}}" />
                                             </div>
-                                            <div style="width:80px;text-align:center"><h4>Nicole C.</h4></div>
-                                        </div>
-                                        <div style="margin-left:25px;width:80px;float:left">
-                                            <div class="drop-box" style="width:80px;height:80px;margin-bottom:5px">
-                                                <img class="user-photo review_photo" ng-hide="photoUrl" src="assets/images/icons/no-photo.jpg" />
-                                                <img class="user-photo review_photo" ng-show="photoUrl" src="{{photoUrl}}" />
-                                            </div>
-                                            <div style="width:80px;text-align:center"><h4>Jessie R.</h4></div>
+                                            <div style="width:80px;text-align:center"><h4>{{user.firstName}} {{user.lastName.substr(0, 1)}}.</h4></div>
                                         </div>
                                     </div>
                                 </div>
@@ -62,6 +55,8 @@
                                 <div class="col-md-12 col-sm-12">
                                     <div style="background-color:#EEEEEE;width:100%;height:285px;padding:1px 5px 5px 5px;border-radius:5px">
                                         <h5>Group Chat</h5>
+                                        <!--<div id="abc">d</div>
+                                        <button ng-click="stopTime()">dw</button>-->
                                     </div>
                                 </div>
                             </div>

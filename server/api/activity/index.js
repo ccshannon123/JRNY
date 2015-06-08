@@ -12,4 +12,6 @@ var router = express.Router();
 router.post('/get_activity', controller.get_activity);
 router.post('/add_activity', controller.add_activity);
 
+router.get('/remove_activity/:id', controller.remove_activity);
+
 module.exports = router;

@@ -9,6 +9,7 @@ var multipartMiddleware = multipart();
 
 var router = express.Router();
 
+router.get('/get_user_list', controller.get_user_list);
 router.get('/get_user/:email', controller.get_user);
 router.get('/get_user_detail/:email', controller.get_user_detail);
 router.get('/get_user_detail_by_id/:id', controller.get_user_detail_by_id);

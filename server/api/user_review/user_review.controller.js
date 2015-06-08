@@ -73,6 +73,20 @@ exports.get_user = function (req, res, next) {
     });
 };
 
+exports.get_user_list = function (req, res, next) {
+    User.find({}).sort({firstName: 1}).exec(function (err, users) {
+      if (err) {
+        console.log(err);
+      } else if (users.length) {
+
+        res.json(users);
+
+      } else {
+        res.json({result:'none'});
+      }
+    });
+};
+
 exports.get_user_detail = function (req, res, next) {
     var em = req.params.email;
 

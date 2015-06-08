@@ -5,6 +5,37 @@
 <section class="faqs secondaryTemplate" ng-controller="localsearchCtrl">
     <div class="container" style="height:600px">
         <div class="row">
+            <div class="col-md-2 col-sm-12">
+                <select class="form-control" ng-model="$parent.m_gender" ng-change="get_local()" id="txt_gen">
+                    <option value="">Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="col-md-2 col-sm-12">
+                <select class="form-control" ng-change="get_local()"ng-model="$parent.m_age" ng-options="age for age in ageList" id="txt_age">
+                    <option value="">Age</option>
+                </select>
+            </div>
+            <div class="col-md-2 col-sm-12">
+                <select class="form-control" ng-change="get_local()" ng-model="$parent.m_lang" ng-options="lang for lang in languageList">
+                    <option value="">Primary Language</option>
+                </select>
+            </div>
+            <div class="col-md-2 col-sm-12">
+                <select class="form-control" ng-change="get_local()" ng-model="$parent.m_review" id="txt_review">
+                    <option value="">Average Rating</option>
+                    <option value="1">More than 1.0</option>
+                    <option value="2">More than 2.0</option>
+                    <option value="3">More than 3.0</option>
+                    <option value="4">More than 4.0</option>
+                    <option value="5">5.0</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:15px">
             <div class="col-md-4 col-sm-12 text-center" ng-repeat="local in m_local_list" ng-show="!(local._id==getCurrentUser()._id)"> 
             	<div class="search_cover_photo" style="background-image:url('{{local.coverUrl}}')">
             		<div class="drop-box" style="width:150px;height:150px;" ng-click="showProfile(local._id)">

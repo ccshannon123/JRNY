@@ -44,6 +44,18 @@ angular.module('jrnyApp')
 	      });
 	};
 
+
+	$scope.remove_activity = function(id) {
+		$http.get('/api/activity/remove_activity/' + id).
+	      success(function(data, status, headers, config) { 
+
+	      	$scope.get_activity();
+
+	      }).
+	      error(function(data, status, headers, config) {
+	      });
+	};
+
 	$scope.get_builder = function() {
 
 		$http.get('/api/traveler_survey/get_itinerary/' + $stateParams.id).

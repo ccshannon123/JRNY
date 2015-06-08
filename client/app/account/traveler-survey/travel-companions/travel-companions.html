@@ -123,11 +123,20 @@
                                     <div class="col-md-3 col-sm-12 text-center">Email Address</div>
                                     <div class="col-md-3 col-sm-12 text-center">Member</div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-12 text-center">Daniel Scinto</div>
-                                    <div class="col-md-3 col-sm-12 text-center">dan.scinto</div>
-                                    <div class="col-md-3 col-sm-12 text-center">dpscinto@gmail.com</div>
-                                    <div class="col-md-3 col-sm-12 text-center">X</div>
+                                <div class="row" style="margin-top:1px;margin-bottom:2px;line-height:33px" ng-repeat="user in m_invited_user track by $index">
+                                    <div class="col-md-3 col-sm-12 text-center">{{user.firstName}} {{user.lastName}}</div>
+                                    <div class="col-md-3 col-sm-12 text-center">&nbsp;</div>
+                                    <div class="col-md-3 col-sm-12 text-center">{{user.email}}</div>
+                                    <div class="col-md-3 col-sm-12 text-center"><a class="btn btn-danger glyphicon glyphicon-remove-sign" ng-click="remove_invited_user(user._id)"></a></div>
+                                </div>
+                                <div class="row" style="margin-top:3px;margin-bottom:2px;line-height:33px">
+                                    <div class="col-md-3 col-sm-12 text-center">
+                                        <select id="sel_name" class="form-control" ng-change="sel_user()" ng-options="item._id as item.firstName + ' ' + item.lastName.substr(0, 1) for item in m_user_list" ng-model="m_name">
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 col-sm-12 text-center">&nbsp;</div>
+                                    <div class="col-md-3 col-sm-12 text-center">{{m_current_user.email}}</div>
+                                    <div class="col-md-3 col-sm-12 text-center"><a class="btn btn-success" ng-click="invite_user()">Invite</a></div>
                                 </div>
                             </div>
                         </div>

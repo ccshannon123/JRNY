@@ -38,7 +38,8 @@ angular.module('jrnyApp')
 	       		var arr_dt = new Date(builder.basic.arrival_date);
 	       		var dep_dt = new Date(builder.basic.departure_date);
 
-	       		
+	       		builder.m_invited_user = [];
+
 	       		builder.str_period = week_name[arr_dt.getDay()] + ", " + month_name[arr_dt.getMonth()].substr(0, 3) + " " + arr_dt.getDate() + " - " + 
 	       							week_name[dep_dt.getDay()] + ", " + month_name[dep_dt.getMonth()].substr(0, 3) + " " + dep_dt.getDate();
 
@@ -47,10 +48,34 @@ angular.module('jrnyApp')
 			        builder.firstName = data.firstName;
 			        builder.lastName = data.lastName;
 			        builder.photoUrl = data.photoUrl;
+			        builder.m_invited_user.push(data);
 
 			      }).
 			      error(function(data, status, headers, config) {
 			      });
+
+				$http.post('/api/traveler_survey/get_invited_user', {traveler: builder.traveler, local: $scope.getCurrentUser()._id}).
+			      success(function(data, status, headers, config) { 
+
+		      		var ids = data.result;
+			      	ids = ids.replace("undefined", "");
+
+			      	
+			      	var id_array = ids.split(",");
+			      	var i, j;
+			      	for(i = 0; i < id_array.length - 1; i++) {
+			      		$http.get('/api/user_review/get_user_detail_by_id/' + id_array[i]).
+					      success(function(data, status, headers, config) { 
+					        builder.m_invited_user.push(data);
+
+					      }).
+					      error(function(data, status, headers, config) {
+					      });
+			      	}
+
+			      }).
+			      error(function(data, status, headers, config) {
+			      });			      
 	        	
 	        });
 	        

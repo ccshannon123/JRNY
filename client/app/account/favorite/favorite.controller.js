@@ -97,7 +97,6 @@ angular.module('jrnyApp')
 	};
 
 	$scope.add_favorite = function() {
-		
 		$http.post('/api/favorite/add_favorite', {nm: $scope.m_name, ca: $scope.m_category, lo: $scope.m_location, ph: $scope.m_phone, we: $scope.m_website, uid: $scope.getCurrentUser()._id}).
 	      success(function(data, status, headers, config) { 
 	      	$scope.m_phone = "";

@@ -71,34 +71,10 @@
                                                 <div class="row" style="padding-top:5px">
                                                     <h5 style="font-size:12px;color:#999999;text-align:left;margin-left:25px">Group Members</h5>
 
-                                                    <div style="margin-left:25px;width:60px;float:left">
-                                                        <div class="drop-box" style="width:60px;height:60px;margin-bottom:5px">
-                                                            <img class="user-photo review_photo_sm" ng-hide="photoUrl" src="assets/images/icons/no-photo.jpg" />
-                                                            <img class="user-photo review_photo_sm" ng-show="photoUrl" src="{{photoUrl}}" />
-                                                        </div>
-                                                    </div>
-                                                    <div style="margin-left:20px;width:60px;float:left">
-                                                        <div class="drop-box" style="width:60px;height:60px;margin-bottom:5px">
-                                                            <img class="user-photo review_photo_sm" ng-hide="photoUrl" src="assets/images/icons/no-photo.jpg" />
-                                                            <img class="user-photo review_photo_sm" ng-show="photoUrl" src="{{photoUrl}}" />
-                                                        </div>
-                                                    </div>
-                                                    <div style="margin-left:20px;width:60px;float:left">
-                                                        <div class="drop-box" style="width:60px;height:60px;margin-bottom:5px">
-                                                            <img class="user-photo review_photo_sm" ng-hide="photoUrl" src="assets/images/icons/no-photo.jpg" />
-                                                            <img class="user-photo review_photo_sm" ng-show="photoUrl" src="{{photoUrl}}" />
-                                                        </div>
-                                                    </div>
-                                                    <div style="margin-left:25px;width:60px;float:left">
-                                                        <div class="drop-box" style="width:60px;height:60px;margin-bottom:5px">
-                                                            <img class="user-photo review_photo_sm" ng-hide="photoUrl" src="assets/images/icons/no-photo.jpg" />
-                                                            <img class="user-photo review_photo_sm" ng-show="photoUrl" src="{{photoUrl}}" />
-                                                        </div>
-                                                    </div>
-                                                    <div style="margin-left:20px;width:60px;float:left">
-                                                        <div class="drop-box" style="width:60px;height:60px;margin-bottom:5px">
-                                                            <img class="user-photo review_photo_sm" ng-hide="photoUrl" src="assets/images/icons/no-photo.jpg" />
-                                                            <img class="user-photo review_photo_sm" ng-show="photoUrl" src="{{photoUrl}}" />
+                                                    <div style="margin-left:25px;width:60px;float:left" ng-repeat="user in builder.m_invited_user track by $index">
+                                                        <div class="drop-box" style="width:60px;height:60px;margin-bottom:5px" ng-click="showProfile(user._id)">
+                                                            <img class="user-photo review_photo_sm" ng-hide="user.photoUrl" src="assets/images/icons/no-photo.jpg" />
+                                                            <img class="user-photo review_photo_sm" ng-show="user.photoUrl" src="{{user.photoUrl}}" />
                                                         </div>
                                                     </div>
 

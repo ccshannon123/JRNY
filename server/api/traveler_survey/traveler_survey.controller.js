@@ -23,9 +23,77 @@ var validationError = function (res, err) {
     return res.json(422, err);
 };
 
-/*
-    Get local list
-*/
+exports.invite_user = function (req, res, next) {
+
+    var t_id = req.body.traveler;
+    var l_id = req.body.local;
+    var u_id = req.body.user;
+
+    TravelerSurvey.find({local: l_id, traveler: t_id}, function (err, reqs) {
+      if (err) {
+        console.log(err);
+      } else if (reqs.length) {
+
+        var new_ts = reqs[0];
+
+        new_ts.companion.travel_companions = new_ts.companion.travel_companions + u_id + ",";
+
+        new_ts.save(function (err, ts) {  
+          res.json(ts);
+          });
+
+      } else {  
+      }
+    });
+
+};
+
+exports.remove_invited_user = function (req, res, next) {
+
+    var t_id = req.body.traveler;
+    var l_id = req.body.local;
+    var u_id = req.body.user;
+
+    TravelerSurvey.find({local: l_id, traveler: t_id}, function (err, reqs) {
+      if (err) {
+        console.log(err);
+      } else if (reqs.length) {
+
+        var new_ts = reqs[0];
+
+        new_ts.companion.travel_companions = new_ts.companion.travel_companions.replace(u_id + ",", '');
+
+        new_ts.save(function (err, ts) {  
+          res.json(ts);
+          });
+
+      } else {  
+      }
+    });
+
+};
+
+exports.get_invited_user = function (req, res, next) {
+
+    var t_id = req.body.traveler;
+    var l_id = req.body.local;
+
+    TravelerSurvey.find({local: l_id, traveler: t_id}, function (err, reqs) {
+      if (err) {
+        console.log(err);
+      } else if (reqs.length) {
+
+        var new_ts = reqs[0];
+
+        res.json({result: new_ts.companion.travel_companions});
+
+      } else {  
+        res.json({});
+      }
+    });
+
+};
+
 exports.save_survey = function (req, res, next) {
 
     var t_id = req.body.traveler;
@@ -70,6 +138,7 @@ exports.save_survey = function (req, res, next) {
         new_ts.basic.where_already_booked = req.body.basic.where_already_booked;
 
         new_ts.companion = req.body.companion;
+        new_ts.companion.travel_companions = "";
         new_ts.interest = req.body.interest;
 
         new_ts.save(function (err, ts) {  

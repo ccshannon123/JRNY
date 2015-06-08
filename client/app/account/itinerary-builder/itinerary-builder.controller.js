@@ -3,9 +3,26 @@
 angular.module('jrnyApp')
     .controller('itinerarybuilderCtrl', function ($scope, $http, $stateParams, Auth, User) {
 
+    /*var myVar;
+
+	function myFunction() {
+	    myVar = setTimeout(myFunction, 3000);
+	    document.getElementById("abc").innerHTML = document.getElementById("abc").innerHTML + "d";
+	}
+
+	function alertFunc() {
+	    document.getElementById("abc").innerHTML = document.getElementById("abc").innerHTML + "d";
+	}
+
+	$scope.stopTime = function() {
+		clearTimeout(myVar);
+	}
+
+	myFunction();*/
+
 	$scope.getCurrentUser = Auth.getCurrentUser;
 
-	$scope.m_builder = {};
+	$scope.m_builder = [];
 	$scope.m_itinerary = [];
 	$scope.arr_dt;
 	$scope.dep_dt;
@@ -21,6 +38,7 @@ angular.module('jrnyApp')
 	};
 
 	$scope.get_builder = function() {
+		
 
 		$http.get('/api/traveler_survey/get_itinerary/' + $stateParams.id).
 	      success(function(data, status, headers, config) { 
@@ -28,8 +46,39 @@ angular.module('jrnyApp')
 	      	if(data.Result == undefined)
 	        	$scope.m_builder = data;
 	        else
-	        	return;	       	
+	        	return;
 
+	        $scope.m_builder.m_invited_user = [];
+
+	        $http.get('/api/user_review/get_user_detail_by_id/' + $scope.m_builder.traveler).
+		      success(function(data, status, headers, config) { 
+		        $scope.m_builder.m_invited_user.push(data);
+		      }).
+		      error(function(data, status, headers, config) {
+		      });
+
+	        $http.post('/api/traveler_survey/get_invited_user', {traveler: $scope.m_builder.traveler, local: $scope.m_builder.local}).
+		      success(function(data, status, headers, config) { 
+
+	      		var ids = data.result;
+		      	ids = ids.replace("undefined", "");
+
+		      	
+		      	var id_array = ids.split(",");
+		      	var i, j;
+		      	for(i = 0; i < id_array.length - 1; i++) {
+		      		$http.get('/api/user_review/get_user_detail_by_id/' + id_array[i]).
+				      success(function(data, status, headers, config) { 
+				        $scope.m_builder.m_invited_user.push(data);
+
+				      }).
+				      error(function(data, status, headers, config) {
+				      });
+		      	}
+
+		      }).
+		      error(function(data, status, headers, config) {
+		      });
 
        		$scope.arr_dt = new Date($scope.m_builder.basic.arrival_date);
        		$scope.dep_dt = new Date($scope.m_builder.basic.departure_date);

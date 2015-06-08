@@ -29,7 +29,7 @@ exports.get_activity = function (req, res, next) {
   var adt = req.body.adt;
 
     //Message.find({ $query: {receiver: em, rdelete:'0'}, $orderby: { mdate: -1 }}, function (err, messages) {
-    Activity.find({iid:iid1, adate:adt}, function (err, acts) {
+    Activity.find({iid:iid1, adate:adt}).sort({time: 1}).exec(function (err, acts) {
       if (err) {
         console.log(err);
       } else if (acts.length) {
@@ -37,6 +37,15 @@ exports.get_activity = function (req, res, next) {
       } else {
         res.json({result:'none'});
       }
+    });
+};
+
+exports.remove_activity = function (req, res, next) {
+
+  var id = req.params.id;
+    
+    Activity.remove({_id: id}, function (err) {
+      res.json({result:'success'});
     });
 };
 

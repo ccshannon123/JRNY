@@ -21,5 +21,8 @@ router.get('/count_jrny/:id', controller.count_jrny);
 
 router.post('/get_survey', controller.get_survey);
 router.post('/save_survey', controller.save_survey);
+router.post('/invite_user', controller.invite_user);
+router.post('/remove_invited_user', controller.remove_invited_user);
+router.post('/get_invited_user', controller.get_invited_user);
 
 module.exports = router;
