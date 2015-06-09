@@ -18,12 +18,7 @@
 
     <div id="main-container" ng-cloak>
         <!-- /breadcrumb-->
-        <div class="row">
-            <div class="col-md-1 col-sm-12"></div>
-            <div class="col-md-10">
-                <h4>Your Itinerary for {{getCurrentUser().homeTown.formatted_address}}</h4>
-            </div>
-        </div>
+        <div ng-include="'/components/account/topNav/header-msg.html'"></div>
         <!-- /main-header -->
 
         <div class="row text-center" style="background-color:#999999;color:#EEEEEE">
@@ -45,8 +40,8 @@
                         <div class="col-md-6 col-sm-12">
                             <div class="row" ng-repeat="act in m_activity" style="margin-bottom:15px">
                                 <div class="col-md-3 col-sm-12 text-right">
-                                    <h5>{{act.time}}:00 - {{act.ltime}}:00</h5>
-                                    <h3 style="color:#6CBFEE">{{act.duration}} Hours</h3>
+                                    <h5 ng-show="!(act.time==null || act.duration==null)">{{act.time}}:00 - {{act.ltime}}:00</h5>
+                                    <h3 ng-show="!(act.time==null || act.duration==null)" style="color:#6CBFEE">{{act.duration}} Hours</h3>
                                 </div><!--#3994CB-->
                                 <div class="col-md-9 col-sm-12 edit_itinerary_box" style="padding:0px 15px 15px 15px;">
                                     <h3>{{act.activity_name}}</h3>

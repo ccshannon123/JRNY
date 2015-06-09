@@ -22,32 +22,44 @@
         <div ng-include="'/components/account/topNav/header-msg.html'"></div>
         <!-- /main-header -->
         <div class="custom-sub-navbar">
-            <ul class="nav subnav">
-                <li>
-                    <a href="/notifications">Notifications</a>
-                </li>
-                <li>
-                    <a href="/payments">
-            Payments
-          </a>
-                </li>
-                <li>
-                    <a href="/transactions">
-            Transactions
-          </a>
-                </li>
-                <li>
-                    <a href="/payouts">
-            Payouts
-          </a>
-                </li>
-                <li class="active">
-                    <a href="/account-settings">
-            Settings
-          </a>
-                </li>
-            </ul>
-        </div>
+                <ul class="nav subnav nav-extra-top">
+                    <li>
+                        <a href="/dashboard">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="/favorite/Restaurant">Your Favorites</a>
+                    </li>
+                    <li>
+                        <a href="/message_inbox">Messages</a>
+                    </li>
+                    <li>
+                        <a href="/edit-profile">Profile</a>
+                    </li>
+                    <li class="active">
+                        <a href="/notifications">Account</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="custom-sub-navbar">
+                <ul class="nav subnav nav-extra-bottom">
+                    <li>
+                        <a href="/notifications">Notifications</a>
+                    </li>
+                    <li>
+                        <a href="/payments">Payments</a>
+                    </li>
+                    <li>
+                        <a href="/transactions">Transactions</a>
+                    </li>
+                    <li>
+                        <a href="/payouts">Payouts</a>
+                    </li>
+                    <li class="active">
+                        <a href="/account-settings">Settings</a>
+                    </li>
+                </ul>
+            </div>
 
 
 

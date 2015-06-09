@@ -10,6 +10,7 @@ var multipartMiddleware = multipart();
 var router = express.Router();
 
 router.get('/inbox/:email', controller.get_inbox);
+router.get('/important/:email', controller.get_important);
 router.get('/sent/:email', controller.get_sent);
 router.get('/show/:mid', controller.show);
 router.get('/rdelete/:mid', controller.rdelete);
@@ -20,5 +21,6 @@ router.get('/mreset', controller.mreset);
 router.post('/send', controller.send);
 router.post('/rsearch', controller.rsearch);
 router.post('/ssearch', controller.ssearch);
+router.post('/set_important', controller.set_important);
 
 module.exports = router;

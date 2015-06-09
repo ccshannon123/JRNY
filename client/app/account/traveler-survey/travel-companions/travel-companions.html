@@ -17,12 +17,7 @@
 
 
     <div id="main-container" ng-cloak>
-        <!-- /breadcrumb-->
-        <div class="main-header clearfix">
-            <div class="page-title">
-            </div>
-            <!-- /page-title -->
-        </div>
+        <div ng-include="'/components/account/topNav/header-msg.html'"></div>
         <!-- /main-header -->
 
         <div class="custom-sub-navbar">
@@ -47,7 +42,7 @@
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
-                    <div class="row"><h2>Travel Companions<a href="#" ng-click="save_survey()" style="float:right" class="btn btn-danger">SAVE FOR LATER</a></h2></div>
+                    <div class="row" style="margin-bottom:10px"><a href="#" ng-click="save_survey()" style="float:right" class="btn btn-danger">SAVE FOR LATER</a></div>
                     <div class="form-group row">
                         <div class="col-md-5 col-sm-12"><h4>How many people are in your group?</h4></div>
                         <div class="col-md-7 col-sm-12">
@@ -93,29 +88,29 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-md-6 col-sm-12" style="margin-leftleft:0px;padding-left:0px">
-                            <div class="col-md-12 col-sm-12"><h4>What is the desired energy level of your Jrny?</h4></div>
+                            <div class="col-md-12 col-sm-12"><h4>What is the desired energy level of your Jrny?</h4>Examples: "We want to do it all and won't stop until we do!", "We want to relax and take it slow."</div>
                             <div class="col-md-12 col-sm-12"><textarea ng-model="m_traveler_survey.companion.desired_energy_level" class="form-control"></textarea></div>
                         </div>
                         <div class="col-md-6 col-sm-12" style="margin-right:0px;padding-right:0px">
-                            <div class="col-md-12 col-sm-12"><h4>Does your group have any limitations?</h4></div>
+                            <div class="col-md-12 col-sm-12"><h4>Does your group have any limitations?</h4>Examples: Fears, Allergies, Physical Limitations, etc.</div>
                             <div class="col-md-12 col-sm-12"><textarea ng-model="m_traveler_survey.companion.group_limitation" class="form-control"></textarea></div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-6 col-sm-12" style="margin-leftleft:0px;padding-left:0px">
-                            <div class="col-md-12 col-sm-12"><h4>Add Travelers to Jrny</h4></div>
+                            <div class="col-md-12 col-sm-12"><h4>Add Travel Companions to Your Jrny</h4></div>
                             <div class="col-md-12 col-sm-12">
                                 <div class="row">
-                                    <div class="col-md-12 col-sm-12"><h5>If someone is not a member, they will be sent an invitation to join.</h5></div>
+                                    <div class="col-md-12 col-sm-12">Enter the email addresses of people who are traveling with you.</div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-10 col-sm-12"><input type="text" placeholder="Search username(s) or email address(es)" class="form-control" /></div>
+                                    <div class="col-md-10 col-sm-12"><input type="text" placeholder="Search username/email address" class="form-control" /></div>
                                     <div class="col-md-2 col-sm-12"><a class="btn btn-info" style="width:100%">ADD</a></div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-12" style="margin-right:0px;padding-right:0px">
-                            <div class="col-md-12 col-sm-12"><h4>Travel Companions Invited</h4></div>
+                            <div class="col-md-12 col-sm-12"><h4>Travel Companions Invited</h4>The following people will be sent an invitation to join your Jrny.</div>
                             <div class="col-md-12 col-sm-12" style="border:1px solid #CCCCCC">
                                 <div class="row" style="border-bottom:1px solid #CCCCCC">
                                     <div class="col-md-3 col-sm-12 text-center">Group Members</div>

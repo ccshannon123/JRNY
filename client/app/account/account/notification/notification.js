@@ -3,7 +3,7 @@
 angular.module('jrnyApp').controller('notificationCtrl', function ($scope, $http, $location, User, Auth) {
 	$scope.getCurrentUser = Auth.getCurrentUser;
 
-	$scope.m_rrr = false;
+	   $scope.m_rrr = false;
     $scope.m_rmft = false;
     $scope.m_or = false;
     $scope.m_gu = false;
@@ -27,6 +27,8 @@ angular.module('jrnyApp').controller('notificationCtrl', function ($scope, $http
     $scope.m_alert_box = false;
     $scope.m_error_box1 = false;
     $scope.m_noti_text = "";
+
+    $scope.m_head_title = "Account";
 
     //$scope.uemail = $scope.getCurrentUser().email;
     

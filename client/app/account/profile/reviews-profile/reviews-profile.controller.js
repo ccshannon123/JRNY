@@ -13,6 +13,7 @@ angular.module('jrnyApp').controller('reviewsProfileCtrl', function ($scope, $ht
 
 	$scope.m_alert_box = false;
 	$scope.m_alert_text = "";
+	$scope.m_head_title = "Reviews";
 
 	$scope.m_rate = 0;
 

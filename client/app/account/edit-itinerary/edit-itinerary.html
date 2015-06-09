@@ -18,12 +18,7 @@
 
     <div id="main-container" ng-cloak>
         <!-- /breadcrumb-->
-        <div class="row">
-            <div class="col-md-1 col-sm-12"></div>
-            <div class="col-md-10">
-                <h4>{{m_builder.firstName}} {{m_builder.lastName.substr(0, 1)}}'s Daily Itinerary</h4>
-            </div>
-        </div>
+        <div ng-include="'/components/account/topNav/header-msg.html'"></div>
         <!-- /main-header -->
 
         <div class="row text-center" style="background-color:#999999;color:#EEEEEE">
@@ -55,13 +50,18 @@
                         <div class="col-md-8 col-sm-12">
                             <div class="row" ng-repeat="act in m_activity" style="margin-bottom:15px">
                                 <div class="col-md-3 col-sm-12 text-right">
-                                    <h5>{{act.time}}:00 - {{act.ltime}}:00</h5>
-                                    <h3 style="color:#6CBFEE">{{act.duration}} Hours</h3>
+                                    <h5 ng-show="!(act.time==null || act.duration==null)">{{act.time}}:00 - {{act.ltime}}:00</h5>
+                                    <h3 ng-show="!(act.time==null || act.duration==null)"style="color:#6CBFEE">{{act.duration}} Hours</h3>
                                 </div><!--#3994CB-->
                                 <div class="col-md-9 col-sm-12 edit_itinerary_box" style="padding:0px 15px 15px 15px;">
                                     <div class="row">
-                                        <div class="col-md-10 col-sm-12"><h3>{{act.activity_name}}</h3></div>
-                                        <div class="col-md-2 col-sm-12"><a class="btn btn-danger text-right" style="margin-top:15px" ng-click="remove_activity(act._id)">Remove</a></div>
+                                        <div class="col-md-9 col-sm-12"><h3>{{act.activity_name}}</h3></div>
+                                        <div class="col-md-3 col-sm-12">
+                                            <div class="row" style="margin-top:15px">
+                                                <div class="col-md-6 col-sm-12"><a class="btn btn-success text-right"  ng-click="modify_activity(act._id)">Modify</a></div>
+                                                <div class="col-md-6 col-sm-12"><a class="btn btn-danger text-right" ng-click="remove_activity(act._id)">Remove</a></div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div style="border-top:1px solid #EEEEEE;padding-top:10px">{{act.suggestion}}</div>

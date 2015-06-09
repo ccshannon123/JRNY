@@ -4,6 +4,7 @@ angular.module('jrnyApp').controller('usersettingCtrl', function ($scope, $http,
 	$scope.getCurrentUser = Auth.getCurrentUser;
 
 	$scope.m_country = "";  
+  $scope.m_head_title = "Account";
 
     var user_obj = $scope.getCurrentUser();
     $scope.uemail = user_obj.email;

@@ -10,6 +10,8 @@ angular.module('jrnyApp')
 	$scope.m_current_user = [];
 	$scope.m_invited_user = [];
 
+	$scope.m_head_title = "Travel Companions";
+
 	$scope.get_user_list = function() {
 		$http.get('/api/user_review/get_user_list').
 	      success(function(data, status, headers, config) { 

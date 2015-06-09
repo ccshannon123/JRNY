@@ -15,6 +15,8 @@ angular.module('jrnyApp')
 	$scope.m_activity;
 	$scope.jrny_days = 0;
 
+	$scope.m_head_title = "";
+
 	$scope.week_name = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
 	$scope.month_name = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 
@@ -92,11 +94,9 @@ angular.module('jrnyApp')
        		
        		$scope.m_builder.str_period = $scope.week_name[$scope.cur_dt.getDay()] + ", " + $scope.month_name[$scope.cur_dt.getMonth()].substr(0, 3) + " " + $scope.cur_dt.getDate() + "," + $scope.cur_dt.getFullYear();
 
-        	$http.get('/api/user_review/get_user_detail_by_id/' + $scope.m_builder.traveler).
+        	$http.get('/api/user_review/get_user_detail_by_id/' + $scope.m_builder.local).
 		      success(function(data, status, headers, config) {
-		        $scope.m_builder.firstName = data.firstName;
-		        $scope.m_builder.lastName = data.lastName;
-		        $scope.m_builder.photoUrl = data.photoUrl;
+		      	$scope.m_head_title = "Your Itinerary for " + data.homeTown.formatted_address;
 
 		      }).
 		      error(function(data, status, headers, config) {

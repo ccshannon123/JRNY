@@ -11,6 +11,8 @@ angular.module('jrnyApp')
 	$scope.m_count_builder = [];
 	$scope.m_count_jrny = [];
 
+	$scope.m_head_title = "";
+
 	var week_name = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
 	var month_name = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 
@@ -146,6 +148,7 @@ angular.module('jrnyApp')
 			if($scope.getCurrentUser()._id!=undefined){
 		        $scope.get_builder('0');
 				$scope.get_jrny('0');
+				$scope.m_head_title = "Welcome " + $scope.getCurrentUser().firstName + "!";
 			}
 		})
     });

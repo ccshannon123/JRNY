@@ -18,12 +18,8 @@
 
     <div id="main-container" ng-cloak>
         <!-- /breadcrumb-->
-        <div class="row">
-            <div class="col-md-1 col-sm-12"></div>
-            <div class="col-md-10">
-                <h4>Itinerary Builder</h4>
-            </div>
-        </div>
+        <div ng-include="'/components/account/topNav/header-msg.html'"></div>
+
         <!-- /main-header -->
 
         <div class="row text-center" style="background-color:#999999;color:#EEEEEE">
@@ -56,21 +52,30 @@
                             </div>
                         </div>
                     </div>
+                     <div class="row" style="margin-top:10px;margin-bottom:10px">
+                        <div class="row"><div class="col-md-12 col-sm-12"><h4>Date</h4></div></div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12" style="margin-left:15px;line-height:30px;font-size:16px">{{m_builder.str_period}}</div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-5 col-sm-12">
-                            <div class="row"><h4>Time</h4></div>
+                            <div class="row"><h4>Time (optional)</h4></div>
                             <div class="row">
-                                <select class="form-control" ng-model="$parent.m_time" ng-options="time for time in timeList">
+                                <select class="form-control" ng-model="$parent.m_time" ng-options="time.val as time.txt for time in timeList">
                                     
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-1 col-sm-12"></div>
                         <div class="col-md-6 col-sm-12">
-                            <div class="row"><h4>Duration</h4></div>
+                            <div class="row"><h4>Duration (optional)</h4></div>
                             <div class="row">
-                                <select class="form-control" ng-model="$parent.m_duration" ng-options="dur for dur in durationList">
-                                </select>
+                                <div class="col-md-9 col-sm-12">
+                                    <select class="form-control" ng-model="$parent.m_duration" ng-options="dur for dur in durationList">
+                                    </select>
+                                </div>
+                                <div class="col-md-3 col-sm-12" style="line-height:33px;">hours</div>
                             </div>
                         </div>
                     </div>

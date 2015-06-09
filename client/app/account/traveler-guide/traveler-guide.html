@@ -6,8 +6,7 @@
 
     <!-- =========================
    SECTION: TOP NAVIGATION
-  ============================== -->
-    <div ng-include="'/components/account/topNav/topNav.html'"></div>
+  ============================== -->    <div ng-include="'/components/account/topNav/topNav.html'"></div>
 
 
     <!-- =========================
@@ -17,14 +16,7 @@
 
 
     <div id="main-container">
-        <div class="row">
-            <div class="col-md-1 col-sm-12">
-            </div>
-            <div class="col-md-10 col-sm-12">
-                <h4>Survival Guide</h4>
-            </div>
-        </div>
-        <!-- /breadcrumb-->
+        <div ng-include="'/components/account/topNav/header-msg.html'"></div>
         <!-- /main-header -->
         <div class="custom-sub-navbar">
             <ul class="nav subnav">
@@ -73,17 +65,32 @@
 
         <div class="padding-md">
             <div class="row">
-                <div class="col-sm-12 col-md-12">
+                <div class="col-sm-12 col-md-2">           
+                    <div class="row" style="margin-top:20px">
+                        <div class="col-md-3 col-sm-12"></div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="row"><a style="font-weight:{{m_font_bold[0]}}" ng-click="show(1)" class="btn">Summary</a></div>
+                            <div class="row"><a style="font-weight:{{m_font_bold[1]}}" ng-click="show(2)" class="btn">Before Arriving</a></div>
+                            <div class="row"><a style="font-weight:{{m_font_bold[2]}}" ng-click="show(3)" class="btn">Getting Here</a></div>
+                            <div class="row"><a style="font-weight:{{m_font_bold[3]}}" ng-click="show(4)" class="btn">Accommodation</a></div>
+                            <div class="row"><a style="font-weight:{{m_font_bold[4]}}" ng-click="show(5)" class="btn">Transportation</a></div>
+                            <div class="row"><a style="font-weight:{{m_font_bold[5]}}" ng-click="show(6)" class="btn">Money</a></div>
+                            <div class="row"><a style="font-weight:{{m_font_bold[6]}}" ng-click="show(7)" class="btn">Weather/Seasons</a></div>
+                            <div class="row"><a style="font-weight:{{m_font_bold[7]}}" ng-click="show(8)" class="btn">More Information</a></div>
+                            <div class="row" style="margin-top:15px"><a href="/traveler-itinerary/{{tid}}" class="btn btn-danger" >Return to Itinerary</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-8">
                     <!-- EDIT PROFILE FORM -->
                     <div class="panel panel-default">
-                        <!--Summary -->
                         <div class="row">
                             <div class="col-md-1 col-sm-12"></div>
                             <div class="col-md-10 col-sm-12">
                                 <div ng-show="m_show==1">
                                     <form class="form-horizontal form-border textarea-form">
                                       <div class="panel-heading">
-                                        <h3>Summary<a href="/traveler-itinerary/{{tid}}" style="float:right" class="btn btn-danger">Return to Itinerary</a></h3>
+                                        <h3>Summary</h3>
                                       </div>
                                       <div class="panel-body">
                                         <div class="form-group">
@@ -128,7 +135,7 @@
                                 <div ng-show="m_show==2">
                                     <form class="form-horizontal form-border textarea-form">
                                       <div class="panel-heading">
-                                        <h3>Before Arriving<a href="/traveler-itinerary/{{tid}}" style="float:right" class="btn btn-danger">Return to Itinerary</a></h3>
+                                        <h3>Before Arriving</h3>
                                       </div>
                                       <div class="panel-body">
                                         <div class="form-group">
@@ -176,7 +183,7 @@
                                 <div ng-show="m_show==3">
                                     <form class="form-horizontal form-border textarea-form">
                                       <div class="panel-heading">
-                                        <h3>Getting Here<a href="/traveler-itinerary/{{tid}}" style="float:right" class="btn btn-danger">Return to Itinerary</a></h3>
+                                        <h3>Getting Here</h3>
                                       </div>
                                       <div class="panel-body">
                                         <div class="form-group">
@@ -215,7 +222,7 @@
                                 <div ng-show="m_show==4">
                                     <form class="form-horizontal form-border textarea-form">
                                       <div class="panel-heading">
-                                        <h3>Accomodations<a href="/traveler-itinerary/{{tid}}" style="float:right" class="btn btn-danger">Return to Itinerary</a></h3>
+                                        <h3>Accomodations</h3>
                                       </div>
                                       <div class="panel-body">
                                         <div class="form-group">
@@ -263,7 +270,7 @@
                                 <div ng-show="m_show==5">
                                     <form class="form-horizontal form-border textarea-form">
                                       <div class="panel-heading">
-                                        <h3>Transportation<a href="/traveler-itinerary/{{tid}}" style="float:right" class="btn btn-danger">Return to Itinerary</a></h3>
+                                        <h3>Transportation</h3>
                                       </div>
                                       <div class="panel-body">
                                         <div class="form-group">
@@ -302,7 +309,7 @@
                                 <div ng-show="m_show==6">
                                     <form class="form-horizontal form-border textarea-form">
                                       <div class="panel-heading">
-                                        <h3>Money<a href="/traveler-itinerary/{{tid}}" style="float:right" class="btn btn-danger">Return to Itinerary</a></h3>
+                                        <h3>Money</h3>
                                       </div>
                                       <div class="panel-body">
                                         <div class="form-group">
@@ -341,7 +348,7 @@
                                 <div ng-show="m_show==7">
                                     <form class="form-horizontal form-border textarea-form">
                                       <div class="panel-heading">
-                                        <h3>Weather/Seasons<a href="/traveler-itinerary/{{tid}}" style="float:right" class="btn btn-danger">Return to Itinerary</a></h3>
+                                        <h3>Weather/Seasons</h3>
                                       </div>
                                       <div class="panel-body">
                                         <div class="form-group">
@@ -380,7 +387,7 @@
                                 <div ng-show="m_show==8">
                                     <form class="form-horizontal form-border textarea-form">
                                       <div class="panel-heading">
-                                        <h3>More Information<a href="/traveler-itinerary/{{tid}}" style="float:right" class="btn btn-danger">Return to Itinerary</a></h3>
+                                        <h3>More Information</h3>
                                       </div>
                                       <div class="panel-body">
                                         <div class="form-group">

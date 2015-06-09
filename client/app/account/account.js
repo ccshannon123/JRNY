@@ -209,6 +209,15 @@ angular.module('jrnyApp')
           css: 'assets/endless/css/endless.css'
         }
       })
+      .state('message_important', {
+        url: '/message_important',
+        templateUrl: 'app/account/message/important/important.html',
+        controller: 'importantCtrl',
+        authenticate: true,
+        data: {
+          css: 'assets/endless/css/endless.css'
+        }
+      })
       .state('message_write', {
         url: '/message_write/:id',
         templateUrl: 'app/account/message/compose/compose.html',
@@ -218,6 +227,7 @@ angular.module('jrnyApp')
           css: 'assets/endless/css/endless.css'
         }
       })
+
       .state('message_sent', {
         url: '/message_sent',
         templateUrl: 'app/account/message/sent/sent.html',

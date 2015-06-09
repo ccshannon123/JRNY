@@ -14,6 +14,8 @@ var TravelerSurveySchema = new Schema({
 		how_get: String,
 		how_already_booked: String,
 		where_stay: String,
+		arrive_after: String,
+		depart_before: String,
 		where_already_booked: String
 	},
 	companion: {

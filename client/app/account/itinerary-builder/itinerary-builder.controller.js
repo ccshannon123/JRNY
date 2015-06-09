@@ -27,6 +27,7 @@ angular.module('jrnyApp')
 	$scope.arr_dt;
 	$scope.dep_dt;
 
+	$scope.m_head_title = "";
 	$scope.jrny_days = 0;
 
 	$scope.week_name = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
@@ -53,6 +54,7 @@ angular.module('jrnyApp')
 	        $http.get('/api/user_review/get_user_detail_by_id/' + $scope.m_builder.traveler).
 		      success(function(data, status, headers, config) { 
 		        $scope.m_builder.m_invited_user.push(data);
+		        $scope.m_head_title = data.firstName + " " + data.lastName.substr(0, 1) + "'s Jrny to " + $scope.getCurrentUser().homeTown.formatted_address;
 		      }).
 		      error(function(data, status, headers, config) {
 		      });

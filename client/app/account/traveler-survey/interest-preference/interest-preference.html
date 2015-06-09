@@ -18,11 +18,7 @@
 
     <div id="main-container" ng-cloak>
         <!-- /breadcrumb-->
-        <div class="main-header clearfix">
-            <div class="page-title">
-            </div>
-            <!-- /page-title -->
-        </div>
+       <div ng-include="'/components/account/topNav/header-msg.html'"></div>
         <!-- /main-header -->
 
         <div class="custom-sub-navbar">
@@ -47,7 +43,7 @@
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
 
-                    <div class="row"><h2>Interests and Preferences<a href="#" style="float:right" ng-click="save_survey()" class="btn btn-danger">SAVE FOR LATER</a></h2></div>
+                    <div class="row" style="margin-bottom:10px"><a href="#" style="float:right" ng-click="save_survey()" class="btn btn-danger">SAVE FOR LATER</a></div>
 
                     <div class="row">
 
@@ -69,10 +65,10 @@
 
                     <div class="row">
 
-                        <div class="col-md-3 col-sm-12"><textarea ng-model="m_traveler_survey.interest.food_drink" class="form-control"></textarea></div>
-                        <div class="col-md-3 col-sm-12"><textarea ng-model="m_traveler_survey.interest.sightseeing" class="form-control"></textarea></div>
-                        <div class="col-md-3 col-sm-12"><textarea ng-model="m_traveler_survey.interest.budget" class="form-control"></textarea></div>
-                        <div class="col-md-3 col-sm-12"><textarea ng-model="m_traveler_survey.interest.must_see_do" class="form-control"></textarea></div>
+                        <div class="col-md-3 col-sm-12"><textarea rows="6" ng-model="m_traveler_survey.interest.food_drink" class="form-control"></textarea></div>
+                        <div class="col-md-3 col-sm-12"><textarea rows="6" ng-model="m_traveler_survey.interest.sightseeing" class="form-control"></textarea></div>
+                        <div class="col-md-3 col-sm-12"><textarea rows="6" ng-model="m_traveler_survey.interest.budget" class="form-control"></textarea></div>
+                        <div class="col-md-3 col-sm-12"><textarea rows="6" ng-model="m_traveler_survey.interest.must_see_do" class="form-control"></textarea></div>
 
                     </div>
                     
@@ -96,10 +92,10 @@
 
                     <div class="row">
 
-                        <div class="col-md-3 col-sm-12"><textarea ng-model="m_traveler_survey.interest.nightlife" class="form-control"></textarea></div>
-                        <div class="col-md-3 col-sm-12"><textarea ng-model="m_traveler_survey.interest.outdoors" class="form-control"></textarea></div>
-                        <div class="col-md-3 col-sm-12"><textarea ng-model="m_traveler_survey.interest.live_events" class="form-control"></textarea></div>
-                        <div class="col-md-3 col-sm-12"><textarea ng-model="m_traveler_survey.interest.overall_vibe" class="form-control"></textarea></div>
+                        <div class="col-md-3 col-sm-12"><textarea rows="6" ng-model="m_traveler_survey.interest.nightlife" class="form-control"></textarea></div>
+                        <div class="col-md-3 col-sm-12"><textarea rows="6" ng-model="m_traveler_survey.interest.outdoors" class="form-control"></textarea></div>
+                        <div class="col-md-3 col-sm-12"><textarea rows="6" ng-model="m_traveler_survey.interest.live_events" class="form-control"></textarea></div>
+                        <div class="col-md-3 col-sm-12"><textarea rows="6" ng-model="m_traveler_survey.interest.overall_vibe" class="form-control"></textarea></div>
                         
                     </div>
                     

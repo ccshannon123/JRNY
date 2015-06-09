@@ -10,6 +10,7 @@ angular.module('jrnyApp')
     	$scope.m_list_detail = 0;
     	$scope.m_detail_msg = {};
     	$scope.m_keyword = "";
+    	$scope.m_head_title = "Messages";
 
     	$scope.write_mail = function() {
     		location.href = "/message_write/new";
@@ -125,7 +126,17 @@ angular.module('jrnyApp')
 		      }).
 		      error(function(data, status, headers, config) {
 		      });
-		}
+		};
+
+		$scope.set_important = function(id, val, idx) {
+			$http.post('/api/message/set_important', {idx: id, val: val}).
+		      success(function(data, status, headers, config) {
+		      	$scope.m_messages[idx].isimportant = val;
+		      }).
+		      error(function(data, status, headers, config) {
+		      });
+
+		};
 
 		$scope.freset = function() {			
 			$http.get('/api/message/mreset').

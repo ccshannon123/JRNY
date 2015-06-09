@@ -5,6 +5,7 @@
 <section class="faqs secondaryTemplate" ng-controller="localsearchCtrl">
     <div class="container" style="height:600px">
         <div class="row">
+            <div class="col-md-2 col-sm-12"></div>
             <div class="col-md-2 col-sm-12">
                 <select class="form-control" ng-model="$parent.m_gender" ng-change="get_local()" id="txt_gen">
                     <option value="">Gender</option>
@@ -14,13 +15,18 @@
                 </select>
             </div>
             <div class="col-md-2 col-sm-12">
-                <select class="form-control" ng-change="get_local()"ng-model="$parent.m_age" ng-options="age for age in ageList" id="txt_age">
+                <select class="form-control" ng-change="get_local()" ng-model="$parent.m_age" id="txt_age">
                     <option value="">Age</option>
+                    <option value="1">18-25 years old</option>
+                    <option value="2">26-35 years old</option>
+                    <option value="3">36-45 years old</option>
+                    <option value="4">46-59 years old</option>
+                    <option value="5">60 years or older</option>
                 </select>
             </div>
             <div class="col-md-2 col-sm-12">
                 <select class="form-control" ng-change="get_local()" ng-model="$parent.m_lang" ng-options="lang for lang in languageList">
-                    <option value="">Primary Language</option>
+                    <option value="">Language</option>
                 </select>
             </div>
             <div class="col-md-2 col-sm-12">

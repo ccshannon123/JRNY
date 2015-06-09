@@ -143,21 +143,15 @@
 }
 
 .nav-extra-top {
-    background-color:#999999 !important;
+    background-color:#CCCCCC !important;
 }
 
 .nav-extra-top > li > a {
     color: #FFFFFF !important;
-    line-height:20px !important;
 }
 
 .nav-extra-bottom {
-    background-color:#CCCCCC !important;
-    line-height:20px !important;
-}
-
-.nav-extra-bottom > li > a {
-    color: #FFFFFF !important;
+    background-color:#EEEEEE !important;
 }
 
 .navbar-inverse .navbar-nav > .active > a,

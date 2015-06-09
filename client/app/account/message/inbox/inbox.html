@@ -22,27 +22,43 @@
         
         <!-- /main-header -->
         <div class="custom-sub-navbar">
-            <ul class="nav subnav">
-                <li class="active">
-                    <a href="/message_inbox">Inbox</a>
-                </li>
-                <li>
-                    <a href="/message_sent">Sent Mail</a>
-                </li>
-                <li>
-                    <a href="#">Drafts</a>
-                </li>
-                <li>
-                    <a href="#">Traveler Messages</a>
-                </li>
-                <li>
-                    <a href="#">Local Messages</a>
-                </li>
-                <li>
-                    <a href="#">All Messages</a>
-                </li>
-            </ul>
-        </div>
+                <ul class="nav subnav nav-extra-top">
+                    <li>
+                        <a href="/dashboard">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="/favorite/Restaurant">Your Favorites</a>
+                    </li>
+                    <li class="active">
+                        <a href="/message_inbox">Messages</a>
+                    </li>
+                    <li>
+                        <a href="/edit-profile">Profile</a>
+                    </li>
+                    <li>
+                        <a href="/notifications">Account</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="custom-sub-navbar">
+                <ul class="nav subnav nav-extra-bottom">
+                    <li class="active">
+                        <a href="/message_inbox">Inbox</a>
+                    </li>
+                    <li>
+                        <a href="/message_important">Important</a>
+                    </li>
+                    <li>
+                        <a href="/message_sent">Sent Mail</a>
+                    </li>
+                    <li>
+                        <a href="#">Drafts</a>
+                    </li>
+                
+                </ul>
+            </div>
+
 
         <div class="container notification-container">
             <div class="padding-md">
@@ -73,14 +89,17 @@
                                 <div class="col-md-1 col-sm-12" style="width:20px;">
                                     <input ng-model="$parent.m_chb[$index]" type="checkbox" class="form-control" style="margin-top:0px" />
                                 </div>
+                                <div class="col-md-1 col-sm-12" style="width:20px;">                                    
+                                    <span ng-show="msg.isread==0" class="glyphicon glyphicon-envelope"></span>
+                                </div>
                                 <div class="col-md-1 col-sm-12" style="width:20px;">
-                                    <span ng-show="msg.isread==0" class="glyphicon glyphicon-star"></span>
-                                    <span ng-show="msg.isread==1" class="glyphicon glyphicon-star-empty"></span>
+                                    <span ng-show="msg.isimportant=='1'" style="cursor:pointer" ng-click="set_important(msg._id, 0, $index)" class="glyphicon glyphicon-star"></span>
+                                    <span ng-show="msg.isimportant=='0'" style="cursor:pointer" ng-click="set_important(msg._id, 1, $index)" class="glyphicon glyphicon-star-empty"></span>
                                 </div>
                                 <div class="col-md-2 col-sm-12">
-                                    {{msg.firstName}} {{msg.lastName}}
+                                    {{msg.firstName}} {{msg.lastName.substr(0, 1)}}
                                 </div>
-                                <div class="col-md-6 col-sm-12" ng-click="show_msg(msg._id, $index)" style="cursor:pointer">
+                                <div class="col-md-5 col-sm-12" ng-click="show_msg(msg._id, $index)" style="cursor:pointer">
                                     {{msg.content}}
                                 </div>
                                 <div class="col-md-2 col-sm-12" style="text-align:right;float:right">{{msg.mdate}}</div>

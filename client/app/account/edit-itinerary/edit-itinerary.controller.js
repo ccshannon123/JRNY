@@ -15,6 +15,8 @@ angular.module('jrnyApp')
 	$scope.m_activity;
 	$scope.jrny_days = 0;
 
+	$scope.m_head_title = "";
+
 	$scope.week_name = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
 	$scope.month_name = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 
@@ -45,15 +47,21 @@ angular.module('jrnyApp')
 	};
 
 
-	$scope.remove_activity = function(id) {
-		$http.get('/api/activity/remove_activity/' + id).
-	      success(function(data, status, headers, config) { 
+	$scope.remove_activity = function(id) {		
+		if(confirm("Are you sure you want to remove this activity")) {
+			$http.get('/api/activity/remove_activity/' + id).
+		      success(function(data, status, headers, config) { 
 
-	      	$scope.get_activity();
+		      	$scope.get_activity();
 
-	      }).
-	      error(function(data, status, headers, config) {
-	      });
+		      }).
+		      error(function(data, status, headers, config) {
+		      });
+		  }
+	};
+
+	$scope.modify_activity = function(id) {		
+		
 	};
 
 	$scope.get_builder = function() {
@@ -96,6 +104,8 @@ angular.module('jrnyApp')
 		        $scope.m_builder.firstName = data.firstName;
 		        $scope.m_builder.lastName = data.lastName;
 		        $scope.m_builder.photoUrl = data.photoUrl;
+
+		        $scope.m_head_title = data.firstName + " " + data.lastName.substr(0, 1) + "'s Daily Itinerary";
 
 		      }).
 		      error(function(data, status, headers, config) {

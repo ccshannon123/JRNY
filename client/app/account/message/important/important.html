@@ -19,6 +19,7 @@
         
         <!-- /breadcrumb-->
         <div ng-include="'/components/account/topNav/header-msg.html'"></div>
+        
         <!-- /main-header -->
          <div class="custom-sub-navbar">
                 <ul class="nav subnav nav-extra-top">
@@ -45,10 +46,10 @@
                     <li>
                         <a href="/message_inbox">Inbox</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="/message_important">Important</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="/message_sent">Sent Mail</a>
                     </li>
                     <li>
@@ -78,7 +79,7 @@
                                 <button class="btn btn-default" ng-click="delete_mail()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
                             </div>
                             <div class="col-md-2 col-sm-12" style="float:right">
-                                <button class="btn btn-default" style="float:right" ng-click="get_sent()"><span class="glyphicon glyphicon-refresh"></span></button>
+                                <button class="btn btn-default" style="float:right" ng-click="get_inbox()"><span class="glyphicon glyphicon-refresh"></span></button>
                             </div>
                         </div>
 
@@ -87,15 +88,22 @@
                                 <div class="col-md-1 col-sm-12" style="width:20px;">
                                     <input ng-model="$parent.m_chb[$index]" type="checkbox" class="form-control" style="margin-top:0px" />
                                 </div>
+                                <div class="col-md-1 col-sm-12" style="width:20px;">                                    
+                                    <span ng-show="msg.isread==0" class="glyphicon glyphicon-envelope"></span>
+                                </div>
+                                <div class="col-md-1 col-sm-12" style="width:20px;">
+                                    <span ng-show="msg.isimportant=='1'" style="cursor:pointer" ng-click="set_important(msg._id, 0, $index)" class="glyphicon glyphicon-star"></span>
+                                    <span ng-show="msg.isimportant=='0'" style="cursor:pointer" ng-click="set_important(msg._id, 1, $index)" class="glyphicon glyphicon-star-empty"></span>
+                                </div>
                                 <div class="col-md-2 col-sm-12">
                                     {{msg.firstName}} {{msg.lastName.substr(0, 1)}}
                                 </div>
-                                <div class="col-md-7 col-sm-12" ng-click="show_msg(msg._id, $index)" style="cursor:pointer">
+                                <div class="col-md-5 col-sm-12" ng-click="show_msg(msg._id, $index)" style="cursor:pointer">
                                     {{msg.content}}
                                 </div>
                                 <div class="col-md-2 col-sm-12" style="text-align:right;float:right">{{msg.mdate}}</div>
                             </div>
-                            <div class="row row_border text-center" style="font-size:14px;" ng-show="!(m_messages.length > 0)">No Sent Mails</div>
+                            <div class="row row_border text-center" style="font-size:14px;" ng-show="!(m_messages.length > 0)">No Inbox</div>
                         </div>
                         <div ng-show="m_list_detail==1" class="row row_border" style="padding:0px 40px 20px 40px;font-size:14px">
                             <h3>From</h3>

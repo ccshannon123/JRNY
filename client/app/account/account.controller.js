@@ -33,13 +33,19 @@ angular.module('jrnyApp')
 
         $scope.m_phone1 = "";
         $scope.m_phone2 = "";
+        $scope.abc = "";
+
+        $scope.m_is_native = false;
+        $scope.booked_valueList = ["Yes", "No"];
 
         $scope.m_traveler_survey = {traveler: '', local: '', 
-                                    basic: {arrival_date:'', arrival_time: '', departure_date: '', departure_time: '', how_get: '', how_already_booked: '', where_stay: '', where_already_booked: ''},
+                                    basic: {arrival_date:'', arrive_after: false, departure_date: '', depart_before: false, how_get: '', how_already_booked: '', where_stay: '', where_already_booked: ''},
                                     companion: {how_many_group: '1', who_travel_with: '', main_purpose: '', group_dynamic: '', desired_energy_level: '', group_limitation: '', travel_companion: ''},
                                     interest: {food_drink: '', sightseeing: '', budget: '', must_see_do: '', nightlife: '', outdoors: '', live_events: '', overall_vibe: ''}};
 
         $scope.save_survey = function() {
+            alert($scope.abc);
+            return;
             $scope.m_traveler_survey.traveler = $scope.getCurrentUser()._id;
             
             $http.post('/api/traveler_survey/save_survey', $scope.m_traveler_survey).
@@ -64,16 +70,24 @@ angular.module('jrnyApp')
             $http.post('/api/traveler_survey/get_survey', {local: $scope.m_traveler_survey.local, traveler: $scope.m_traveler_survey.traveler}).
               success(function(data, status, headers, config) {
 
-                $scope.m_traveler_survey.basic.arrival_date = data.basic.arrival_date.substr(0, 10);
-                $scope.m_traveler_survey.basic.arrival_time = data.basic.arrival_date.substr(11, 8);
+                if(data.basic.arrival_date != null) $scope.m_traveler_survey.basic.arrival_date = data.basic.arrival_date.substr(0, 10);
+                if(data.basic.departure_date != null) $scope.m_traveler_survey.basic.departure_date = data.basic.departure_date.substr(0, 10);
 
-                $scope.m_traveler_survey.basic.departure_date = data.basic.departure_date.substr(0, 10);;
-                $scope.m_traveler_survey.basic.departure_time = data.basic.departure_date.substr(11, 8);;
 
                 $scope.m_traveler_survey.basic.how_get = data.basic.how_get;
                 $scope.m_traveler_survey.basic.how_already_booked = data.basic.how_already_booked;
                 $scope.m_traveler_survey.basic.where_stay = data.basic.where_stay;
                 $scope.m_traveler_survey.basic.where_already_booked = data.basic.where_already_booked;
+
+                if(data.basic.arrive_after == 'true')
+                    $scope.m_traveler_survey.basic.arrive_after = true;
+                else
+                    $scope.m_traveler_survey.basic.arrive_after = false;
+
+                if(data.basic.depart_before == 'true')
+                    $scope.m_traveler_survey.basic.depart_before = true;
+                else
+                    $scope.m_traveler_survey.basic.depart_before = false;
 
                 $scope.m_traveler_survey.companion = data.companion;
                 $scope.m_traveler_survey.interest = data.interest;
@@ -119,7 +133,7 @@ angular.module('jrnyApp')
             var user = $scope.getCurrentUser();
             if($scope.m_year != 0 & $scope.m_month != 0 & $scope.m_day != 0)
                 user.DateOfBirth = $scope.m_year + "/" + $scope.m_month + "/" + $scope.m_day + " 0:0:0";
-            user.PhoneNumber = $scope.m_phone1 + $scope.m_phone2;
+            user.PhoneNumber = $scope.m_phone1 + "---" + $scope.m_phone2;
             user.$updateUser(function (user) {
                 toastr.success('Your information has been updated', 'Saved!')
             }, function (err) {
@@ -210,7 +224,24 @@ angular.module('jrnyApp')
             location.href = "/profile/" + em;
         };
 
+
+        angular.element(document).ready(function () {
+
+            $scope.$watch(function(scope){return scope.getCurrentUser().PhoneNumber}, function(){
+              if($scope.getCurrentUser().PhoneNumber!=undefined){
+                if($scope.getCurrentUser().PhoneNumber != "") {
+                    var pn = $scope.getCurrentUser().PhoneNumber.split("---");
+                    $scope.m_phone1 = pn[0];
+                    $scope.m_phone2 = pn[1];
+                }
+              }
+            })
+        });
+
     });
+
+
+    
 
 Array.prototype.indexObjectOf = function arrayObjectIndexOf(property, value) {
     for (var i = 0, len = this.length; i < len; i++) {

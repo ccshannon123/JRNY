@@ -21,7 +21,26 @@
         <!-- /main-header -->
 
         <div class="custom-sub-navbar">
-            <ul class="nav subnav">
+            <ul class="nav subnav nav-extra-top">
+                <li class="active">
+                    <a href="/dashboard">Dashboard</a>
+                </li>
+                <li>
+                    <a href="/favorite/Restaurant">Your Favorites</a>
+                </li>
+                <li>
+                    <a href="/message_inbox">Messages</a>
+                </li>
+                <li>
+                    <a href="/edit-profile">Profile</a>
+                </li>
+                <li>
+                    <a href="/notifications">Account</a>
+                </li>
+            </ul>
+        </div>
+        <div class="custom-sub-navbar">
+            <ul class="nav subnav nav-extra-bottom">
                 <li>
                     <a href="#">Your Jrnys</a>
                 </li>
@@ -117,7 +136,7 @@
                                     <div class="row" style="margin-top:15px">
                                         <div class="col-md-12 col-sm-12">
                                             <div class="jrny_list_box">
-                                                <div class="text-center"><h1>{{jrny.homeTown}}</h1></div>
+                                                <div class="text-center"><h1>{{jrny.homeTown.formatted_address}}&nbsp;</h1></div>
                                                 <div class="text-center" style="margin-top:20px;font-size:14px;">{{jrny.str_period}}</div>
                                                 <div class="text-center jrny_person_box">
                                                     <div class="row" style="padding-top:5px">

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('jrnyApp').controller('editProfileCtrl', function ($scope, User) {
+	$scope.m_head_title = "Profile";
 	$scope.setPlace = function() {
-		alert('d');
 	 /*var request = {
 	    location: map.getCenter(),
 	    radius: '500',

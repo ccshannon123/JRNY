@@ -10,8 +10,11 @@ angular.module('jrnyApp')
     	$scope.m_idx = 0;
 
     	$scope.m_state_id = "";
+    	$scope.m_head_title = "Messages";
 
     	$scope.send = function() {
+    		if($stateParams.id == "new")
+    			$scope.remail = document.getElementById("sel_user").value;
     		var dt = new Date();
 			if($scope.remail == "") {
 				alert("Please select user.");

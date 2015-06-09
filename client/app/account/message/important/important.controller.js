@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jrnyApp')
-    .controller('sentCtrl', function ($scope, $http, Auth, User) {
+    .controller('importantCtrl', function ($scope, $http, Auth, User) {
     	$scope.getCurrentUser = Auth.getCurrentUser;
     	$scope.m_messages = {};
 
@@ -33,9 +33,9 @@ angular.module('jrnyApp')
 	        	return;
 	        }
 
-    		$http.get('/api/message/sdelete/' + mids).
+    		$http.get('/api/message/rdelete/' + mids).
 		      success(function(data, status, headers, config) { 
-		      		$scope.get_sent();
+		      		$scope.get_inbox();
 		      }).
 		      error(function(data, status, headers, config) {
 		      });
@@ -49,7 +49,7 @@ angular.module('jrnyApp')
 
     	$scope.search = function() {
     		$scope.m_list_detail = 0;
-			$http.post('/api/message/ssearch', {email: $scope.getCurrentUser().email, kwd: $scope.m_keyword}).
+			$http.post('/api/message/rsearch', {email: $scope.getCurrentUser().email, kwd: $scope.m_keyword}).
 		      success(function(data, status, headers, config) {
 		      	if(data.result != undefined) {
 		      		$scope.m_messages = {};
@@ -80,14 +80,15 @@ angular.module('jrnyApp')
 		      });
 		};
 
-    	$scope.get_sent = function() {
+    	$scope.get_inbox = function() {
     		$scope.m_list_detail = 0;
-			$http.get('/api/message/sent/' + $scope.getCurrentUser().email).
+			$http.get('/api/message/important/' + $scope.getCurrentUser().email).
 		      success(function(data, status, headers, config) {
 		      	if(data.result != undefined) {
 		      		$scope.m_messages = {};
 			      	return;
 			      }
+
 
 		        $scope.m_messages = data;
 		        var month_name = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
@@ -98,7 +99,7 @@ angular.module('jrnyApp')
 		        $scope.m_messages.forEach(function(msg) {
 		        	msg.mdate = month_name[parseInt(msg.mdate.substr(5,2)) - 1] + " " + msg.mdate.substr(8,2);
 
-		        	$http.get('/api/user_review/get_user_detail/' + msg.receiver).
+		        	$http.get('/api/user_review/get_user_detail/' + msg.sender).
 				      success(function(data, status, headers, config) { 
 				        msg.firstName = data.firstName;
 				        msg.lastName = data.lastName;
@@ -119,23 +120,33 @@ angular.module('jrnyApp')
 			$scope.m_detail_msg = $scope.m_messages[idx];
 		     $scope.m_detail_msg.content = $scope.m_detail_msg.content.replace("\n", "<br />");
 
-			/*$http.get('/api/message/show/' + mid).
+			$http.get('/api/message/show/' + mid).
 		      success(function(data, status, headers, config) {
-		      	$scope.m_detail_msg = data;
-		      	$scope.m_detail_msg.content = $scope.m_detail_msg.content.replace("\n", "<br />");
 
 		      }).
 		      error(function(data, status, headers, config) {
-		      });*/
-		}
+		      });
+		};
+
+		$scope.set_important = function(id, val, idx) {
+			$http.post('/api/message/set_important', {idx: id, val: val}).
+		      success(function(data, status, headers, config) {
+		      	$scope.m_messages[idx].isimportant = val;
+		      }).
+		      error(function(data, status, headers, config) {
+		      });
+
+		};
+
+
 		angular.element(document).ready(function () {
 
+		
 	    $scope.$watch(function(scope){return scope.getCurrentUser().email}, function(){
 	      if($scope.getCurrentUser().email!=undefined){
-	          $scope.get_sent();
+	          $scope.get_inbox();
 	      }
 	    })
 	    });
-
 
     });

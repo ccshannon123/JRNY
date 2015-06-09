@@ -108,12 +108,14 @@ exports.save_survey = function (req, res, next) {
 
         var new_ts = reqs[0];
 
-        new_ts.basic.arrival_date = req.body.basic.arrival_date + " " + req.body.basic.arrival_time;
-        new_ts.basic.departure_date = req.body.basic.departure_date + " " + req.body.basic.departure_time;
+        new_ts.basic.arrival_date = req.body.basic.arrival_date;
+        new_ts.basic.departure_date = req.body.basic.departure_date;
         new_ts.basic.how_get = req.body.basic.how_get;
         new_ts.basic.how_already_booked = req.body.basic.how_already_booked;
         new_ts.basic.where_stay = req.body.basic.where_stay;
         new_ts.basic.where_already_booked = req.body.basic.where_already_booked;
+        new_ts.basic.arrive_after = req.body.basic.arrive_after;
+        new_ts.basic.depart_before = req.body.basic.depart_before;
 
         new_ts.companion = req.body.companion;
         new_ts.interest = req.body.interest;
@@ -130,12 +132,14 @@ exports.save_survey = function (req, res, next) {
         new_ts.local = l_id;
         new_ts.isaccept = "0";
 
-        new_ts.basic.arrival_date = req.body.basic.arrival_date + " " + req.body.basic.arrival_time;
-        new_ts.basic.departure_date = req.body.basic.departure_date + " " + req.body.basic.departure_time;
+        new_ts.basic.arrival_date = req.body.basic.arrival_date;
+        new_ts.basic.departure_date = req.body.basic.departure_date;
         new_ts.basic.how_get = req.body.basic.how_get;
         new_ts.basic.how_already_booked = req.body.basic.how_already_booked;
         new_ts.basic.where_stay = req.body.basic.where_stay;
         new_ts.basic.where_already_booked = req.body.basic.where_already_booked;
+        new_ts.basic.arrive_after = req.body.basic.arrive_after;
+        new_ts.basic.depart_before = req.body.basic.depart_before;
 
         new_ts.companion = req.body.companion;
         new_ts.companion.travel_companions = "";

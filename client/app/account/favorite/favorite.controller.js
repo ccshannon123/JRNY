@@ -16,6 +16,8 @@ angular.module('jrnyApp')
 
 	$scope.m_favorites = [];
 
+	$scope.m_head_title = "Your Favorites";
+
 	$scope.getNumber = function(num) {
 		num = eval(num);
 	    return new Array(num);   

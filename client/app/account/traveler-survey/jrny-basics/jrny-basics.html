@@ -17,11 +17,7 @@
 
 
     <div id="main-container" ng-cloak>
-        <!-- /breadcrumb-->
-        <div class="main-header clearfix">
-            <div class="page-title">
-            </div>
-        </div>
+        <div ng-include="'/components/account/topNav/header-msg.html'"></div>
         <!-- /main-header -->
 
         <div class="custom-sub-navbar">
@@ -42,22 +38,38 @@
         </div>
         <!-- /grey-container -->
 
+
+<!--$scope.dateOptions = {
+            formatYear: 'yy',
+            startingDay: 1,
+            showWeeks: false
+        };
+
+        $scope.format = 'dd-MMMM-yyyy';
+        <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="getCurrentUser().DateOfBirth" is-open="opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-focus="open($event)" readonly style="cursor:auto; background-color:#fff;" />
+
+-->
         <div class="padding-md">
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
-                    <div class="row"><h2>Jrny Basics<a href="#" style="float:right" class="btn btn-danger" ng-click="save_survey()">SAVE FOR LATER</a></h2></div>
+                    <div class="row" style="margin-bottom:10px"><a href="#" style="float:right" class="btn btn-danger" ng-click="save_survey()">SAVE FOR LATER</a></div>
                     <div class="form-group row">
                         <div class="col-md-2 col-sm-12"><h4>Arrival Date</h4></div>
-                        <div class="col-md-4 col-sm-12"><input ng-model="m_traveler_survey.basic.arrival_date" type="text" class="form-control" /></div>
-                        <div class="col-md-2 col-sm-12"><h4>Arrival Time</h4></div>
-                        <div class="col-md-4 col-sm-12"><input ng-model="m_traveler_survey.basic.arrival_time" type="text" class="form-control" /></div>
+                        <div class="col-md-4 col-sm-12">
+                            <!--<input type="text" class="form-control" datepicker-popup="MMMM dd, yyyy" is-open="opened" ng-focus="open($event)" readonly style="cursor:auto; background-color:#fff;" ng-model="abc" />-->
+                            <input type="text" class="form-control" ng-model="m_traveler_survey.basic.arrival_date" />
+                        </div>
+                        <div class="col-md-2 col-sm-12"><h4>Arrive After 6pm?</h4></div>
+                        <div class="col-md-4 col-sm-12"><input type="checkbox" ng-model="m_traveler_survey.basic.arrive_after" class="form-control" /></div>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-2 col-sm-12"><h4>Departure Date</h4></div>
-                        <div class="col-md-4 col-sm-12"><input ng-model="m_traveler_survey.basic.departure_date" type="text" class="form-control" /></div>
-                        <div class="col-md-2 col-sm-12"><h4>Departure Time</h4></div>
-                        <div class="col-md-4 col-sm-12"><input ng-model="m_traveler_survey.basic.departure_time" type="text" class="form-control" /></div>
+                        <div class="col-md-4 col-sm-12">
+                            <input type="text" class="form-control" ng-model="m_traveler_survey.basic.departure_date" />
+                        </div>
+                        <div class="col-md-2 col-sm-12"><h4>Depart Before 11am?</h4></div>
+                        <div class="col-md-4 col-sm-12"><input type="checkbox" ng-model="m_traveler_survey.basic.depart_before" type="text" class="form-control" /></div>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-3 col-sm-12"><h4>How are you getting here?</h4></div>
@@ -70,7 +82,10 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-md-3" style="padding-left:40px"><h4>Have you already booked it?</h4></div>
-                        <div class="col-md-9"><input ng-model="m_traveler_survey.basic.how_already_booked" type="text" class="form-control" /></div>
+                        <div class="col-md-9">
+                            <select id="txt_hab1" style="width:20%" ng-model="m_traveler_survey.basic.how_already_booked" ng-options="val for val in booked_valueList" type="text" class="form-control">
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-3 col-sm-12"><h4>Where are you staying</h4></div>
@@ -83,7 +98,10 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-md-3" style="padding-left:40px"><h4>Have you already booked it?</h4></div>
-                        <div class="col-md-9"><input ng-model="m_traveler_survey.basic.where_already_booked" type="text" class="form-control" /></div>
+                        <div class="col-md-9">
+                            <select id="txt_hab2" style="width:20%" ng-model="m_traveler_survey.basic.where_already_booked" ng-options="val for val in booked_valueList" type="text" class="form-control">
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-4"></div>

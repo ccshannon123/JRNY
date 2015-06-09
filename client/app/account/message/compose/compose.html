@@ -20,38 +20,43 @@
         <!-- /breadcrumb-->
         <div ng-include="'/components/account/topNav/header-msg.html'"></div>
         <!-- /main-header -->
-        <div class="custom-sub-navbar">
-            <ul class="nav subnav">
-                <li>
-                    <a href="/message_inbox">Inbox</a>
-                </li>
-                <li>
-                    <a href="/message_sent">
-            Sent Mail
-          </a>
-                </li>
-                <li>
-                    <a href="/message_drafts">
-            Drafts
-          </a>
-                </li>
-                <li>
-                    <a href="/message_traveler">
-            Traveler Messages
-          </a>
-                </li>
-                <li>
-                    <a href="/message_local">
-            Local Messages
-          </a>
-                </li>
-                <li>
-                    <a href="/message_all">
-            All Messages
-          </a>
-                </li>
-            </ul>
-        </div>
+         <div class="custom-sub-navbar">
+                <ul class="nav subnav nav-extra-top">
+                    <li>
+                        <a href="/dashboard">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="/favorite/Restaurant">Your Favorites</a>
+                    </li>
+                    <li class="active">
+                        <a href="/message_inbox">Messages</a>
+                    </li>
+                    <li>
+                        <a href="/edit-profile">Profile</a>
+                    </li>
+                    <li>
+                        <a href="/notifications">Account</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="custom-sub-navbar">
+                <ul class="nav subnav nav-extra-bottom">
+                    <li>
+                        <a href="/message_inbox">Inbox</a>
+                    </li>
+                    <li>
+                        <a href="/message_important">Important</a>
+                    </li>
+                    <li>
+                        <a href="/message_sent">Sent Mail</a>
+                    </li>
+                    <li>
+                        <a href="#">Drafts</a>
+                    </li>
+                
+                </ul>
+            </div>
 
         <div class="container notification-container">
             <div class="padding-md">
@@ -62,7 +67,8 @@
                         <div class="row row_border" style="border-top:1px solid #EEEEEE">
                             <div class="col-md-1 col-sm-12"><h5>To:</h5></div>
                             <div class="col-md-10 col-sm-12">
-                                <select class="form-control" ng-model="remail" ng-show="(m_state_id=='')">
+                                <select class="form-control" id="sel_user" ng-show="(m_state_id=='')">
+                                    <option value=""></option>
                                     <option value="{{user.email}}" ng-repeat="user in users track by $index">{{user.firstName}} {{user.lastName}}</option>
                                 </select>
                                 <h5 ng-show="!(m_state_id=='')">{{users[m_idx].firstName}} {{users[m_idx].lastName}}</h5>
