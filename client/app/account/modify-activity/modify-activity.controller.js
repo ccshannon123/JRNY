@@ -101,12 +101,12 @@ angular.module('jrnyApp')
 		$http.get('/api/activity/get_activity_by_id/' + $stateParams.aid).
 	      success(function(data, status, headers, config) {
 
-	      	$scope.m_activity_name = data[0].activity_name;
-	      	$scope.m_place = data[0].place;
-	      	$scope.m_favorite = data[0].place.formatted_address;
+	      	$scope.m_activity_name = data[0].activity_name;	      	
 	      	$scope.m_suggestion = data[0].suggestion;
 	      	$scope.m_time = data[0].time;
 	      	$scope.m_duration = data[0].duration;
+	      	$scope.m_place = data[0].place;
+	      	$scope.m_favorite = data[0].place.formatted_address;
 	        
 	      }).
 	      error(function(data, status, headers, config) {
