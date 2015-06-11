@@ -35,22 +35,19 @@ angular.module('jrnyApp')
 
 	      	if(data.result != undefined)
 	      		return;
-	      	$scope.m_activity = data;
 
-	      	$scope.m_activity.forEach(function(act) {
+
+	      	$scope.m_activity = [];
+
+	      	data.forEach(function(act) {
 	      		act.ltime = act.time + act.duration;
+	      		if(act.adate != null && act.adate != undefined)
+	      		{
+	      			if( act.adate.substr(0, 10) == $stateParams.date ) {
+	      				$scope.m_activity.push(act);
+	      			}
+	      		}
 
-	      		/*if(act.place != null) {
-	      			alert(JSON.stringify(act.place));
-			        var marker = new google.maps.Marker({
-			          map: map,
-			          place: {
-			            placeId: act.place.place_id,
-			            location: act.place.geometry.location
-			          }
-			        });
-			        map.setCenter(new google.maps.LatLng(act.place.geometry.location.A, act.place.geometry.location.F));
-				}*/
 	      	});
 
 	      }).

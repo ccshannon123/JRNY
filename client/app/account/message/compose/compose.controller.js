@@ -20,7 +20,7 @@ angular.module('jrnyApp')
 				alert("Please select user.");
 				return;
 			}
-    		$http.post('/api/message/send', {semail:$scope.getCurrentUser().email, remail:$scope.remail, ct:$scope.msg_content, dt:dt}).
+    		$http.post('/api/message/send', {semail:$scope.getCurrentUser().email, remail:$scope.remail, ct:$scope.msg_content, dt:dt, ic:"0"}).
 		      success(function(data, status, headers, config) { 
 		        location.href = "/message_sent";
 		      }).

@@ -32,13 +32,19 @@ angular.module('jrnyApp')
 	$scope.get_activity = function() {//{ $query: {receiver: em, rdelete:'0'}, $orderby: { mdate: -1 }}
 		$http.post('/api/activity/get_activity', {iid: $stateParams.id, adt: $stateParams.date}).
 	      success(function(data, status, headers, config) { 
-
 	      	if(data.result != undefined)
 	      		return;
-	      	$scope.m_activity = data;
+	      	$scope.m_activity = [];
 
-	      	$scope.m_activity.forEach(function(act) {
+	      	data.forEach(function(act) {
 	      		act.ltime = act.time + act.duration;
+	      		if(act.adate != null && act.adate != undefined)
+	      		{
+	      			if( act.adate.substr(0, 10) == $stateParams.date ) {
+	      				$scope.m_activity.push(act);
+	      			}
+	      		}
+
 	      	});
 
 	      }).
@@ -60,8 +66,8 @@ angular.module('jrnyApp')
 		  }
 	};
 
-	$scope.modify_activity = function(id) {		
-		
+	$scope.modify_activity = function(a, b, id) {	
+		location.href = "/modify-activity/" + a + "/" + b + "/" + id;
 	};
 
 	$scope.get_builder = function() {

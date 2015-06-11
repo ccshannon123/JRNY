@@ -10,12 +10,86 @@ angular.module('jrnyApp')
 	$scope.arr_dt;
 	$scope.dep_dt;
 
+	$scope.m_messages = [];
+	$scope.m_msg = "";
+
 	$scope.jrny_days = 0;
 
 	$scope.m_head_title = ""
 
 	$scope.week_name = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
 	$scope.month_name = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+
+
+	$scope.send_msg = function() {
+
+		var dt = new Date();
+		if($scope.m_msg == "")
+			return;
+
+		$http.post('/api/message/send', {semail:$scope.getCurrentUser().email, remail:$stateParams.id, ct:$scope.m_msg, dt:dt, ic:"1"}).
+		  success(function(data, status, headers, config) { 
+		  }).
+		  error(function(data, status, headers, config) {
+		  });
+	};
+
+	$scope.get_msg = function() {
+		$http.get('/api/message/chat_inbox/' + $stateParams.id).
+	      success(function(data, status, headers, config) {
+	      	if(data.result != undefined) {
+	      		$scope.m_messages = [];
+		      	return;
+		      }
+
+	        var month_name = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+	       	
+	       	var prev_sender = "";
+	       	var flag = 0;
+	       	var msg_cnt = 1;
+
+	        data.forEach(function(msg) {
+	        	
+	        	if(prev_sender != msg.sender) {
+	        		flag++;
+	        		msg.isnext = flag % 2;
+	        	}
+	        	else
+	        		msg.isnext = flag % 2;
+
+	        	msg.mdate = month_name[parseInt(msg.mdate.substr(5,2)) - 1] + " " + msg.mdate.substr(8,2) + " " + msg.mdate.substr(11,2) + ":" + msg.mdate.substr(14,2);
+	        	$http.get('/api/user_review/get_user_detail/' + msg.sender).
+			      success(function(data, status, headers, config) { 
+			        msg.firstName = data.firstName;
+			        msg.lastName = data.lastName;
+			        msg.photoUrl = data.photoUrl;
+			      }).
+			      error(function(data, status, headers, config) {
+			      });
+			      prev_sender = msg.sender;
+
+			      if(msg_cnt > $scope.m_messages.length) {
+			      	$scope.m_messages.push(msg);
+			      }
+
+				  msg_cnt++;
+	        	
+	        });	        
+
+	        chat_thread_id = setTimeout($scope.get_msg, 3000);	   
+
+
+
+	      }).
+	      error(function(data, status, headers, config) {
+	      });
+	};
+
+	$scope.set_scroll_position = function() {
+		var objDiv = document.getElementById("div_chat_box");
+		objDiv.scrollTop = objDiv.scrollHeight;
+	};
+
 
 	$scope.getNumber = function(num) {
 		num = eval(num);
@@ -92,6 +166,7 @@ angular.module('jrnyApp')
 
 	angular.element(document).ready(function () {
         $scope.get_builder();
+        $scope.get_msg();
     });
 
 	

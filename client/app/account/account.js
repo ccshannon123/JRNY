@@ -318,6 +318,15 @@ angular.module('jrnyApp')
           css: 'assets/endless/css/endless.css'
         }
       })
+      .state('modify-activity', {
+        url: '/modify-activity/:id/:date/:aid',
+        templateUrl: 'app/account/modify-activity/modify-activity.html',
+        controller: 'modactivityCtrl',
+        authenticate: true,
+        data: {
+          css: 'assets/endless/css/endless.css'
+        }
+      })
       .state('favorite', {
         url: '/favorite/:category',
         templateUrl: 'app/account/favorite/favorite.html',

@@ -44,8 +44,12 @@ angular.module('jrnyApp')
                                     interest: {food_drink: '', sightseeing: '', budget: '', must_see_do: '', nightlife: '', outdoors: '', live_events: '', overall_vibe: ''}};
 
         $scope.save_survey = function() {
-            alert($scope.abc);
-            return;
+            var arr_dt = ($( "#arr_date" ).datepicker("getDate"));
+            var dep_dt = ($( "#dep_date" ).datepicker("getDate"));
+            
+            $scope.m_traveler_survey.basic.arrival_date = arr_dt.getFullYear() + "/" + (arr_dt.getMonth() + 1) + "/" + arr_dt.getDate();
+            $scope.m_traveler_survey.basic.departure_date = dep_dt.getFullYear() + "/" + (dep_dt.getMonth() + 1) + "/" + dep_dt.getDate();
+
             $scope.m_traveler_survey.traveler = $scope.getCurrentUser()._id;
             
             $http.post('/api/traveler_survey/save_survey', $scope.m_traveler_survey).
@@ -72,6 +76,9 @@ angular.module('jrnyApp')
 
                 if(data.basic.arrival_date != null) $scope.m_traveler_survey.basic.arrival_date = data.basic.arrival_date.substr(0, 10);
                 if(data.basic.departure_date != null) $scope.m_traveler_survey.basic.departure_date = data.basic.departure_date.substr(0, 10);
+
+                $( "#arr_date" ).datepicker( "setDate", $scope.getMonthName(parseInt(data.basic.arrival_date.substr(5, 2))) + " " + data.basic.arrival_date.substr(8, 2) + ", " + data.basic.arrival_date.substr(0, 4) );
+                $( "#dep_date" ).datepicker( "setDate", $scope.getMonthName(parseInt(data.basic.departure_date.substr(5, 2))) + " " + data.basic.departure_date.substr(8, 2) + ", " + data.basic.departure_date.substr(0, 4) );
 
 
                 $scope.m_traveler_survey.basic.how_get = data.basic.how_get;

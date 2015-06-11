@@ -10,6 +10,7 @@ var multipartMiddleware = multipart();
 var router = express.Router();
 
 router.get('/inbox/:email', controller.get_inbox);
+router.get('/chat_inbox/:email', controller.get_chat_inbox);
 router.get('/important/:email', controller.get_important);
 router.get('/sent/:email', controller.get_sent);
 router.get('/show/:mid', controller.show);

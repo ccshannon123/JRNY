@@ -26,7 +26,20 @@ var validationError = function (res, err) {
 
 exports.get_inbox = function (req, res, next) {
     var em = req.params.email;
-    Message.find({ $query: {receiver: em, rdelete:'0'}, $orderby: { mdate: -1 }}, function (err, messages) {
+    Message.find({ $query: {receiver: em, rdelete:'0', ischat: '0'}, $orderby: { mdate: -1 }}, function (err, messages) {
+      if (err) {
+        console.log(err);
+      } else if (messages.length) {
+        res.json(messages);
+      } else {
+        res.json({result:'none'});
+      }
+    });
+};
+
+exports.get_chat_inbox = function (req, res, next) {
+    var em = req.params.email;
+    Message.find({ $query: {receiver: em, rdelete:'0', ischat: '1'}, $orderby: { mdate: 1 }}, function (err, messages) {
       if (err) {
         console.log(err);
       } else if (messages.length) {
@@ -52,7 +65,7 @@ exports.get_important = function (req, res, next) {
 
 exports.get_sent = function (req, res, next) {
     var em = req.params.email;
-    Message.find({ $query: {sender: em, sdelete:'0'}, $orderby: { mdate: -1 }}, function (err, messages) {
+    Message.find({ $query: {sender: em, sdelete:'0', ischat:'0'}, $orderby: { mdate: -1 }}, function (err, messages) {
       if (err) {
         console.log(err);
       } else if (messages.length) {
@@ -225,9 +238,10 @@ exports.send = function (req, res, next) {
     new_msg.rdelete = "0";
     new_msg.isread = "0";
     new_msg.isimportant = "0";
+    new_msg.ischat = req.body.ic;
     
     new_msg.save(function (err, user) {  
-        res.json(new_msg);
+        res.json(user);
     });
 };
 

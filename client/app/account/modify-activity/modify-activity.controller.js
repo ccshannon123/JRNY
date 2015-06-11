@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jrnyApp')
-    .controller('addactivityCtrl', function ($scope, $http, $stateParams, Auth, User) {
+    .controller('modactivityCtrl', function ($scope, $http, $stateParams, Auth, User) {
 
 	$scope.getCurrentUser = Auth.getCurrentUser;
 
@@ -40,7 +40,7 @@ angular.module('jrnyApp')
 	    return new Array(num);   
 	};
 
-	$scope.add_activity = function() {
+	$scope.modify_activity = function() {
 		$scope.setPlace();
 		if($scope.m_activity_name == "") {
 			$scope.m_is_error = 1;
@@ -62,7 +62,7 @@ angular.module('jrnyApp')
 
 		var act_dt = ($( "#act_date" ).datepicker("getDate"));
 
-		$http.post('/api/activity/add_activity', {place: $scope.m_place, iid: $scope.m_builder._id, an: $scope.m_activity_name, adt: act_dt, tm: $scope.m_time, dur: $scope.m_duration, sugg: $scope.m_suggestion}).
+		$http.post('/api/activity/modify_activity', {id: $stateParams.aid, place: $scope.m_place, iid: $scope.m_builder._id, an: $scope.m_activity_name, adt: act_dt, tm: $scope.m_time, dur: $scope.m_duration, sugg: $scope.m_suggestion}).
 			success(function(data, status, headers, config) {
 				location.href = "/edit-itinerary/" + $stateParams.id + "/" + $stateParams.date;
 	      }).
@@ -97,8 +97,23 @@ angular.module('jrnyApp')
 
 	};
 
-	$scope.get_builder = function() {
+	$scope.get_activity = function() {
+		$http.get('/api/activity/get_activity_by_id/' + $stateParams.aid).
+	      success(function(data, status, headers, config) {
 
+	      	$scope.m_activity_name = data[0].activity_name;
+	      	$scope.m_place = data[0].place;
+	      	$scope.m_favorite = data[0].place.formatted_address;
+	      	$scope.m_suggestion = data[0].suggestion;
+	      	$scope.m_time = data[0].time;
+	      	$scope.m_duration = data[0].duration;
+	        
+	      }).
+	      error(function(data, status, headers, config) {
+	      });
+	};
+
+	$scope.get_builder = function() {
 		$http.get('/api/traveler_survey/get_itinerary/' + $stateParams.id).
 	      success(function(data, status, headers, config) { 
 
@@ -109,24 +124,7 @@ angular.module('jrnyApp')
 
        		$scope.arr_dt = new Date($scope.m_builder.basic.arrival_date);
        		$scope.dep_dt = new Date($scope.m_builder.basic.departure_date);
-
-       		/*$scope.jrny_days = 1;
-
-       		var tmp_dt = new Date();       		
-       		tmp_dt.setFullYear($scope.arr_dt.getFullYear(), $scope.arr_dt.getMonth(), $scope.arr_dt.getDate());
-
-       		$scope.dt_str_list[0] = new Date();
-       		$scope.dt_str_list[0].setFullYear($scope.arr_dt.getFullYear(), $scope.arr_dt.getMonth(), $scope.arr_dt.getDate());
-
-       		while(!(tmp_dt.getFullYear() == $scope.dep_dt.getFullYear() && tmp_dt.getMonth() == $scope.dep_dt.getMonth() && tmp_dt.getDate() == $scope.dep_dt.getDate()))
-       		{
-       			tmp_dt.setDate(tmp_dt.getDate() + 1);
-       			$scope.dt_str_list[$scope.jrny_days] = new Date();
-       			$scope.dt_str_list[$scope.jrny_days].setFullYear(tmp_dt.getFullYear(), tmp_dt.getMonth(), tmp_dt.getDate());
-
-       			$scope.jrny_days++;
-
-       		}*/
+       		
 
        		$scope.cur_dt = new Date($stateParams.date);
 
@@ -153,6 +151,7 @@ angular.module('jrnyApp')
 
 	angular.element(document).ready(function () {
         $scope.get_builder();
+        $scope.get_activity();
     });
 
 	

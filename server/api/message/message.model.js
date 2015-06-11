@@ -15,6 +15,7 @@ var MessageSchema = new Schema({
     rdelete:String,
     isread:String,
     isimportant:String,
+    ischat:String,
     mdate:Date
     
 });

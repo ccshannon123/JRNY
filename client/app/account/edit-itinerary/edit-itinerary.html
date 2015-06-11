@@ -1,7 +1,6 @@
 <!-- Overlay Div -->
 <!--<div id="overlay" class="transparent">
 </div>-->
-
 <div id="wrapper" class="preload sidebar-hide" ng-controller="AccountCtrl">
 
     <!-- =========================
@@ -58,7 +57,7 @@
                                         <div class="col-md-9 col-sm-12"><h3>{{act.activity_name}}</h3></div>
                                         <div class="col-md-3 col-sm-12">
                                             <div class="row" style="margin-top:15px">
-                                                <div class="col-md-6 col-sm-12"><a class="btn btn-success text-right"  ng-click="modify_activity(act._id)">Modify</a></div>
+                                                <div class="col-md-6 col-sm-12"><a class="btn btn-success" ng-click="modify_activity(m_builder._id, cur_dt.toISOString().substr(0, 10), act._id)">Modify</a></div>
                                                 <div class="col-md-6 col-sm-12"><a class="btn btn-danger text-right" ng-click="remove_activity(act._id)">Remove</a></div>
                                             </div>
                                         </div>
@@ -88,6 +87,7 @@
     <div ng-include="'/components/account/footer/footer.html'"></div>
 
 </div>
+
 <!-- /wrapper -->
 
 <a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>

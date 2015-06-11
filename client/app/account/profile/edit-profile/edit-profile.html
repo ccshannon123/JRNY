@@ -185,27 +185,22 @@
                                     </div>
                                     <label class="control-label col-md-2">Since when?</label>
 
-                                    <div class="col-md-2">
+                                    <div class="col-md-1">
                                         <select ng-disabled="m_is_native" class="form-control input-sm" ng-model="getCurrentUser().since_month" ng-options="obj.value as obj.text for obj in month_name_list">
-                                            <option value="">Select month</option>
+                                            <option value="">month</option>
                                         </select>
                                     </div>
                                     <div class="col-md-1">
                                         <select ng-disabled="m_is_native" class="form-control input-sm" ng-model="getCurrentUser().since_year" ng-options="year for year in yearList">
-                                            <option value="">Select year</option>
+                                            <option value="">year</option>
                                         </select>
-                                    </div>                                    
-                                    <!-- /.col -->
-                                </div>
-
-
-                                <div class="form-group">
-                                    <div class="control-label col-md-8"></div>
-                                    <div class="col-md-4 col-sm-12">
+                                    </div>
+                                    <div class="col-md-1 col-sm-12">
                                         <label class="label-radio inline">
                                             <input type="checkbox" ng-model="m_is_native" /><span style="margin-left:20px;line-height:26px">I'm a Native!</span>
                                         </label>
-                                    </div>
+                                    </div>                                    
+                                    <!-- /.col -->
                                 </div>
 
 
