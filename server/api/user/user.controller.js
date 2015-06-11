@@ -6,7 +6,8 @@ var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
 var nodemailer = require('nodemailer');
 var fs = require('fs');
-
+var mandrill = require('mandrill-api/mandrill');
+var mandrill_client = new mandrill.Mandrill('m1Hmo_q9hMt7fYiAsMrxJA');
 /*
 var transporter = nodemailer.createTransport({
     service: 'Gmail',
@@ -52,22 +53,54 @@ exports.create = function (req, res, next) {
         });
 
 
-        var mailOptions = {
-            from: 'craig@itsthejrny.com', // sender address
-            to: user.email, // list of receivers
-            subject: 'Welcome to Jrny', // Subject line
-            text: 'Welcome', // plaintext body
-            html: 'Hello ' + user.firstName // html body
+        /***** MANDRILL EMAIL ****/
+        /***** MANDRILL Vars ****/
+        /*if (user.local.active == true) {
+    var template_name = "Blah";
+} else {
+    var template_name = "welcome";
+}*/
+        var template_name = "welcome";
+        var template_content = [{
+            "name": "Jrny Signup",
+            "content": "Welcome to Jrny"
+        }];
+        var message = {
+            "html": "<p>Welcome to Jrny</p>",
+            "text": "Welcome to Jrny",
+            "subject": "Jrny Signup",
+            "from_email": "noreply@itsthejrny.com",
+            "from_name": "Jrny - No Reply",
+            "to": [{
+                "email": user.email,
+                "name": user.firstName + " " + user.lastName,
+                "type": "to"
+        }],
+            "track_clicks": true,
+            "merge_language": "mailchimp",
+            "global_merge_vars": [{
+                "name": "merge1",
+                "content": "merge1 content"
+        }],
+
+            "tags": [
+                "Traveler-User-Signup"
+            ]
         };
 
-        // send mail with defined transport object
-        /*transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-                console.log(error);
-            } else {
-                console.log('Message sent: ' + info.response);
-            }
-        });*/
+        /***** MANDRILL Client ****/
+        mandrill_client.messages.sendTemplate({
+            "template_name": template_name,
+            "template_content": template_content,
+            "message": message,
+        }, function (result) {
+            console.log(result);
+
+        }, function (e) {
+            // Mandrill returns the error as an object with name and message keys
+            console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
+        });
+        /***** END MANDRILL *****/
 
     });
 };
@@ -162,41 +195,45 @@ exports.me = function (req, res, next) {
 /**
  * Upload
  */
-exports.upload = function(req, res, next) {
+exports.upload = function (req, res, next) {
     var file = req.files.file;
     var tmpPath = file.path;
     var extIndex = tmpPath.lastIndexOf('.');
     var extension = (extIndex < 0) ? '' : tmpPath.substr(extIndex);
     var fileName = file.name;
-    var destPath = config.env=='production'?'./public/uploads/':'./client/uploads/' + fileName;
+    var destPath = config.env == 'production' ? './public/uploads/' : './client/uploads/' + fileName;
 
     var is = fs.createReadStream(tmpPath);
     var os = fs.createWriteStream(destPath);
 
-    if(is.pipe(os)) {
-      fs.unlink(tmpPath, function (err) { //To unlink the file from temp path after copy
-        if (err) return next(err);
-        res.json({img: 'uploads/'+fileName});
-      });
+    if (is.pipe(os)) {
+        fs.unlink(tmpPath, function (err) { //To unlink the file from temp path after copy
+            if (err) return next(err);
+            res.json({
+                img: 'uploads/' + fileName
+            });
+        });
     }
 };
 
-exports.upload_cover = function(req, res, next) {
+exports.upload_cover = function (req, res, next) {
     var file = req.files.file;
     var tmpPath = file.path;
     var extIndex = tmpPath.lastIndexOf('.');
     var extension = (extIndex < 0) ? '' : tmpPath.substr(extIndex);
     var fileName = file.name;
-    var destPath = config.env=='production'?'./public/uploads/':'./client/uploads/' + fileName;
+    var destPath = config.env == 'production' ? './public/uploads/' : './client/uploads/' + fileName;
 
     var is = fs.createReadStream(tmpPath);
     var os = fs.createWriteStream(destPath);
 
-    if(is.pipe(os)) {
-      fs.unlink(tmpPath, function (err) { //To unlink the file from temp path after copy
-        if (err) return next(err);
-        res.json({img: 'uploads/'+fileName});
-      });
+    if (is.pipe(os)) {
+        fs.unlink(tmpPath, function (err) { //To unlink the file from temp path after copy
+            if (err) return next(err);
+            res.json({
+                img: 'uploads/' + fileName
+            });
+        });
     }
 };
 
