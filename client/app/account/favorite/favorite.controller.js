@@ -24,36 +24,14 @@ angular.module('jrnyApp')
 	};
 
 	$scope.setPlace = function() {
-	//$scope.m_search = document.getElementById("txtsearch").value;
-
-	 var request = {
-	    location: {lat: 39.7392358, lng: -104.990251},
-	    radius: '500',
-	    query: $scope.m_search //ChIJY8CFChN6bIcRyOnj17695ow 
-	  };
-	  var service = new google.maps.places.PlacesService(map);
-	  service.textSearch(request, function(results, status) {
-	    if (status == google.maps.places.PlacesServiceStatus.OK) {
-	         var request1 = {
-			    placeId: results[0].place_id
-			    //
-			  };
-
-			  var service1 = new google.maps.places.PlacesService(map);
-
-			  service1.getDetails(request1, function(place, status) {
-			    if (status == google.maps.places.PlacesServiceStatus.OK) {
-			    	$scope.m_name = $scope.m_search;
-			    	$scope.m_phone = place.formatted_phone_number;
-			    	$scope.m_website = place.website;
-			    	$scope.m_location = place.formatted_address;
-			    	$scope.add_favorite();
-			    }
-			  });
-	    }
-
-	  });
-
+	
+    	$scope.m_name = sel_place.name;
+    	$scope.m_phone = sel_place.formatted_phone_number;
+    	$scope.m_website = sel_place.website;
+    	$scope.m_location = sel_place.formatted_address;
+    	//alert(JSON.stringify(sel_place));
+    	$scope.add_favorite();
+    	//document.getElementById("abc").innerHTML = JSON.stringify(place);	
 	};
 
 	$scope.get_favorite = function() {
@@ -72,7 +50,7 @@ angular.module('jrnyApp')
 	      }).
 	      error(function(data, status, headers, config) {
 	      });
-	};
+	};	
 
 	$scope.edit_favorite = function(nm, lo, ph, we, ca, id) {
 		if(nm == "") {

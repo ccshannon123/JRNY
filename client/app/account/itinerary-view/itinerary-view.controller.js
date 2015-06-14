@@ -25,9 +25,32 @@ angular.module('jrnyApp')
 	    return new Array(num);   
 	};
 
+	$scope.getInteger = function(num) {
+		return parseInt(num);
+	};
+
 	$scope.fgo_traveler_itinerary = function(a, b) {
 		location.href = "/itinerary-view/" + a + "/" + b;
-	}
+	};
+
+	$scope.show_place =function(place){
+
+		  var infowindow = new google.maps.InfoWindow();
+		  map.setCenter(new google.maps.LatLng(place.geometry.location.A, place.geometry.location.F));
+		  /*var marker = new google.maps.Marker({
+	        map: map,
+	        position: place.geometry.location
+	      });
+
+	      google.maps.event.addListener(marker, 'click', function() {
+	        infowindow.setContent(place.name);
+
+	        I have attached a document with some things for you to take a look at.  We can schedule some time to go over one of my existing applications so you can see my style.
+	        
+	        infowindow.open(map, this);
+	      });*/
+
+	};
 	
 	$scope.get_activity = function() {//{ $query: {receiver: em, rdelete:'0'}, $orderby: { mdate: -1 }}
 		$http.post('/api/activity/get_activity', {iid: $stateParams.id, adt: $stateParams.date}).
@@ -41,6 +64,7 @@ angular.module('jrnyApp')
 
 	      	data.forEach(function(act) {
 	      		act.ltime = act.time + act.duration;
+	      		act.suggestion = act.suggestion.replace("\n", "<br />");
 	      		if(act.adate != null && act.adate != undefined)
 	      		{
 	      			if( act.adate.substr(0, 10) == $stateParams.date ) {

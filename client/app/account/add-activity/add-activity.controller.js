@@ -71,30 +71,7 @@ angular.module('jrnyApp')
 	};
 
 	$scope.setPlace = function() {
-	 var rquery = $scope.m_favorite;
-	 if(rquery == undefined || rquery == "")
-	 	rquery = 'Denver';
-	 var request = {
-	    location: map.getCenter(),
-	    radius: '500',
-	    query: rquery
-	  };
-	  var service = new google.maps.places.PlacesService(map);
-	  service.textSearch(request, function(results, status) {
-	    if (status == google.maps.places.PlacesServiceStatus.OK) {
-	        var marker = new google.maps.Marker({
-	          map: map,
-	          place: {
-	            placeId: results[0].place_id,
-	            location: results[0].geometry.location
-	          }
-	        });
-	        $scope.m_place = results[0];
-	        map.setCenter(new google.maps.LatLng(results[0].geometry.location.A, results[0].geometry.location.F));
-	    }
-
-	  });
-
+		$scope.m_place = sel_place;
 	};
 
 	$scope.get_builder = function() {
@@ -155,5 +132,4 @@ angular.module('jrnyApp')
         $scope.get_builder();
     });
 
-	
 });

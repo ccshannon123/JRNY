@@ -25,6 +25,10 @@ angular.module('jrnyApp')
 	    return new Array(num);   
 	};
 
+	$scope.getInteger = function(num) {
+		return parseInt(num);
+	};
+
 	$scope.fgo_add_activity = function(a, b) {
 		location.href = "/add-activity/" + a + "/" + b;
 	}
@@ -38,6 +42,7 @@ angular.module('jrnyApp')
 
 	      	data.forEach(function(act) {
 	      		act.ltime = act.time + act.duration;
+	      		act.suggestion = act.suggestion.replace("\n", "<br />");
 	      		if(act.adate != null && act.adate != undefined)
 	      		{
 	      			if( act.adate.substr(0, 10) == $stateParams.date ) {
@@ -126,6 +131,5 @@ angular.module('jrnyApp')
         $scope.get_builder();
         $scope.get_activity();
     });
-
 	
 });

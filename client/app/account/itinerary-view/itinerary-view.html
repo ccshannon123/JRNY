@@ -44,9 +44,25 @@
                                     <h3 ng-show="!(act.time==null || act.duration==null)" style="color:#6CBFEE">{{act.duration}} Hours</h3>
                                 </div><!--#3994CB-->
                                 <div class="col-md-9 col-sm-12 edit_itinerary_box" style="padding:0px 15px 15px 15px;">
-                                    <h3>{{act.activity_name}}</h3>
-                                    <div style="border-top:1px solid #EEEEEE;padding-top:10px">{{act.suggestion}}</div>
+                                    <div class="row">
+                                        <div class="col-md-7 col-sm-12"><h3 style="cursor:pointer" ng-click="show_place(act.place)">{{act.activity_name}}</h3>{{act.place.name}}</div>
+                                        <div class="col-md-5 col-sm-12 text-right">
+                                            <div style="margin-top:10px;">
+                                                {{act.place.international_phone_number}}<br />
+                                                {{act.place.website}}<br />
+                                                {{act.place.formatted_address}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="border-top:1px solid #EEEEEE;padding-top:10px">
+                                        <span ng-if="act.place.rating >= 0">
+                                            {{act.place.rating}} <span class="glyphicon glyphicon-star" ng-repeat="i in getNumber(getInteger(act.place.rating)) track by $index"></span><span class="glyphicon glyphicon-star-empty" ng-repeat="i in getNumber(5 - getInteger(act.place.rating)) track by $index"></span>
+                                            <span style="color:#3333CC">{{act.place.user_ratings_total}} Reviews</span><br />
+                                        </span>
+                                        <div style="margin-top:10px" ng-bind-html="act.suggestion"></div>
+                                    </div>
                                 </div>
+
                             </div>
                             <div ng-show="m_activity==null" class="row">
                                 <div class="col-md-3 col-sm-12"></div>
@@ -86,6 +102,7 @@ function initialize() {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
 </script>
 
 <a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>

@@ -44,7 +44,7 @@
                                         <a href='/edit-itinerary/{{m_builder._id}}/{{dt.toISOString().substr(0, 10)}}' style="width:80%;margin:10px 20px 10px 20px" class="btn btn-info">Show Acitivity</a>
                                     </div>
                                 </div>
-                            </div>                            
+                            </div>
                         </div>
                         <div class="col-md-8 col-sm-12">
                             <div class="row" ng-repeat="act in m_activity" style="margin-bottom:15px">
@@ -54,16 +54,29 @@
                                 </div><!--#3994CB-->
                                 <div class="col-md-9 col-sm-12 edit_itinerary_box" style="padding:0px 15px 15px 15px;">
                                     <div class="row">
-                                        <div class="col-md-9 col-sm-12"><h3>{{act.activity_name}}</h3></div>
-                                        <div class="col-md-3 col-sm-12">
-                                            <div class="row" style="margin-top:15px">
-                                                <div class="col-md-6 col-sm-12"><a class="btn btn-success" ng-click="modify_activity(m_builder._id, cur_dt.toISOString().substr(0, 10), act._id)">Modify</a></div>
-                                                <div class="col-md-6 col-sm-12"><a class="btn btn-danger text-right" ng-click="remove_activity(act._id)">Remove</a></div>
+                                        <div class="col-md-8 col-sm-12"><h3>{{act.activity_name}}</h3>{{act.place.name}}</div>
+                                        <div class="col-md-4 col-sm-12 text-right">
+                                            <div style="margin-top:10px;">
+                                                {{act.place.international_phone_number}}<br />
+                                                {{act.place.website}}<br />
+                                                {{act.place.formatted_address}}
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div style="border-top:1px solid #EEEEEE;padding-top:10px">{{act.suggestion}}</div>
+                                    <div style="border-top:1px solid #EEEEEE;padding-top:10px">
+                                        <span ng-if="act.place.rating >= 0">
+                                            {{act.place.rating}} <span class="glyphicon glyphicon-star" ng-repeat="i in getNumber(getInteger(act.place.rating)) track by $index"></span><span class="glyphicon glyphicon-star-empty" ng-repeat="i in getNumber(5 - getInteger(act.place.rating)) track by $index"></span>
+                                            <span style="color:#3333CC">{{act.place.user_ratings_total}} Reviews</span><br />
+                                        </span>
+                                        <span ng-bind-html="act.suggestion"></span>
+                                    </div>
+
+                                    <div class="row text-right" style="margin-top:10px;margin-right:1px">
+                                        <a class="btn btn-success" ng-click="modify_activity(m_builder._id, cur_dt.toISOString().substr(0, 10), act._id)">Modify</a>
+                                        <a class="btn btn-danger" ng-click="remove_activity(act._id)">Remove</a>
+                                    </div>
+
                                 </div>
                             </div>
                             <div ng-show="m_activity==null" class="row">

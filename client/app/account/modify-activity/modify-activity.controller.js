@@ -71,30 +71,7 @@ angular.module('jrnyApp')
 	};
 
 	$scope.setPlace = function() {
-	 var rquery = $scope.m_favorite;
-	 if(rquery == undefined || rquery == "")
-	 	rquery = 'Denver';
-	 var request = {
-	    location: map.getCenter(),
-	    radius: '500',
-	    query: rquery
-	  };
-	  var service = new google.maps.places.PlacesService(map);
-	  service.textSearch(request, function(results, status) {
-	    if (status == google.maps.places.PlacesServiceStatus.OK) {
-	        var marker = new google.maps.Marker({
-	          map: map,
-	          place: {
-	            placeId: results[0].place_id,
-	            location: results[0].geometry.location
-	          }
-	        });
-	        $scope.m_place = results[0];
-	        map.setCenter(new google.maps.LatLng(results[0].geometry.location.A, results[0].geometry.location.F));
-	    }
-
-	  });
-
+		$scope.m_place = sel_place;
 	};
 
 	$scope.get_activity = function() {
@@ -106,6 +83,7 @@ angular.module('jrnyApp')
 	      	$scope.m_time = data[0].time;
 	      	$scope.m_duration = data[0].duration;
 	      	$scope.m_place = data[0].place;
+	      	s1010e10l10_10place = data[0].place;
 	      	$scope.m_favorite = data[0].place.formatted_address;
 	        
 	      }).
@@ -125,7 +103,6 @@ angular.module('jrnyApp')
        		$scope.arr_dt = new Date($scope.m_builder.basic.arrival_date);
        		$scope.dep_dt = new Date($scope.m_builder.basic.departure_date);
        		
-
        		$scope.cur_dt = new Date($stateParams.date);
 
        		$( "#act_date" ).datepicker( "setDate", $scope.month_name[$scope.cur_dt.getMonth()] + " " + $scope.cur_dt.getDate() + ", " + $scope.cur_dt.getFullYear() );

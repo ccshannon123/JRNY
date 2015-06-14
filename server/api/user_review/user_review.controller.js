@@ -8,6 +8,9 @@ var jwt = require('jsonwebtoken');
 var nodemailer = require('nodemailer');
 var fs = require('fs');
 
+var mandrill = require('mandrill-api/mandrill');
+var mandrill_client = new mandrill.Mandrill('m1Hmo_q9hMt7fYiAsMrxJA');
+
 
 /*var transporter = nodemailer.createTransport({
     service: 'Hotmail',
@@ -26,6 +29,59 @@ var validationError = function (res, err) {
 /*
     Get local list
 */
+
+exports.sendmail = function (req, res, next) {
+    
+        /***** MANDRILL EMAIL ****/
+        /***** MANDRILL Vars ****/
+        /*if (user.local.active == true) {
+    var template_name = "Blah";
+} else {
+    var template_name = "welcome";
+}*/
+        var template_name = "welcome";
+        var template_content = [{
+            "name": "Jrny Signup",
+            "content": "Welcome to Jrny"
+        }];
+        var message = {
+            "html": "<p>Welcome to Jrny</p>",
+            "text": "Welcome to Jrny",
+            "subject": "Jrny Signup",
+            "from_email": "noreply@itsthejrny.com",
+            "from_name": "Jrny - No Reply",
+            "to": [{
+                "email": "erikclasie@hotmail.com",
+                "name": 'abc',
+                "type": "to"
+        }],
+            "track_clicks": true,
+            "merge_language": "mailchimp",
+            "global_merge_vars": [{
+                "name": "merge1",
+                "content": "merge1 content"
+        }],
+
+            "tags": [
+                "Traveler-User-Signup"
+            ]
+        };
+
+        /***** MANDRILL Client ****/
+        mandrill_client.messages.sendTemplate({
+            "template_name": template_name,
+            "template_content": template_content,
+            "message": message,
+        }, function (result) {
+            console.log(result);
+
+        }, function (e) {
+            // Mandrill returns the error as an object with name and message keys
+            console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
+        });
+        /***** END MANDRILL *****/
+
+};
 
 exports.get_local = function (req, res, next) {
 

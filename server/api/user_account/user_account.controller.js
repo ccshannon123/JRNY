@@ -2,6 +2,7 @@
 
 var User = require('../user/user.model');
 var UserAccount = require('./user_account.model');
+var UserVerification = require('./user_verification.model');
 var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
@@ -26,6 +27,7 @@ var validationError = function (res, err) {
 
 exports.get_account = function (req, res, next) {
     var em = req.params.email;
+
 
     UserAccount.find({useremail: em}, function (err, users) {
       if (err) {
@@ -140,6 +142,71 @@ exports.modify_email = function (req, res, next) {
         newUA.save(function (err, user) {
             res.json(newUA);
         });
+      }
+    });
+};
+
+exports.verify = function (req, res, next) {
+    var tp = req.body.type;
+    var uid = req.body.uid;
+
+    console.log(uid);
+    UserVerification.find({uid: uid, type: tp}, function (err, vers) {
+      if (err) {
+        console.log(err);
+      } else if (vers.length) {
+        res.json({'result': '0'});
+      } else {
+
+        var new_ver = new UserVerification();
+        new_ver.uid = uid;
+        new_ver.type = tp;
+        new_ver.status = "0";
+        new_ver.name = "";
+
+        var text = "";
+        var possible = "0123456789";
+
+        for( var i=0; i < 5; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        new_ver.code = text;
+
+        new_ver.save(function (err, ver) {  
+            res.json({result: '1'});
+        });
+      }
+    });
+};
+
+
+exports.get_verify = function (req, res, next) {
+    var uid = req.body.uid;
+
+    UserVerification.find({uid: uid}).sort({status: -1}).exec(function (err, vers) {
+      if (err) {
+        console.log(err);
+      } else if (vers.length) {
+        res.json(vers);
+      } else {
+        res.json({result: 'none'});
+      }
+    });
+};
+
+exports.set_status = function (req, res, next) {
+    var id = req.body.id;
+
+    UserVerification.find({_id: id}, function (err, vers) {
+      if (err) {
+        console.log(err);
+      } else if (vers.length) {
+        vers[0].status = req.body.status;
+        vers[0].save(function (err, ver) {  
+            res.json(ver);
+        });
+      } else {
+        res.json({result: 'none'});
       }
     });
 };

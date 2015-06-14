@@ -48,7 +48,7 @@
                         <div class="row"><div class="col-md-12 col-sm-12"><h4>Place</h4></div></div>
                         <div class="row">
                             <div class="col-md-12 col-sm-12">
-                                <input ng-keydown="setPlace()" g-places-autocomplete ng-model="$parent.m_favorite" type="text" class="form-control" />
+                                <input id="txt_place" ng-model="$parent.m_favorite" type="text" class="form-control" />
                             </div>
                         </div>
                     </div>
@@ -127,6 +127,7 @@
 
 <script>
 var map;
+var sel_place;
 
 function initialize() {
   // Create a map centered in Pyrmont, Sydney (Australia).
@@ -134,8 +135,63 @@ function initialize() {
     center: {lat: 39.7392358, lng: -104.990251},
     zoom: 17
   });
+
+  var input = (document.getElementById('txt_place'));
+
+  var autocomplete = new google.maps.places.Autocomplete(input);
+  autocomplete.bindTo('bounds', map);
+
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+
+    var rquery = document.getElementById("txt_place").value;
+
+     if(rquery == undefined || rquery == "")
+        rquery = 'Denver';
+
+     var request = {
+        location: map.getCenter(),
+        radius: '500',
+        query: rquery
+      };
+      var service = new google.maps.places.PlacesService(map);
+      service.textSearch(request, function(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+            var marker = new google.maps.Marker({
+              map: map,
+              place: {
+                placeId: results[0].place_id,
+                location: results[0].geometry.location
+              }
+            });
+
+            var request1 = {
+                placeId: results[0].place_id
+              };
+
+              var service1 = new google.maps.places.PlacesService(map);
+
+              service1.getDetails(request1, function(place, status) {
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+                    map.setCenter(new google.maps.LatLng(place.geometry.location.A, place.geometry.location.F));
+
+                    sel_place = place;
+                }
+              });
+            
+        }
+
+      });
+    
+    });
+
+  //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
 }
 google.maps.event.addDomListener(window, 'load', initialize);
+
+
 //initialize();
 
 $(function() {
@@ -143,3 +199,38 @@ $(function() {
     $( "#act_date" ).datepicker( "option", "dateFormat", 'MM dd, yy' );
 });
 </script>
+<!--
+
+{
+
+"adr_address":"5961 East 64th Avenue, Commerce City, CO 80022, United States",
+"formatted_address":"5961 East 64th Avenue, Commerce City, CO 80022, United States",
+"formatted_phone_number":"(303) 287-0233",
+"geometry":{"location":{"A":39.8141,"F":-104.918405}},
+"icon":"http://maps.gstatic.com/mapfiles/place_api/icons/repair-71.png",
+"id":"b7e0def5bffc4e0a948b0acc95891a60cfdad811",
+"international_phone_number":"+1 303-287-0233",
+"name":"The Deck Superstore",
+
+
+
+"place_id":"ChIJY8CFChN6bIcRyOnj17695ow",
+"rating":4.5,
+"reference":"CnRnAAAAwOKZ4Etfqhd3bz2FCNOyoVjhtmoLrmHoS7SmqwVtD7x1adPMwXiGdRoMqmYeA0UzMLdxny0als32nQvLyhYGiB9WO7imm8pM2xV_oPQiB860yDbh96wi6FNkunyMqHUs_YkbtkgG19h56zm0Lf8hbxIQ5zq8AvyvIx0R1vVL4ytoCBoUUGSlfgPSEa-SuC-Go8uRGpaaKnk",
+"reviews":[
+  {"aspects":[{"rating":0,"type":"overall"}],
+  "author_name":"A Donahue",
+  "author_url":"https://plus.google.com/114155461044257356909",
+  "language":"en",
+  "rating":2,
+  "text":"Price is fair - customer service does not exist with this store . They shorted us on our order of composite decking material which we paid to have delivered to our home. When we contacted them regarding the shortage they offered these choices: to deliver the remaining 2 boards for an additional delivery charge; for us to drive from Colorado Springs to Commerce City to get it ourselves; or for us to chase down the delivery truck when it was close to our area. The manager basically could have cared less one way or the other and made no offer to correct their mistake. We love our new deck but would not recommend this store to anyone.",
+  "time":1404763293},
+  {"aspects":[{"rating":3,"type":"overall"}],
+  "author_name":"Danny G","author_url":"https://plus.google.com/103191614329601581709","language":"en","rating":5,"text":"I searched Home Depot, Lowes, and some lumber yards for specific colors of composite decking, but it was not until I discovered this place that I was able to get everything I needed AND at a better price. Wish I went there first!","time":1409061398},{"aspects":[{"rating":3,"type":"overall"}],"author_name":"Nathan Pensack-Rinehart","author_url":"https://plus.google.com/103069436039904384099","language":"en","rating":5,"text":"I am a homeowner who put in a deck myself. The Deck Superstore is awesome! They are super friendly, knowledgeable, and extremely helpful. I was disappointed by the knowledge and materials from Home Depot, and was completely blown away my the showroom staff and the sales staff. I worked with Mark, who was very nice and helpful as well. I gave him my design, and the material I wanted (DuraLife hardwood blends - which looks fantastic). He calculated what I needed, and was able to minimise waste. He also gave me very helpful suggestions regarding options and things I hadn't figured out yet. My material was delivered on time the day I wanted it, and put in my driveway - where I wanted it. I've called the store on several occasions for questions about what screws I needed, material, or how to do a particular decking task. I will definitely be going to the Deck Superstore for all my decking needs!","time":1374424974},{"aspects":[{"rating":3,"type":"overall"}],"author_name":"Earl Grylls","author_url":"https://plus.google.com/100888988064275835320","language":"en","rating":5,"text":"They've always had what I needed, know their stuff inside and out, and their prices are usually better than the big box stores. If you're building a deck, they need to be in your speed dial.","time":1384614509},{"aspects":[{"rating":3,"type":"quality"},{"rating":3,"type":"appeal"},{"rating":3,"type":"service"}],"author_name":"Eric Pflueger","author_url":"https://plus.google.com/116010689103401860676","language":"en","rating":5,"text":"I am a contractor and I have been purchasing from these guys for a few years now. Everyone there is very knowledgable and professional. They are definitely the best place to purchase your decking materials. I can't say enough good things about The Deck Superstore!! ","time":1362065768}],
+"scope":"GOOGLE",
+"types":["hardware_store","store","establishment"],
+"url":"https://plus.google.com/117773588710070035978/about?hl=en-US",
+"user_ratings_total":8,
+"utc_offset":-360,
+"vicinity":"5961 East 64th Avenue, Commerce City",
+"website":"http://www.thedecksuperstore.com/", -->
