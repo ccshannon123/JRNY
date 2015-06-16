@@ -25,7 +25,7 @@ angular.module('jrnyApp')
 						{'txt': '11:00am', 'val': 11}, {'txt': '12:00pm', 'val': 12}, {'txt': '1:00pm', 'val': 13}, {'txt': '2:00pm', 'val': 14}, {'txt': '3:00pm', 'val': 15},
 						{'txt': '4:00pm', 'val': 16}, {'txt': '5:00pm', 'val': 17}, {'txt': '6:00pm', 'val': 18}, {'txt': '7:00pm', 'val': 19}, {'txt': '8:00pm', 'val': 20},
 						{'txt': '9:00pm', 'val': 21}, {'txt': '10:00pm', 'val': 22}, {'txt': '11:00pm', 'val': 23}, {'txt': '12:00am', 'val': 0}];
-	$scope.durationList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+	$scope.durationList = [{'txt': '30 minutes', 'val': '30'}, {'txt': '1 hour', 'val': '1'}, {'txt': '2 hours', 'val': '2'}, {'txt': '3 hours', 'val': '3'}, {'txt': '4 hours', 'val': '4'}, {'txt': '5 hours', 'val': '5'}, {'txt': '6 hours', 'val': '6'}, {'txt': '7 hours', 'val': '7'}, {'txt': '8 hours', 'val': '8'}];
 
 	$scope.jrny_days = 0;
 	$scope.m_place = null;

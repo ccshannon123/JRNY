@@ -28,7 +28,7 @@ angular.module('jrnyApp')
 	$scope.getNumber = function(num) {
 		num = eval(num);
 	    return new Array(num);   
-	};
+	};	
 
 	$scope.send_msg = function() {
 
@@ -158,12 +158,20 @@ angular.module('jrnyApp')
        			var tmp_dt = new Date();
        			tmp_dt.setDate(arr_tmp_dt.getDate() + i);
 
-       			$http.post('/api/activity/get_activity', {iid: $stateParams.id, adt:tmp_dt.toISOString().substr(0, 10)}).
+
+       			$http.post('/api/activity/get_activity_by_date', {iid: $stateParams.id, adt:tmp_dt.toISOString().substr(0, 10)}).
 		      		success(function(data, status, headers, config) { 
-		      			if(data.result == undefined) {
-			      			$scope.m_itinerary.push(data);
-			      		} else
-			      			$scope.m_itinerary.push({});
+			      		var sub_data = data;
+			      		/*data.forEach(function(act) {
+			      			if(act.adate != undefined) {
+				      		 	if(act.adate.substr(0, 10) == tmp_dt.toISOString().substr(0, 10)) {
+				      		 		sub_data.push(act);
+				      		 	}
+				      		 }
+			      		 });*/
+
+		      			if(data.result == undefined)
+			      		 	$scope.m_itinerary.push(data);
 		        
 				      }).
 				      error(function(data, status, headers, config) {

@@ -10,6 +10,7 @@ var multipartMiddleware = multipart();
 var router = express.Router();
 
 router.post('/get_activity', controller.get_activity);
+router.post('/get_activity_by_date', controller.get_activity_by_date);
 router.post('/add_activity', controller.add_activity);
 router.post('/modify_activity', controller.modify_activity);
 

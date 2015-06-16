@@ -343,9 +343,10 @@ textarea {
     width: 14%;
     float: left;
     text-align: center;
-    border-left: 0px solid #CCC;
-    border-right: 0px solid #CCC;
-    border-bottom: 0px solid #CCC;
+    border-left: 1px solid #CCC;
+    border-right: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+    background-color: #FFFFFF;
 }
 
 .edit_itinerary_box {

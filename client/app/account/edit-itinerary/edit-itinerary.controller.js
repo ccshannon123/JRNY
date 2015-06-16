@@ -79,7 +79,6 @@ angular.module('jrnyApp')
 
 		$http.get('/api/traveler_survey/get_itinerary/' + $stateParams.id).
 	      success(function(data, status, headers, config) { 
-
 	      	if(data.Result == undefined)
 	        	$scope.m_builder = data;
 	        else
@@ -87,11 +86,10 @@ angular.module('jrnyApp')
 
 
        		$scope.arr_dt = new Date($scope.m_builder.basic.arrival_date);
-       		$scope.dep_dt = new Date($scope.m_builder.basic.departure_date);
+       		$scope.dep_dt = new Date( $scope.m_builder.basic.departure_date);
+       		$scope.jrny_days = 1;	
 
-       		$scope.jrny_days = 1;
-
-       		var tmp_dt = new Date();       		
+       		var tmp_dt = new Date();
        		tmp_dt.setFullYear($scope.arr_dt.getFullYear(), $scope.arr_dt.getMonth(), $scope.arr_dt.getDate());
 
        		$scope.dt_str_list[0] = new Date();

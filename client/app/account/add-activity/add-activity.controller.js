@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jrnyApp')
-    .controller('addactivityCtrl', function ($scope, $http, $stateParams, Auth, User) {
+    .controller('addactivityCtrl', function ($scope, $http, $stateParams, Auth, User, Upload) {
 
 	$scope.getCurrentUser = Auth.getCurrentUser;
 
@@ -25,7 +25,7 @@ angular.module('jrnyApp')
 						{'txt': '11:00am', 'val': 11}, {'txt': '12:00pm', 'val': 12}, {'txt': '1:00pm', 'val': 13}, {'txt': '2:00pm', 'val': 14}, {'txt': '3:00pm', 'val': 15},
 						{'txt': '4:00pm', 'val': 16}, {'txt': '5:00pm', 'val': 17}, {'txt': '6:00pm', 'val': 18}, {'txt': '7:00pm', 'val': 19}, {'txt': '8:00pm', 'val': 20},
 						{'txt': '9:00pm', 'val': 21}, {'txt': '10:00pm', 'val': 22}, {'txt': '11:00pm', 'val': 23}, {'txt': '12:00am', 'val': 0}];
-	$scope.durationList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+	$scope.durationList = [{'txt': '30 minutes', 'val': '30'}, {'txt': '1 hour', 'val': '1'}, {'txt': '2 hours', 'val': '2'}, {'txt': '3 hours', 'val': '3'}, {'txt': '4 hours', 'val': '4'}, {'txt': '5 hours', 'val': '5'}, {'txt': '6 hours', 'val': '6'}, {'txt': '7 hours', 'val': '7'}, {'txt': '8 hours', 'val': '8'}];
 
 	$scope.jrny_days = 0;
 	$scope.m_place = null;
@@ -69,6 +69,30 @@ angular.module('jrnyApp')
 	      error(function(data, status, headers, config) {
 	      });
 	};
+
+	$scope.$watch('file_fav_photo', function () {
+        //$scope.upload_fav_photo($scope.file_fav_photo);
+    });
+
+    $scope.upload_fav_photo = function (files) {
+        if (files && files.length) {
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+
+                Upload.upload({
+                    url: '/api/users/upload',
+                    file: file
+                }).progress(function (evt) {
+                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+                }).success(function (data, status, headers, config) {
+                }).error(function (err) {
+                    console.log(err);
+                });
+            }
+        }
+    };
+
 
 	$scope.setPlace = function() {
 		$scope.m_place = sel_place;

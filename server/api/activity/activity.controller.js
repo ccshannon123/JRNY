@@ -69,6 +69,28 @@ exports.get_activity = function (req, res, next) {
     });
 };
 
+exports.get_activity_by_date = function (req, res, next) {
+
+  var iid1 = req.body.iid;
+  var adt = req.body.adt;
+
+
+    Activity.find({iid:iid1}).sort({time: 1}).exec(function (err, acts) {
+      if (err) {
+        console.log(err);
+      } else if (acts.length) {
+        var result = [];
+        for(var i = 0; i < acts.length; i++) {
+          if(acts[i].adate != undefined)
+            if(acts[i].adate.toISOString().substr(0, 10) == adt)
+              result.push(acts[i]);
+          }
+        res.json(result);
+      } else {
+        res.json({result:'none'});
+      }
+    });
+};
 exports.remove_activity = function (req, res, next) {
 
   var id = req.params.id;
@@ -97,6 +119,10 @@ exports.get_activity_by_id = function (req, res, next) {
 */
 exports.add_activity = function (req, res, next) {
 
+  var adt = new Date(req.body.adt);
+  //adt.setDate(adt.getDate() + 1);
+
+
     var iid = req.body.iid;
     var an = req.body.an;
     var adt = req.body.adt;
@@ -117,7 +143,7 @@ exports.add_activity = function (req, res, next) {
     new_act.isaccept = "0";
 
 
-    new_act.save(function (err, ts) {  
+    new_act.save(function (err, ts) {
       res.json(ts);
     });    
 };
@@ -126,12 +152,14 @@ exports.modify_activity = function (req, res, next) {
 
     var iid = req.body.iid;
     var an = req.body.an;
-    var adt = req.body.adt;
     var tm = req.body.tm;
     var dur = req.body.dur;
     var sugg = req.body.sugg;
     var place = req.body.place;
     var id = req.body.id;
+
+    var adt = new Date(req.body.adt);
+    //adt.setDate(adt.getDate() + 1);
 
     Activity.find({_id:id}, function (err, acts) {
     if (err) {

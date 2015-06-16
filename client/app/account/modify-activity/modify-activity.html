@@ -73,11 +73,10 @@
                         <div class="col-md-6 col-sm-12">
                             <div class="row"><h4>Duration <span style="font-size:12px;font-weight:none">(optional)</span></h4></div>
                             <div class="row">
-                                <div class="col-md-9 col-sm-12">
-                                    <select class="form-control" ng-model="$parent.m_duration" ng-options="dur for dur in durationList">
+                                <div class="col-md-12 col-sm-12">
+                                    <select class="form-control" ng-model="$parent.m_duration" ng-options="dur.val as dur.txt for dur in durationList">
                                     </select>
                                 </div>
-                                <div class="col-md-3 col-sm-12" style="line-height:33px;">hours</div>
                             </div>
                         </div>
                     </div>

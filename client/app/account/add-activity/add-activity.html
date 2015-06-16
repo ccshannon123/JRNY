@@ -73,11 +73,10 @@
                         <div class="col-md-6 col-sm-12">
                             <div class="row"><h4>Duration <span style="font-size:12px;font-weight:none">(optional)</span></h4></div>
                             <div class="row">
-                                <div class="col-md-9 col-sm-12">
-                                    <select class="form-control" ng-model="$parent.m_duration" ng-options="dur for dur in durationList">
+                                <div class="col-md-12 col-sm-12">
+                                    <select class="form-control" ng-model="$parent.m_duration" ng-options="dur.val as dur.txt for dur in durationList">
                                     </select>
                                 </div>
-                                <div class="col-md-3 col-sm-12" style="line-height:33px;">hours</div>
                             </div>
                         </div>
                     </div>
@@ -91,7 +90,17 @@
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-12 text-center">
-                    <h3>Add a Favorite</h3>
+                    <h3 class="text-left" style="margin-left:25px">Add an Attachment</h3>
+                    <div class="row">
+                        <div class="col-md-1 col-sm-12"></div>
+
+                        <div class="col-md-3 col-sm-12"><a ngf-select ng-model="$parent.file_fav_photo" ngf-multiple="true" ngf-allow-dir="true" accept="image/*" style="width:80px;height:80px;border-radius:40px;line-height:65px" class="btn btn-default">Photo</a></div>
+
+                        <div class="col-md-3 col-sm-12"><a href="#" style="width:80px;height:80px;border-radius:40px;line-height:65px" class="btn btn-default">Link</a></div>
+
+                        <div class="col-md-3 col-sm-12"><a href="#" style="width:80px;height:80px;border-radius:40px;line-height:65px;" class="btn btn-default">Document</a></div>
+                    </div>
+                    <h3 class="text-left" style="margin-left:25px">Add a Favorite</h3>
                     <div class="row">
                         <div class="row" style="padding:15px 15px 15px 15px"><a href="/favorite/Restaurant" style="width:80%" class="btn btn-default">Add a Restaurant</a></div>
                         <div class="row" style="padding:15px 15px 15px 15px"><a href="/favorite/Bar-Club" style="width:80%" class="btn btn-default">Add a Bar/Club</a></div>
@@ -156,7 +165,6 @@ function initialize() {
       var service = new google.maps.places.PlacesService(map);
       service.textSearch(request, function(results, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-
             var marker = new google.maps.Marker({
               map: map,
               place: {

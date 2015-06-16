@@ -37,28 +37,27 @@ angular.module('jrnyApp')
 
 		  var infowindow = new google.maps.InfoWindow();
 		  map.setCenter(new google.maps.LatLng(place.geometry.location.A, place.geometry.location.F));
-		  /*var marker = new google.maps.Marker({
-	        map: map,
-	        position: place.geometry.location
-	      });
 
-	      google.maps.event.addListener(marker, 'click', function() {
-	        infowindow.setContent(place.name);
-
-	        I have attached a document with some things for you to take a look at.  We can schedule some time to go over one of my existing applications so you can see my style.
-	        
-	        infowindow.open(map, this);
-	      });*/
-
+		  var marker = new google.maps.Marker({
+              map: map,
+              place: {
+                placeId: place.place_id,
+                location: {lat: place.geometry.location.A,lng: place.geometry.location.F}
+              }
+            });
 	};
 	
 	$scope.get_activity = function() {//{ $query: {receiver: em, rdelete:'0'}, $orderby: { mdate: -1 }}
+
+		if(map == undefined) {
+			setTimeout($scope.get_activity, 2000);
+			return;
+		}
 		$http.post('/api/activity/get_activity', {iid: $stateParams.id, adt: $stateParams.date}).
 	      success(function(data, status, headers, config) { 
 
 	      	if(data.result != undefined)
 	      		return;
-
 
 	      	$scope.m_activity = [];
 
@@ -69,6 +68,14 @@ angular.module('jrnyApp')
 	      		{
 	      			if( act.adate.substr(0, 10) == $stateParams.date ) {
 	      				$scope.m_activity.push(act);
+	      				if(act.place != undefined) {
+	      					var marker = new google.maps.Marker({
+						      map: map,
+						      position: {lat: act.place.geometry.location.A,lng: act.place.geometry.location.F},
+						      title: act.place.name
+						    });
+
+		      			}
 	      			}
 	      		}
 
@@ -127,6 +134,7 @@ angular.module('jrnyApp')
 	      error(function(data, status, headers, config) {
 	      });
 	};
+
 
 	angular.element(document).ready(function () {
         $scope.get_builder();

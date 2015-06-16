@@ -52,66 +52,74 @@
         <div class="padding-md">
             <div class="row">
                 <div class="col-md-3"></div>
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <div class="row" style="margin-bottom:10px"><a href="#" style="float:right" class="btn btn-danger" ng-click="save_survey()">SAVE FOR LATER</a></div>
                     <div class="form-group row">
-                        <div class="col-md-2 col-sm-12"><h4>Arrival Date</h4></div>
-                        <div class="col-md-4 col-sm-12">
-                            <!--<input type="text" class="form-control" ng-model="m_traveler_survey.basic.arrival_date" datepicker-popup="MMMM dd, yyyy" is-open="opened" ng-focus="open($event)" readonly style="cursor:auto; background-color:#fff;" ng-model="abc" />-->
-                            <input type="text" id="arr_date" class="form-control" />
-                        </div>                        
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-2 col-sm-12"><h4>Departure Date</h4></div>
-                        <div class="col-md-4 col-sm-12">
-                            <input type="text" id="dep_date" class="form-control" />
+                        <div class="col-md-6 col-sm-12">
+                            <div class="row">
+                                <div class="col-md-5 col-sm-12"><h4>Arrival Date</h4></div>
+                                <div class="col-md-7 col-sm-12"><input type="text" id="arr_date" class="form-control" /></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 col-sm-12"><h5>Arrive After 6pm?</h5></div>
+                                <div class="col-md-7 col-sm-12"><input type="checkbox" ng-model="m_traveler_survey.basic.arrive_after" class="form-control" /></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="row">
+                                <div class="col-md-5 col-sm-12"><h4>Departure Date</h4></div>
+                                <div class="col-md-7 col-sm-12"><input type="text" id="dep_date" class="form-control" /></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 col-sm-12"><h5>Depart Before 11am?</h5></div>
+                                <div class="col-md-7 col-sm-12"><input type="checkbox" ng-model="m_traveler_survey.basic.depart_before" type="text" class="form-control" /></div>
+                            </div>
                         </div>                        
                     </div>
 
                     <div class="form-group row">
-                        <div class="col-md-2 col-sm-12"><h4>Arrive After 6pm?</h4></div>
-                        <div class="col-md-1 col-sm-12"><input type="checkbox" ng-model="m_traveler_survey.basic.arrive_after" class="form-control" /></div>
-                        <div class="col-md-2 col-sm-12"><h4>Depart Before 11am?</h4></div>
-                        <div class="col-md-1 col-sm-12"><input type="checkbox" ng-model="m_traveler_survey.basic.depart_before" type="text" class="form-control" /></div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-3 col-sm-12"><h4>How are you getting here?</h4></div>
-                        <div class="col-md-9 col-sm-12">
-                            <select class="form-control" style="width:20%" ng-model="m_traveler_survey.basic.how_get">
+                        <div class="col-md-1 col-sm-12"></div>
+                        <div class="col-md-5 col-sm-12"><h4>How are you getting here?</h4></div>
+                        <div class="col-md-5 col-sm-12">
+                            <select class="form-control" style="width:60%" ng-model="m_traveler_survey.basic.how_get">
                                 <option value="Airplane">Airplane</option><option value="Car">Car</option><option value="Train">Train</option>
                                 <option value="Bus">Bus</option><option value="Other">Other</option><option value="Unsure">Unsure</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-md-3" style="padding-left:40px"><h4>Have you already booked it?</h4></div>
-                        <div class="col-md-9">
-                            <select id="txt_hab1" style="width:20%" ng-model="m_traveler_survey.basic.how_already_booked" ng-options="val for val in booked_valueList" type="text" class="form-control">
+                        <div class="col-md-1 col-sm-12"></div>
+                        <div class="col-md-5" style="padding-left:40px"><h4>Have you already booked it?</h4></div>
+                        <div class="col-md-5">
+                            <select id="txt_hab1" style="width:60%" ng-model="m_traveler_survey.basic.how_already_booked" ng-options="val for val in booked_valueList" type="text" class="form-control">
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-md-3 col-sm-12"><h4>Where are you staying</h4></div>
-                        <div class="col-md-9 col-sm-12">
-                            <select class="form-control" style="width:20%" ng-model="m_traveler_survey.basic.where_stay">
+                        <div class="col-md-1 col-sm-12"></div>
+                        <div class="col-md-5 col-sm-12"><h4>Where are you staying</h4></div>
+                        <div class="col-md-5 col-sm-12">
+                            <select class="form-control" style="width:60%" ng-model="m_traveler_survey.basic.where_stay">
                                 <option value="Hotel Room">Hotel Room</option><option value="Hostel">Hostel</option><option value="House">House</option>
                                 <option value="Apartment">Apartment</option><option value="Other">Other</option><option value="Unsure">Unsure</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-md-3" style="padding-left:40px"><h4>Have you already booked it?</h4></div>
-                        <div class="col-md-9">
-                            <select id="txt_hab2" style="width:20%" ng-model="m_traveler_survey.basic.where_already_booked" ng-options="val for val in booked_valueList" type="text" class="form-control">
+                        <div class="col-md-1 col-sm-12"></div>
+                        <div class="col-md-5" style="padding-left:40px"><h4>Have you already booked it?</h4></div>
+                        <div class="col-md-5">
+                            <select id="txt_hab2" style="width:60%" ng-model="m_traveler_survey.basic.where_already_booked" ng-options="val for val in booked_valueList" type="text" class="form-control">
                             </select>
                         </div>
                     </div>
                     
                 </div>
-                <div class="form-group row" style="margin-top:15px">
-                    <div class="col-md-4"></div>
-                    <a ng-click="next_survey(1)" class="btn btn-success col-md-4 col-sm-12 col-xs-12 text-center">NEXT</a>
-                </div>
+                <div class="col-md-3 col-sm-12"></div>                
+            </div>
+            <div class="form-group row" style="margin-top:20px">
+                <div class="col-md-4"></div>
+                <a ng-click="next_survey(1)" class="btn btn-success col-md-4 col-sm-12 col-xs-12 text-center">NEXT</a>
             </div>
         </div>
         <!-- /.padding-md -->
