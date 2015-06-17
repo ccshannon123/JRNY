@@ -30,7 +30,7 @@ angular.module('jrnyApp')
 	};
 
 	$scope.fgo_add_activity = function(a, b) {
-		location.href = "/add-activity/" + a + "/" + b;
+		location.href = "/add-activity/" + a + "/" + b + "/1";
 	}
 
 	$scope.get_activity = function() {//{ $query: {receiver: em, rdelete:'0'}, $orderby: { mdate: -1 }}

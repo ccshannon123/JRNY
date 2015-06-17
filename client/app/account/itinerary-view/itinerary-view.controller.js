@@ -12,6 +12,7 @@ angular.module('jrnyApp')
 	$scope.dep_dt;
 	$scope.cur_dt;
 
+
 	$scope.m_activity;
 	$scope.jrny_days = 0;
 

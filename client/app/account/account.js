@@ -310,7 +310,7 @@ angular.module('jrnyApp')
         }
       })
       .state('add-activity', {
-        url: '/add-activity/:id/:date',
+        url: '/add-activity/:id/:date/:place',
         templateUrl: 'app/account/add-activity/add-activity.html',
         controller: 'addactivityCtrl',
         authenticate: true,
@@ -328,7 +328,7 @@ angular.module('jrnyApp')
         }
       })
       .state('favorite', {
-        url: '/favorite/:category',
+        url: '/favorite/:category/:iid/:date',
         templateUrl: 'app/account/favorite/favorite.html',
         controller: 'favoriteCtrl',
         authenticate: true,

@@ -102,11 +102,11 @@
                     </div>
                     <h3 class="text-left" style="margin-left:25px">Add a Favorite</h3>
                     <div class="row">
-                        <div class="row" style="padding:15px 15px 15px 15px"><a href="/favorite/Restaurant" style="width:80%" class="btn btn-default">Add a Restaurant</a></div>
-                        <div class="row" style="padding:15px 15px 15px 15px"><a href="/favorite/Bar-Club" style="width:80%" class="btn btn-default">Add a Bar/Club</a></div>
-                        <div class="row" style="padding:15px 15px 15px 15px"><a href="/favorite/Outdoor" style="width:80%" class="btn btn-default">Add an Outdoor Activity</a></div>
-                        <div class="row" style="padding:15px 15px 15px 15px"><a href="/favorite/Museum" style="width:80%" class="btn btn-default">Add a Museum</a></div>
-                        <div class="row" style="padding:15px 15px 15px 15px"><a href="/favorite/Another" style="width:80%" class="btn btn-default">Add a Another Favorite</a></div>
+                        <div class="row" style="padding:15px 15px 15px 15px"><a ng-click="fgo_fav('/favorite/_Restaurant/')" style="width:80%" class="btn btn-default">Add a Restaurant</a></div>
+                        <div class="row" style="padding:15px 15px 15px 15px"><a ng-click="fgo_fav('/favorite/_Bar-Club/')" style="width:80%" class="btn btn-default">Add a Bar/Club</a></div>
+                        <div class="row" style="padding:15px 15px 15px 15px"><a ng-click="fgo_fav('/favorite/_Outdoor/')" style="width:80%" class="btn btn-default">Add an Outdoor Activity</a></div>
+                        <div class="row" style="padding:15px 15px 15px 15px"><a ng-click="fgo_fav('/favorite/_Museum/')" style="width:80%" class="btn btn-default">Add a Museum</a></div>
+                        <div class="row" style="padding:15px 15px 15px 15px"><a ng-click="fgo_fav('/favorite/_Another/')" style="width:80%" class="btn btn-default">Add a Another Favorite</a></div>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-12">
@@ -125,7 +125,7 @@
 
 </div>
 <!-- /wrapper -->
-
+<span id="sp_pid" style="display:none">{{m_pid}}</span>
 <a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
 
 <!-- Pace -->
@@ -144,6 +144,30 @@ function initialize() {
     center: {lat: 39.7392358, lng: -104.990251},
     zoom: 17
   });
+  var pid = (document.getElementById("sp_pid").innerHTML);
+  
+    var request1 = {
+        placeId: pid
+      };
+
+      var service1 = new google.maps.places.PlacesService(map);
+
+      service1.getDetails(request1, function(place, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+            map.setCenter(new google.maps.LatLng(place.geometry.location.A, place.geometry.location.F));
+
+            var marker = new google.maps.Marker({
+              map: map,
+              place: {
+                placeId: place.place_id,
+                location: place.geometry.location
+              }
+            });
+            document.getElementById('txt_place').value = place.name;
+            sel_place = place;
+        }
+      });
 
   var input = (document.getElementById('txt_place'));
 

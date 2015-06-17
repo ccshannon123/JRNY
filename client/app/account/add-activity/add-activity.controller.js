@@ -19,6 +19,7 @@ angular.module('jrnyApp')
 	$scope.m_time;
 	$scope.m_duration;
 	$scope.m_suggestion = "";
+	$scope.m_pid = "";
 
 	$scope.timeList = [{'txt': '1:00am', 'val': 1}, {'txt': '2:00am', 'val': 2}, {'txt': '3:00am', 'val': 3}, {'txt': '4:00am', 'val': 4}, {'txt': '5:00am', 'val': 5}, 
 						{'txt': '6:00am', 'val': 6}, {'txt': '7:00am', 'val': 7}, {'txt': '8:00am', 'val': 8}, {'txt': '9:00am', 'val': 9}, {'txt': '10:00am', 'val': 10},
@@ -34,6 +35,10 @@ angular.module('jrnyApp')
 
 	$scope.week_name = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
 	$scope.month_name = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+
+	$scope.fgo_fav = function(url) {
+		location.href = url + $stateParams.id + "/" + $stateParams.date;
+	};
 
 	$scope.getNumber = function(num) {
 		num = eval(num);
@@ -71,16 +76,15 @@ angular.module('jrnyApp')
 	};
 
 	$scope.$watch('file_fav_photo', function () {
-        //$scope.upload_fav_photo($scope.file_fav_photo);
+        $scope.upload_fav_photo($scope.file_fav_photo);
     });
 
     $scope.upload_fav_photo = function (files) {
         if (files && files.length) {
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
-
                 Upload.upload({
-                    url: '/api/users/upload',
+                    url: '/api/activity/upload_attach',
                     file: file
                 }).progress(function (evt) {
                     var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
@@ -89,6 +93,13 @@ angular.module('jrnyApp')
                 }).error(function (err) {
                     console.log(err);
                 });
+
+                $http.post('/api/activity/add_attach', {type: 'Photo', iid: $scope.m_builder._id, fn: file.name}).
+					success(function(data, status, headers, config) {
+						
+			      }).
+			      error(function(data, status, headers, config) {
+			      });
             }
         }
     };
@@ -99,6 +110,7 @@ angular.module('jrnyApp')
 	};
 
 	$scope.get_builder = function() {
+		$scope.m_pid = $stateParams.place;
 
 		$http.get('/api/traveler_survey/get_itinerary/' + $stateParams.id).
 	      success(function(data, status, headers, config) { 

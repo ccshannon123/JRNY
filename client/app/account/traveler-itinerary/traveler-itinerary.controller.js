@@ -15,11 +15,67 @@ angular.module('jrnyApp')
 
 	$scope.jrny_days = 0;
 
-	$scope.m_head_title = ""
+	$scope.m_head_title = "";
+
+	$scope.m_page = 1;
+	$scope.m_cur_cnt;
+	$scope.m_off_date;
+	$scope.m_offset = 0;
 
 	$scope.week_name = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
 	$scope.month_name = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 
+	$scope.go_next = function() {
+
+		var fpg_cnt;
+		if($scope.arr_dt.getDay() + $scope.jrny_days > 14)
+       			fpg_cnt = 14 - $scope.arr_dt.getDay();
+       		else
+       			fpg_cnt = $scope.jrny_days;
+
+       	if($scope.jrny_days - fpg_cnt - ($scope.m_page - 1) * 14 <= 0)
+			return;
+
+		$scope.m_offset = fpg_cnt + ($scope.m_page - 1) * 14;
+		$scope.m_off_date.setDate($scope.m_off_date.getDate() + $scope.m_cur_cnt);
+
+       	if(fpg_cnt + ($scope.m_page - 1) * 14 < $scope.jrny_days) {
+       		if($scope.jrny_days - fpg_cnt - ($scope.m_page - 1) * 14 <= 14)
+       			$scope.m_cur_cnt = $scope.jrny_days - fpg_cnt - ($scope.m_page - 1) * 14;
+       		else
+       			$scope.m_cur_cnt = 14;
+       	}
+
+		$scope.m_page++;
+	};
+
+	$scope.go_prev = function() {
+
+		if($scope.m_page == 1)
+			return;
+
+		var fpg_cnt;
+		if($scope.arr_dt.getDay() + $scope.jrny_days > 14)
+       			fpg_cnt = 14 - $scope.arr_dt.getDay();
+       		else
+       			fpg_cnt = $scope.jrny_days;
+
+		if($scope.m_page == 2)
+			$scope.m_offset = 0;
+		else
+       		$scope.m_offset = fpg_cnt + ($scope.m_page - 3) * 14;
+
+       	if($scope.m_page == 2) {
+       		$scope.m_cur_cnt = fpg_cnt;
+       		$scope.m_off_date = new Date($scope.arr_dt.getFullYear(), $scope.arr_dt.getMonth(), $scope.arr_dt.getDate(), 0, 0, 0, 0);
+       	}
+       	else {
+       		$scope.m_off_date.setDate($scope.m_off_date.getDate() - 14);
+       		$scope.m_cur_cnt = 14;
+       	}
+
+		$scope.m_page--;
+	};
 
 	$scope.send_msg = function() {
 
@@ -127,24 +183,47 @@ angular.module('jrnyApp')
        		arr_tmp_dt.setHours(0); arr_tmp_dt.setMinutes(0); arr_tmp_dt.setSeconds(0);
        		dep_tmp_dt.setHours(0); dep_tmp_dt.setMinutes(0); dep_tmp_dt.setSeconds(0);
 
+       		$scope.m_off_date = new Date($scope.arr_dt.getFullYear(), $scope.arr_dt.getMonth(), $scope.arr_dt.getDate(), 0, 0, 0, 0);
+       		
        		$scope.jrny_days = (dep_tmp_dt - arr_tmp_dt) / (3600 * 24 * 1000) + 1;
 
-       		for(var i = 0; i < $scope.jrny_days; i++) {
-       			var tmp_dt = new Date();
-       			tmp_dt.setDate(arr_tmp_dt.getDate() + i);
+       		$scope.m_itinerary = new Array($scope.jrny_days);
+       		for(var i = 0; i < $scope.jrny_days; i++)
+       			$scope.m_itinerary[i] = [];
 
-       			$http.post('/api/activity/get_activity', {iid: $stateParams.id, adt:tmp_dt.toISOString().substr(0, 10)}).
-		      		success(function(data, status, headers, config) { 
-		      			if(data.result == undefined) {
-			      			$scope.m_itinerary.push(data);
-			      		} else
-			      			$scope.m_itinerary.push({});
-		        
-				      }).
-				      error(function(data, status, headers, config) {
-				      });
-       		}
+       		if($scope.arr_dt.getDay() + $scope.jrny_days > 14)
+       			$scope.m_cur_cnt = 14 - $scope.arr_dt.getDay();
+       		else
+       			$scope.m_cur_cnt = $scope.jrny_days;
 
+       		$http.post('/api/activity/get_activity', {iid: $stateParams.id, adt:''}).
+	      		success(function(data, status, headers, config) { 
+		      		data.forEach(function(act) {
+		      			if(act.adate != undefined) {
+			      		 	for(var i = 0; i < $scope.jrny_days; i++) {
+				       			var tmp_dt = new Date(arr_tmp_dt.getFullYear(), arr_tmp_dt.getMonth(), arr_tmp_dt.getDate(), 0, 0, 0, 0);
+				       			tmp_dt.setDate(tmp_dt.getDate() + i);
+
+				       			var str_dt = tmp_dt.getFullYear() + "-";
+				       			if(tmp_dt.getMonth() <= 8)
+				       				str_dt = str_dt + "0" + (tmp_dt.getMonth() + 1);
+				       			else
+				       				str_dt = str_dt + (tmp_dt.getMonth() + 1);
+
+				       			str_dt = str_dt + "-";
+				       			if(tmp_dt.getDate() <= 9)
+				       				str_dt = str_dt + "0" + (tmp_dt.getDate());
+				       			else
+				       				str_dt = str_dt + (tmp_dt.getDate());
+				       			if(act.adate.substr(0, 10) == str_dt) {
+			      		 			$scope.m_itinerary[i].push(act);
+			      		 		}
+			      		 	}
+			      		 }
+		      		 });
+			      }).
+			      error(function(data, status, headers, config) {
+			      });
        		
        		$scope.m_builder.str_period = $scope.week_name[$scope.arr_dt.getDay()] + ", " + $scope.month_name[$scope.arr_dt.getMonth()].substr(0, 3) + " " + $scope.arr_dt.getDate() + " - " + 
        							$scope.week_name[$scope.dep_dt.getDay()] + ", " + $scope.month_name[$scope.dep_dt.getMonth()].substr(0, 3) + " " + $scope.dep_dt.getDate();

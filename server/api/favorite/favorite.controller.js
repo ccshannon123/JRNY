@@ -76,6 +76,7 @@ exports.add_favorite = function (req, res, next) {
     new_fav.phone = req.body.ph;
     new_fav.website = req.body.we;
     new_fav.uid = req.body.uid;
+    new_fav.place = req.body.place;
 
     new_fav.save(function (err, ts) { 
         console.log(ts); 

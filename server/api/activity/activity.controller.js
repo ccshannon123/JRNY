@@ -2,6 +2,7 @@
 
 var User = require('../user/user.model');
 var Activity = require('./activity.model');
+var Attach = require('./attachment.model');
 var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
@@ -23,6 +24,37 @@ var validationError = function (res, err) {
     return res.json(422, err);
 };
 
+exports.upload = function (req, res, next) {
+    var file = req.files.file;
+    var tmpPath = file.path;
+    var extIndex = tmpPath.lastIndexOf('.');
+    var extension = (extIndex < 0) ? '' : tmpPath.substr(extIndex);
+    var fileName = file.name;
+    var destPath = config.env == 'production' ? './public/uploads/' : './client/uploads/' + fileName;
+
+    var is = fs.createReadStream(tmpPath);
+    var os = fs.createWriteStream(destPath);
+
+    if (is.pipe(os)) {
+        fs.unlink(tmpPath, function (err) { //To unlink the file from temp path after copy
+            if (err) return next(err);           
+        });
+    }
+};
+
+exports.add_attach = function (req, res, next) {
+
+  var new_att = new Attach();
+
+  new_att.iid = req.body.iid;
+  new_att.type = req.body.type;
+  new_att.filename = req.body.fn;
+
+  new_att.save(function (err, ts) {
+    res.json(ts);
+  });
+
+};
 exports.get_activity = function (req, res, next) {
 
   var iid1 = req.body.iid;
@@ -62,6 +94,7 @@ exports.get_activity = function (req, res, next) {
       if (err) {
         console.log(err);
       } else if (acts.length) {
+        console.log(acts.length);
         res.json(acts);
       } else {
         res.json({result:'none'});

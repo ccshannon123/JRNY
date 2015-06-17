@@ -12,11 +12,26 @@ angular.module('jrnyApp')
 	$scope.m_phone = "";
 	$scope.m_website = "";
 
+	$scope.m_search = "";
+
 	$scope.m_favorites = [];
+
+	$scope.m_head_title = "Your Favorites";
 
 	$scope.getNumber = function(num) {
 		num = eval(num);
 	    return new Array(num);   
+	};
+
+	$scope.setPlace = function() {
+	
+    	$scope.m_name = sel_place.name;
+    	$scope.m_phone = sel_place.formatted_phone_number;
+    	$scope.m_website = sel_place.website;
+    	$scope.m_location = sel_place.formatted_address;
+    	//alert(JSON.stringify(sel_place));
+    	$scope.add_favorite();
+    	//document.getElementById("abc").innerHTML = JSON.stringify(place);	
 	};
 
 	$scope.get_favorite = function() {
@@ -35,7 +50,7 @@ angular.module('jrnyApp')
 	      }).
 	      error(function(data, status, headers, config) {
 	      });
-	};
+	};	
 
 	$scope.edit_favorite = function(nm, lo, ph, we, ca, id) {
 		if(nm == "") {
@@ -62,24 +77,11 @@ angular.module('jrnyApp')
 	};
 
 	$scope.add_favorite = function() {
-		if($scope.m_name == "") {
-			alert("Please input name.");
-			return;
-		}
-		if($scope.m_phone == "") {
-			alert("Please input phone.");
-			return;
-		}
-		if($scope.m_website == "") {
-			alert("Please input website.");
-			return;
-		}
-		if($scope.m_location == "") {
-			alert("Please input location.");
-			return;
-		}
 		$http.post('/api/favorite/add_favorite', {nm: $scope.m_name, ca: $scope.m_category, lo: $scope.m_location, ph: $scope.m_phone, we: $scope.m_website, uid: $scope.getCurrentUser()._id}).
 	      success(function(data, status, headers, config) { 
+	      	$scope.m_phone = "";
+	      	$scope.m_website = "";
+	      	$scope.m_location = "";
 	      	$scope.get_favorite();
 	      }).
 	      error(function(data, status, headers, config) {

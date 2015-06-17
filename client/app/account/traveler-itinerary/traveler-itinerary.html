@@ -109,24 +109,28 @@
                                 <div class="row" style="margin-top:15px">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="row">
-                                            <div class="col-md-12 col-sm-12">
-
-                                                <div style="width:98%;text-align:center;border-bottom:1px solid #ccc"><h4>{{month_name[arr_dt.getMonth()]}} {{arr_dt.getFullYear()}}</h4></div>
+                                            <div class="col-md-1 col-sm-12 text-center"><a style="cursor:pointer;font-size:20px;line-height:400px" class="glyphicon glyphicon-chevron-left" ng-click="go_prev()"></a></div>
+                                            <div class="col-md-10 col-sm-12">
+                                                <div style="width:98%;text-align:center;border-bottom:1px solid #ccc"><h4>{{month_name[m_off_date.getMonth()]}} {{m_off_date.getFullYear()}}</h4></div>
                                                 <div class="itinerary_calendar" ng-repeat="str in week_name track by $index">{{str}}</div>
-                                                <div class="itinerary_calendar" style="height:160px" ng-repeat="i in getNumber(arr_dt.getDay()) track by $index">&nbsp;</div>
-                                                <div class="itinerary_calendar" style="height:160px" ng-repeat="i in getNumber(jrny_days) track by $index">
-                                                    <h3>Day {{$index+1}}</h3>
-                                                    <div ng-repeat="iti in m_itinerary[$index] track by $index">{{iti.activity_name}}</div>
+                                                <div class="itinerary_calendar" style="height:160px" ng-repeat="i in getNumber(m_off_date.getDay()) track by $index">&nbsp;</div>
+                                                
+                                                <div class="itinerary_calendar" style="height:160px" ng-repeat="i in getNumber(m_cur_cnt) track by $index">
+                                                    <h3 ng-init="m_idx=$index">Day {{$index+1+m_offset}}</h3>
+                                                    <div ng-repeat="iti in m_itinerary[m_idx+m_offset]">{{iti.activity_name}}</div>
                                                 </div>
-                                                <div class="itinerary_calendar" style="height:160px;line-height:25px" ng-repeat="i in getNumber(14 - ((jrny_days + arr_dt.getDay()))) track by $index">
+
+                                                <div class="itinerary_calendar" style="height:160px;line-height:25px" ng-repeat="i in getNumber(14 - ((m_cur_cnt + m_off_date.getDay()))) track by $index">
                                                     <h3>&nbsp;</h3>
                                                 </div>
                                             </div>
+                                            <div class="col-md-1 col-sm-12 text-center"><a style="cursor:pointer;font-size:20px;line-height:400px" class="glyphicon glyphicon-chevron-right" ng-click="go_next()"></a></div>
                                         </div>
                                         <div class="row text-center" style="margin-top:15px">
                                             <a ng-click="approve_itinerary()" ng-hide="m_builder.isaccept=='2'" class="btn btn-danger" style="width:70%">Approve Itinerary</a>
                                             <a ng-show="m_builder.isaccept=='2'" class="btn btn-danger" ng-disabled='true' style="width:70%">Approved</a>
                                         </div>
+
                                         </table>
                                     </div>
                                 </div>

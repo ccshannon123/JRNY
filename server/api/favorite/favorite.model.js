@@ -11,6 +11,7 @@ var FavoriteSchema = new Schema({
     phone: String,
     website: String,
     category: String,
+    place: Object,
     uid: String
 });
 

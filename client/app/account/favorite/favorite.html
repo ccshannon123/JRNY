@@ -57,34 +57,49 @@
         <div class="padding-md row">
             <div id="map-canvas"></div>
             <div class="row">
+                <div class="col-md-3 col-sm-12"></div>
+                <div class="col-md-2 col-sm-12">
+                    <input type="text" class="form-control" ng-keydown="f(event)" placeholder="Name" id="txt_nm" />
+                </div>
+                <div class="col-md-2 col-sm-12">
+                    <select class="form-control" ng-change="get_favorite()" ng-model="$parent.m_cat" id="txt_cat">
+                        <option value="">Category</option>
+                        <option value="Restaurant">Restaurant</option>
+                        <option value="Bar-Club">Bar/Club</option>
+                        <option value="Outdoor">Outdoor Activity</option>
+                        <option value="Museum">Museum</option>
+                    </select>
+                </div>
+                <div class="col-md-2 col-sm-12">
+                    <select class="form-control" ng-change="get_favorite()" ng-model="$parent.m_rev" id="txt_review">
+                        <option value="">Rating</option>
+                        <option value="1">More than 1.0 stars</option>
+                        <option value="2">More than 2.0 stars</option>
+                        <option value="3">More than 3.0 stars</option>
+                        <option value="4">More than 4.0 stars</option>
+                        <option value="5">5.0 stars</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" style="margin-top:15px">
                 <div class="col-md-1"></div>
-                <div class="col-md-10 location_table">
-                    <h2>Saved Locations</h2>
-                    <div class="row" style="border-top:1px solid #CCCCCC">
-                        <div class="col-md-2 col-sm-12"><h4>Name</h4></div>
-                        <div class="col-md-2 col-sm-12"><h4>Location</h4></div>
-                        <div class="col-md-2 col-sm-12"><h4>Phone</h4></div>
-                        <div class="col-md-2 col-sm-12"><h4>Website</h4></div>
-                        <div class="col-md-2 col-sm-12"><h4>Category</h4></div>
-                        <div class="col-md-1 col-sm-12"><h4>Edit</h4></div>
-                        <div class="col-md-1 col-sm-12"><h4>Remove</h4></div>
-                    </div>
-                    <div class="row" ng-repeat="fav in m_favorites track by $index">
-                        <div class="col-md-2 col-sm-12"><input type="text" class="form-control" ng-model="sub_name" ng-init="sub_name=fav.name" /></div>
-                        <div class="col-md-2 col-sm-12"><input type="text" class="form-control" ng-model="sub_location" ng-init="sub_location=fav.location" /></div>
-                        <div class="col-md-2 col-sm-12"><input type="text" class="form-control" ng-model="sub_phone" ng-init="sub_phone=fav.phone" /></div>
-                        <div class="col-md-2 col-sm-12"><input type="text" class="form-control" ng-model="sub_website" ng-init="sub_website=fav.website" /></div>
-                        <div class="col-md-2 col-sm-12">
-                            <select class="form-control" ng-model="sub_category" ng-init="sub_category=fav.category">
-                                <option value="Restaurant">Restaurant</option>
-                                <option value="Bar-Club">Bar/Club</option>
-                                <option value="Outdoor">Outdoor</option>
-                                <option value="Museum">Museum</option>
-                                <option value="Another">Another</option>
+                <div class="col-md-10" style="overflow:auto;height:600px">                    
+                    <div ng-repeat="fav in m_favorites track by $index" style="border:1px solid #CCCCCC;border-radius:10px;width:480px;height:250px;padding:10px 10px 10px 10px;margin-left:20px;float:left;margin-bottom:15px">
+                        <h3>{{fav.place.name}}</h3>
+                        <div style="margin-top:10px;margin-bottom:10px">{{fav.place.rating}} <span class="glyphicon glyphicon-star" ng-repeat="i in getNumber(getInteger(fav.place.rating)) track by $index"></span><span class="glyphicon glyphicon-star-empty" ng-repeat="i in getNumber(5 - getInteger(fav.place.rating)) track by $index"></span> <span style="color:#3333CC">{{fav.place.user_ratings_total}} Reviews</span></div>
+                        <div><b>Address:</b> {{fav.place.formatted_address}}</div>
+                        <div><b>Phone:</b> {{fav.place.international_phone_number}}</div>
+                        <div><b>Hours:</b> {{fav.place.opening_hours.weekday_text[0]}}</div>
+                        <div><b>Website:</b> <a href="{{fav.place.website}}">{{fav.place.website}}</a></div>
+                        <div style="margin-top:20px;float:right">
+                            <a ng-if="bFromAdd==1" ng-click="fgo_add('/add-activity/', fav.place.place_id)" class="btn btn-success">Add to Itinerary</a>
+                            <a ng-click="remove_favorite(fav._id)" class="btn btn-danger">Remove</a>
+                        </div>
+                        <!--
                             </select>
                         </div>
                         <div class="col-md-1 col-sm-12"><a ng-click="edit_favorite(sub_name,sub_location,sub_phone,sub_website,sub_category,fav._id)" style="width:100%" class="btn btn-default">Edit</a></div>
-                        <div class="col-md-1 col-sm-12"><a ng-click="remove_favorite(fav._id)" style="width:100%" class="btn btn-default">Remove</a></div>
+                        <div class="col-md-1 col-sm-12"><a ng-click="remove_favorite(fav._id)" style="width:100%" class="btn btn-default">Remove</a></div>-->
                     </div>
                 </div>
             </div>

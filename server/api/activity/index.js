@@ -16,5 +16,7 @@ router.post('/modify_activity', controller.modify_activity);
 
 router.get('/remove_activity/:id', controller.remove_activity);
 router.get('/get_activity_by_id/:id', controller.get_activity_by_id);
+router.post('/upload_attach', multipartMiddleware, controller.upload);
+router.post('/add_attach', controller.add_attach);
 
 module.exports = router;
