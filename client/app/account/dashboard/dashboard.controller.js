@@ -42,7 +42,7 @@ angular.module('jrnyApp')
 
 	       		builder.m_invited_user = [];
 
-	       		builder.str_period = week_name[arr_dt.getDay()] + ", " + month_name[arr_dt.getMonth()].substr(0, 3) + " " + arr_dt.getDate() + " - " + 
+	       		builder.str_period = week_name[arr_dt.getDay()] + ", " + month_name[arr_dt.getMonth()].substr(0, 3) + " " + arr_dt.getDate() + " - <br />" + 
 	       							week_name[dep_dt.getDay()] + ", " + month_name[dep_dt.getMonth()].substr(0, 3) + " " + dep_dt.getDate();
 
 	        	$http.get('/api/user_review/get_user_detail_by_id/' + builder.traveler).
@@ -111,7 +111,7 @@ angular.module('jrnyApp')
 	       		var dep_dt = new Date(jrny.basic.departure_date);
 	       		
 	       		
-	       		jrny.str_period = week_name[arr_dt.getDay()] + ", " + month_name[arr_dt.getMonth()].substr(0, 3) + " " + arr_dt.getDate() + " - " + 
+	       		jrny.str_period = week_name[arr_dt.getDay()] + ", " + month_name[arr_dt.getMonth()].substr(0, 3) + " " + arr_dt.getDate() + " - <br />" + 
 	       							week_name[dep_dt.getDay()] + ", " + month_name[dep_dt.getMonth()].substr(0, 3) + " " + dep_dt.getDate();
 
 	        	$http.get('/api/user_review/get_user_detail_by_id/' + jrny.local).

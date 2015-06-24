@@ -1,0 +1,84 @@
+<div class="navbar navbar-inverse bs-docs-nav navbar-fixed-top sticky-navigation white" role="navigation">
+    <div ng-include="'/components/navbar/navbar.html'"></div>
+</div>
+
+<section class="faqs secondaryTemplate" ng-controller="locallaunchCtrl">
+    <div class="container">
+
+                <div class="col-md-6 col-sm-12">
+                    <h2>Sign Up as a Traveler</h2>
+                    <div style="margin:25px 10px 25px 15px">We are currently in the process of finding Locals in order to increase the number of destinations we offer. In the meantime, sign up as a Traveler to receive promotions, updates, and first access when launch day arrives!</div>
+                    <div>
+                        <div class="col-md-10 col-sm-12"><input placeholder="user@itsthejrny.com" type='text' class="form-control" /></div>
+                        <div class="col-md-2 col-sm-12"><a class="btn btn-success">Sign Up</a></div>
+                    </div>
+
+                </div>
+                <div class="col-md-6 col-sm-12" style="border-left:1px solid #666666;">
+                    <h2>Become a Local</h2>
+                    <div style="margin:25px 10px 25px 15px">Locals are all different types of people. Do you enjoy communicating with people from all over the world? Are you the planner for your friends and family? Have you ever been on a tour and felt like you could do it better? If you answered "yes!" to any of these questions, sign up now to become a Local for the plae you call home.</div>
+                    <div>
+                        <form class="form vertical-registration-form-signup" name="form" style="margin-left:15px" ng-submit="registerTraveler(form)" novalidate>
+                            <div ng-show="m_is_error==1" class="alert alert-warning" role="alert">{{m_msg}}</div>
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <div style="margin-bottom:0px" class="form-group">
+
+                                        <input style="margin-bottom:0px" type="text" name="firstName" ng-model="m_fn" class="form-control input-box" placeholder="First Name" required/>
+                                       
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div style="margin-bottom:0px" class="form-group">
+
+                                        <input style="margin-bottom:0px" type="text" name="lastName" class="form-control input-box" ng-model="m_ln" placeholder="Last Name" required/>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <div><input type="email" name="email" class="form-control input-box" ng-model="m_em" placeholder="Email" required mongoose-error/></div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control input-box" ng-model="m_pw" ng-minlength="3" placeholder="Password" required mongoose-error/>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" g-places-autocomplete name="homeTown" class="form-control input-box" ng-model="m_place" ng-minlength="3" placeholder="The Place You Call Home" required mongoose-error/>
+                            </div>
+
+
+                            <div class="form-group checkbox">
+
+                                <label>
+                                    <input type="checkbox" name="terms" style="margin-top:0px" ng-model="m_isagree" required mongoose-error/> I agree to the terms and conditions</label>                               
+                            </div>
+
+                            <div>
+                                <button class="btn btn-success" type="button" ng-click="fsignup()">
+                                    Sign up
+                                </button>
+                            </div>
+
+                            <hr>
+                            <div style="text-align:center;">
+                                <a class="btn btn-facebook" href="" ng-click="loginOauth('facebook')">
+                                    <i class="fa fa-facebook"></i> Facebook
+                                </a>
+                                <a class="btn btn-google-plus" href="" ng-click="loginOauth('google')">
+                                    <i class="fa fa-google-plus"></i> Google+
+                                </a>
+                                <a class="btn btn-twitter" href="" ng-click="loginOauth('twitter')">
+                                    <i class="fa fa-twitter"></i> Twitter
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+    </div>
+</section>
+
+<div ng-include="'/components/footer/footer.html'"></div>

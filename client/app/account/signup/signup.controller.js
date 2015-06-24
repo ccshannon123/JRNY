@@ -51,9 +51,9 @@ angular.module('jrnyApp').controller('SignupCtrl', function ($scope, Auth, $loca
                         active: 'false',
                     }
                 })
-                .then(function () {
+                .then(function (data) {
                     // Account created, redirect to local Signup
-                    $location.path('/local-signup');
+                    $location.path('/local-application/1');
                 })
                 .catch(function (err) {
                     err = err.data;

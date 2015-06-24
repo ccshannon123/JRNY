@@ -25,4 +25,6 @@ router.post('/invite_user', controller.invite_user);
 router.post('/remove_invited_user', controller.remove_invited_user);
 router.post('/get_invited_user', controller.get_invited_user);
 
+router.get('/get_count/:id', controller.get_count);
+
 module.exports = router;

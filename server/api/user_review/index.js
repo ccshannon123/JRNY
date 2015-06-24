@@ -19,6 +19,8 @@ router.get('/set_local/:em', controller.set_local);
 
 router.post('/get_review', controller.get_review);
 router.post('/add_review', controller.add_review);
+router.post('/create_user', controller.create_user);
+router.post('/save_local', controller.save_local);
 
 router.get('/sendmail', controller.sendmail);
 module.exports = router;

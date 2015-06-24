@@ -116,7 +116,7 @@
                                                 <div class="itinerary_calendar" style="height:160px" ng-repeat="i in getNumber(m_off_date.getDay()) track by $index">&nbsp;</div>
                                                 
                                                 <div class="itinerary_calendar" style="height:160px" ng-repeat="i in getNumber(m_cur_cnt) track by $index">
-                                                    <h3 ng-init="m_idx=$index">Day {{$index+1+m_offset}}</h3>
+                                                    <a ng-click="fgo_traveler_itinerary(m_builder._id, m_cal_date[m_idx+m_offset])" ng-init="m_idx=$index" style="font-size:18px;cursor:pointer">Day {{$index+1+m_offset}}</a>
                                                     <div ng-repeat="iti in m_itinerary[m_idx+m_offset]">{{iti.activity_name}}</div>
                                                 </div>
 

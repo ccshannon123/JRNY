@@ -405,6 +405,21 @@ textarea {
     padding:5px 5px 5px 5px
 }
 
+.local_app_circle {
+    width:100px;
+    height:100px;
+    border-radius:50px;
+    border:1px solid #000;
+    text-align:center;
+    padding-top:35px;
+    font-weight:bold
+}
+
+.local_app_title {
+    font-size:26px;
+    font-weight:bold
+}
+
 textarea {
     resize: none;
 }

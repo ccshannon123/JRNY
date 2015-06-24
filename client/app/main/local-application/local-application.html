@@ -1,0 +1,167 @@
+<div class="navbar navbar-inverse bs-docs-nav navbar-fixed-top sticky-navigation white" role="navigation">
+    <div ng-include="'/components/navbar/navbar.html'"></div>
+</div>
+
+<section class="faqs secondaryTemplate" ng-controller="localapplicationCtrl">
+    <div class="container">
+        <div ng-show="m_is_error==1" id="div_msg" class="alert alert-warning" role="alert">{{m_msg}}</div>
+        <h2>Become a Local</h2>
+        <h3>Easy As 1-2-3!</h3>
+        <div style="font-weight:bold;font-size:18px;margin-left:40px">
+            We’re excited for you to become a Jrny Local! Take a few minutes to fill out the application below.  We will reach out to you within 24 hours to inform you of the status of your application. In the meantime, make sure you check out the "Become a Local" page for more information about being a Jrny Local.<br /><br />
+            As always, please feel free to reach out with any questions, comments, or feedback that you have. -Dan/Jack/Craig
+        </div>
+        <div class="row" style="margin-top:35px">
+
+            <div class="col-md-2">
+                <div class="local_app_circle">1</div>
+            </div>
+
+            <div class="col-md-10" style="font-size:12px">
+
+                <div class="row">
+                    <div class="col-md-2 col-sm-2 local_app_title">I am</div>
+                    <div class="col-md-2 col-sm-2" style="font-size:13px"><input type="radio" ng-model="m_gen" name="rad_gen" value="male" style="margin-right:5px" />Male</div>
+                    <div class="col-md-2 col-sm-2" style="font-size:13px"><input type="radio" ng-model="m_gen" name="rad_gen" value="female" style="margin-right:5px" />Female</div>
+                    <div class="col-md-2 col-sm-2" style="font-size:13px"><input type="radio" ng-model="m_gen" name="rad_gen" value="custom" style="margin-right:5px" />Custom</div>
+                    <div class="col-md-4 col-sm-4" style="font-size:13px"><input type="text" class="form-control" /></div>
+                </div>
+
+                <div class="row" style="margin-top:15px">
+                    <div class="col-md-4 col-sm-4 local_app_title">Phone Number</div>
+                    <div class="col-md-2 col-sm-2"><input type="text" class="form-control" ng-model='m_pn1' /></div>
+                    <div class="col-md-6 col-sm-6"><input type="text" class="form-control" ng-model='m_pn2' /></div>
+                </div>
+
+                <div class="row" style="margin-top:15px"><div class="col-md-12 col-sm-12 local_app_title">Languages</div></div>
+                <div class="row" style="margin-top:15px">
+                    <div class="col-md-4 col-sm-4">
+                        <select id="txt_lang" name="txt_lang" ng-change="addLanguage()" ng-model="m_lang" ng-options="lang for lang in m_languageList" class="form-control">
+                            
+                        </select>
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <div class="row" style="font-weight:bold">
+                            <div class="col-md-3 col-sm-4">Language</div>
+                            <div class="col-md-4 col-sm-4">Reading</div>
+                            <div class="col-md-4 col-sm-4">Writing</div>
+                            <div class="col-md-1 col-sm-1">&nbsp;</div>
+                        </div>
+                        <div class="row" ng-repeat="lang in m_langList track by $index">
+                            <div class="col-md-3 col-sm-4">{{lang.lang}}</div>
+                            <div class="col-md-4 col-sm-4"><select class="form-control" ng-model="m_langList[$index].reading" ng-options="lvl for lvl in m_levels"></select></div>
+                            <div class="col-md-4 col-sm-4"><select class="form-control" ng-model="m_langList[$index].writing" ng-options="lvl for lvl in m_levels"></select></div>
+                            <div class="col-md-1 col-sm-1"><a ng-click="removeLanguage(lang)" style="cursor:pointer;text-decoration:none;color:#000000">X</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:15px"><div class="col-md-12 col-sm-12 local_app_title">Local Expertise</div></div>
+                <div class="row" style="margin-top:15px">
+                    <div class="col-md-4 col-sm-4" style="line-height:20px">
+                        Choose 3 things you consider yourself an expert on in the place you call home!
+                        <select id="txt_exp" name="txt_exp" ng-change="addExpertise()" ng-model="m_exp" ng-options="exp for exp in m_expertise" class="form-control">
+                        </select>
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <div style="width:150px;height:100px;border-radius:50px;text-align:center;padding-top:25px;border:1px solid #000;float:left;margin-right:10px" ng-repeat="exp in m_expList">
+                            {{exp.expertise}}<br /><a ng-click="removeExpertise(exp)" style="cursor:pointer;text-decoration:none;color:#000000">X</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:15px">
+                    <div class="col-md-12 col-sm-12 local_app_title">Why do you love the place you call home?</div>
+                    <div class="col-md-12 col-sm-12">Are you a planner, an adventurer, a shopper, a foodie, or a mix of a few? Tell us about what you like to do, where you like to do it, and how you get it done!</div>
+                </div>
+                <div class="row" style="margin-top:15px">
+                    <div class="col-md-12 col-sm-12">
+                        <textarea class="form-control" ng-model="m_wdyl"></textarea>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:15px">
+                    <div class="col-md-12 col-sm-12 local_app_title">How would your friends describe you?</div>
+                    <div class="col-md-12 col-sm-12">Is it the fresh air, hip restaurants, local vibe, or something else you just can't live without?</div>
+                </div>
+                <div class="row" style="margin-top:15px">
+                    <div class="col-md-12 col-sm-12">
+                        <textarea class="form-control" ng-model="m_hwyd"></textarea>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:15px">
+                    <div class="col-md-12 col-sm-12 local_app_title">What else should we know about you?</div>
+                    <div class="col-md-12 col-sm-12">Here is your chance to express anything else you want us to know.</div>
+                </div>
+                <div class="row" style="margin-top:15px">
+                    <div class="col-md-12 col-sm-12">
+                        <textarea class="form-control" ng-model="m_wswk"></textarea>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row" style="border-top:1px solid #CCC;padding-top:15px;margin-top:35px">
+
+            <div class="col-md-2">
+                <div class="local_app_circle">2</div>
+            </div>
+
+            <div class="col-md-10" style="font-size:12px">
+                <div class="row" style="margin-top:15px">
+                    <div class="col-md-7 col-sm-7">
+                        <div class="local_app_title">Upload a Profile Picture and Cover Photo</div>
+                        <div style="margin-top:10px">Upload your profile picture. Make sure it's of your face! No group photos or landscapes!</div>
+                        <div><a ngf-select ng-model="m_file_photo" ngf-multiple="true" ngf-allow-dir="true" accept="image/*" class="btn btn-danger text-center" style="margin-top:20px">Upload</a></div>
+                        <div style="margin-top:10px">Upload a cover photo that shows some pride and love for the place you call home!</div>
+                        <div><a ngf-select ng-model="m_file_cover_photo" ngf-multiple="true" ngf-allow-dir="true" accept="image/*" class="btn btn-danger text-center" style="margin-top:20px">Upload</a></div>
+                    </div>
+                    <div class="col-md-5 col-sm-5">
+                        <div class="col-md-12 col-sm-12 local_app_title">Preview:</div>
+                        <div class="col-md-12 col-sm-12">
+                            <div class="text-center cover_photo" style="background-image:url('{{m_filename2}}')">
+                                <div style="margin-top:15px">
+                                    <img ng-show="m_filename1" src="{{m_filename1}}" class="user-photo">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row" style="border-top:1px solid #CCC;padding-top:15px;margin-top:35px">
+
+            <div class="col-md-2">
+                <div class="local_app_circle">3</div>
+            </div>
+
+            <div class="col-md-10" style="font-size:12px">
+                <div class="row" style="margin-top:15px">
+                    <div class="col-md-12 col-sm-12 local_app_title">Connect to Social Media</div>
+                    <div class="col-md-6 col-sm-6">
+                        
+                        <div style="margin-top:10px;line-height:20px">Jrny connects real Locals with real Travelers. In order to give yourself some credibility, connect us with 1, 2 or all 3 of your social media accounts. If you don't have a social media account, choose "No social media accounts" and expect a phone call from us!</div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="row" style="font-weight:bold;line-height:20px">
+                            <div class="row" style="margin-top:5px"><div class="col-md-5 col-sm-5">Facebook Site</div><div class="col-md-7 col-sm-7"><input ng-model="m_fb" type="text" class="form-control" /></div></div>
+                            <div class="row" style="margin-top:5px"><div class="col-md-5 col-sm-5">Twitter Handle</div><div class="col-md-7 col-sm-7"><input ng-model="m_tw" type="text" class="form-control" /></div></div>
+                            <div class="row" style="margin-top:5px"><div class="col-md-5 col-sm-5">Instagram Username</div><div class="col-md-7 col-sm-7"><input ng-model="m_in" type="text" class="form-control" /></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row text-center"><a class="btn btn-success" ng-click="finish()" style="width:50%">FINISH!</a>
+
+    </div>
+</section>
+
+<div ng-include="'/components/footer/footer.html'"></div>

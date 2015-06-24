@@ -327,6 +327,7 @@ angular.module('jrnyApp')
           css: 'assets/endless/css/endless.css'
         }
       })
+      
       .state('favorite', {
         url: '/favorite/:category/:iid/:date',
         templateUrl: 'app/account/favorite/favorite.html',

@@ -40,8 +40,14 @@
                         <div class="col-md-6 col-sm-12">
                             <div class="row" ng-repeat="act in m_activity" style="margin-bottom:15px">
                                 <div class="col-md-3 col-sm-12 text-right">
-                                    <h5 ng-show="!(act.time==null || act.duration==null)">{{act.time}}:00 - {{act.ltime}}:00</h5>
-                                    <h3 ng-show="!(act.time==null || act.duration==null)" style="color:#6CBFEE">{{act.duration}} Hours</h3>
+                                    <h5 ng-show="!(act.time==null || act.duration==null)">
+                                        <span ng-show="act.time<=12">{{act.time}}</span><span ng-show="act.time>12">{{act.time - 12}}</span>:00 <span ng-show="act.time<=12">AM</span><span ng-show="act.time>12">PM</span> - 
+
+                                        <span ng-show="act.duration==30"><span ng-show="act.time<=12">{{act.time}}</span><span ng-show="act.time>12">{{act.time - 12}}</span>:30 <span ng-show="act.time<=12">AM</span><span ng-show="act.time>12">PM</span></span>
+
+                                        <span ng-show="!(act.duration==30)"><span ng-show="act.ltime<=12">{{act.ltime}}</span><span ng-show="act.ltime>12">{{act.ltime - 12}}</span>:00 <span ng-show="act.ltime<=12">AM</span><span ng-show="act.ltime>12">PM</span></span>
+                                    </h5>
+                                    <h3 ng-show="!(act.time==null || act.duration==null)" style="color:#6CBFEE">{{act.duration}} Hour<span ng-show="act.duration>1">s</span></h3>
                                 </div><!--#3994CB-->
                                 <div class="col-md-9 col-sm-12 edit_itinerary_box" style="padding:0px 15px 15px 15px;">
                                     <div class="row">

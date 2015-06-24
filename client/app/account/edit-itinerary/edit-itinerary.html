@@ -49,23 +49,27 @@
                         <div class="col-md-8 col-sm-12">
                             <div class="row" ng-repeat="act in m_activity" style="margin-bottom:15px">
                                 <div class="col-md-3 col-sm-12 text-right">
-                                    <h5 ng-show="!(act.time==null || act.duration==null)">{{act.time}}:00 - 
-                                        <span ng-show="act.duration==30">{{act.time}}:30</span>
-                                        <span ng-show="!(act.duration==30)">{{act.ltime}}:00</span>
+                                    <h5 ng-show="!(act.time==null || act.duration==null)">
+
+                                        <span ng-show="act.time<=12">{{act.time}}</span><span ng-show="act.time>12">{{act.time - 12}}</span>:00 <span ng-show="act.time<=12">AM</span><span ng-show="act.time>12">PM</span> - 
+
+                                        <span ng-show="act.duration==30"><span ng-show="act.time<=12">{{act.time}}</span><span ng-show="act.time>12">{{act.time - 12}}</span>:30 <span ng-show="act.time<=12">AM</span><span ng-show="act.time>12">PM</span></span>
+
+                                        <span ng-show="!(act.duration==30)"><span ng-show="act.ltime<=12">{{act.ltime}}</span><span ng-show="act.ltime>12">{{act.ltime - 12}}</span>:00 <span ng-show="act.ltime<=12">AM</span><span ng-show="act.ltime>12">PM</span></span>
                                     </h5>
                                     <h3 ng-show="!(act.time==null || act.duration==null)"style="color:#6CBFEE">{{act.duration}} 
                                         <span ng-show="act.duration==30">Minutes</span>
-                                        <span ng-show="!(act.duration==30)">Hours</span>
+                                        <span ng-show="!(act.duration==30)">Hour<span ng-show="act.duration>1">s</span></span>
                                     </h3>
                                 </div><!--#3994CB-->
                                 <div class="col-md-9 col-sm-12 edit_itinerary_box" style="padding:0px 15px 15px 15px;">
                                     <div class="row">
-                                        <div class="col-md-8 col-sm-12"><h3>{{act.activity_name}}</h3>{{act.place.name}}</div>
-                                        <div class="col-md-4 col-sm-12 text-right">
+                                        <div class="col-md-6 col-sm-12"><h3>{{act.activity_name}}</h3><h5 style="font-size:16px">{{act.place.name}}</h5></div>
+                                        <div class="col-md-6 col-sm-12 text-right">
                                             <div style="margin-top:10px;">
                                                 {{act.place.international_phone_number}}<br />
                                                 {{act.place.website}}<br />
-                                                {{act.place.formatted_address}}
+                                                {{act.place.formatted_address.replace("United States", "USA")}}
                                             </div>
                                         </div>
                                     </div>

@@ -38,7 +38,7 @@
                     <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="font-size:14px">
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="/dashboard">Dashboard</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Your Favorites</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="/favorite/Restaurant/1/1">Your Favorites</a></li>
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="/message_inbox">Messages</a></li>
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="/edit-profile">Profile</a></li>    
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="/notifications">Account</a></li>
@@ -63,7 +63,7 @@
             <li ng-show="isLoggedIn()"><a class="" href="#logoutConfirm" ng-click="logout()">Logout</a>
             </li>
             <li ng-show="isLoggedIn()">
-                <a class="localSignUpTopNav btn-success" href="/local-signup" style="margin-top:10px;padding-top:5px;padding-bottom:5px;border-radius:4px" ng-hide="{{getCurrentUser().local.applied}}">Become a Local</a>
+                <a class="localSignUpTopNav btn-success" href="/local-application/{{getCurrentUser()._id}}" style="margin-top:10px;padding-top:5px;padding-bottom:5px;border-radius:4px" ng-hide="{{getCurrentUser().local.applied}}">Become a Local</a>
             </li>
 
 

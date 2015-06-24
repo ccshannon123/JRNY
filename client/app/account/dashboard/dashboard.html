@@ -26,7 +26,7 @@
                     <a href="/dashboard">Dashboard</a>
                 </li>
                 <li>
-                    <a href="/favorite/Restaurant">Your Favorites</a>
+                    <a href="/favorite/Restaurant/1/1">Your Favorites</a>
                 </li>
                 <li>
                     <a href="/message_inbox">Messages</a>
@@ -65,8 +65,8 @@
                                     <div class="row" style="margin-top:15px">
                                         <div class="col-md-12 col-sm-12">
                                         <div class="jrny_list_box">
-                                            <div class="text-center"><h1>{{builder.firstName}} {{builder.lastName.substr(0, 1)}}</h1></div>
-                                            <div class="text-center" style="margin-top:5px;font-size:14px;">{{builder.str_period}}</div>
+                                            <div class="text-center"><h1 style='margin-top:5px;margin-bottom:10px'>{{builder.firstName}} {{builder.lastName.substr(0, 1)}}</h1></div>
+                                            <div class="text-center" style="margin-top:0px;font-size:14px;" ng-bind-html="builder.str_period"></div>
                                             <div class="text-center jrny_person_box" style="height:170px">
                                                 <div class="row" style="padding-top:5px">
                                                     <h5 style="font-size:12px;color:#999999;text-align:left;margin-left:25px">Group Members</h5>
@@ -117,8 +117,8 @@
                                     <div class="row" style="margin-top:15px">
                                         <div class="col-md-12 col-sm-12">
                                             <div class="jrny_list_box">
-                                                <div class="text-center"><h1>{{jrny.homeTown.formatted_address}}&nbsp;</h1></div>
-                                                <div class="text-center" style="margin-top:20px;font-size:14px;">{{jrny.str_period}}</div>
+                                                <div class="text-center"><div style="margin-top:15px;margin-bottom:10px;font-size:22px;font-weight:bold">{{jrny.homeTown.formatted_address}}&nbsp;</div></div>
+                                                <div class="text-center" style="margin-top:20px;font-size:14px;" ng-bind-html="jrny.str_period"></div>
                                                 <div class="text-center jrny_person_box">
                                                     <div class="row" style="padding-top:5px">
                                                         <div style="margin-left:25px;width:80px;float:left">
@@ -130,7 +130,7 @@
                                                         <div style="color:#000000;margin-top:30px"><h4>{{jrny.firstName}} {{jrny.lastName.substr(0, 1)}}</h4></div>
                                                     </div>
                                                 </div>
-                                                <div class="text-center" style="margin-top:20px;"><a href="/message_write/{{jrny.uid}}" class="btn btn-info" style="width:75%">Message Local</a></div>
+                                                <div class="text-center" style="margin-top:30px;"><a href="/message_write/{{jrny.uid}}" class="btn btn-info" style="width:75%">Message Local</a></div>
                                                 <div class="text-center" style="margin-top:10px;">
                                                     <button ng-show="(jrny.isaccept=='0')" class="btn btn-success" style="width:75%">Pending</button>
                                                     <a href="/traveler-itinerary/{{jrny._id}}" ng-show="!(jrny.isaccept=='0')" class="btn btn-success" style="width:75%">View Itinerary</a>

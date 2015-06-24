@@ -96,6 +96,18 @@ exports.get_local = function (req, res, next) {
     });
 };
 
+exports.create_user = function (req, res, next) {
+
+    var newUser = new User(req.body);
+    newUser.provider = 'local';
+    newUser.role = 'user';
+    newUser.local.applied = true;
+    newUser.save(function (err, user) {
+        if (err) return validationError(res, err);
+        res.json(user);
+      });
+};
+
 exports.set_local = function (req, res, next) {
   console.log('s');
   console.log(req.params.em);
@@ -104,6 +116,31 @@ exports.set_local = function (req, res, next) {
         console.log(err);
       } else if (users.length) {
         users[0].local.applied = true;
+        users[0].save(function (err, user) {  
+          res.json(user);
+        });
+      } else {
+        res.json({result:'none'});
+      }
+    });
+};
+
+exports.save_local = function (req, res, next) {
+    User.find({_id: req.body.uid}, function (err, users) {
+      if (err) {
+        console.log(err);
+      } else if (users.length) {
+
+        users[0].local.applied = true;
+        users[0].Gender = req.body.gen;
+        users[0].PhoneNumber = req.body.pn1 + req.body.pn2;
+        users[0].local.WhyLoveHome = req.body.wdyl;
+        users[0].local.FriendDescription = req.body.hwyd;
+        users[0].local.travelExperience = req.body.wswk;
+        users[0].photoUrl = req.body.fn1;
+        users[0].coverUrl = req.body.fn2;
+        users[0].languages = req.body.languages;
+
         users[0].save(function (err, user) {  
           res.json(user);
         });

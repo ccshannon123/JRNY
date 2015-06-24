@@ -178,6 +178,27 @@ exports.count_builder = function (req, res, next) {
     
 };
 
+exports.get_count = function (req, res, next) {
+  var id = req.params.id;
+
+  TravelerSurvey.find({traveler: id}, function (err, reqs) {
+      if (err) {
+        console.log(err);
+      } else {
+
+        TravelerSurvey.find({local: id}, function (err1, reqs1) {
+          if (err1) {
+            console.log(err1);
+          } else {
+            res.json({num1: reqs.length, num2: reqs1.length});
+
+          }
+        });
+
+      }
+    });
+};
+
 exports.count_jrny = function (req, res, next) {
 
     var id = req.params.id;

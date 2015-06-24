@@ -90,6 +90,20 @@ angular.module('jrnyApp').config(function ($stateProvider) {
                 css: 'assets/stamp/css/styles.css'
             }
         })
+        .state('local-launch', {
+            url: '/local-launch',
+            templateUrl: 'app/main/local-launch/local-launch.html',
+            data: {
+                css: 'assets/stamp/css/styles.css'
+            }
+        })
+        .state('local-application', {
+            url: '/local-application/:id',
+            templateUrl: 'app/main/local-application/local-application.html',
+            data: {
+                css: 'assets/stamp/css/styles.css'
+            }
+        })
         .state('local-search', {
             url: '/local-search',
             templateUrl: 'app/main/local-search/local-search.html',

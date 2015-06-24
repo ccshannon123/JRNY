@@ -7,6 +7,7 @@ angular.module('jrnyApp')
 
 	$scope.m_builder = {};
 	$scope.m_itinerary = [];
+	$scope.m_cal_date = [];
 	$scope.arr_dt;
 	$scope.dep_dt;
 
@@ -83,10 +84,13 @@ angular.module('jrnyApp')
 		if($scope.m_msg == "")
 			return;
 
+
 		$http.post('/api/message/send', {semail:$scope.getCurrentUser().email, remail:$stateParams.id, ct:$scope.m_msg, dt:dt, ic:"1"}).
 		  success(function(data, status, headers, config) { 
+		  	$scope.m_msg = "";
 		  }).
 		  error(function(data, status, headers, config) {
+
 		  });
 	};
 
@@ -216,6 +220,7 @@ angular.module('jrnyApp')
 				       			else
 				       				str_dt = str_dt + (tmp_dt.getDate());
 				       			if(act.adate.substr(0, 10) == str_dt) {
+				       				$scope.m_cal_date[i] = str_dt;
 			      		 			$scope.m_itinerary[i].push(act);
 			      		 		}
 			      		 	}

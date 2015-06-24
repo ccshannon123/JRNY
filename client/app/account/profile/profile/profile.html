@@ -44,7 +44,10 @@
                             <span class="glyphicon glyphicon-user" aria-hidden="true" ng-hide="m_user_detail.photoUrl"></span>
                             <img ng-show="m_user_detail.photoUrl" src="{{m_user_detail.photoUrl}}" class="user-photo">
                         </div>
-                        <div ng-show="m_user_detail.local.applied==true && getCurrentUser().email!=m_user_email"><a href="/jrny-basics/{{m_user_detail._id}}" class="btn btn-danger">Request Local</a></div>
+                        <div ng-show="m_user_detail.local.applied==true && getCurrentUser().email!=m_user_email">
+                            <a ng-show="getCurrentUser().email!=null" href="/jrny-basics/{{m_user_detail._id}}" class="btn btn-danger">Request Local</a>
+                            <a ng-show="getCurrentUser().email==null" href="/login" class="btn btn-danger">Request Local</a>
+                        </div>
                         <div style="margin-top:5px" ng-show="m_user_detail.local.applied==true && getCurrentUser().email!=m_user_email"><a href="/message_write/{{m_user_detail._id}}" class="btn btn-danger">Send Message</a></div>
                         <div style="margin-top:5px" ng-show="(getCurrentUser().email==m_user_email)"><a href="/edit-profile" class="btn btn-danger">Update Profile</a></div>
                         <div style="margin-top:3px">Local since March 2015</div>
@@ -95,14 +98,26 @@
                                 </span>
                             </div>
                             <div class="row" style="margin-top:10px">
-                                <table style="text-align:center;width:90%" border = "1">
+                                <table style="text-align:center;font-weight:700;margin-left:10px;width:60%">
+                                    <tr>
+                                        <td><img src="assets/images/icons/map_icon.png" style="width:100px" /></td>
+                                        <td rowspan="2">{{m_count.num2}}</td>
+                                        <td><img src="assets/images/icons/explore_icon.png" style="width:100px" /></td>
+                                        <td rowspan="2">{{m_count.num1}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jrnys<br />Planned</td>
+                                        <td>Jrnys<br />Taken</td>
+                                    </tr>
+                                </table>
+                                <!--<table style="text-align:center;width:90%" border = "1">
                                     <tr>
                                         <td>&nbsp;</td><td>Jrny</td><td>Itineraries Written</td><td>Days</td><td>Distance</td>
                                     </tr>
                                     <tr>
                                         <td>Total</td><td>8</td><td>12</td><td>20</td><td>14,500mi</td>
                                     </tr>
-                                </table>
+                                </table>-->
                             </div>
                         </div>
                         <div class="col-md-7 col-sm-12">

@@ -12,6 +12,8 @@ angular.module('jrnyApp').controller('profileCtrl', function ($scope, $http, $st
 	$scope.m_user_detail = {};
 	$scope.m_user_email = "";
 
+	$scope.m_count = {};
+
 	
 	$scope.getNumber = function(num) {
 		num = eval(num);
@@ -80,6 +82,15 @@ angular.module('jrnyApp').controller('profileCtrl', function ($scope, $http, $st
 	      }).
 	      error(function(data, status, headers, config) {
 	      });
+
+
+	    	$http.get('/api/traveler_survey/get_count/' + $stateParams.id).
+		      success(function(data, status, headers, config) { 
+		        $scope.m_count = data;
+
+		      }).
+		      error(function(data, status, headers, config) {
+		      });
 	};
 
 	angular.element(document).ready(function () {

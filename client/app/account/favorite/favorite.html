@@ -26,7 +26,7 @@
                         <a href="/dashboard">Dashboard</a>
                     </li>
                     <li class="active">
-                        <a href="/favorite/Restaurant">Your Favorites</a>
+                        <a href="/favorite/Restaurant/1/1">Your Favorites</a>
                     </li>
                     <li>
                         <a href="/message_inbox">Messages</a>
@@ -84,7 +84,7 @@
             <div class="row" style="margin-top:15px">
                 <div class="col-md-1"></div>
                 <div class="col-md-10" style="overflow:auto;height:600px">                    
-                    <div ng-repeat="fav in m_favorites track by $index" style="border:1px solid #CCCCCC;border-radius:10px;width:480px;height:250px;padding:10px 10px 10px 10px;margin-left:20px;float:left;margin-bottom:15px">
+                    <div ng-repeat="fav in m_favorites track by $index" style="border:1px solid #CCCCCC;border-radius:10px;width:460px;height:250px;padding:10px 10px 10px 10px;margin-left:20px;float:left;margin-bottom:15px">
                         <h3>{{fav.place.name}}</h3>
                         <div style="margin-top:10px;margin-bottom:10px">{{fav.place.rating}} <span class="glyphicon glyphicon-star" ng-repeat="i in getNumber(getInteger(fav.place.rating)) track by $index"></span><span class="glyphicon glyphicon-star-empty" ng-repeat="i in getNumber(5 - getInteger(fav.place.rating)) track by $index"></span> <span style="color:#3333CC">{{fav.place.user_ratings_total}} Reviews</span></div>
                         <div><b>Address:</b> {{fav.place.formatted_address}}</div>
