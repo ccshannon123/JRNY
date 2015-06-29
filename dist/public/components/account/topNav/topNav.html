@@ -16,33 +16,46 @@
     <ul class="nav-notification clearfix">
         <li>
             <!--<a href="/profile"></a>-->
-                <div class="dropdown" style="margin-top:10px;margin-right:10px">
-                    <button class="btn dropdown-toggle" id="menu1" type="button" data-toggle="dropdown" style="background-color:#fff;color:#999"><strong>{{ getCurrentUser().firstName}} {{ getCurrentUser().lastName.substr(0, 1)}}</strong>
-                    <span class="caret"></span></button>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="font-size:14px">
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="/dashboard">Dashboard</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="/favorite/Restaurant/1/1">Your Favorites</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="/message_inbox">Messages</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="/edit-profile">Profile</a></li>    
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="/notifications">Account</a></li>
-                    </ul>
-                  </div>
+            <div class="dropdown" style="margin-top:10px;margin-right:10px">
+                <button class="btn dropdown-toggle" id="menu1" type="button" data-toggle="dropdown" style="background-color:#fff;color:#999"><strong>{{ getCurrentUser().firstName}} {{ getCurrentUser().lastName.substr(0, 1)}}</strong>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="font-size:14px">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/dashboard">Dashboard</a>
+                    </li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/favorite/Restaurant/1/1">Your Favorites</a>
+                    </li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/message_inbox">Messages</a>
+                    </li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/edit-profile">Profile</a>
+                    </li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/notifications">Account</a>
+                    </li>
+                    <li ng-show="isAdmin()" role="presentation"><a role="menuitem" tabindex="-1" href="/admin">Admin</a>
+                    </li>
+                </ul>
+            </div>
 
-                
-            
+
+
         </li>
         <li>
             <div class="dropdown" style="margin-top:10px;margin-right:10px">
-                    <button class="btn dropdown-toggle" id="menu2" type="button" data-toggle="dropdown" style="background-color:#fff;color:#999"><strong>Help</strong>
-                    <span class="caret"></span></button>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu2" style="font-size:14px">
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Help Center</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Traveler FAQs</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Local FQAs</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Feedback</a></li>
-                    </ul>
-                  </div>
-        </li>        
+                <button class="btn dropdown-toggle" id="menu2" type="button" data-toggle="dropdown" style="background-color:#fff;color:#999"><strong>Help</strong>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu2" style="font-size:14px">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Help Center</a>
+                    </li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Traveler FAQs</a>
+                    </li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Local FQAs</a>
+                    </li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Feedback</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
         <li><a class="" href="#logoutConfirm" class="navbar-register-button" ng-click="logout()">Log Out</a>
         </li>
         <li>
@@ -63,9 +76,9 @@
             $('.main-menu').find('.openable').removeClass('open');
 
         });
-$(document).ready(function(){
-    
-});
+        $(document).ready(function () {
+
+        });
 
     });
 </script>

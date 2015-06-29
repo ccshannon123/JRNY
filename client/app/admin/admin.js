@@ -10,5 +10,13 @@ angular.module('jrnyApp')
                 data: {
                     css: 'assets/endless/css/endless.css'
                 }
+            })
+            .state('user-details', {
+                url: '/user-details/:id',
+                templateUrl: 'app/admin/users/user-details/user-details.html',
+                controller: 'userDetailsCtrl',
+                data: {
+                    css: 'assets/endless/css/endless.css'
+                }
             });
     });

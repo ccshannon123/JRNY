@@ -8,15 +8,6 @@ var nodemailer = require('nodemailer');
 var fs = require('fs');
 var mandrill = require('mandrill-api/mandrill');
 var mandrill_client = new mandrill.Mandrill('m1Hmo_q9hMt7fYiAsMrxJA');
-/*
-var transporter = nodemailer.createTransport({
-    service: 'Gmail',
-    auth: {
-        user: 'craig@itsthejrny.com',
-        pass: ''
-    }
-});
-*/
 
 
 var validationError = function (res, err) {
