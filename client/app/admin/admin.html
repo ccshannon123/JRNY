@@ -62,42 +62,13 @@
             <div class="padding-md">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>Admin</h2>
-                        <!--<ul class="list-group">
-                            <li class="list-group-item" ng-repeat="user in users">
-                                <strong>{{user.firstName + " " + user.lastName}}</strong>
-                                <br>
-                                <span class="text-muted">{{user.email}}</span>
-                                <br/>
-                                <span class="text-muted">{{user.role}}</span>
-                                <br/>
-                                <span class="text-muted" ng-if="user.local.active">
-                                    Local active: {{ user.local.active}}</span>
-                                <br/>
-                                <span class="text-muted" ng-if="user.local.applied">
-                                    Local applied: {{ user.local.applied}}</span>
-                                <a ng-click="edit(user)"><span class="glyphicon glyphicon-edit pull-right"></span></a>
-                                <br/>
-                                <a ng-click="delete(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
-                            </li>
-                        </ul>-->
-
-
-
-
-
-                        <!--<div class="alert alert-info">
-    <p>Sort Type: {{ sortType }}</p>
-    <p>Sort Reverse: {{ sortReverse }}</p>
-    <p>Search Query: {{ searchFish }}</p>
-</div>-->
 
                         <form>
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-search"></i>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Search User" ng-model="searchFish">
+                                    <input type="text" class="form-control" placeholder="Search User" ng-model="searchUser">
                                 </div>
                             </div>
                         </form>
@@ -146,7 +117,7 @@
                             </thead>
 
                             <tbody>
-                                <tr ng-repeat="user in users | orderBy:sortType:sortReverse | filter:searchFish">
+                                <tr ng-repeat="user in users | orderBy:sortType:sortReverse | filter:searchUser">
                                     <td>{{ user.firstName }}</td>
                                     <td>{{ user.lastName }}</td>
                                     <td>{{ user.email }}</td>
@@ -156,9 +127,12 @@
                                         <a ng-click="edit(user)" class="btn btn-success">
                                             <span class="glyphicon glyphicon-edit pull-right"></span>
                                         </a>
-                                        <a ng-click="delete(user)" class="btn btn-danger">
+                                        <a ng-click="confirmDelete(user)" class="btn btn-danger">
                                             <span class="glyphicon glyphicon-trash pull-right"></span>
                                         </a>
+                                        <!-- <a ng-click="delete(user)" class="btn btn-danger">
+                                            <span class="glyphicon glyphicon-trash pull-right"></span>
+                                        </a>-->
                                     </td>
                                 </tr>
                             </tbody>
