@@ -46,7 +46,7 @@
         <!-- /breadcrumb-->
         <div class="main-header clearfix">
             <div class="page-title">
-                <h3 class="no-margin">Admin</h3>
+                <h3 class="no-margin">Admin - User Detail</h3>
                 <!--<span>Welcome back Mr.John Doe</span>-->
             </div>
         </div>
@@ -57,33 +57,88 @@
         </div>
         <!-- /grey-container -->
 
-        <div class="padding-md">
-
+        <div ng-repeat='user in filteredUsers(users)'>
             <div class="padding-md">
+
                 <div class="row">
-                    <div class="col-md-12">
-                        <p>User Detail</p>
+                    <div class="col-md-9">
+                        <h2 style="margin:0px 0px 0px 20px;">{{user.firstName + " " + user.lastName}}</h2>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="/admin" class="btn btn-default pull-right">Back to all users</a>
+                    </div>
+                </div>
+                <div class="padding-md">
+                    <div class="row">
+                        <div class="col-md-4 list-group-item">
+
+                            <br>
+                            <b>User since:</b>{{user.since_month}} / {{user.since_year}}
+                            <br/>
+                            <b>Home Town:</b> {{user.homeTown}}
+                            <br/>
+                            <b>Email:</b> {{user.email}}
+                            <br/>
+                            <b>Role:</b> {{user.role}}
+                            <br/>
+                            <b>Gender:</b> {{user.gender}}
+                            <br/>
+                            <span class="text-muted" ng-if="user.local.active">
+                                <br/><b>Local active:</b> {{ user.local.active}}</span>
+
+                            <span class="text-muted" ng-if="user.local.applied">
+                                <br/><b>Local applied:</b> {{ user.local.applied}}</span>
+                        </div>
+
+
+                        <div class="col-md-7">
+
+                            <div ng-if="user.local.applied">
+                                <h4 style="margin-bottom:5px;">Local Info</h4>
+                                <b>Friend Descripton:</b>
+                                <br/>{{user.local.FriendDescription}}
+
+                                <br/>
+                                <br/>
+                                <b>Why Love Home:</b>
+                                <br/>{{user.local.WhyLoveHome}}
+
+                                <br/>
+                                <br/>
+                                <b>Travel Experience:</b>
+                                <br/>{{user.local.travelExperience}}
+
+                                <br/>
+                                <br/>
+                                <b>Travel Quote:</b>
+                                <br/>{{user.local.whatTravelQuote}}
+                            </div>
+
+
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- /.row -->
         </div>
-        <!-- /.padding-md -->
     </div>
-    <!-- /main-container -->
-    <!-- Footer
+    <!-- /.row -->
+</div>
+<!-- /.padding-md -->
+</div>
+<!-- /main-container -->
+<!-- Footer
 		================================================== -->
-    <footer>
-        <div class="row">
-            <div class="col-sm-6">
-                <p class="no-margin">
-                    &copy; 2015 <strong>JRNY</strong>. ALL Rights Reserved.
-                </p>
-            </div>
-            <!-- /.col -->
+<footer>
+    <div class="row">
+        <div class="col-sm-6">
+            <p class="no-margin">
+                &copy; 2015 <strong>JRNY</strong>. ALL Rights Reserved.
+            </p>
         </div>
-        <!-- /.row-->
-    </footer>
+        <!-- /.col -->
+    </div>
+    <!-- /.row-->
+</footer>
 </div>
 <!-- /wrapper -->
 

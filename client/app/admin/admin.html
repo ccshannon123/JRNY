@@ -62,8 +62,8 @@
             <div class="padding-md">
                 <div class="row">
                     <div class="col-md-12">
-                        <p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>
-                        <ul class="list-group">
+                        <h2>Admin</h2>
+                        <!--<ul class="list-group">
                             <li class="list-group-item" ng-repeat="user in users">
                                 <strong>{{user.firstName + " " + user.lastName}}</strong>
                                 <br>
@@ -76,11 +76,95 @@
                                 <br/>
                                 <span class="text-muted" ng-if="user.local.applied">
                                     Local applied: {{ user.local.applied}}</span>
-                                <a href="/user-details/{{ user._id}}"><span class="glyphicon glyphicon-edit pull-right"></span></a>
+                                <a ng-click="edit(user)"><span class="glyphicon glyphicon-edit pull-right"></span></a>
                                 <br/>
                                 <a ng-click="delete(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
                             </li>
-                        </ul>
+                        </ul>-->
+
+
+
+
+
+                        <!--<div class="alert alert-info">
+    <p>Sort Type: {{ sortType }}</p>
+    <p>Sort Reverse: {{ sortReverse }}</p>
+    <p>Search Query: {{ searchFish }}</p>
+</div>-->
+
+                        <form>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-search"></i>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Search User" ng-model="searchFish">
+                                </div>
+                            </div>
+                        </form>
+
+                        <table class="table table-bordered table-striped">
+
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <a href="#" ng-click="sortType = 'firstName'; sortReverse = !sortReverse">
+            First Name 
+            <span ng-show="sortType == 'firstName' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'firstName' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+                                    </td>
+                                    <td>
+                                        <a href="#" ng-click="sortType = 'lastName'; sortReverse = !sortReverse">
+          Last Name 
+            <span ng-show="sortType == 'lastName' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'fish' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+                                    </td>
+                                    <td>
+                                        <a href="#" ng-click="sortType = 'email'; sortReverse = !sortReverse">
+          Email 
+            <span ng-show="sortType == 'email' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'email' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+                                    </td>
+                                    <td>
+                                        <a href="#" ng-click="sortType = 'local.applied'; sortReverse = !sortReverse">
+          Local Applied 
+            <span ng-show="sortType == 'local.applied' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'local.applied' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+                                    </td>
+                                    <td>
+                                        <a href="#" ng-click="sortType = 'local.active'; sortReverse = !sortReverse">
+          Local Active
+            <span ng-show="sortType == 'local.active' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'local.active' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+                                    </td>
+                                    <td>Actions</td>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr ng-repeat="user in users | orderBy:sortType:sortReverse | filter:searchFish">
+                                    <td>{{ user.firstName }}</td>
+                                    <td>{{ user.lastName }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td>{{ user.local.applied}}</td>
+                                    <td>{{ user.local.active}}</td>
+                                    <td>
+                                        <a ng-click="edit(user)" class="btn btn-success">
+                                            <span class="glyphicon glyphicon-edit pull-right"></span>
+                                        </a>
+                                        <a ng-click="delete(user)" class="btn btn-danger">
+                                            <span class="glyphicon glyphicon-trash pull-right"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
                     </div>
                 </div>
             </div>

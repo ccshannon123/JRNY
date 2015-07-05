@@ -12,7 +12,7 @@ angular.module('jrnyApp')
                 }
             })
             .state('user-details', {
-                url: '/user-details/:id',
+                url: '/user-details/{id}',
                 templateUrl: 'app/admin/users/user-details/user-details.html',
                 controller: 'userDetailsCtrl',
                 data: {
