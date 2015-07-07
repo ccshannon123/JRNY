@@ -619,6 +619,11 @@ strong,
     text-transform: uppercase;
     line-height: 34px;
     padding: 18px;
+    margin-right: 5px;
+}
+
+.sticky-navigation .login-register .login.active a {
+    color: #0fd6c0;
 }
 
 .sticky-navigation .login-register .register-button {
