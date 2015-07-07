@@ -167,7 +167,9 @@
     background-color: #f9f9f9 !important;
 }
 
-.nav-pills > li > a{color: #0fd6c0 !important;}
+.nav-pills > li > a {
+    color: #0fd6c0 !important;
+}
 
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
@@ -427,7 +429,7 @@ textarea {
 }
 
 .circle-title {
-    border: solid 1px #fff;
+    border: solid 1px #21D7C2;
     border-radius: 50px;
     color: #fff;
     font-size: 30px;
